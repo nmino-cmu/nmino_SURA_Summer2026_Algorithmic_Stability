@@ -1,0 +1,160 @@
+{
+  "schema_version": "primitive-library-1.0",
+  "kind": "run_ledger",
+  "note": "Append-only operational ledger. Not proof authority.",
+  "starting_main_commit": "6b736e7cdac9a90201f338e820745ea84db83cd3",
+  "entries": [
+    {
+      "operator": "thresholding",
+      "initial_status": "complete",
+      "final_status": "complete",
+      "branch": null,
+      "starting_main_commit": "6b736e7cdac9a90201f338e820745ea84db83cd3",
+      "merge_commit": "6b736e7cdac9a90201f338e820745ea84db83cd3",
+      "certificate_statuses": {
+        "threshold-output-preservation": "LEAN_FULL",
+        "bounded-noise-threshold": "LEAN_FULL"
+      },
+      "pytest_count": null,
+      "lean_result": "LEAN_FULL",
+      "pdf_result": "preexisting",
+      "audit_verdict": "PASS_PREEXISTING",
+      "completion_timestamp": "2026-07-25",
+      "remaining_minor_items": [],
+      "next_operator": "multi-threshold",
+      "authored_notes": "Already complete under library infrastructure."
+    },
+    {
+      "operator": "multi-threshold",
+      "initial_status": "planned",
+      "final_status": "complete",
+      "branch": "operator/multi-threshold",
+      "starting_main_commit": "6b736e7cdac9a90201f338e820745ea84db83cd3",
+      "final_operator_commit": "4251d11",
+      "merge_commit": "909dd84",
+      "certificate_statuses": {
+        "multi-threshold-count-preservation": "LEAN_FULL"
+      },
+      "pytest_count": 190,
+      "lean_result": "LEAN_FULL",
+      "pdf_result": "PASS",
+      "audit_verdict": "PASS",
+      "completion_timestamp": "2026-07-25",
+      "remaining_minor_items": [],
+      "next_operator": "sign"
+    },
+    {
+      "operator": "sign",
+      "initial_status": "planned",
+      "final_status": "complete",
+      "branch": "operator/sign",
+      "starting_main_commit": "909dd84",
+      "final_operator_commit": "047a271",
+      "merge_commit": "564393f",
+      "certificate_statuses": {
+        "sign-preservation": "LEAN_FULL"
+      },
+      "pytest_count": 193,
+      "lean_result": "LEAN_FULL",
+      "pdf_result": "PASS",
+      "audit_verdict": "PASS",
+      "completion_timestamp": "2026-07-25",
+      "remaining_minor_items": [],
+      "next_operator": "absolute-value-threshold"
+    },
+    {
+      "operator": "absolute-value-threshold",
+      "initial_status": "planned",
+      "final_status": "complete",
+      "branch": "operator/absolute-value-threshold",
+      "starting_main_commit": "564393f",
+      "final_operator_commit": "2a61041",
+      "merge_commit": "f1e847b",
+      "certificate_statuses": {
+        "abs-threshold-preservation": "LEAN_FULL"
+      },
+      "pytest_count": 196,
+      "lean_result": "LEAN_FULL",
+      "pdf_result": "PASS",
+      "audit_verdict": "PASS",
+      "completion_timestamp": "2026-07-25",
+      "remaining_minor_items": [
+        "registry still needs full new-queue sync (interval-membership and later entries)"
+      ],
+      "next_operator": "interval-membership"
+    },
+    {
+      "operator": "interval-membership",
+      "initial_status": "planned",
+      "final_status": "complete",
+      "branch": "operator/interval-membership",
+      "merge_commit": "3a6c64e",
+      "certificate_statuses": {
+        "interval-membership-preservation": "LEAN_FULL"
+      },
+      "pytest_count": 199,
+      "lean_result": "LEAN_FULL",
+      "pdf_result": "PASS",
+      "audit_verdict": "PASS",
+      "completion_timestamp": "2026-07-25",
+      "remaining_minor_items": [],
+      "next_operator": "quantile"
+    },
+    {
+      "operator": "quantile",
+      "initial_status": "planned",
+      "final_status": "complete",
+      "branch": "operator/quantile",
+      "starting_main_commit": "3a6c64e",
+      "certificate_statuses": {
+        "quantile-margin": "LEAN_FULL"
+      },
+      "pytest_count": 202,
+      "lean_result": "LEAN_FULL",
+      "pdf_result": "PASS",
+      "audit_verdict": "PASS",
+      "completion_timestamp": "2026-07-25",
+      "remaining_minor_items": [],
+      "next_operator": "median"
+    },
+    {
+      "operator": "_LIBRARY_COMPLETION_",
+      "initial_status": "in_progress",
+      "final_status": "complete",
+      "branch": "docs/primitive-library-final-verdict",
+      "starting_main_commit": "6b736e7cdac9a90201f338e820745ea84db83cd3",
+      "merge_commit": "6446b7ed610832a45cac63b5ee205799b1fa2cc7",
+      "certificate_statuses": {
+        "all_complete_operators": "LEAN_FULL"
+      },
+      "pytest_count": 192,
+      "lean_result": "LEAN_FULL",
+      "pdf_result": "PASS",
+      "audit_verdict": "PASS_WITH_MINOR_ITEMS",
+      "completion_timestamp": "2026-07-25",
+      "remaining_minor_items": [
+        "simplex/l2/l1 use feasible-ball identity (limited Int theorem), not full Euclidean projection",
+        "Mathlib ℝ (REAL_MATHLIB) across library certificates",
+        "min-aliases (bottom-k etc.) intentionally omitted as score-negation of max variants"
+      ],
+      "next_operator": null,
+      "authored_notes": "50/50 non-reserved operators complete; reserved=['argmax']; theorems_indexed={'complete_operators': 50, 'operators': 51, 'planned_operators': 0, 'reserved_reference_operators': 1, 'theorems': 52}",
+      "independent_audits": [
+        {
+          "id": "1ac33b11-ac37-4f06-b835-a13a5d41e6a1",
+          "label": "PASS",
+          "blocking": 0,
+          "major": 0,
+          "minor": 0
+        },
+        {
+          "id": "d2c8f8b0-0673-43c8-9984-061faf5dbdf5",
+          "label": "PASS WITH MINOR",
+          "blocking": 0,
+          "major": 0,
+          "minor": 1
+        }
+      ]
+    }
+  ]
+}

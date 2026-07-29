@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local/research-results/primitive-library/schema.json",
+  "title": "Primitive Operator Library — theorem package metadata",
+  "description": "Schema for research-results/<operator>/<theorem-slug>/metadata.json under library_schema_version primitive-library-1.0. Separates authored, derived, and library comparison fields. Legacy publication fields remain at the top level for ART compatibility.",
+  "type": "object",
+  "required": [
+    "operator",
+    "title",
+    "crp_identifiers",
+    "derived_lean_status",
+    "lean_entry_module",
+    "lean_certificate_dir",
+    "lean_manifest_digest",
+    "library_schema_version",
+    "authored",
+    "derived",
+    "library"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "library_schema_version": {
+      "const": "primitive-library-1.0"
+    },
+    "operator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "crp_identifiers": {
+      "type": "object",
+      "required": ["operator", "theorem_id"],
+      "properties": {
+        "operator": { "type": "string", "minLength": 1 },
+        "theorem_id": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": true
+    },
+    "derived_lean_status": {
+      "$ref": "#/$defs/lean_status"
+    },
+    "lean_entry_module": {
+      "type": "string",
+      "pattern": "^Research\\.[A-Za-z0-9_.]+$"
+    },
+    "lean_certificate_dir": {
+      "type": "string",
+      "pattern": "^lean/certificates/"
+    },
+    "lean_manifest_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "authored": {
+      "$ref": "#/$defs/authored"
+    },
+    "derived": {
+      "$ref": "#/$defs/derived"
+    },
+    "library": {
+      "$ref": "#/$defs/library"
+    }
+  },
+  "$defs": {
+    "lean_status": {
+      "type": "string",
+      "enum": [
+        "LEAN_FULL",
+        "LEAN_PARTIAL",
+        "LEAN_BLOCKED",
+        "LEAN_ABSENT",
+        "UNKNOWN"
+      ]
+    },
+    "theorem_role": {
+      "type": "string",
+      "enum": [
+        "primary_stability",
+        "sharpness",
+        "bounded_noise_companion",
+        "supporting_lemma_bundle",
+        "reference_only"
+      ]
+    },
+    "guarantee_kind": {
+      "type": "string",
+      "enum": [
+        "deterministic",
+        "probabilistic",
+        "almost_sure",
+        "mixed"
+      ]
+    },
+    "primitive_type": {
+      "type": "string",
+      "enum": [
+        "scalar_selection",
+        "ordering",
+        "projection",
+        "primitive_search",
+        "greedy",
+        "reserved_optimization"
+      ]
+    },
+    "authored": {
+      "type": "object",
+      "required": [
+        "operator",
+        "theorem",
+        "assumptions",
+        "perturbation_model",
+        "theorem_role",
+        "proof_strategy",
+        "limitations",
+        "references",
+        "lean_theorem_names"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "operator": { "type": "string", "minLength": 1 },
+        "theorem": { "type": "string", "minLength": 1 },
+        "assumptions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        },
+        "perturbation_model": { "type": "string", "minLength": 1 },
+        "theorem_role": { "$ref": "#/$defs/theorem_role" },
+        "proof_strategy": { "type": "string", "minLength": 1 },
+        "limitations": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        },
+        "references": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "lean_theorem_names": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "derived": {
+      "type": "object",
+      "required": [
+        "lean_status",
+        "statement_digest",
+        "proof_digest",
+        "certificate_path",
+        "placeholder_count",
+        "axiom_summary",
+        "provenance",
+        "verification_timestamp"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "lean_status": { "$ref": "#/$defs/lean_status" },
+        "statement_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "proof_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "certificate_path": {
+          "type": "string",
+          "pattern": "^lean/certificates/"
+        },
+        "placeholder_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "axiom_summary": {
+          "type": "object",
+          "required": [
+            "imported_axiom_closure_sorted",
+            "custom_axiom_ids_sorted",
+            "axiom_closure_captured"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "imported_axiom_closure_sorted": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "custom_axiom_ids_sorted": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "axiom_closure_captured": { "type": "boolean" }
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "required": [
+            "lean_manifest_digest",
+            "claim_digest",
+            "entry_module_id",
+            "store_kind"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "lean_manifest_digest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "claim_digest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "entry_module_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "store_kind": { "type": "string", "minLength": 1 }
+          }
+        },
+        "verification_timestamp": {
+          "description": "ISO-8601 date from package date_generated when certificate store has no timestamp; null if unknown.",
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "library": {
+      "type": "object",
+      "required": [
+        "primitive_type",
+        "selected_object",
+        "instability_mechanism",
+        "structural_stability_quantity",
+        "perturbation_class",
+        "guarantee_kind",
+        "stable_region",
+        "unstable_region",
+        "sharpness",
+        "compositional_properties",
+        "related_operators",
+        "assumptions",
+        "limitations"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "primitive_type": { "$ref": "#/$defs/primitive_type" },
+        "selected_object": { "type": "string", "minLength": 1 },
+        "instability_mechanism": { "type": "string", "minLength": 1 },
+        "structural_stability_quantity": { "type": "string", "minLength": 1 },
+        "perturbation_class": { "type": "string", "minLength": 1 },
+        "guarantee_kind": { "$ref": "#/$defs/guarantee_kind" },
+        "stable_region": { "type": "string", "minLength": 1 },
+        "unstable_region": { "type": "string", "minLength": 1 },
+        "sharpness": { "type": "boolean" },
+        "compositional_properties": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "related_operators": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "assumptions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        },
+        "limitations": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        }
+      }
+    },
+    "operator_status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "in_progress",
+        "complete",
+        "reserved_reference"
+      ]
+    },
+    "operator_registry": {
+      "type": "object",
+      "required": ["schema_version", "operators"],
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": { "const": "primitive-library-1.0" },
+        "operators": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/operator_entry" }
+        }
+      }
+    },
+    "operator_entry": {
+      "type": "object",
+      "required": [
+        "operator_id",
+        "display_name",
+        "status",
+        "description",
+        "reserved",
+        "implemented",
+        "theorem_count",
+        "family",
+        "sequence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "operator_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_-]*$"
+        },
+        "display_name": { "type": "string", "minLength": 1 },
+        "status": { "$ref": "#/$defs/operator_status" },
+        "description": { "type": "string", "minLength": 1 },
+        "reserved": { "type": "boolean" },
+        "implemented": { "type": "boolean" },
+        "theorem_count": { "type": "integer", "minimum": 0 },
+        "family": {
+          "type": "string",
+          "enum": [
+            "scalar_selection",
+            "ordering",
+            "projection",
+            "primitive_search",
+            "greedy",
+            "reserved_optimization"
+          ]
+        },
+        "sequence": {
+          "type": ["integer", "null"],
+          "description": "1-based build order for in-scope primitives; null for reserved_reference entries outside the build sequence."
+        }
+      }
+    }
+  }
+}

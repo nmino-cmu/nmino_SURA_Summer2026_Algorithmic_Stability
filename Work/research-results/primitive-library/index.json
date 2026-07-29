@@ -1,0 +1,3543 @@
+{
+  "counts": {
+    "complete_operators": 50,
+    "operators": 51,
+    "planned_operators": 0,
+    "reserved_reference_operators": 1,
+    "theorems": 53
+  },
+  "generated_by": "research-results/primitive-library/generate_index.py",
+  "operators": [
+    {
+      "display_name": "Absolute-value threshold",
+      "family": "scalar_selection",
+      "implemented": true,
+      "operator_id": "absolute-value-threshold",
+      "reserved": false,
+      "sequence": 4,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "abs-threshold-preservation"
+      ]
+    },
+    {
+      "display_name": "Beam pruning",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "beam-pruning",
+      "reserved": false,
+      "sequence": 33,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "beam-pruning-margin"
+      ]
+    },
+    {
+      "display_name": "Best-first node selection",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "best-first-node-selection",
+      "reserved": false,
+      "sequence": 34,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "best-first-node-selection-margin"
+      ]
+    },
+    {
+      "display_name": "Bucket assignment by ordered cut points",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "bucket-assignment",
+      "reserved": false,
+      "sequence": 50,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "bucket-assignment-margin"
+      ]
+    },
+    {
+      "display_name": "Constraint-threshold conjunction",
+      "family": "projection",
+      "implemented": true,
+      "operator_id": "constraint-threshold-conjunction",
+      "reserved": false,
+      "sequence": 26,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "constraint-threshold-conjunction-conjunction-preservation"
+      ]
+    },
+    {
+      "display_name": "Constraint-threshold disjunction",
+      "family": "projection",
+      "implemented": true,
+      "operator_id": "constraint-threshold-disjunction",
+      "reserved": false,
+      "sequence": 27,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "constraint-threshold-disjunction-disjunction-preservation"
+      ]
+    },
+    {
+      "display_name": "Coordinate clipping",
+      "family": "projection",
+      "implemented": true,
+      "operator_id": "coordinate-clipping",
+      "reserved": false,
+      "sequence": 24,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "coordinate-clipping-clamp-stability"
+      ]
+    },
+    {
+      "display_name": "Feasibility indicator over a fixed set",
+      "family": "projection",
+      "implemented": true,
+      "operator_id": "feasibility-indicator",
+      "reserved": false,
+      "sequence": 25,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "feasibility-indicator-feasible-ball-identity"
+      ]
+    },
+    {
+      "display_name": "Maximum over a fixed feasible subset",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "feasible-subset-maximum",
+      "reserved": false,
+      "sequence": 39,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "feasible-subset-maximum-margin"
+      ]
+    },
+    {
+      "display_name": "Candidate filtering followed by maximum selection",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "filter-then-max",
+      "reserved": false,
+      "sequence": 37,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "filter-then-max-margin"
+      ]
+    },
+    {
+      "display_name": "Greedy choice with deterministic tie-breaking",
+      "family": "greedy",
+      "implemented": true,
+      "operator_id": "greedy-choice-tie-break",
+      "reserved": false,
+      "sequence": 32,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "greedy-choice-tie-break-margin"
+      ]
+    },
+    {
+      "display_name": "Greedy maximum selection",
+      "family": "greedy",
+      "implemented": true,
+      "operator_id": "greedy-maximum-selection",
+      "reserved": false,
+      "sequence": 31,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "greedy-maximum-selection-margin"
+      ]
+    },
+    {
+      "display_name": "Groupwise maximum followed by global maximum",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "groupwise-then-global-maximum",
+      "reserved": false,
+      "sequence": 43,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "groupwise-then-global-maximum-margin"
+      ]
+    },
+    {
+      "display_name": "Heap extract-max",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "heap-extract-max",
+      "reserved": false,
+      "sequence": 29,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "heap-extract-max-margin"
+      ]
+    },
+    {
+      "display_name": "Heap top",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "heap-top",
+      "reserved": false,
+      "sequence": 28,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "heap-top-margin"
+      ]
+    },
+    {
+      "display_name": "Hierarchical maximum selection",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "hierarchical-maximum",
+      "reserved": false,
+      "sequence": 41,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "hierarchical-maximum-margin"
+      ]
+    },
+    {
+      "display_name": "Interval-membership selection",
+      "family": "scalar_selection",
+      "implemented": true,
+      "operator_id": "interval-membership",
+      "reserved": false,
+      "sequence": 5,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "interval-membership-preservation"
+      ]
+    },
+    {
+      "display_name": "k-th order statistic",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "kth-order-statistic",
+      "reserved": false,
+      "sequence": 9,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "kth-order-statistic-margin"
+      ]
+    },
+    {
+      "display_name": "Lexicographic best-first node selection",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "lexicographic-best-first",
+      "reserved": false,
+      "sequence": 35,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "lexicographic-best-first-margin"
+      ]
+    },
+    {
+      "display_name": "Lexicographic ordering",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "lexicographic-ordering",
+      "reserved": false,
+      "sequence": 15,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "lexicographic-ordering-margin"
+      ]
+    },
+    {
+      "display_name": "Maximum over a masked finite set",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "masked-maximum",
+      "reserved": false,
+      "sequence": 38,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "masked-maximum-margin"
+      ]
+    },
+    {
+      "display_name": "Top-k over a masked finite set",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "masked-top-k",
+      "reserved": false,
+      "sequence": 40,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "masked-top-k-margin"
+      ]
+    },
+    {
+      "display_name": "Median",
+      "family": "scalar_selection",
+      "implemented": true,
+      "operator_id": "median",
+      "reserved": false,
+      "sequence": 7,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "median-margin"
+      ]
+    },
+    {
+      "display_name": "Multi-criteria lexicographic selection",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "multi-criteria-lexicographic",
+      "reserved": false,
+      "sequence": 44,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "multi-criteria-lexicographic-margin"
+      ]
+    },
+    {
+      "display_name": "Multi-threshold",
+      "family": "scalar_selection",
+      "implemented": true,
+      "operator_id": "multi-threshold",
+      "reserved": false,
+      "sequence": 2,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "multi-threshold-count-preservation"
+      ]
+    },
+    {
+      "display_name": "Non-maximum suppression (finite)",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "nms-finite",
+      "reserved": false,
+      "sequence": 36,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "nms-finite-margin"
+      ]
+    },
+    {
+      "display_name": "Partial sorting",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "partial-sorting",
+      "reserved": false,
+      "sequence": 13,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "partial-sorting-margin"
+      ]
+    },
+    {
+      "display_name": "Penalized-score selection",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "penalized-score-selection",
+      "reserved": false,
+      "sequence": 46,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "penalized-score-selection-margin"
+      ]
+    },
+    {
+      "display_name": "Percentile",
+      "family": "scalar_selection",
+      "implemented": true,
+      "operator_id": "percentile",
+      "reserved": false,
+      "sequence": 8,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "percentile-margin"
+      ]
+    },
+    {
+      "display_name": "Priority queue maximum",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "priority-queue-maximum",
+      "reserved": false,
+      "sequence": 30,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "priority-queue-maximum-margin"
+      ]
+    },
+    {
+      "display_name": "Projection onto box constraints",
+      "family": "projection",
+      "implemented": true,
+      "operator_id": "projection-box",
+      "reserved": false,
+      "sequence": 20,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "projection-box-clamp-stability"
+      ]
+    },
+    {
+      "display_name": "Projection onto interval",
+      "family": "projection",
+      "implemented": true,
+      "operator_id": "projection-interval",
+      "reserved": false,
+      "sequence": 19,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "projection-interval-clamp-stability"
+      ]
+    },
+    {
+      "display_name": "Projection onto the ℓ₁ ball",
+      "family": "projection",
+      "implemented": true,
+      "operator_id": "projection-l1-ball",
+      "reserved": false,
+      "sequence": 23,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "projection-l1-ball-feasible-ball-identity"
+      ]
+    },
+    {
+      "display_name": "Projection onto the ℓ₂ ball",
+      "family": "projection",
+      "implemented": true,
+      "operator_id": "projection-l2-ball",
+      "reserved": false,
+      "sequence": 22,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "projection-l2-ball-feasible-ball-identity"
+      ]
+    },
+    {
+      "display_name": "Projection onto simplex",
+      "family": "projection",
+      "implemented": true,
+      "operator_id": "projection-simplex",
+      "reserved": false,
+      "sequence": 21,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "projection-simplex-feasible-ball-identity"
+      ]
+    },
+    {
+      "display_name": "Quantile",
+      "family": "scalar_selection",
+      "implemented": true,
+      "operator_id": "quantile",
+      "reserved": false,
+      "sequence": 6,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "quantile-margin"
+      ]
+    },
+    {
+      "display_name": "Rank",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "rank",
+      "reserved": false,
+      "sequence": 14,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "rank-margin"
+      ]
+    },
+    {
+      "display_name": "Sign",
+      "family": "scalar_selection",
+      "implemented": true,
+      "operator_id": "sign",
+      "reserved": false,
+      "sequence": 3,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "sign-preservation"
+      ]
+    },
+    {
+      "display_name": "Sorting",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "sorting",
+      "reserved": false,
+      "sequence": 11,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "sorting-margin"
+      ]
+    },
+    {
+      "display_name": "Stable partition by threshold",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "stable-partition-threshold",
+      "reserved": false,
+      "sequence": 49,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "stable-partition-threshold-margin"
+      ]
+    },
+    {
+      "display_name": "Stable sorting",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "stable-sorting",
+      "reserved": false,
+      "sequence": 12,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "stable-sorting-margin"
+      ]
+    },
+    {
+      "display_name": "Threshold-then-top-k",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "threshold-then-top-k",
+      "reserved": false,
+      "sequence": 47,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "threshold-then-top-k-margin"
+      ]
+    },
+    {
+      "display_name": "Threshold",
+      "family": "scalar_selection",
+      "implemented": true,
+      "operator_id": "thresholding",
+      "reserved": false,
+      "sequence": 1,
+      "status": "complete",
+      "theorem_count_indexed": 2,
+      "theorem_count_registry": 2,
+      "theorem_ids": [
+        "bounded-noise-threshold",
+        "threshold-output-preservation"
+      ]
+    },
+    {
+      "display_name": "Tie-broken winner selection",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "tie-broken-winner",
+      "reserved": false,
+      "sequence": 18,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "tie-broken-winner-margin"
+      ]
+    },
+    {
+      "display_name": "Top-k",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "top-k",
+      "reserved": false,
+      "sequence": 10,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "top-k-margin"
+      ]
+    },
+    {
+      "display_name": "Top-k-then-threshold",
+      "family": "ordering",
+      "implemented": true,
+      "operator_id": "top-k-then-threshold",
+      "reserved": false,
+      "sequence": 48,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "top-k-then-threshold-margin"
+      ]
+    },
+    {
+      "display_name": "Tournament winner",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "tournament-winner",
+      "reserved": false,
+      "sequence": 16,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "tournament-winner-margin"
+      ]
+    },
+    {
+      "display_name": "Two-stage maximum selection",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "two-stage-maximum",
+      "reserved": false,
+      "sequence": 42,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "two-stage-maximum-margin"
+      ]
+    },
+    {
+      "display_name": "Weighted-score selection",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "weighted-score-selection",
+      "reserved": false,
+      "sequence": 45,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "weighted-score-selection-margin"
+      ]
+    },
+    {
+      "display_name": "Weighted tournament winner",
+      "family": "primitive_search",
+      "implemented": true,
+      "operator_id": "weighted-tournament-winner",
+      "reserved": false,
+      "sequence": 17,
+      "status": "complete",
+      "theorem_count_indexed": 1,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "weighted-tournament-winner-margin"
+      ]
+    },
+    {
+      "display_name": "Argmax",
+      "family": "reserved_optimization",
+      "implemented": false,
+      "operator_id": "argmax",
+      "reserved": true,
+      "sequence": null,
+      "status": "reserved_reference",
+      "theorem_count_indexed": 2,
+      "theorem_count_registry": 1,
+      "theorem_ids": [
+        "bounded-perturbation-margin",
+        "selection-stability-linf"
+      ]
+    }
+  ],
+  "schema_version": "primitive-library-1.0",
+  "theorems": [
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "abs_threshold_preservation",
+          "abs_threshold_sharpness"
+        ],
+        "perturbation_model": "Bounded additive |x'−x|≤ε",
+        "proof_strategy": "natAbs Lipschitz (| |x'|-|x| | ≤ |x'-x|); sharpness push-down on nonnegative ray.",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/absolute-value-threshold/abs-threshold-preservation",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "T≥0",
+          "Finite scores"
+        ],
+        "compositional_properties": [
+          "radial_lift_of_threshold",
+          "related_to_sign_at_origin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "radial_distance_to_threshold_T",
+        "limitations": [
+          "Sharpness ray-restricted"
+        ],
+        "perturbation_class": "bounded_additive_score",
+        "primitive_type": "scalar_selection",
+        "related_operators": [
+          "thresholding",
+          "sign",
+          "multi-threshold"
+        ],
+        "selected_object": "abs_threshold_indicator",
+        "sharpness": true,
+        "stable_region": "|x|≥T+ε (pass); |x|+ε<T (fail)",
+        "structural_stability_quantity": "abs_x_buffer_vs_epsilon",
+        "unstable_region": "complement of the two buffers"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "d4a8a5d22601d12cae495c9414bceedb99d083708d5c9d63ac323c96e719eacf",
+        "statement_digest": "b3b8f8a98339775ca42f2591488cdc7db12d5cd9ef3dd40a5d1de0b53d82ad2a",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.AbsThreshold.Preservation",
+      "lean_manifest_digest": "4e08e1fe9524dad2af62c1abb9f1ff2e27088607ef413054873850eff95a12a9",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "absolute-value-threshold",
+      "operator_status": "complete",
+      "package_path": "absolute-value-threshold/abs-threshold-preservation",
+      "theorem_id": "abs-threshold-preservation",
+      "title": "Absolute-Value Threshold Preservation under Bounded Score Perturbations"
+    },
+    {
+      "certificate_path": "lean/certificates/argmax/bounded-perturbation-margin",
+      "certificate_status": "reference_legacy",
+      "comparison": null,
+      "lean_entry_module": "Research.Operators.Argmax.Margin",
+      "lean_manifest_digest": "d363f7aa3fc22d4accc08a62b1ce7256683a9f2e8b048de546afece0ad93e344",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": null,
+      "operator_id": "argmax",
+      "operator_status": "reserved_reference",
+      "package_path": "argmax/bounded-perturbation-margin",
+      "theorem_id": "bounded-perturbation-margin",
+      "title": "Bounded Perturbation Invariance for Deterministic Argmax"
+    },
+    {
+      "certificate_path": "lean/certificates/argmax/bounded-perturbation-margin",
+      "certificate_status": "reference_legacy",
+      "comparison": null,
+      "lean_entry_module": "Research.Operators.Argmax.Margin",
+      "lean_manifest_digest": "d363f7aa3fc22d4accc08a62b1ce7256683a9f2e8b048de546afece0ad93e344",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": null,
+      "operator_id": "argmax",
+      "operator_status": "reserved_reference",
+      "package_path": "argmax/selection-stability-linf",
+      "theorem_id": "selection-stability-linf",
+      "title": "Phase B selection_stability packaging for argmax under ℓ∞ score ball"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "beam_pruning_margin_invariance",
+          "beam_pruning_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/beam-pruning/beam-pruning-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "top-k",
+          "sorting",
+          "rank"
+        ],
+        "selected_object": "pairwise_ranking",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "ed85529078e3c40cb5460ad8d8daba6e80a356d91da470737b0e0ad5c87c5750",
+        "statement_digest": "90fd3164bfad1edb6c0a85b58b7c779695c4ae17b03f9ea0a050195b84d52606",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.BeamPruning.Preservation",
+      "lean_manifest_digest": "fd166db709c2114adc935c5d97162c3cfacb780d9e53a5e8f6a9ba0f2c794068",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "beam-pruning",
+      "operator_status": "complete",
+      "package_path": "beam-pruning/beam-pruning-margin",
+      "theorem_id": "beam-pruning-margin",
+      "title": "Beam pruning Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "best_first_node_selection_margin_invariance",
+          "best_first_node_selection_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/best-first-node-selection/best-first-node-selection-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "9620501ffea8e86376481d0a75f5cbe86e6773670c49fcfeceac7b3e7968f9a2",
+        "statement_digest": "b3b3661187debc036d1ab346dabbbd2a5b56b436d3528baa8ffb0bac1baee877",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.BestFirstNodeSelection.Margin",
+      "lean_manifest_digest": "6d9aa87af3d42d559777f6522aed2540dfa0a3132ed35d98d944776101744047",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "best-first-node-selection",
+      "operator_status": "complete",
+      "package_path": "best-first-node-selection/best-first-node-selection-margin",
+      "theorem_id": "best-first-node-selection-margin",
+      "title": "Best-first node selection Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "bucket_assignment_margin_invariance",
+          "bucket_assignment_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/bucket-assignment/bucket-assignment-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "top-k",
+          "sorting",
+          "rank"
+        ],
+        "selected_object": "pairwise_ranking",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "397b2c030eec139c029c087460b3ae0a6e1d5da0d8da7a274adde39b64880a03",
+        "statement_digest": "e1fcfefa8495cd9644c4f5dad99225c6790826ee85bf96824805973a72b815ac",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.BucketAssignment.Preservation",
+      "lean_manifest_digest": "24231fc1bfcb35763e4ab6e9a38bbc69d16fb3dd47104d35fce083ec3e30cfae",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "bucket-assignment",
+      "operator_status": "complete",
+      "package_path": "bucket-assignment/bucket-assignment-margin",
+      "theorem_id": "bucket-assignment-margin",
+      "title": "Bucket assignment Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "constraint_threshold_conjunction_conjunction_preservation",
+          "constraint_threshold_conjunction_conjunction_sharpness"
+        ],
+        "perturbation_model": "abs ball",
+        "proof_strategy": "Projection core (conjunction)",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/constraint-threshold-conjunction/constraint-threshold-conjunction-conjunction-preservation",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "compositional_properties": [
+          "projection_conjunction"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "boundary_crossing",
+        "limitations": [
+          "conjunction"
+        ],
+        "perturbation_class": "bounded_additive_abs",
+        "primitive_type": "projection",
+        "related_operators": [
+          "projection-interval",
+          "coordinate-clipping"
+        ],
+        "selected_object": "conjunction",
+        "sharpness": true,
+        "stable_region": "core-dependent",
+        "structural_stability_quantity": "conjunction",
+        "unstable_region": "near boundary"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "4755d57140a9be254b06fa40b0d6e27ab99688acf3441920a4639c42990f9d14",
+        "statement_digest": "2f8045471dea2d9b4b189b5db4c937ef7b20f4f212636192097c7ff8ddfa1082",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.ConstraintThresholdConjunction.Preservation",
+      "lean_manifest_digest": "f480108ac3d8e05195f9b940ca4223e545e0371112dea76d4383fe23ce62c44d",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "constraint-threshold-conjunction",
+      "operator_status": "complete",
+      "package_path": "constraint-threshold-conjunction/constraint-threshold-conjunction-conjunction-preservation",
+      "theorem_id": "constraint-threshold-conjunction-conjunction-preservation",
+      "title": "Constraint-threshold conjunction: Real Stability"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "constraint_threshold_disjunction_disjunction_preservation",
+          "constraint_threshold_disjunction_disjunction_sharpness"
+        ],
+        "perturbation_model": "abs ball",
+        "proof_strategy": "Projection core (disjunction)",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/constraint-threshold-disjunction/constraint-threshold-disjunction-disjunction-preservation",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "compositional_properties": [
+          "projection_disjunction"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "boundary_crossing",
+        "limitations": [
+          "disjunction"
+        ],
+        "perturbation_class": "bounded_additive_abs",
+        "primitive_type": "projection",
+        "related_operators": [
+          "projection-interval",
+          "coordinate-clipping"
+        ],
+        "selected_object": "disjunction",
+        "sharpness": true,
+        "stable_region": "core-dependent",
+        "structural_stability_quantity": "disjunction",
+        "unstable_region": "near boundary"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "0be16b22f5861d0ed3295765d5c22ff13009ccb8bbe4489e5fcb97f35c230444",
+        "statement_digest": "74d881617c1f011ca986b4a321cb8c122eb614b63366e05743ed1f90b5921fc2",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.ConstraintThresholdDisjunction.Preservation",
+      "lean_manifest_digest": "2db6fc5565e4f3be5610e44bb2fe8d0eeda0c43db8dea2590885eff9e8a8b754",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "constraint-threshold-disjunction",
+      "operator_status": "complete",
+      "package_path": "constraint-threshold-disjunction/constraint-threshold-disjunction-disjunction-preservation",
+      "theorem_id": "constraint-threshold-disjunction-disjunction-preservation",
+      "title": "Constraint-threshold disjunction: Real Stability"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "coordinate_clipping_clamp_stability",
+          "coordinate_clipping_clamp_sharpness"
+        ],
+        "perturbation_model": "abs ball",
+        "proof_strategy": "Projection core (clamp)",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/coordinate-clipping/coordinate-clipping-clamp-stability",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "compositional_properties": [
+          "projection_clamp"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "boundary_crossing",
+        "limitations": [
+          "clamp"
+        ],
+        "perturbation_class": "bounded_additive_abs",
+        "primitive_type": "projection",
+        "related_operators": [
+          "projection-interval",
+          "coordinate-clipping"
+        ],
+        "selected_object": "clamp",
+        "sharpness": true,
+        "stable_region": "core-dependent",
+        "structural_stability_quantity": "clamp",
+        "unstable_region": "near boundary"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "b0c3b32e0e4f0f5eba4acb5400f0fcef56ab82767e7ee7c8f709b238713128f8",
+        "statement_digest": "005ac975bbcc02c2601f2cd5c0a7a73decae513131b545c92a7eb625364b241c",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.CoordinateClipping.Preservation",
+      "lean_manifest_digest": "3238729ecf19ed4def6ffe766d7e334596452e7b9a16fd1fd87b27f251ba9448",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "coordinate-clipping",
+      "operator_status": "complete",
+      "package_path": "coordinate-clipping/coordinate-clipping-clamp-stability",
+      "theorem_id": "coordinate-clipping-clamp-stability",
+      "title": "Coordinate clipping: Real Stability"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "feasibility_indicator_feasible_ball_identity",
+          "feasibility_indicator_feasible_ball_sharpness"
+        ],
+        "perturbation_model": "abs ball",
+        "proof_strategy": "Projection core (feasible)",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/feasibility-indicator/feasibility-indicator-feasible-ball-identity",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Feasible-ball / indicator identity on ℝ; not full Euclidean projection nonexpansiveness"
+        ],
+        "compositional_properties": [
+          "projection_feasible"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "boundary_crossing",
+        "limitations": [
+          "feasible"
+        ],
+        "perturbation_class": "bounded_additive_abs",
+        "primitive_type": "projection",
+        "related_operators": [
+          "projection-interval",
+          "coordinate-clipping"
+        ],
+        "selected_object": "feasible",
+        "sharpness": true,
+        "stable_region": "core-dependent",
+        "structural_stability_quantity": "feasible",
+        "unstable_region": "near boundary"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "e5f397a37ac89cc190cacef39e15ab2c2010ab4ea8eb6995e29dbeb02187beaf",
+        "statement_digest": "c2b0f47d9ab2064bfa1da71280fd30d2b051144b859cbff47e0319d88153abb8",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.FeasibilityIndicator.Preservation",
+      "lean_manifest_digest": "faa7e3209397a6fd48ab97604b9b501ac9987ded8a43192bc69585e7c16c5c10",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "feasibility-indicator",
+      "operator_status": "complete",
+      "package_path": "feasibility-indicator/feasibility-indicator-feasible-ball-identity",
+      "theorem_id": "feasibility-indicator-feasible-ball-identity",
+      "title": "Feasibility indicator over a fixed set: Real Stability"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "feasible_subset_maximum_margin_invariance",
+          "feasible_subset_maximum_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/feasible-subset-maximum/feasible-subset-maximum-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "2f317435efdbe384cbd709174ce7fd2e0fa92e511b52f3518d99a0e990873603",
+        "statement_digest": "26d8cff977fcc1974ea96b627bc739f93e130210f41d83e19de85ea1cdd4110b",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.FeasibleSubsetMaximum.Margin",
+      "lean_manifest_digest": "7d4f22c9fcb1093908452859ede7ddfcf97e5525d8ef08a84fbf4acf930ea534",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "feasible-subset-maximum",
+      "operator_status": "complete",
+      "package_path": "feasible-subset-maximum/feasible-subset-maximum-margin",
+      "theorem_id": "feasible-subset-maximum-margin",
+      "title": "Feasible-subset maximum Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "filter_then_max_margin_invariance",
+          "filter_then_max_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/filter-then-max/filter-then-max-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "fd44a46254b4beb246b3037b48781ead39934283a52ce16e173326216cc8dfa4",
+        "statement_digest": "c17befd67ec1dfd9b7e00692b2bcdbccb487de46c87797497afef1328dc60557",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.FilterThenMax.Margin",
+      "lean_manifest_digest": "0804baa99c811a06346e56649f5c5f8b1a9c00a2c0a57f587f3c9ba88c2e85db",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "filter-then-max",
+      "operator_status": "complete",
+      "package_path": "filter-then-max/filter-then-max-margin",
+      "theorem_id": "filter-then-max-margin",
+      "title": "Filter-then-max Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "greedy_choice_tie_break_margin_invariance",
+          "greedy_choice_tie_break_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/greedy-choice-tie-break/greedy-choice-tie-break-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "greedy",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "e335eed078d8256ef0ebfbe354824bd8ccc785991a3e32fc2eb5ebe4692d3409",
+        "statement_digest": "afdb763d3c6a9a62c47759112fe7b1a794e53a538b8712869fc94384a26cb3c2",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.GreedyChoiceTieBreak.Margin",
+      "lean_manifest_digest": "0ee81ae469094fef2a69ce35c107aa9f9da1d3e6ce8b8f630defcfaa6677aade",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "greedy-choice-tie-break",
+      "operator_status": "complete",
+      "package_path": "greedy-choice-tie-break/greedy-choice-tie-break-margin",
+      "theorem_id": "greedy-choice-tie-break-margin",
+      "title": "Greedy choice with deterministic tie-breaking Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "greedy_maximum_selection_margin_invariance",
+          "greedy_maximum_selection_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/greedy-maximum-selection/greedy-maximum-selection-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "greedy",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "2c8138964a5f08059711ea4085af0d130c1b0f92c584ef8a6b9d634d52a824fa",
+        "statement_digest": "679d998e349e3a8225e2e212501856eae9b74f1a73e94eb63a2ada1120c6f9a3",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.GreedyMaximumSelection.Margin",
+      "lean_manifest_digest": "19d8cf7a114a5a017b223f7b1bff1e2419afaafe182bf3b54068e9affd89de6a",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "greedy-maximum-selection",
+      "operator_status": "complete",
+      "package_path": "greedy-maximum-selection/greedy-maximum-selection-margin",
+      "theorem_id": "greedy-maximum-selection-margin",
+      "title": "Greedy maximum selection Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "groupwise_then_global_maximum_margin_invariance",
+          "groupwise_then_global_maximum_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/groupwise-then-global-maximum/groupwise-then-global-maximum-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "31db507f32c10c74b621e33e235dfda5e8bb3606f95fdde016118ad57815c44f",
+        "statement_digest": "58d5471260f5da58c0840b46d40db234f8aad8e695a72b0b31b71abaa9de9588",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.GroupwiseThenGlobalMaximum.Margin",
+      "lean_manifest_digest": "f02cfeaf00f5eddd562acb31888686aeadc3aa1840441e9101be8cf6ca10ed8d",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "groupwise-then-global-maximum",
+      "operator_status": "complete",
+      "package_path": "groupwise-then-global-maximum/groupwise-then-global-maximum-margin",
+      "theorem_id": "groupwise-then-global-maximum-margin",
+      "title": "Groupwise-then-global maximum Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "heap_extract_max_margin_invariance",
+          "heap_extract_max_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/heap-extract-max/heap-extract-max-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "e38baf296fbcc948939e53b24a1cbc79e3b2b3bfbd436c8ed54d97430fdac53f",
+        "statement_digest": "ec940f2a61f48ccd77a3b758f387541cba156a5b81fe3ea9bea713a1dc8e4171",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.HeapExtractMax.Margin",
+      "lean_manifest_digest": "c0d4e607152b8f8ba89e893772f57b35c37c1bdbf03cf53f7c535fdb5fed2bf0",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "heap-extract-max",
+      "operator_status": "complete",
+      "package_path": "heap-extract-max/heap-extract-max-margin",
+      "theorem_id": "heap-extract-max-margin",
+      "title": "Heap extract-max Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "heap_top_margin_invariance",
+          "heap_top_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/heap-top/heap-top-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "d239d1dd504d73bf0c8c3d5978e287ae3fb574039d41dd363956a74dae95fc69",
+        "statement_digest": "0e364a5adb4f33bb01f33133296770c48ef051d7b7c77c33e5e9c096dfd63014",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.HeapTop.Margin",
+      "lean_manifest_digest": "d1dba0c04ebd40ce201067a0b6e2bd55096e86b444e9b7f08255ee6594e40e80",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "heap-top",
+      "operator_status": "complete",
+      "package_path": "heap-top/heap-top-margin",
+      "theorem_id": "heap-top-margin",
+      "title": "Heap top Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "hierarchical_maximum_margin_invariance",
+          "hierarchical_maximum_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/hierarchical-maximum/hierarchical-maximum-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "e5a39aab68b4c06b73f32b60ecaa91f848f81a9c2f664541df57452b555b0ec4",
+        "statement_digest": "a31490c1e150d3fdfe25d55f47402f3e67dee5a79871ef5463bcc006c4d83f70",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.HierarchicalMaximum.Margin",
+      "lean_manifest_digest": "76a0681d5da37fc1a9d6d17a258b48043c4a4eb4f599270a7378bff5e6fee397",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "hierarchical-maximum",
+      "operator_status": "complete",
+      "package_path": "hierarchical-maximum/hierarchical-maximum-margin",
+      "theorem_id": "hierarchical-maximum-margin",
+      "title": "Hierarchical maximum Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "interval_membership_preservation",
+          "interval_membership_sharpness"
+        ],
+        "perturbation_model": "Bounded additive |x'−x|≤ε",
+        "proof_strategy": "Two-sided interval arithmetic; left-endpoint sharpness by −ε push.",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/interval-membership/interval-membership-preservation",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "L≤U",
+          "Finite scores"
+        ],
+        "compositional_properties": [
+          "conjunction_of_two_threshold_sides"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "crossing_either_endpoint",
+        "limitations": [
+          "Classical.choice via decide"
+        ],
+        "perturbation_class": "bounded_additive_score",
+        "primitive_type": "scalar_selection",
+        "related_operators": [
+          "thresholding",
+          "multi-threshold",
+          "absolute-value-threshold"
+        ],
+        "selected_object": "closed_interval_indicator",
+        "sharpness": true,
+        "stable_region": "L+ε≤x≤U−ε (pass); x<L−ε or x>U+ε (fail)",
+        "structural_stability_quantity": "buffers_to_L_and_U",
+        "unstable_region": "ε-neighborhood of the boundary"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "91dc8f9255acb3d9f3931812488e357450e29983c83d2a105d725343e1afa10e",
+        "statement_digest": "647cd06592d8dfc16a34f39fec4070e8a397650faa22d31a13ab09d876e10d4a",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.IntervalMembership.Preservation",
+      "lean_manifest_digest": "ec6cfd212254348f512668f3ce607d38dcdad2761e82e800b0f8ab3defaf84d2",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "interval-membership",
+      "operator_status": "complete",
+      "package_path": "interval-membership/interval-membership-preservation",
+      "theorem_id": "interval-membership-preservation",
+      "title": "Interval-Membership Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "kth_order_statistic_margin_invariance",
+          "kth_order_statistic_margin_sharpness"
+        ],
+        "perturbation_model": "Bounded additive ‖δ‖_∞≤ε",
+        "proof_strategy": "OrderStat.KthMargin reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/kth-order-statistic/kth-order-statistic-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_kth_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "quantile",
+          "median",
+          "percentile",
+          "kth-order-statistic"
+        ],
+        "selected_object": "unique_strict_kth_index",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "9be37acbd5c7b6bd38b5c916f802b3c8e262c4fbb373064ce52365d436fa031c",
+        "statement_digest": "00f9d400d695d173e10da3899564b55daaae33c22221becf852c2f79dea31939",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.KthOrderStatistic.Preservation",
+      "lean_manifest_digest": "6458ac70fc35b2ec43dc670d8aca553578aa913f77e424a0aaf0519f5666d9ec",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "kth-order-statistic",
+      "operator_status": "complete",
+      "package_path": "kth-order-statistic/kth-order-statistic-margin",
+      "theorem_id": "kth-order-statistic-margin",
+      "title": "k-th order statistic Index Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "lexicographic_best_first_margin_invariance",
+          "lexicographic_best_first_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/lexicographic-best-first/lexicographic-best-first-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "446251341c50fa3d81b6a99176663fa754e2b562f118a9de0620bac475dcfa91",
+        "statement_digest": "8f81823d8054f8d1bcde9d5cf8867605c6c80664c02439c59ee0cc321f7fc9e1",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.LexicographicBestFirst.Margin",
+      "lean_manifest_digest": "922b78fde573ba81e59dde710705e2ee4a2417efd24b2b6396448215fee0bdf0",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "lexicographic-best-first",
+      "operator_status": "complete",
+      "package_path": "lexicographic-best-first/lexicographic-best-first-margin",
+      "theorem_id": "lexicographic-best-first-margin",
+      "title": "Lexicographic best-first Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "lexicographic_ordering_margin_invariance",
+          "lexicographic_ordering_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/lexicographic-ordering/lexicographic-ordering-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "top-k",
+          "sorting",
+          "rank"
+        ],
+        "selected_object": "pairwise_ranking",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "70434d4d344f03f44a3c707504c1cc3cda038590b08b285bda8828d156b95c00",
+        "statement_digest": "529453f59092aefe99fac85837d665fbbd50bbcbe2968ada834debc574172f0d",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.LexicographicOrdering.Preservation",
+      "lean_manifest_digest": "7c3393e0219c3a99aa0430a56582dbe8a08dd1211b9256c8de8af3973b10595a",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "lexicographic-ordering",
+      "operator_status": "complete",
+      "package_path": "lexicographic-ordering/lexicographic-ordering-margin",
+      "theorem_id": "lexicographic-ordering-margin",
+      "title": "Lexicographic ordering Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "masked_maximum_margin_invariance",
+          "masked_maximum_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/masked-maximum/masked-maximum-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "f7db07ae674c4e86ed0b080f42264aa6e0b61bb7648a7f945331f48d86c9dec6",
+        "statement_digest": "2f7a5513b29f4e9b33b7e2d165ada545b762f4608c4321732e01e357168b2310",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.MaskedMaximum.Margin",
+      "lean_manifest_digest": "ac90b1ac802f1e75c50fe3b9a831ed1298c1e9a5494a323b7b82bd94c3a396fd",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "masked-maximum",
+      "operator_status": "complete",
+      "package_path": "masked-maximum/masked-maximum-margin",
+      "theorem_id": "masked-maximum-margin",
+      "title": "Masked maximum Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "masked_top_k_margin_invariance",
+          "masked_top_k_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/masked-top-k/masked-top-k-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "top-k",
+          "sorting",
+          "rank"
+        ],
+        "selected_object": "pairwise_ranking",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "1e9227fe797fd6a85dc3eb8e6644eaa1fb25f5781a9bb94442e6fde1ab5d4737",
+        "statement_digest": "a5e347ca161d48b9b85648196e029f6d878a5623d3bca43753d9338ae91e0bba",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.MaskedTopK.Preservation",
+      "lean_manifest_digest": "3e0bf5ad408754865b9ad4611008974ba3d8b40fc2e3cbee56fdf52d59e29f1a",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "masked-top-k",
+      "operator_status": "complete",
+      "package_path": "masked-top-k/masked-top-k-margin",
+      "theorem_id": "masked-top-k-margin",
+      "title": "Masked top-k Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "median_margin_invariance",
+          "median_margin_sharpness"
+        ],
+        "perturbation_model": "Bounded additive ‖δ‖_∞≤ε",
+        "proof_strategy": "OrderStat.KthMargin reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/median/median-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_kth_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "scalar_selection",
+        "related_operators": [
+          "quantile",
+          "kth-order-statistic",
+          "median",
+          "percentile"
+        ],
+        "selected_object": "unique_strict_kth_index",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "c341d52d18a374517feee310ac42e0ac64228d6ffb9885999f51184b23dc06b9",
+        "statement_digest": "f33849b3914abac989d8ee32b43762d17d020f2f2a4c64ef258810c36fd44c44",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.Median.Preservation",
+      "lean_manifest_digest": "1ad1591427ce27216620858b94124e0b433cb86a5a06e64dcc9ae4892acbd2a6",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "median",
+      "operator_status": "complete",
+      "package_path": "median/median-margin",
+      "theorem_id": "median-margin",
+      "title": "Median Index Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "multi_criteria_lexicographic_margin_invariance",
+          "multi_criteria_lexicographic_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/multi-criteria-lexicographic/multi-criteria-lexicographic-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "top-k",
+          "sorting",
+          "rank"
+        ],
+        "selected_object": "pairwise_ranking",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "e21191ea906fe55154486c51b5cd0437bc3d1f1fa3a638f026ab27a67c581f45",
+        "statement_digest": "460c1bcb0b5fc532a031108a414ace849aedea136532c1f753247b0a0e85b12b",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.MultiCriteriaLexicographic.Preservation",
+      "lean_manifest_digest": "e04c513c6df54d105d381a659a798586c52588563288073f390451a023c9be32",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "multi-criteria-lexicographic",
+      "operator_status": "complete",
+      "package_path": "multi-criteria-lexicographic/multi-criteria-lexicographic-margin",
+      "theorem_id": "multi-criteria-lexicographic-margin",
+      "title": "Multi-criteria lexicographic Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "multi_threshold_preservation",
+          "multi_threshold_sharpness"
+        ],
+        "perturbation_model": "Bounded additive score perturbation |x' − x| ≤ ε",
+        "proof_strategy": "Induct on the threshold list; each head bit is preserved by Threshold preservation under coordinatewise ε-stability; sharpness flips a singleton unstable cut by ±ε.",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/multi-threshold/multi-threshold-count-preservation",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite scores and thresholds",
+          "Equality passes per cut",
+          "Bounded additive perturbations"
+        ],
+        "compositional_properties": [
+          "coordinatewise_reduction_to_threshold_preservation",
+          "empty_list_trivially_stable_count_zero",
+          "singleton_recovers_threshold"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "any_coordinate_in_half_open_unstable_band",
+        "limitations": [
+          "Unordered count not ordered bucket",
+          "No privacy accounting"
+        ],
+        "perturbation_class": "bounded_additive_score",
+        "primitive_type": "scalar_selection",
+        "related_operators": [
+          "thresholding",
+          "absolute-value-threshold",
+          "argmax"
+        ],
+        "selected_object": "pass_count_over_threshold_list",
+        "sharpness": true,
+        "stable_region": "for all i: x ≥ T_i+ε or x < T_i−ε",
+        "structural_stability_quantity": "coordinatewise_buffers_to_each_cut",
+        "unstable_region": "exists i with x ∈ [T_i−ε, T_i+ε)"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "95f22d9dce330c745d156b17ae07e37b8278c697778147d3c61ecdeef80e90d0",
+        "statement_digest": "ae17f78a0650c20ca5bdbcee299f400f02e78e320f29bbc8926b1f56a715508f",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.MultiThreshold.Preservation",
+      "lean_manifest_digest": "f8054dde819c75d3e238aa6cad658b8bd77c9ad1ca5f2a764bba5899c9a5c1fe",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "multi-threshold",
+      "operator_status": "complete",
+      "package_path": "multi-threshold/multi-threshold-count-preservation",
+      "theorem_id": "multi-threshold-count-preservation",
+      "title": "Multi-Threshold Pass-Count Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "nms_finite_margin_invariance",
+          "nms_finite_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/nms-finite/nms-finite-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "9c99cbe7920329a5e44c1f73349d053fef88ef4f1a098529ab46be583d586a20",
+        "statement_digest": "4dcd842e99e9c4cc0116d962ffb8226cc59e88975d6989b8c04633b9a7e3b453",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.NmsFinite.Margin",
+      "lean_manifest_digest": "a4713a7c32bd1ca183a668b0624e87c9980b3fb0289c35fa3887aa4a6d640560",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "nms-finite",
+      "operator_status": "complete",
+      "package_path": "nms-finite/nms-finite-margin",
+      "theorem_id": "nms-finite-margin",
+      "title": "Non-maximum suppression (finite) Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "partial_sorting_margin_invariance",
+          "partial_sorting_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/partial-sorting/partial-sorting-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "top-k",
+          "sorting",
+          "rank"
+        ],
+        "selected_object": "pairwise_ranking",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "fcfa258de3331b96c8eb58256503464f49e17c2ea8652bd315d9bbc4d5c605a8",
+        "statement_digest": "6ddc1e7f61f397cb2849345583d7d512f90f6e5bc5772517360339eb8919c332",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.PartialSorting.Preservation",
+      "lean_manifest_digest": "1b15b66e6dd6752c877da55d45be3dfadbc061fb942faa58eb21950a243842f2",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "partial-sorting",
+      "operator_status": "complete",
+      "package_path": "partial-sorting/partial-sorting-margin",
+      "theorem_id": "partial-sorting-margin",
+      "title": "Partial sorting Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "penalized_score_selection_margin_invariance",
+          "penalized_score_selection_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/penalized-score-selection/penalized-score-selection-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "71c34e9d269d6ad71dafd6dfc6270ca5eb26eace3bbe1136ad30259c0d88d688",
+        "statement_digest": "cc3e90f691d92b6207840f9948b2598904b15c8e62d3bc1a2ef60b3860624c90",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.PenalizedScoreSelection.Margin",
+      "lean_manifest_digest": "a1e02330875b653e953773948ad9e09e48ca1338fbc0227ec36fa83b22c2b457",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "penalized-score-selection",
+      "operator_status": "complete",
+      "package_path": "penalized-score-selection/penalized-score-selection-margin",
+      "theorem_id": "penalized-score-selection-margin",
+      "title": "Penalized score selection Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "percentile_margin_invariance",
+          "percentile_margin_sharpness"
+        ],
+        "perturbation_model": "Bounded additive ‖δ‖_∞≤ε",
+        "proof_strategy": "OrderStat.KthMargin reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/percentile/percentile-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_kth_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "scalar_selection",
+        "related_operators": [
+          "quantile",
+          "median",
+          "percentile",
+          "kth-order-statistic"
+        ],
+        "selected_object": "unique_strict_kth_index",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "b10673675bb7859d367e55759b17e3bbc344eeb157d8d15cb31161e533e2de80",
+        "statement_digest": "00fdf5dad37dd92047d9c36638068c1d8fb674bec9ad06174ed0087130ff1e8d",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.Percentile.Preservation",
+      "lean_manifest_digest": "1898ecec6410f32d4abad638ce5de9d6163acc0cfd75868306770d93b102ebbf",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "percentile",
+      "operator_status": "complete",
+      "package_path": "percentile/percentile-margin",
+      "theorem_id": "percentile-margin",
+      "title": "Percentile Index Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "priority_queue_maximum_margin_invariance",
+          "priority_queue_maximum_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/priority-queue-maximum/priority-queue-maximum-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "91bd608948a75a6edd1312a4db0e5e302b42436e271c9dfe7398ca0931c3d789",
+        "statement_digest": "b5c1362528e2f7d8d62b5bbb25961284af2c24fc185adeebec3cee83aaf57ffb",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.PriorityQueueMaximum.Margin",
+      "lean_manifest_digest": "8a80c92dfb1a47515219b59a5cf4f37a258e991c7d0b4d15704cc750950c9e97",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "priority-queue-maximum",
+      "operator_status": "complete",
+      "package_path": "priority-queue-maximum/priority-queue-maximum-margin",
+      "theorem_id": "priority-queue-maximum-margin",
+      "title": "Priority queue maximum Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "projection_box_clamp_stability",
+          "projection_box_clamp_sharpness"
+        ],
+        "perturbation_model": "abs ball",
+        "proof_strategy": "Projection core (clamp)",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/projection-box/projection-box-clamp-stability",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Feasible-ball / indicator identity on ℝ; not full Euclidean projection nonexpansiveness"
+        ],
+        "compositional_properties": [
+          "projection_clamp"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "boundary_crossing",
+        "limitations": [
+          "clamp"
+        ],
+        "perturbation_class": "bounded_additive_abs",
+        "primitive_type": "projection",
+        "related_operators": [
+          "projection-interval",
+          "coordinate-clipping"
+        ],
+        "selected_object": "clamp",
+        "sharpness": true,
+        "stable_region": "core-dependent",
+        "structural_stability_quantity": "clamp",
+        "unstable_region": "near boundary"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "847e9aa44d813d1f32a18331968f84c08cbadc9bfd52e4069f1f020986c156d3",
+        "statement_digest": "a7b2ab12309c79bce14b64e8a023592070ae01051ed3039d40c8659977134735",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.ProjectionBox.Preservation",
+      "lean_manifest_digest": "ba5a8d9591b16da9d823fa84a43fd0f8e06dbd57a49c2338084befea17d9c975",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "projection-box",
+      "operator_status": "complete",
+      "package_path": "projection-box/projection-box-clamp-stability",
+      "theorem_id": "projection-box-clamp-stability",
+      "title": "Projection onto box constraints: Real Stability"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "projection_interval_clamp_stability",
+          "projection_interval_clamp_sharpness"
+        ],
+        "perturbation_model": "abs ball",
+        "proof_strategy": "Projection core (clamp)",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/projection-interval/projection-interval-clamp-stability",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Feasible-ball / indicator identity on ℝ; not full Euclidean projection nonexpansiveness"
+        ],
+        "compositional_properties": [
+          "projection_clamp"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "boundary_crossing",
+        "limitations": [
+          "clamp"
+        ],
+        "perturbation_class": "bounded_additive_abs",
+        "primitive_type": "projection",
+        "related_operators": [
+          "projection-interval",
+          "coordinate-clipping"
+        ],
+        "selected_object": "clamp",
+        "sharpness": true,
+        "stable_region": "core-dependent",
+        "structural_stability_quantity": "clamp",
+        "unstable_region": "near boundary"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "77cc0bf4c570600615e20d926a34907df5af4514ab0157b5ac9fb70db8abf0fb",
+        "statement_digest": "a42b57a2da37c890e627caaf598cd917744d833609167c7360b7e4e998683bd6",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.ProjectionInterval.Preservation",
+      "lean_manifest_digest": "09a0d949e978c616a5a05c0d97159375a497f681c23a0e9af7fc705eafeaebf4",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "projection-interval",
+      "operator_status": "complete",
+      "package_path": "projection-interval/projection-interval-clamp-stability",
+      "theorem_id": "projection-interval-clamp-stability",
+      "title": "Projection onto interval: Real Stability"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "projection_l1_ball_feasible_ball_identity",
+          "projection_l1_ball_feasible_ball_sharpness"
+        ],
+        "perturbation_model": "abs ball",
+        "proof_strategy": "Projection core (feasible)",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/projection-l1-ball/projection-l1-ball-feasible-ball-identity",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Feasible-ball / indicator identity on ℝ; not full Euclidean projection nonexpansiveness"
+        ],
+        "compositional_properties": [
+          "projection_feasible"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "boundary_crossing",
+        "limitations": [
+          "feasible"
+        ],
+        "perturbation_class": "bounded_additive_abs",
+        "primitive_type": "projection",
+        "related_operators": [
+          "projection-interval",
+          "coordinate-clipping"
+        ],
+        "selected_object": "feasible",
+        "sharpness": true,
+        "stable_region": "core-dependent",
+        "structural_stability_quantity": "feasible",
+        "unstable_region": "near boundary"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "17b5eabc6ed3109717b9c335ab8df24efddedd8b905fdb9299995a6d87814747",
+        "statement_digest": "96ef0b21877d6c55785744ea9d15b8ca12d3357bad90f285c579daffdf8753b1",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.ProjectionL1Ball.Preservation",
+      "lean_manifest_digest": "b43292167c9378bdbe41dd3c8d7447fe9db2971deba069049c059defc16126df",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "projection-l1-ball",
+      "operator_status": "complete",
+      "package_path": "projection-l1-ball/projection-l1-ball-feasible-ball-identity",
+      "theorem_id": "projection-l1-ball-feasible-ball-identity",
+      "title": "Projection onto the l1 ball: Real Stability"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "projection_l2_ball_feasible_ball_identity",
+          "projection_l2_ball_feasible_ball_sharpness"
+        ],
+        "perturbation_model": "abs ball",
+        "proof_strategy": "Projection core (feasible)",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/projection-l2-ball/projection-l2-ball-feasible-ball-identity",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Feasible-ball / indicator identity on ℝ; not full Euclidean projection nonexpansiveness"
+        ],
+        "compositional_properties": [
+          "projection_feasible"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "boundary_crossing",
+        "limitations": [
+          "feasible"
+        ],
+        "perturbation_class": "bounded_additive_abs",
+        "primitive_type": "projection",
+        "related_operators": [
+          "projection-interval",
+          "coordinate-clipping"
+        ],
+        "selected_object": "feasible",
+        "sharpness": true,
+        "stable_region": "core-dependent",
+        "structural_stability_quantity": "feasible",
+        "unstable_region": "near boundary"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "b07a3e31b209b63d0cf1dea5ff68c3cce65a40e186d07e826934f6b10be4986d",
+        "statement_digest": "96f85e2bbf080391c597503d422a7b52d3a99f160e25ef92cbe1b040ab6dc20d",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.ProjectionL2Ball.Preservation",
+      "lean_manifest_digest": "a52c1d394e4de273f1f43c95872c4e3766146df7b7dd8c22e1bbedab82d4d25d",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "projection-l2-ball",
+      "operator_status": "complete",
+      "package_path": "projection-l2-ball/projection-l2-ball-feasible-ball-identity",
+      "theorem_id": "projection-l2-ball-feasible-ball-identity",
+      "title": "Projection onto the l2 ball: Real Stability"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "projection_simplex_feasible_ball_identity",
+          "projection_simplex_feasible_ball_sharpness"
+        ],
+        "perturbation_model": "abs ball",
+        "proof_strategy": "Projection core (feasible)",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/projection-simplex/projection-simplex-feasible-ball-identity",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Feasible-ball / indicator identity on ℝ; not full Euclidean projection nonexpansiveness"
+        ],
+        "compositional_properties": [
+          "projection_feasible"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "boundary_crossing",
+        "limitations": [
+          "feasible"
+        ],
+        "perturbation_class": "bounded_additive_abs",
+        "primitive_type": "projection",
+        "related_operators": [
+          "projection-interval",
+          "coordinate-clipping"
+        ],
+        "selected_object": "feasible",
+        "sharpness": true,
+        "stable_region": "core-dependent",
+        "structural_stability_quantity": "feasible",
+        "unstable_region": "near boundary"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "f074f7a2a4e5084c7af864ee12b3b98b8bca33612a2d4d613dc4ac4d7ae09034",
+        "statement_digest": "be6a87d1d8cec17e337f448d16253a7ef987c14eea7b9a1812c6ef1fd0ce47db",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.ProjectionSimplex.Preservation",
+      "lean_manifest_digest": "72e933fb937b393304311fd663914cf95e3109ebdd55505d9544151426978a36",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "projection-simplex",
+      "operator_status": "complete",
+      "package_path": "projection-simplex/projection-simplex-feasible-ball-identity",
+      "theorem_id": "projection-simplex-feasible-ball-identity",
+      "title": "Projection onto simplex: Real Stability"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "quantile_margin_invariance",
+          "quantile_margin_sharpness"
+        ],
+        "perturbation_model": "Bounded additive ‖δ‖_∞≤ε",
+        "proof_strategy": "Pairwise order preservation + countLT congruence; tie sharpness.",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/quantile/quantile-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2",
+          "Unique values at selected index"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_kth_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "scalar_selection",
+        "related_operators": [
+          "kth-order-statistic",
+          "median",
+          "percentile",
+          "argmax"
+        ],
+        "selected_object": "unique_strict_kth_index",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε involving the selected index"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "8b47d0cef66954573c2ff7d8231485b850865a7bb2136d99b8c329b990d9b336",
+        "statement_digest": "b7748ff80d24ed8445fe2707eec8302654e2d88ce5917d1f9a20594c488b0821",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.Quantile.Preservation",
+      "lean_manifest_digest": "4af93cd408e57115898ef682a3f2b9737642f436cf7f136b4cb2d53ff07eebd1",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "quantile",
+      "operator_status": "complete",
+      "package_path": "quantile/quantile-margin",
+      "theorem_id": "quantile-margin",
+      "title": "Quantile Index Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "rank_margin_invariance",
+          "rank_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/rank/rank-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "top-k",
+          "sorting",
+          "rank"
+        ],
+        "selected_object": "pairwise_ranking",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "747e3abcd61c47e821c205c965c17d7d8af0c05e5f0483d89b334c1101f0db2c",
+        "statement_digest": "1f1092fb8cad4739271ba01b6b340f5cd7476f1f1e4da8b418a9e2fcd8e1d858",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.Rank.Preservation",
+      "lean_manifest_digest": "205392bb28a02efd20508be164f4b2df25a64390e3b50385fdc7d6ff76d58621",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "rank",
+      "operator_status": "complete",
+      "package_path": "rank/rank-margin",
+      "theorem_id": "rank-margin",
+      "title": "Rank Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "sign_preservation",
+          "sign_sharpness"
+        ],
+        "perturbation_model": "Bounded additive score perturbation |x' − x| ≤ ε",
+        "proof_strategy": "Interval arithmetic under |x'-x|≤ε; sharpness via ±ε pushes and ε at origin.",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/sign/sign-preservation",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite scores",
+          "sign(0)=0"
+        ],
+        "compositional_properties": [
+          "related_to_threshold_at_zero_with_ternary_labels"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "crossing_or_reaching_origin_under_bounded_noise",
+        "limitations": [
+          "Origin fragile for ε>0"
+        ],
+        "perturbation_class": "bounded_additive_score",
+        "primitive_type": "scalar_selection",
+        "related_operators": [
+          "thresholding",
+          "absolute-value-threshold",
+          "multi-threshold"
+        ],
+        "selected_object": "sign_trichotomy",
+        "sharpness": true,
+        "stable_region": "x>ε (plus), x<-ε (minus), or (ε=0 and x=0)",
+        "structural_stability_quantity": "absolute_value_vs_epsilon_with_strict_sides",
+        "unstable_region": "|x|≤ε excluding the ε=0 origin-only stable point"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "ce5f1ef196d47a09ea4ee31ba06be1589dcdc24e7e9e53de5fb46b762712e59f",
+        "statement_digest": "6c3789fa08dcd8f0d38729dcd69cd306af46fe054c598c703db63558816f71c5",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.Sign.Preservation",
+      "lean_manifest_digest": "f74d70956bba3a7602d85d0ab0e4282eac605b0e44b128e4d397e726bde5a3dd",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "sign",
+      "operator_status": "complete",
+      "package_path": "sign/sign-preservation",
+      "theorem_id": "sign-preservation",
+      "title": "Sign Selection Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "sorting_margin_invariance",
+          "sorting_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/sorting/sorting-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "top-k",
+          "sorting",
+          "rank"
+        ],
+        "selected_object": "pairwise_ranking",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "537adedb0d967cbf01893cc08d9899b9d0be41e9561ac6543dd949cc2aded074",
+        "statement_digest": "52125e6c64abc8526ca36d1d17bb544bc00593138a581516d7b97614364babb0",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.Sorting.Preservation",
+      "lean_manifest_digest": "f3de6ec2057476e658b694212accb0a3451ec7dd0db209dad5fbbebd64d03c7c",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "sorting",
+      "operator_status": "complete",
+      "package_path": "sorting/sorting-margin",
+      "theorem_id": "sorting-margin",
+      "title": "Sorting Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "stable_partition_threshold_margin_invariance",
+          "stable_partition_threshold_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/stable-partition-threshold/stable-partition-threshold-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "top-k",
+          "sorting",
+          "rank"
+        ],
+        "selected_object": "pairwise_ranking",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "5ab1ef8d701c3ad1714fc30085258eed91ee690e2a70797c26801aa62f9e213c",
+        "statement_digest": "2227669c98aa61e79b6050a889e4f1ecbd59572013d69591cf112f7e00fb278d",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.StablePartitionThreshold.Preservation",
+      "lean_manifest_digest": "bbfc30280c8cb2a7fc98b01d79ad0cec6dd51cad0a04b3bbb6c91b8381971189",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "stable-partition-threshold",
+      "operator_status": "complete",
+      "package_path": "stable-partition-threshold/stable-partition-threshold-margin",
+      "theorem_id": "stable-partition-threshold-margin",
+      "title": "Stable partition by threshold Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "stable_sorting_margin_invariance",
+          "stable_sorting_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/stable-sorting/stable-sorting-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "top-k",
+          "sorting",
+          "rank"
+        ],
+        "selected_object": "pairwise_ranking",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "f2ef9d9f2a78890acd3f96e38360f854fbadee25340ee477e2c609cc63fa09b7",
+        "statement_digest": "d8a0eb779834bb85113be813d01d74d5ed1fcb7704791db42a4741755786361a",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.StableSorting.Preservation",
+      "lean_manifest_digest": "365584b6cbbe6e2308b92b7d0064d07006abe4aaad3b8f7afd4ab168ca36084e",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "stable-sorting",
+      "operator_status": "complete",
+      "package_path": "stable-sorting/stable-sorting-margin",
+      "theorem_id": "stable-sorting-margin",
+      "title": "Stable sorting Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "threshold_then_top_k_margin_invariance",
+          "threshold_then_top_k_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/threshold-then-top-k/threshold-then-top-k-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "top-k",
+          "sorting",
+          "rank"
+        ],
+        "selected_object": "pairwise_ranking",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "be55f65e51cc1fb817d8bf39c858197043d8732f15835c41ad6331e47f88f27e",
+        "statement_digest": "56e0be9d4bcc2ee624fd3c76832d4f02b1c7161b700b962ed9c65da614723154",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.ThresholdThenTopK.Preservation",
+      "lean_manifest_digest": "c54cc3d7ad339b55c14c7db5b5fd767f5ca9771053f0003c4f0d6daf4581d0d6",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "threshold-then-top-k",
+      "operator_status": "complete",
+      "package_path": "threshold-then-top-k/threshold-then-top-k-margin",
+      "theorem_id": "threshold-then-top-k-margin",
+      "title": "Threshold-then-top-k Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "bounded_noise_preservation",
+          "bounded_noise_sharpness"
+        ],
+        "perturbation_model": "Pathwise bounded additive noise |ξ| ≤ η with ε := η",
+        "proof_strategy": "Reduce pathwise preservation to threshold_preservation on x+ξ; sharpness via explicit two-point noises ξ=±η on each half of the unstable band.",
+        "theorem_role": "bounded_noise_companion"
+      },
+      "certificate_path": "lean/certificates/thresholding/bounded-noise-threshold",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite scalar scores",
+          "Pathwise |ξ| ≤ η",
+          "Equality passes"
+        ],
+        "compositional_properties": [
+          "reduces_to_deterministic_preservation_with_epsilon_eq_eta",
+          "sharpness_existential_over_noise_laws_via_two_point_support"
+        ],
+        "guarantee_kind": "almost_sure",
+        "instability_mechanism": "noise_can_cross_decision_boundary_inside_unstable_band",
+        "limitations": [
+          "Not measure-theoretic a.s",
+          "Not full SVT/DP"
+        ],
+        "perturbation_class": "pathwise_bounded_additive_noise",
+        "primitive_type": "scalar_selection",
+        "related_operators": [
+          "argmax",
+          "multi-threshold"
+        ],
+        "selected_object": "binary_threshold_indicator_under_bounded_noise",
+        "sharpness": true,
+        "stable_region": "pass: x ≥ T+η; fail: x < T−η (pathwise |ξ|≤η)",
+        "structural_stability_quantity": "distance_to_threshold_relative_to_noise_bound_eta",
+        "unstable_region": "half-open band [T−η, T+η)"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "aaed91ede5f8271f57e98db6b0c55f517cb39c4568df84a6e3c10455dcf0b963",
+        "statement_digest": "c2fea9ece385184dcba58f4b5295f4595b8053e263245f978a6e2030c55fafec",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.Threshold.BoundedNoise",
+      "lean_manifest_digest": "41c8823cf9fa82630e20f9a2cbf0aba81c097f9006ede321839745dc6055cdda",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "thresholding",
+      "operator_status": "complete",
+      "package_path": "thresholding/bounded-noise-threshold",
+      "theorem_id": "bounded-noise-threshold",
+      "title": "Bounded Almost-Sure Noise for Scalar Thresholding"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "threshold_preservation"
+        ],
+        "perturbation_model": "Bounded additive score perturbation |x' − x| ≤ ε",
+        "proof_strategy": "Rewrite |x'−x|≤ε as a two-sided Int bound; omega closes pass (x ≥ T+ε ⇒ x' ≥ T) and fail (x < T−ε ⇒ x' < T) sides separately under the equality-passes convention.",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/thresholding/threshold-output-preservation",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite scalar scores",
+          "Fixed threshold T",
+          "Equality passes"
+        ],
+        "compositional_properties": [
+          "sequential_first_crossing_candidate_not_privacy_theorem",
+          "asymmetric_because_equality_passes"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "discontinuity_at_decision_boundary_x_eq_T",
+        "limitations": [
+          "Scalar finite scores only",
+          "No DP/SVT accounting"
+        ],
+        "perturbation_class": "bounded_additive_score",
+        "primitive_type": "scalar_selection",
+        "related_operators": [
+          "argmax",
+          "multi-threshold",
+          "absolute-value-threshold"
+        ],
+        "selected_object": "binary_threshold_indicator",
+        "sharpness": true,
+        "stable_region": "pass: x ≥ T+ε; fail: x < T−ε",
+        "structural_stability_quantity": "signed_margin_m_eq_x_minus_T",
+        "unstable_region": "half-open band [T−ε, T+ε)"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "1e42960392610191aae1b11737438a6bd13153dd5e012f948aee0fbd3306379a",
+        "statement_digest": "c29e65dc9bd4d49aab57f5dd69e869997a9851b097d947a2fc71df2444b40f43",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.Threshold.Preservation",
+      "lean_manifest_digest": "5d0b6bd5d1532ce2c7b4718051469e2640e716ea11d118bde160cde171eca089",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "thresholding",
+      "operator_status": "complete",
+      "package_path": "thresholding/threshold-output-preservation",
+      "theorem_id": "threshold-output-preservation",
+      "title": "Threshold Output Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "tie_broken_winner_margin_invariance",
+          "tie_broken_winner_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/tie-broken-winner/tie-broken-winner-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "0c5c65e9d6b9ddff95ff9b55a8b425e15f9335a3d61c43b68d5ba05df6f82af5",
+        "statement_digest": "e6ac3b7e5dec35419900e3307590e4c8edb9361c24fafae7cda40c1f7a4e8430",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.TieBrokenWinner.Margin",
+      "lean_manifest_digest": "c570f7e1b77c0ed6e751cbc84594f543ac874db4a2c1f91c2671626f649460eb",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "tie-broken-winner",
+      "operator_status": "complete",
+      "package_path": "tie-broken-winner/tie-broken-winner-margin",
+      "theorem_id": "tie-broken-winner-margin",
+      "title": "Tie-broken winner selection Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "top_k_margin_invariance",
+          "top_k_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/top-k/top-k-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "sorting",
+          "rank",
+          "kth-order-statistic"
+        ],
+        "selected_object": "top_k_index_set",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "794a4f0ee063927ed05e16f6522a4003805e84aadf874d726e98e1f27a7b5c68",
+        "statement_digest": "1e0a04f16b963cdaedbe7d860b6a35d38b1382511d876298c198c81d1273d2f7",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.TopK.Preservation",
+      "lean_manifest_digest": "ce3903256a10fab24e83dd17097955e6eae414a55de24b7b6b8372f4112d6b7e",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "top-k",
+      "operator_status": "complete",
+      "package_path": "top-k/top-k-margin",
+      "theorem_id": "top-k-margin",
+      "title": "Top-k Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "top_k_then_threshold_margin_invariance",
+          "top_k_then_threshold_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "OrderStat.Ranking reduction",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/top-k-then-threshold/top-k-then-threshold-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite n≥2"
+        ],
+        "compositional_properties": [
+          "reduces_to_order_stat_ranking"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "pairwise_gap_collapse",
+        "limitations": [
+          "Certificate limitations apply (see lean_manifest / formal verification report)"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "ordering",
+        "related_operators": [
+          "top-k",
+          "sorting",
+          "rank"
+        ],
+        "selected_object": "pairwise_ranking",
+        "sharpness": true,
+        "stable_region": "all pairwise gaps > 2ε",
+        "structural_stability_quantity": "min_pairwise_gap",
+        "unstable_region": "some pairwise gap ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "165f48d79bd782dc10dc050f013a666301f15f4d56accdf44a62253157afa687",
+        "statement_digest": "46efb39639db7a5e631669ec507fe0eaaf0d02f0eef1268656b51ab788a788b4",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.TopKThenThreshold.Preservation",
+      "lean_manifest_digest": "7bb0593108e03435e328f789153227df755692ec606dd34d634ba0268b7449c0",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "top-k-then-threshold",
+      "operator_status": "complete",
+      "package_path": "top-k-then-threshold/top-k-then-threshold-margin",
+      "theorem_id": "top-k-then-threshold-margin",
+      "title": "Top-k-then-threshold Ranking Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "tournament_winner_margin_invariance",
+          "tournament_winner_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/tournament-winner/tournament-winner-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "33e641bb4562ba9c9142a1490690b1273357f7609e334b652cdeaaff5a30d9ef",
+        "statement_digest": "719a3b06208257387fdb0a5225c9703c1f3ca1333c57a2a12d7122591e5b5276",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.TournamentWinner.Margin",
+      "lean_manifest_digest": "f60b6e71d4a44b1657e023c4f6bb35139166702d7860c2c36222cf5033f72061",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "tournament-winner",
+      "operator_status": "complete",
+      "package_path": "tournament-winner/tournament-winner-margin",
+      "theorem_id": "tournament-winner-margin",
+      "title": "Tournament winner Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "two_stage_maximum_margin_invariance",
+          "two_stage_maximum_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/two-stage-maximum/two-stage-maximum-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "b43527242f2e7c485d03607d382f41c006ae52e9345fb74246b146de3d95fb8c",
+        "statement_digest": "7b4299970fa6e01d69ad9515166060d8fc00f5923667498c521837637b39f9de",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.TwoStageMaximum.Margin",
+      "lean_manifest_digest": "edcf12ad0a74121499f210835566f34cdc8bdcb6cd951ab08a1b78cddf404ba9",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "two-stage-maximum",
+      "operator_status": "complete",
+      "package_path": "two-stage-maximum/two-stage-maximum-margin",
+      "theorem_id": "two-stage-maximum-margin",
+      "title": "Two-stage maximum Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "weighted_score_selection_margin_invariance",
+          "weighted_score_selection_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/weighted-score-selection/weighted-score-selection-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "a62780e051ada56cd8a7b94cc2bf674d169357582efddac7f5b17b42b19c9a84",
+        "statement_digest": "9a1a66762ace827f5d8df1edc6f5afb0064df2f100f03d758100c90de9ee6e78",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.WeightedScoreSelection.Margin",
+      "lean_manifest_digest": "54b48ad8afa01970b4d2f6a6c2f623ac97ed2b4f4a8479e37cbe296099ed610b",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "weighted-score-selection",
+      "operator_status": "complete",
+      "package_path": "weighted-score-selection/weighted-score-selection-margin",
+      "theorem_id": "weighted-score-selection-margin",
+      "title": "Weighted score selection Margin Preservation under Bounded Score Perturbations"
+    },
+    {
+      "authored": {
+        "lean_theorem_names": [
+          "weighted_tournament_winner_margin_invariance",
+          "weighted_tournament_winner_margin_sharpness"
+        ],
+        "perturbation_model": "ℓ∞ ball",
+        "proof_strategy": "Definitional reduction to Argmax.Margin",
+        "theorem_role": "primary_stability"
+      },
+      "certificate_path": "lean/certificates/weighted-tournament-winner/weighted-tournament-winner-margin",
+      "certificate_status": "present_status_recomputed",
+      "comparison": {
+        "assumptions": [
+          "Finite m≥2",
+          "Unique maximizer"
+        ],
+        "compositional_properties": [
+          "reduces_to_argmax_margin"
+        ],
+        "guarantee_kind": "deterministic",
+        "instability_mechanism": "margin_collapse",
+        "limitations": [
+          "Argmax reduction"
+        ],
+        "perturbation_class": "bounded_additive_linf",
+        "primitive_type": "primitive_search",
+        "related_operators": [
+          "argmax",
+          "tournament-winner",
+          "greedy-maximum-selection"
+        ],
+        "selected_object": "unique_maximizer_index",
+        "sharpness": true,
+        "stable_region": "gamma > 2ε",
+        "structural_stability_quantity": "argmax_margin_gamma",
+        "unstable_region": "gamma ≤ 2ε"
+      },
+      "derived": {
+        "lean_status": "LEAN_FULL",
+        "placeholder_count": 0,
+        "proof_digest": "ca1929719f8011ad7b5bcdcd1726c942246fcc1c31999581583e3ceec78eedc4",
+        "statement_digest": "6f38225d748744274dc3bba5f4d8a1bbbe9ecd1eb6943d9c576945f6cd769ce9",
+        "verification_timestamp": "2026-07-25"
+      },
+      "lean_entry_module": "Research.Operators.WeightedTournamentWinner.Margin",
+      "lean_manifest_digest": "37aedea62843605d26ff789ac55b2e48a192a3e6c317e78721d4b1734abadf95",
+      "lean_status": "LEAN_FULL",
+      "library_schema_version": "primitive-library-1.0",
+      "operator_id": "weighted-tournament-winner",
+      "operator_status": "complete",
+      "package_path": "weighted-tournament-winner/weighted-tournament-winner-margin",
+      "theorem_id": "weighted-tournament-winner-margin",
+      "title": "Weighted tournament winner Margin Preservation under Bounded Score Perturbations"
+    }
+  ]
+}

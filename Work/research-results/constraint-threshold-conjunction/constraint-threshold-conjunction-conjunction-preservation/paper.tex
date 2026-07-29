@@ -1,0 +1,115 @@
+% operator-stability-v1 — publication template (writeup-aligned)
+% Slots filled by scripts/generate_operator_paper.py
+\documentclass[12pt]{article}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\Urlmuskip=0mu plus 1mu
+\urlstyle{tt}
+\emergencystretch=2em
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{1.2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Breakable monospace for Lean paths / identifiers (xurl \path)
+\newcommand{\leanpath}[1]{%
+  {\raggedright\urlstyle{tt}\path{#1}}}
+
+
+\definecolor{fundbox}{RGB}{245,245,248}
+\definecolor{fundrule}{RGB}{180,180,190}
+
+\title{Constraint-threshold conjunction: Real Stability}
+\author{Research Architecture Runtime\\[0.25em]
+{\normalsize\texttt{operator/constraint-threshold-conjunction}}}
+\date{2026-07-29}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\leanpath{constraint-threshold-conjunction} preserves a Boolean combination of threshold constraints under buffered scalar noise. Lean \texttt{LEAN\_FULL}.
+\end{abstract}
+
+\noindent
+\begin{center}
+\fcolorbox{fundrule}{fundbox}{%
+  \begin{minipage}{0.92\linewidth}
+  \centering
+  \textbf{This theorem is:} \texttt{Reduction}
+  \end{minipage}}
+\end{center}
+\vspace{0.6em}
+
+\section{Problem}
+{\raggedright\sloppy
+Conjunction or disjunction of threshold predicates on coordinates/scores.
+\par}
+
+\section{Stability notion}
+Each literal is threshold-stable; Boolean combinations inherit preservation.
+
+\section{Definitions}
+Reduce to multi-threshold / threshold preservation on each cut.
+
+\section{Theorem}
+\begin{theorem}\label{thm:inv}
+If every atomic threshold is buffer-stable for $(x,x',\varepsilon)$, the conjunction/disjunction value is preserved.
+\end{theorem}
+
+\section{Intuition}
+Boolean operations are deterministic functions of stable bits.
+
+\section{Examples}
+\begin{example}
+Two cuts $x\ge 1$ and $x\ge 3$ with $x=4$, $\varepsilon=0.2$: both bits stable, so their conjunction stays true.
+\end{example}
+
+\section{Proof}
+Each atomic predicate is preserved by scalar threshold preservation under the buffer hypotheses. Conjunction (resp.\ disjunction) is a fixed Boolean function of those bits, hence preserved (Theorem~\ref{thm:inv}).
+
+\section{Formal statement}
+{\raggedright\sloppy
+\begin{description}[style=nextline,leftmargin=1.1em,font=\normalfont\bfseries]
+\item[Lean module] \leanpath{Research.Operators.ConstraintThresholdConjunction.Preservation}
+\item[Source file] \leanpath{lean/Research/Operators/ConstraintThresholdConjunction/Preservation.lean}
+\item[Theorems]\leavevmode\par\vspace{0.15em}\begin{itemize}[leftmargin=1.2em]
+  \item \leanpath{constraint\_threshold\_conjunction\_conjunction\_preservation}
+  \item \leanpath{constraint\_threshold\_conjunction\_conjunction\_sharpness}
+\end{itemize}
+\item[Certificate] \leanpath{lean/certificates/constraint-threshold-conjunction/constraint-threshold-conjunction-conjunction-preservation}
+\item[Status] \texttt{LEAN\_FULL} on Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB})
+\end{description}
+\par}
+
+\section{Proof dependencies}
+{\raggedright\sloppy
+\begin{itemize}\item Threshold / multi-threshold cores.\item Boolean congruence.\end{itemize}
+\par}
+
+\section{Consequences}
+{\raggedright\sloppy
+Constraint-side companion to multi-threshold counts.
+\par}
+
+\end{document}

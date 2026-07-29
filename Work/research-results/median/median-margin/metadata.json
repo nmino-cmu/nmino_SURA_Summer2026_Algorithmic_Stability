@@ -1,0 +1,128 @@
+{
+  "operator": "median",
+  "title": "Median Index Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/median",
+  "crp_identifiers": {
+    "operator": "median",
+    "theorem_id": "median-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "1ad1591427ce27216620858b94124e0b433cb86a5a06e64dcc9ae4892acbd2a6"
+  ],
+  "lean_manifest_digest": "1ad1591427ce27216620858b94124e0b433cb86a5a06e64dcc9ae4892acbd2a6",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.Median.Preservation",
+  "lean_certificate_dir": "lean/certificates/median/median-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "median",
+    "theorem": "median-margin",
+    "assumptions": [
+      "n≥2",
+      "unique strict kth",
+      "pairwise gaps"
+    ],
+    "perturbation_model": "Bounded additive ‖δ‖_∞≤ε",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "OrderStat.KthMargin reduction",
+    "limitations": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ],
+    "references": [
+      "research-results/median/median-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "median_margin_invariance",
+      "median_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "f33849b3914abac989d8ee32b43762d17d020f2f2a4c64ef258810c36fd44c44",
+    "proof_digest": "c341d52d18a374517feee310ac42e0ac64228d6ffb9885999f51184b23dc06b9",
+    "certificate_path": "lean/certificates/median/median-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "1ad1591427ce27216620858b94124e0b433cb86a5a06e64dcc9ae4892acbd2a6",
+      "claim_digest": "7d51eb975d2431cf480147d7277b5d9aee7f38ad91bb6c903aefaec693585a5a",
+      "entry_module_id": "Research.Operators.Median.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "scalar_selection",
+    "selected_object": "unique_strict_kth_index",
+    "instability_mechanism": "pairwise_gap_collapse",
+    "structural_stability_quantity": "min_pairwise_gap",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "all pairwise gaps > 2ε",
+    "unstable_region": "some pairwise gap ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_order_stat_kth_margin"
+    ],
+    "related_operators": [
+      "quantile",
+      "kth-order-statistic",
+      "median",
+      "percentile"
+    ],
+    "assumptions": [
+      "Finite n≥2"
+    ],
+    "limitations": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "quantile",
+      "percentile",
+      "kth-order-statistic",
+      "median pipelines"
+    ],
+    "dependencies": [
+      "Research.Operators.OrderStat.KthMargin",
+      "kth_margin_invariance",
+      "kth_margin_sharpness",
+      "ell_inf_gap_bound"
+    ],
+    "reduces_to": "order-stat-kth-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "1ad1591427ce27216620858b94124e0b433cb86a5a06e64dcc9ae4892acbd2a6",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

@@ -17,4 +17,3 @@ Work/architecture_verifier/**/live_runs/
 # === temp: installment ignores (remove as we commit each chunk) ===
 Work/implementation/
 Work/lean/
-Work/research-results/

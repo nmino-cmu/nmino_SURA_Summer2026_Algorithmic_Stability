@@ -1,0 +1,125 @@
+{
+  "operator": "greedy-choice-tie-break",
+  "title": "Greedy choice with deterministic tie-breaking Margin Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/greedy-choice-tie-break",
+  "crp_identifiers": {
+    "operator": "greedy-choice-tie-break",
+    "theorem_id": "greedy-choice-tie-break-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "0ee81ae469094fef2a69ce35c107aa9f9da1d3e6ce8b8f630defcfaa6677aade"
+  ],
+  "lean_manifest_digest": "0ee81ae469094fef2a69ce35c107aa9f9da1d3e6ce8b8f630defcfaa6677aade",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.GreedyChoiceTieBreak.Margin",
+  "lean_certificate_dir": "lean/certificates/greedy-choice-tie-break/greedy-choice-tie-break-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "greedy-choice-tie-break",
+    "theorem": "greedy-choice-tie-break-margin",
+    "assumptions": [
+      "m≥2",
+      "unique maximizer",
+      "ℓ∞ ball"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Definitional reduction to Argmax.Margin",
+    "limitations": [
+      "Argmax reduction"
+    ],
+    "references": [
+      "research-results/greedy-choice-tie-break/greedy-choice-tie-break-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "greedy_choice_tie_break_margin_invariance",
+      "greedy_choice_tie_break_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "afdb763d3c6a9a62c47759112fe7b1a794e53a538b8712869fc94384a26cb3c2",
+    "proof_digest": "e335eed078d8256ef0ebfbe354824bd8ccc785991a3e32fc2eb5ebe4692d3409",
+    "certificate_path": "lean/certificates/greedy-choice-tie-break/greedy-choice-tie-break-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "0ee81ae469094fef2a69ce35c107aa9f9da1d3e6ce8b8f630defcfaa6677aade",
+      "claim_digest": "79d20e46f3f805c05ddea5f7d0b784376714f796cab29e35368b7e85c243b4e1",
+      "entry_module_id": "Research.Operators.GreedyChoiceTieBreak.Margin",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "greedy",
+    "selected_object": "unique_maximizer_index",
+    "instability_mechanism": "margin_collapse",
+    "structural_stability_quantity": "argmax_margin_gamma",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "gamma > 2ε",
+    "unstable_region": "gamma ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_argmax_margin"
+    ],
+    "related_operators": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "assumptions": [
+      "Finite m≥2",
+      "Unique maximizer"
+    ],
+    "limitations": [
+      "Argmax reduction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "0ee81ae469094fef2a69ce35c107aa9f9da1d3e6ce8b8f630defcfaa6677aade",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

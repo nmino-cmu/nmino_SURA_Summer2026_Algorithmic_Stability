@@ -1,0 +1,127 @@
+% operator-stability-v1 — publication template (writeup-aligned)
+% Slots filled by scripts/generate_operator_paper.py
+\documentclass[12pt]{article}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\Urlmuskip=0mu plus 1mu
+\urlstyle{tt}
+\emergencystretch=2em
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{1.2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Breakable monospace for Lean paths / identifiers (xurl \path)
+\newcommand{\leanpath}[1]{%
+  {\raggedright\urlstyle{tt}\path{#1}}}
+
+
+\definecolor{fundbox}{RGB}{245,245,248}
+\definecolor{fundrule}{RGB}{180,180,190}
+
+\title{Bucket assignment Ranking Preservation under Bounded Score Perturbations}
+\author{Research Architecture Runtime\\[0.25em]
+{\normalsize\texttt{operator/bucket-assignment}}}
+\date{2026-07-29}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\leanpath{bucket-assignment} is certified by pairwise ranking preservation when all gaps exceed $2\varepsilon$. Lean \texttt{LEAN\_FULL} via \texttt{OrderStat.Ranking}.
+\end{abstract}
+
+\noindent
+\begin{center}
+\fcolorbox{fundrule}{fundbox}{%
+  \begin{minipage}{0.92\linewidth}
+  \centering
+  \textbf{This theorem is:} \texttt{Reduction}
+  \end{minipage}}
+\end{center}
+\vspace{0.6em}
+
+\section{Problem}
+{\raggedright\sloppy
+The \leanpath{bucket-assignment} operator depends on the pairwise order of scores $s\in\mathbb{R}^n$. The certified object is the full pairwise ranking (and thereby any ranking-determined selection such as top-$k$ index sets).
+\par}
+
+\section{Stability notion}
+Perturbations: $\|\delta\|_\infty\le\varepsilon$. Stability: if $\mathrm{AllGapsExceed}(s,2\varepsilon)$, then $s_i<s_j\Leftrightarrow (s+\delta)_i<(s+\delta)_j$ for all $i,j$. Sharpness: a gap $\le 2\varepsilon$ admits a collision adversary.
+
+\section{Definitions}
+\begin{definition}[All-gaps]
+$|s_p-s_q|>g$ for $p\neq q$.\end{definition}
+\noindent\textbf{Assumptions.} $n\ge 2$, $\varepsilon\ge 0$, and (for invariance) all pairwise gaps $>2\varepsilon$.
+
+\section{Theorem}
+\begin{theorem}[Ranking invariance]\label{thm:inv}
+If $\mathrm{AllGapsExceed}(s,2\varepsilon)$, then for every $\|\delta\|_\infty\le\varepsilon$ and all $i,j$, $s_i<s_j\Leftrightarrow s_i+\delta_i<s_j+\delta_j$.
+\end{theorem}
+\begin{theorem}[Sharpness]\label{thm:sharp}
+If some distinct pair has $|s_i-s_j|\le 2\varepsilon$, an admissible $\delta$ forces a value collision.
+\end{theorem}
+
+\section{Intuition}
+Relative $\ell_\infty$ moves cost at most $2\varepsilon$. Gaps larger than $2\varepsilon$ cannot reverse; smaller gaps can be closed by a midpoint push.
+
+\section{Examples}
+\begin{example}
+Scores $(0,3,8)$, $\varepsilon=1$: all gaps $>2$, so the ranking is stable. If scores are $(0,1.5)$ and $\varepsilon=1$, the gap $1.5\le 2$ admits a midpoint tie.
+\end{example}
+
+\section{Proof}
+Fix $\|\delta\|_\infty\le\varepsilon$. If $i=j$ both sides of the claimed equivalence are false for strict $<$. If $i\neq j$ and $|s_i-s_j|>2\varepsilon$, the estimate $(s_i+\delta_i)-(s_j+\delta_j)\ge (s_i-s_j)-2\varepsilon$ (and its swap) yields $s_i<s_j\Leftrightarrow s_i+\delta_i<s_j+\delta_j$ (Theorem~\ref{thm:inv}).
+
+For sharpness, take $i\neq j$ with $|s_i-s_j|\le 2\varepsilon$ and the midpoint $\delta_i=-(s_i-s_j)/2$, $\delta_j=(s_i-s_j)/2$ (elsewhere $0$). Then $\|\delta\|_\infty\le\varepsilon$ and $s_i+\delta_i=s_j+\delta_j$ (Theorem~\ref{thm:sharp}).
+
+\section{Formal statement}
+{\raggedright\sloppy
+\begin{description}[style=nextline,leftmargin=1.1em,font=\normalfont\bfseries]
+\item[Lean module] \leanpath{Research.Operators.BucketAssignment.Preservation}
+\item[Source file] \leanpath{lean/Research/Operators/BucketAssignment/Preservation.lean}
+\item[Theorems]\leavevmode\par\vspace{0.15em}\begin{itemize}[leftmargin=1.2em]
+  \item \leanpath{bucket\_assignment\_margin\_invariance}
+  \item \leanpath{bucket\_assignment\_margin\_sharpness}
+\end{itemize}
+\item[Note] Reduction of OrderStat.Ranking.
+\item[Certificate] \leanpath{lean/certificates/bucket-assignment/bucket-assignment-margin}
+\item[Status] \texttt{LEAN\_FULL} on Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB})
+\end{description}
+\par}
+
+\section{Proof dependencies}
+{\raggedright\sloppy
+\begin{itemize}
+\item \leanpath{Research.Operators.OrderStat.Ranking} / shared pairwise lemma from \leanpath{KthMargin}.
+\item Midpoint collision adversary.
+\item No other operator theorems required.
+\end{itemize}
+\par}
+
+\section{Consequences}
+{\raggedright\sloppy
+Ranking stability implies stability of any functional of the pairwise order used by \leanpath{bucket-assignment}. Related operators: \leanpath{top-k}, \leanpath{sorting}, \leanpath{rank}.
+\par}
+
+\end{document}

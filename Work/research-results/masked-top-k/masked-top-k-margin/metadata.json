@@ -1,0 +1,123 @@
+{
+  "operator": "masked-top-k",
+  "title": "Masked top-k Ranking Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/masked-top-k",
+  "crp_identifiers": {
+    "operator": "masked-top-k",
+    "theorem_id": "masked-top-k-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "3e0bf5ad408754865b9ad4611008974ba3d8b40fc2e3cbee56fdf52d59e29f1a"
+  ],
+  "lean_manifest_digest": "3e0bf5ad408754865b9ad4611008974ba3d8b40fc2e3cbee56fdf52d59e29f1a",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.MaskedTopK.Preservation",
+  "lean_certificate_dir": "lean/certificates/masked-top-k/masked-top-k-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "masked-top-k",
+    "theorem": "masked-top-k-margin",
+    "assumptions": [
+      "n≥2",
+      "pairwise gaps"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "OrderStat.Ranking reduction",
+    "limitations": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ],
+    "references": [
+      "research-results/masked-top-k/masked-top-k-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "masked_top_k_margin_invariance",
+      "masked_top_k_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "a5e347ca161d48b9b85648196e029f6d878a5623d3bca43753d9338ae91e0bba",
+    "proof_digest": "1e9227fe797fd6a85dc3eb8e6644eaa1fb25f5781a9bb94442e6fde1ab5d4737",
+    "certificate_path": "lean/certificates/masked-top-k/masked-top-k-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "3e0bf5ad408754865b9ad4611008974ba3d8b40fc2e3cbee56fdf52d59e29f1a",
+      "claim_digest": "a6f38b8713fc0b78f8aac5c9692699ab4b34bef1041ce97412ecd9f68a924b24",
+      "entry_module_id": "Research.Operators.MaskedTopK.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "ordering",
+    "selected_object": "pairwise_ranking",
+    "instability_mechanism": "pairwise_gap_collapse",
+    "structural_stability_quantity": "min_pairwise_gap",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "all pairwise gaps > 2ε",
+    "unstable_region": "some pairwise gap ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_order_stat_ranking"
+    ],
+    "related_operators": [
+      "top-k",
+      "sorting",
+      "rank"
+    ],
+    "assumptions": [
+      "Finite n≥2"
+    ],
+    "limitations": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "top-k",
+      "sorting",
+      "rank"
+    ],
+    "dependencies": [
+      "Research.Operators.OrderStat.Ranking",
+      "ranking_invariance"
+    ],
+    "reduces_to": "order-stat-ranking",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "3e0bf5ad408754865b9ad4611008974ba3d8b40fc2e3cbee56fdf52d59e29f1a",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

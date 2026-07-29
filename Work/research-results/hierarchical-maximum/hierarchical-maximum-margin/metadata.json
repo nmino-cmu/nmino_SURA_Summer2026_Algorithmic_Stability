@@ -1,0 +1,125 @@
+{
+  "operator": "hierarchical-maximum",
+  "title": "Hierarchical maximum Margin Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/hierarchical-maximum",
+  "crp_identifiers": {
+    "operator": "hierarchical-maximum",
+    "theorem_id": "hierarchical-maximum-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "76a0681d5da37fc1a9d6d17a258b48043c4a4eb4f599270a7378bff5e6fee397"
+  ],
+  "lean_manifest_digest": "76a0681d5da37fc1a9d6d17a258b48043c4a4eb4f599270a7378bff5e6fee397",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.HierarchicalMaximum.Margin",
+  "lean_certificate_dir": "lean/certificates/hierarchical-maximum/hierarchical-maximum-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "hierarchical-maximum",
+    "theorem": "hierarchical-maximum-margin",
+    "assumptions": [
+      "m≥2",
+      "unique maximizer",
+      "ℓ∞ ball"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Definitional reduction to Argmax.Margin",
+    "limitations": [
+      "Argmax reduction"
+    ],
+    "references": [
+      "research-results/hierarchical-maximum/hierarchical-maximum-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "hierarchical_maximum_margin_invariance",
+      "hierarchical_maximum_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "a31490c1e150d3fdfe25d55f47402f3e67dee5a79871ef5463bcc006c4d83f70",
+    "proof_digest": "e5a39aab68b4c06b73f32b60ecaa91f848f81a9c2f664541df57452b555b0ec4",
+    "certificate_path": "lean/certificates/hierarchical-maximum/hierarchical-maximum-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "76a0681d5da37fc1a9d6d17a258b48043c4a4eb4f599270a7378bff5e6fee397",
+      "claim_digest": "4e52171e3fa7605d5b7a6054e22f177342421e1a1416c1fd6df5553d79d8a9cc",
+      "entry_module_id": "Research.Operators.HierarchicalMaximum.Margin",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "primitive_search",
+    "selected_object": "unique_maximizer_index",
+    "instability_mechanism": "margin_collapse",
+    "structural_stability_quantity": "argmax_margin_gamma",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "gamma > 2ε",
+    "unstable_region": "gamma ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_argmax_margin"
+    ],
+    "related_operators": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "assumptions": [
+      "Finite m≥2",
+      "Unique maximizer"
+    ],
+    "limitations": [
+      "Argmax reduction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "76a0681d5da37fc1a9d6d17a258b48043c4a4eb4f599270a7378bff5e6fee397",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

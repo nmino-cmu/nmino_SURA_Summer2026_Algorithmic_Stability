@@ -1,0 +1,27 @@
+{
+  "fundamentality": "reduction",
+  "title": "Projection onto interval: Real Stability",
+  "abstract": "\\leanpath{projection-interval} uses interval clamp, which is $1$-Lipschitz; hence $|x'-x|\\le\\varepsilon$ implies the clamped values move by at most $\\varepsilon$. Lean \\texttt{LEAN\\_FULL}.",
+  "problem": "\\leanpath{projection-interval} projects coordinates onto intervals via $\\mathrm{clamp}(x;\\mathrm{lo},\\mathrm{hi})=\\max(\\mathrm{lo},\\min(x,\\mathrm{hi}))$.",
+  "stability": "Nonexpansiveness of clamp: output perturbation $\\le$ input perturbation in absolute value.",
+  "definitions": "Require $\\mathrm{lo}\\le\\mathrm{hi}$. Stability form is the Lipschitz claim with $|x'-x|\\le\\varepsilon$.",
+  "theorem": "\\begin{theorem}\\label{thm:inv}\nIf $\\mathrm{lo}\\le\\mathrm{hi}$ and $|x'-x|\\le\\varepsilon$, then $|\\mathrm{clamp}(x')-\\mathrm{clamp}(x)|\\le\\varepsilon$. The Lipschitz constant $1$ is sharp.\n\\end{theorem}",
+  "intuition": "Clipping cannot expand distances: points move weakly toward the interval.",
+  "examples": "\\begin{example}\n$\\mathrm{lo}=0$, $\\mathrm{hi}=1$, $x=0.4$, $x'=0.7$, $\\varepsilon=0.3$: both clamp to themselves and move by $0.3$.\n\\end{example}",
+  "proof": "The map $x\\mapsto\\max(\\mathrm{lo},\\min(x,\\mathrm{hi}))$ is $1$-Lipschitz on $\\mathbb{R}$ when $\\mathrm{lo}\\le\\mathrm{hi}$ (standard case analysis on the three regions $(-\\infty,\\mathrm{lo}]$, $[\\mathrm{lo},\\mathrm{hi}]$, $[\\mathrm{hi},\\infty)$). Therefore $|\\mathrm{clamp}(x')-\\mathrm{clamp}(x)|\\le|x'-x|\\le\\varepsilon$ (Theorem~\\ref{thm:inv}). Sharpness: take an interior segment of length $\\varepsilon$ inside $[\\mathrm{lo},\\mathrm{hi}]$.",
+  "formal": "\\begin{description}[style=nextline,leftmargin=1.1em,font=\\normalfont\\bfseries]\n\\item[Lean module] \\leanpath{Research.Operators.ProjectionInterval.Preservation}\n\\item[Source file] \\leanpath{lean/Research/Operators/ProjectionInterval/Preservation.lean}\n\\item[Theorems]\\leavevmode\\par\\vspace{0.15em}\\begin{itemize}[leftmargin=1.2em]\n  \\item \\leanpath{projection_interval_clamp_stability}\n  \\item \\leanpath{projection_interval_clamp_sharpness}\n\\end{itemize}\n\\item[Note] Uses Projection.Clamp.\n\\item[Certificate] \\leanpath{lean/certificates/projection-interval/projection-interval-clamp-stability}\n\\item[Status] \\texttt{LEAN\\_FULL} on Mathlib $\\mathbb{R}$ (\\texttt{REAL\\_MATHLIB})\n\\end{description}",
+  "dependencies": "\\begin{itemize}\\item \\texttt{Projection.Clamp} nonexpansiveness.\\item Case analysis on regions.\\end{itemize}",
+  "consequences": "Interval/box/clipping operators reduce to clamp. Related: projection-interval, coordinate-clipping.",
+  "paper_card": {
+    "difficulty": "elementary",
+    "applications": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "dependencies": [
+      "Research.Operators.Projection.Clamp"
+    ],
+    "reduces_to": "projection-clamp",
+    "reduced_by": []
+  }
+}

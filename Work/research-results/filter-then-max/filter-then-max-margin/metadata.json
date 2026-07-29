@@ -1,0 +1,125 @@
+{
+  "operator": "filter-then-max",
+  "title": "Filter-then-max Margin Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/filter-then-max",
+  "crp_identifiers": {
+    "operator": "filter-then-max",
+    "theorem_id": "filter-then-max-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "0804baa99c811a06346e56649f5c5f8b1a9c00a2c0a57f587f3c9ba88c2e85db"
+  ],
+  "lean_manifest_digest": "0804baa99c811a06346e56649f5c5f8b1a9c00a2c0a57f587f3c9ba88c2e85db",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.FilterThenMax.Margin",
+  "lean_certificate_dir": "lean/certificates/filter-then-max/filter-then-max-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "filter-then-max",
+    "theorem": "filter-then-max-margin",
+    "assumptions": [
+      "m≥2",
+      "unique maximizer",
+      "ℓ∞ ball"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Definitional reduction to Argmax.Margin",
+    "limitations": [
+      "Argmax reduction"
+    ],
+    "references": [
+      "research-results/filter-then-max/filter-then-max-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "filter_then_max_margin_invariance",
+      "filter_then_max_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "c17befd67ec1dfd9b7e00692b2bcdbccb487de46c87797497afef1328dc60557",
+    "proof_digest": "fd44a46254b4beb246b3037b48781ead39934283a52ce16e173326216cc8dfa4",
+    "certificate_path": "lean/certificates/filter-then-max/filter-then-max-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "0804baa99c811a06346e56649f5c5f8b1a9c00a2c0a57f587f3c9ba88c2e85db",
+      "claim_digest": "4b51ab40940687bbb0820efe5fd2a0259aaa84597ba30553bdf5f400dbdcb21e",
+      "entry_module_id": "Research.Operators.FilterThenMax.Margin",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "primitive_search",
+    "selected_object": "unique_maximizer_index",
+    "instability_mechanism": "margin_collapse",
+    "structural_stability_quantity": "argmax_margin_gamma",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "gamma > 2ε",
+    "unstable_region": "gamma ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_argmax_margin"
+    ],
+    "related_operators": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "assumptions": [
+      "Finite m≥2",
+      "Unique maximizer"
+    ],
+    "limitations": [
+      "Argmax reduction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "0804baa99c811a06346e56649f5c5f8b1a9c00a2c0a57f587f3c9ba88c2e85db",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

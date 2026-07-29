@@ -1,0 +1,125 @@
+{
+  "operator": "heap-extract-max",
+  "title": "Heap extract-max Margin Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/heap-extract-max",
+  "crp_identifiers": {
+    "operator": "heap-extract-max",
+    "theorem_id": "heap-extract-max-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "c0d4e607152b8f8ba89e893772f57b35c37c1bdbf03cf53f7c535fdb5fed2bf0"
+  ],
+  "lean_manifest_digest": "c0d4e607152b8f8ba89e893772f57b35c37c1bdbf03cf53f7c535fdb5fed2bf0",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.HeapExtractMax.Margin",
+  "lean_certificate_dir": "lean/certificates/heap-extract-max/heap-extract-max-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "heap-extract-max",
+    "theorem": "heap-extract-max-margin",
+    "assumptions": [
+      "m≥2",
+      "unique maximizer",
+      "ℓ∞ ball"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Definitional reduction to Argmax.Margin",
+    "limitations": [
+      "Argmax reduction"
+    ],
+    "references": [
+      "research-results/heap-extract-max/heap-extract-max-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "heap_extract_max_margin_invariance",
+      "heap_extract_max_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "ec940f2a61f48ccd77a3b758f387541cba156a5b81fe3ea9bea713a1dc8e4171",
+    "proof_digest": "e38baf296fbcc948939e53b24a1cbc79e3b2b3bfbd436c8ed54d97430fdac53f",
+    "certificate_path": "lean/certificates/heap-extract-max/heap-extract-max-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "c0d4e607152b8f8ba89e893772f57b35c37c1bdbf03cf53f7c535fdb5fed2bf0",
+      "claim_digest": "49c0b1a0e35e58d8536328fb24a31a7a912d0d218760a48af4c626c700a11324",
+      "entry_module_id": "Research.Operators.HeapExtractMax.Margin",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "primitive_search",
+    "selected_object": "unique_maximizer_index",
+    "instability_mechanism": "margin_collapse",
+    "structural_stability_quantity": "argmax_margin_gamma",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "gamma > 2ε",
+    "unstable_region": "gamma ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_argmax_margin"
+    ],
+    "related_operators": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "assumptions": [
+      "Finite m≥2",
+      "Unique maximizer"
+    ],
+    "limitations": [
+      "Argmax reduction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "c0d4e607152b8f8ba89e893772f57b35c37c1bdbf03cf53f7c535fdb5fed2bf0",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

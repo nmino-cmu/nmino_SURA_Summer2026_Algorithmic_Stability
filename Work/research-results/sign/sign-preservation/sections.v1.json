@@ -1,0 +1,28 @@
+{
+  "fundamentality": "primitive",
+  "title": "Sign Selection Preservation under Bounded Score Perturbations",
+  "abstract": "For $\\mathrm{sign}(x)\\in\\{+1,-1,0\\}$, if $|x'-x|\\le\\varepsilon$ then $\\varepsilon<x\\Rightarrow\\mathrm{sign}(x')=+1$, $x<-\\varepsilon\\Rightarrow\\mathrm{sign}(x')=-1$, and $(\\varepsilon,x)=(0,0)\\Rightarrow\\mathrm{sign}(x')=0$. Lean \\texttt{LEAN\\_FULL}.",
+  "problem": "The sign operator returns $\\mathrm{sign}(x)=+1$ if $x>0$, $-1$ if $x<0$, and $0$ if $x=0$.",
+  "stability": "Perturbation: $|x'-x|\\le\\varepsilon$. Preservation uses \\emph{strict} buffers $\\varepsilon<x$ and $x<-\\varepsilon$. Zero output is preserved only when $\\varepsilon=0$ and $x=0$. Sharpness covers $(0,\\varepsilon]$, $[-\\varepsilon,0)$, and $x=0$ with $\\varepsilon>0$.",
+  "definitions": "\\begin{definition}[sign]\n$\\mathrm{sign}(x)=1$ if $0<x$; $-1$ if $x<0$; else $0$.\n\\end{definition}",
+  "theorem": "\\begin{theorem}[Sign preservation]\\label{thm:inv}\nIf $|x'-x|\\le\\varepsilon$, then: (i) $\\varepsilon<x\\Rightarrow\\mathrm{sign}(x')=1$; (ii) $x<-\\varepsilon\\Rightarrow\\mathrm{sign}(x')=-1$; (iii) $\\varepsilon=0\\land x=0\\Rightarrow\\mathrm{sign}(x')=0$.\n\\end{theorem}\n\\begin{theorem}[Sharpness]\\label{thm:sharp}\nIf $0<x\\le\\varepsilon$ then some $|x'-x|\\le\\varepsilon$ has $\\mathrm{sign}(x')\\neq 1$; symmetrically for $-\\varepsilon\\le x<0$; if $x=0$ and $\\varepsilon>0$ then some $|x'-x|\\le\\varepsilon$ has $\\mathrm{sign}(x')\\neq 0$.\n\\end{theorem}",
+  "intuition": "A strict buffer larger than $\\varepsilon$ keeps the perturbed point away from $0$. On the closed band the push $x\\mapsto x-\\varepsilon$ can leave the positive ray.",
+  "examples": "\\begin{example}\n$x=2$, $\\varepsilon=0.5$: $\\varepsilon<x$, so the sign stays $+1$. $x=0.4$, $\\varepsilon=0.5$: $x'=x-\\varepsilon=-0.1$ has sign $-1$.\n\\end{example}",
+  "proof": "From $|x'-x|\\le\\varepsilon$, $x-\\varepsilon\\le x'\\le x+\\varepsilon$. If $\\varepsilon<x$ then $x'>0$, so $\\mathrm{sign}(x')=1$. If $x<-\\varepsilon$ then $x'<0$, so $\\mathrm{sign}(x')=-1$. If $\\varepsilon=0$ and $x=0$ then $x'=0$. This is Theorem~\\ref{thm:inv}.\n\nSharpness: if $0<x\\le\\varepsilon$, take $x'=x-\\varepsilon\\le 0$. If $-\\varepsilon\\le x<0$, take $x'=x+\\varepsilon\\ge 0$. If $x=0$ and $\\varepsilon>0$, take $x'=\\varepsilon$. This is Theorem~\\ref{thm:sharp}.",
+  "formal": "\\begin{description}[style=nextline,leftmargin=1.1em,font=\\normalfont\\bfseries]\n\\item[Lean module] \\leanpath{Research.Operators.Sign.Preservation}\n\\item[Source file] \\leanpath{lean/Research/Operators/Sign/Preservation.lean}\n\\item[Theorems]\\leavevmode\\par\\vspace{0.15em}\\begin{itemize}[leftmargin=1.2em]\n  \\item \\leanpath{sign_preservation}\n  \\item \\leanpath{sign_sharpness}\n\\end{itemize}\n\\item[Certificate] \\leanpath{lean/certificates/sign/sign-preservation}\n\\item[Status] \\texttt{LEAN\\_FULL} on Mathlib $\\mathbb{R}$ (\\texttt{REAL\\_MATHLIB})\n\\end{description}",
+  "dependencies": "\\begin{itemize}\\item Absolute-value ball arithmetic on $\\mathbb{R}$.\\item No other operator theorems.\\end{itemize}",
+  "consequences": "Primitive trichotomy gate; abs-threshold and interval membership use analogous 1D buffers.",
+  "paper_card": {
+    "difficulty": "elementary",
+    "applications": [
+      "thresholding",
+      "absolute-value-threshold",
+      "multi-threshold"
+    ],
+    "dependencies": [
+      "Research.Operators.Sign.Preservation"
+    ],
+    "reduces_to": null,
+    "reduced_by": []
+  }
+}

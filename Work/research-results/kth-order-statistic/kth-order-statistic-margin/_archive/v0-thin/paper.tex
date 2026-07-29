@@ -1,0 +1,27 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\newtheorem{theorem}{Theorem}
+\title{k-th order statistic Index Preservation under Bounded Score Perturbations}
+\author{Research Architecture Runtime \\ \texttt{operator/kth-order-statistic}}
+\date{2026-07-25}
+\begin{document}
+\maketitle
+\begin{abstract}
+k-th order statistic selection as unique strict $k$-th order statistic. Pairwise gaps $>2\varepsilon$
+preserve the index under $\|\delta\|_\infty\le\varepsilon$. Lean: \texttt{LEAN\_FULL}.
+\end{abstract}
+\section{Theorems}
+\begin{theorem}[Preservation]
+Unique strict $k$-th smallest with all pairwise gaps $>2\varepsilon$ is preserved under
+$\|\delta\|_\infty\le\varepsilon$.
+\end{theorem}
+\begin{theorem}[Sharpness]
+A rival gap $\le 2\varepsilon$ admits a tying adversary destroying uniqueness.
+\end{theorem}
+\section{Lean / certificate}
+\texttt{Research.Operators.KthOrderStatistic.Preservation}; \texttt{LEAN\_FULL} Mathlib $\mathbb{R}$.
+\section{Limitations}
+Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB}).
+\end{document}

@@ -1,0 +1,125 @@
+{
+  "operator": "groupwise-then-global-maximum",
+  "title": "Groupwise-then-global maximum Margin Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/groupwise-then-global-maximum",
+  "crp_identifiers": {
+    "operator": "groupwise-then-global-maximum",
+    "theorem_id": "groupwise-then-global-maximum-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "f02cfeaf00f5eddd562acb31888686aeadc3aa1840441e9101be8cf6ca10ed8d"
+  ],
+  "lean_manifest_digest": "f02cfeaf00f5eddd562acb31888686aeadc3aa1840441e9101be8cf6ca10ed8d",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.GroupwiseThenGlobalMaximum.Margin",
+  "lean_certificate_dir": "lean/certificates/groupwise-then-global-maximum/groupwise-then-global-maximum-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "groupwise-then-global-maximum",
+    "theorem": "groupwise-then-global-maximum-margin",
+    "assumptions": [
+      "m≥2",
+      "unique maximizer",
+      "ℓ∞ ball"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Definitional reduction to Argmax.Margin",
+    "limitations": [
+      "Argmax reduction"
+    ],
+    "references": [
+      "research-results/groupwise-then-global-maximum/groupwise-then-global-maximum-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "groupwise_then_global_maximum_margin_invariance",
+      "groupwise_then_global_maximum_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "58d5471260f5da58c0840b46d40db234f8aad8e695a72b0b31b71abaa9de9588",
+    "proof_digest": "31db507f32c10c74b621e33e235dfda5e8bb3606f95fdde016118ad57815c44f",
+    "certificate_path": "lean/certificates/groupwise-then-global-maximum/groupwise-then-global-maximum-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "f02cfeaf00f5eddd562acb31888686aeadc3aa1840441e9101be8cf6ca10ed8d",
+      "claim_digest": "7f787f8d58095bec344710f2a57a37858a6dafa71d5dbf632a413c0201a3e771",
+      "entry_module_id": "Research.Operators.GroupwiseThenGlobalMaximum.Margin",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "primitive_search",
+    "selected_object": "unique_maximizer_index",
+    "instability_mechanism": "margin_collapse",
+    "structural_stability_quantity": "argmax_margin_gamma",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "gamma > 2ε",
+    "unstable_region": "gamma ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_argmax_margin"
+    ],
+    "related_operators": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "assumptions": [
+      "Finite m≥2",
+      "Unique maximizer"
+    ],
+    "limitations": [
+      "Argmax reduction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "f02cfeaf00f5eddd562acb31888686aeadc3aa1840441e9101be8cf6ca10ed8d",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Bounded Almost-Sure Noise for Scalar Thresholding}
+\author{Research Architecture Runtime \\ \texttt{feature/thresholding}}
+\date{2026-07-25}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For \(\widetilde A_T(x)=\mathbf{1}\{x+\xi\ge T\}\) with
+\(\lvert\xi\rvert\le\eta\) almost surely, pathwise application of the
+deterministic threshold-preservation theorem yields almost-sure output
+invariance outside the unstable band \([T-\eta,T+\eta)\).
+We explicitly \textbf{do not} claim the full Sparse Vector privacy theorem.
+Verification uses \texttt{THRESHOLD\_BOUNDED\_NOISE\_COMPUTATIONAL\_V1}.
+\end{abstract}
+
+\section{Operator}
+Same equality convention \(x\ge T\) passes.
+Noise is query-side only in the verified claim; threshold noise and
+\(W=\xi-\zeta\) appear as portfolio candidates.
+
+\section{Main theorem}
+\begin{theorem}[Bounded-noise threshold]\label{thm:noisy}
+Let \(\eta\ge 0\) and \(\lvert\xi\rvert\le\eta\) a.s. Then:
+\begin{enumerate}
+\item if \(x\ge T+\eta\) then \(\widetilde A_T(x)=1\) a.s.;
+\item if \(x<T-\eta\) then \(\widetilde A_T(x)=0\) a.s.;
+\item if \(x\in[T-\eta,T+\eta)\) and \(\eta>0\), the random output need not be a.s.\ constant:
+under the two-point law \(\xi\in\{-\eta,+\eta\}\) with positive mass on each atom,
+both outputs occur with positive probability on this band.
+(At the endpoint \(x=T-\eta\), the \(+\eta\) atom yields \(x+\eta=T\), which passes;
+at interior points both \(x\pm\eta\) land strictly on opposite sides of \(T\).
+If \(\eta=0\) the unstable band is empty and part~(3) is vacuous.)
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Parts (1)--(2): apply the deterministic theorem pathwise with \(\varepsilon:=\eta\).
+Part (3): for the two-point law on \(\{\pm\eta\}\), the images \(x\pm\eta\) realize
+both sides of the cut on the unstable band (same adversaries as deterministic
+sharpness, including the equality pass at \(x=T-\eta\)).
+\end{proof}
+
+\begin{theorem}[Noisy sharpness]\label{thm:noisy-sharp}
+There exist admissible laws of \(\xi\) with \(\lvert\xi\rvert\le\eta\) a.s.\ such that
+if \(x\in[T,T+\eta)\) then \(\mathbb{P}(\widetilde A_T=0)>0\), and if
+\(x\in[T-\eta,T)\) then \(\mathbb{P}(\widetilde A_T=1)>0\).
+At \(x=T+\eta\), \(\widetilde A_T=1\) a.s.\ for every such \(\xi\).
+\end{theorem}
+
+\section{Laplace utility identities (not a DP proof)}
+For \(\xi\sim\mathrm{Lap}(0,b)\) with margin \(m=x-T\),
+\[
+\mathbb{P}(x+\xi\ge T)=
+\begin{cases}
+1-\tfrac12 e^{-m/b}, & m\ge 0,\\
+\tfrac12 e^{m/b}, & m<0.
+\end{cases}
+\]
+The repository checks this closed form at \(m\in\{0,\pm\ln 2\}\) (with \(b=1\))
+and margin monotonicity.
+This is \textbf{not} a differential-privacy accounting proof.
+Feedback limitation: \texttt{LAPLACE\_CDF\_IDENTITY\_NOT\_DP\_PROOF}.
+
+\section{Limitations}
+Bounded noise \(\neq\) Sparse Vector; no adaptive positive-release bound;
+computational certification only.
+Limitations tagged on PASS:
+\texttt{COMPUTATIONAL\_VERIFICATION\_NOT\_LEAN},
+\texttt{BOUNDED\_NOISE\_NOT\_FULL\_SVT},
+\texttt{LAPLACE\_CDF\_IDENTITY\_NOT\_DP\_PROOF}.
+
+\section{Verifier summary}
+PASS with limitations
+\texttt{BOUNDED\_NOISE\_NOT\_FULL\_SVT},
+\texttt{COMPUTATIONAL\_VERIFICATION\_NOT\_LEAN},
+\texttt{LAPLACE\_CDF\_IDENTITY\_NOT\_DP\_PROOF}.
+
+\section*{References}
+\begin{thebibliography}{9}
+\bibitem{dwork2014}
+Dwork and Roth, Algorithmic Foundations of Differential Privacy, 2014.
+\bibitem{repo}
+\texttt{implementation/src/operators/thresholding/}.
+\end{thebibliography}
+
+\end{document}
