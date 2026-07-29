@@ -1,0 +1,644 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+
+\hypersetup{
+  pdftitle={Advisor Email Record - Research Direction},
+  pdfauthor={Nicholas Mino},
+  pdfsubject={Emails that shaped the research direction, May--July 2026},
+  colorlinks=false,
+  pdfborder={0 0 0}
+}
+
+\definecolor{critical}{RGB}{140,20,20}
+\definecolor{superseded}{RGB}{120,70,20}
+\definecolor{current}{RGB}{20,90,50}
+\definecolor{editorial}{RGB}{60,60,60}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\CriticalSource}[1]{%
+  \par\noindent\textcolor{critical}{\textbf{EXTREMELY IMPORTANT SOURCE --- #1}}%
+  \par\medskip
+}
+\newcommand{\Meta}[2]{%
+  \par\noindent\textbf{#1:} #2\par\nobreak
+}
+\newcommand{\Email}[3]{%
+  \medskip\noindent\textbf{On #1, #2 wrote:}\par\nobreak
+  \begingroup\RaggedRight #3\par\endgroup
+}
+\newcommand{\Editorial}[1]{%
+  \par\medskip\noindent\textcolor{editorial}{\textbf{Editorial note.} #1}\par\medskip
+}
+\newcommand{\Takeaway}[1]{%
+  \par\medskip
+  \noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
+    \RaggedRight\textcolor{editorial}{\textbf{Central evidentiary conclusion.} #1}%
+  }}\par
+}
+
+\title{Advisor Email Record\\[0.35em]
+\large Emails That Shaped the Research Direction\\[0.15em]
+\normalsize May--July 2026}
+\author{Nicholas Mino\\
+Carnegie Mellon University\\[0.4em]
+\small Faculty mentor: Woody Zhu\\
+\small Graduate mentor: Wenbin Zhou}
+\date{Document compiled 26 July 2026\\
+\small Source PDF: \texttt{Advisor\_Email\_Record\_Research\_Direction.pdf}}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\textit{Primary documentary record. Advisor-authored guidance is distinguished from
+student proposals and administrative context.}
+\end{center}
+
+\section*{Purpose and Provenance}
+This document contains the email threads supplied by Nick Mino that materially
+shaped, clarified, or documented the evolution of the research project. The
+emails are ordered chronologically. Each entry begins with an annotation
+explaining its authority, significance, and relationship to the developing
+research direction. Routine scheduling material is omitted unless it
+establishes the occurrence or context of an important research meeting.
+
+\section*{How to Read This Record}
+\begin{itemize}[leftmargin=*,itemsep=0.35em]
+  \item Advisor-authored guidance has the highest evidentiary weight.
+  \item Student-authored descriptions document the proposal presented to the
+        advisors, but do not by themselves establish advisor approval.
+  \item Later advisor formulations may supersede earlier student formulations.
+  \item The June~11 email thread establishes the location and occurrence of an
+        in-person meeting; substantive content from that meeting comes from
+        contemporaneous notes and belongs in the main research packet, not in
+        this email record.
+\end{itemize}
+
+\section*{Executive Summary}
+The email record shows a clear progression. Professor Zhu first directed Nick
+toward the group's uncertainty-quantification and decision-focused papers and
+connected him with Wenbin Zhou for closer technical guidance. By late June,
+Nick proposed studying stabilized selection algorithms through their primitive
+operations and recurring stabilization mechanisms. After the June~29 meeting,
+Wenbin reported that he had rewritten the problem setup in Overleaf so that it
+aligned more closely with what the advisors intended, and instructed Nick to
+begin developing methodologies for that formulation. A June~12 administrative
+exchange also records Wenbin's recommendation that the project description
+explicitly use the term ``post-hoc inference.''
+
+\Takeaway{The current formulation should be grounded in Wenbin's July~2
+advisor-authored problem setup and the June~29 discussion, while Nick's June~25
+primitive-operation framework should be treated as a student proposal that
+motivated that discussion rather than as the final approved formulation.}
+
+\section*{Chronological Timeline}
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l >{\RaggedRight\arraybackslash}X
+  >{\RaggedRight\arraybackslash}X >{\RaggedRight\arraybackslash}X@{}}
+\toprule
+\textbf{Date} & \textbf{Authority} & \textbf{Importance} &
+  \textbf{Research significance} \\
+\midrule
+May 11--14 & Student request / advisor direction & High &
+  Professor Zhu directs Nick to prioritize the previously supplied papers and
+  establishes a recurring meeting structure. \\
+\addlinespace
+May 18--20 & Advisor direction & High &
+  Professor Zhu connects Nick with Wenbin to clarify and outline the research
+  objectives based on the proposal. \\
+\addlinespace
+June 11 & Meeting logistics & Contextual &
+  Confirms the in-person meeting with Wenbin in the Teresa Heinz collaboration
+  space. \\
+\addlinespace
+June 12 & Advisor terminology guidance & High &
+  Records that Wenbin requested the phrase ``post-hoc inference'' in the formal
+  project description. \\
+\addlinespace
+June 25--July 3 &
+  Student proposal followed by advisor reformulation & Critical &
+  Nick proposes a primitive-operation framework; after the June~29 meeting,
+  Wenbin drafts a problem setup that ``aligns closer to what we intended.'' \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\clearpage
+\section{Initial Reading Priorities and Working Structure}
+\CriticalSource{Email thread 1 (May 11--14)}
+
+\Meta{Date}{May 11--14, 2026}
+\Meta{Participants}{Nick Mino; Professor Woody Zhu}
+\Meta{Subject / thread}{Starting the research work effectively}
+\Meta{Authority}{Advisor direction responding to student request}
+\Meta{Importance}{High}
+\Meta{Status}{Foundational background direction; later narrowed by subsequent
+guidance}
+
+\paragraph{Why this matters.}
+This thread establishes the first concrete working instructions after the
+project began. Nick asks which materials and concepts to prioritize, and
+Professor Zhu directs him to work through the papers already supplied before
+reconnecting. Professor Zhu also indicates that a PhD student will provide
+closer guidance as the project develops.
+
+\paragraph{Key contributions.}
+\begin{itemize}[leftmargin=*,itemsep=0.25em]
+  \item Establishes the initial literature-reading phase.
+  \item Creates an expectation of recurring meetings.
+  \item Foreshadows the later introduction of Wenbin as the primary technical
+        guide.
+\end{itemize}
+
+\paragraph{Relationship to the research direction.}
+This is background-setting rather than the final research formulation. It
+explains why the project initially centered on uncertainty quantification and
+the group's existing papers.
+
+\subsection*{Full email thread}
+\Email{Thu, May 14, 2026 at 12:45 AM}{Woody Zhu
+\texttt{<shixianz@andrew.cmu.edu>}}{%
+Sure thing. We will organize meetings on a weekly basis. Sorry for my delayed
+response --- I have been traveling lately.
+
+In the meantime, please go through the papers I sent earlier, and let's
+reconnect next Wednesday once I return to Pittsburgh.
+
+After you finish the reading, I will connect you with one of our PhD students,
+who can provide more guidance as you get further into the project.
+
+Lastly, it is also perfectly fine to mention the research experience on
+LinkedIn.
+
+Best,\\
+Woody}
+
+\Email{Mon, May 11, 2026 at 1:39 PM}{Nick Mino
+\texttt{<nmino@andrew.cmu.edu>}}{%
+Hello Professor Zhu,
+
+I wanted to ask what you would recommend I do first to start the research work
+effectively.
+
+I have already started reading additional papers and trying to build a
+stronger general understanding of uncertainty quantification, but I want to
+make sure I am prioritizing the right background material and not moving in an
+unproductive direction. Are there specific papers, notes, codebases, or
+concepts you think I should focus on first?
+
+I also wanted to ask what the expected structure will be for the research. Will
+there be in-person meetings, online meetings, asynchronous materials, or some
+combination of those? I am generally available after 12:30~PM on weekdays and
+flexible outside of that, so I should be able to adjust to whatever meeting
+format works best.
+
+Separately, I wanted to ask how I should describe the role publicly and
+professionally. Would it be appropriate for me to make a LinkedIn post
+mentioning that I am starting research work, or would you prefer that I wait?
+Also, for LinkedIn and my resume, what title would be most accurate:
+``Research Assistant,'' ``Undergraduate Research Assistant,'' or something
+else?
+
+Best,\\
+Nick}
+
+\clearpage
+\section{Professor Zhu Connects Nick with Wenbin}
+\CriticalSource{Email thread 2 (May 18--20)}
+
+\Meta{Date}{May 18--20, 2026}
+\Meta{Participants}{Nick Mino; Professor Woody Zhu; Wenbin Zhou}
+\Meta{Subject / thread}{Paper priorities and research-objective clarification}
+\Meta{Authority}{Direct advisor instruction}
+\Meta{Importance}{High}
+\Meta{Status}{Active guidance; establishes Wenbin's role}
+
+\paragraph{Why this matters.}
+Professor Zhu explicitly asks Nick to work with Wenbin to clarify and outline
+the overall research objectives based on the proposal. This is the formal
+handoff from broad reading under Professor Zhu to closer technical development
+with Wenbin.
+
+\paragraph{Key contributions.}
+\begin{itemize}[leftmargin=*,itemsep=0.25em]
+  \item Wenbin is introduced as a third-year PhD student and co-author on
+        several relevant papers.
+  \item Nick is instructed to clarify and outline the research objectives
+        before the next meeting with Professor Zhu.
+  \item Nick identifies the specific papers he had been reading: inverse
+        conformal risk control, conformalized decision risk assessment,
+        Gen-DFL, and hierarchical probabilistic conformal prediction.
+\end{itemize}
+
+\paragraph{Relationship to the research direction.}
+This thread explains why later messages from Wenbin carry substantial authority
+over the technical problem formulation. It also records the literature base
+from which the project initially developed.
+
+\subsection*{Full email thread}
+\Email{Wed, May 20, 2026 at 11:04 AM}{Woody Zhu
+\texttt{<shixianz@andrew.cmu.edu>}}{%
+Thank you, Wenbin!
+
+Best,\\
+Woody}
+
+\Email{Wed, May 20, 2026 at 7:26 AM}{Wenbin Zhou
+\texttt{<wenbinz2@andrew.cmu.edu>}}{%
+Thank you, Woody, for connecting us.
+
+Nick has reached out to me in a separate email, and I will chat more with him
+offline.
+
+Best,\\
+Wenbin}
+
+\Email{Tue, May 19, 2026 at 8:12 PM}{Woody Zhu
+\texttt{<shixianz@andrew.cmu.edu>}}{%
+Hi Nick,
+
+Sorry for the delayed response. I've been traveling recently and will be fully
+back on campus after June~1st. After that, we can resume meeting on a more
+regular weekly basis.
+
+In the meantime, I'd like to connect you with Wenbin Zhou, who is a third-year
+PhD student in our group and also a co-author on several of these papers.
+
+Please feel free to reach out to Wenbin if you have questions about the papers
+or related background material. I would also suggest working with him to
+further clarify and outline the overall research objectives based on the
+proposal before we meet again. I think that would help make our future
+discussions more focused and productive.
+
+Thanks,\\
+Woody}
+
+\Email{Mon, May 18, 2026 at 12:07 PM}{Nick Mino
+\texttt{<nmino@andrew.cmu.edu>}}{%
+Hello Professor Zhu,
+
+Sorry for my late response, and I apologize for not making more progress on
+the reading sooner.
+
+I have continued working through the material we discussed. I focused most
+closely on your papers on inverse conformal risk control and conformalized
+decision risk assessment, along with some related papers.
+
+In your last email, you mentioned the papers you had sent earlier. I may have
+missed something, but I could not find a separate list or attachments. I have
+mainly been reading the papers we had discussed previously and some of your
+related work, including Gen-DFL and Hierarchical Probabilistic Conformal
+Prediction for Distributed Energy Resources Adoption.
+
+Could you clarify which specific papers I should focus on before we reconnect?
+
+Best,\\
+Nick}
+
+\clearpage
+\section{Evidence of the June 11 In-Person Meeting}
+
+\Meta{Date}{June 8--11, 2026}
+\Meta{Participants}{Nick Mino; Wenbin Zhou}
+\Meta{Subject / thread}{Meeting location in Hamburg Hall}
+\Meta{Authority}{Administrative corroboration}
+\Meta{Importance}{Contextual but important}
+\Meta{Status}{Establishes occurrence and location; not substantive research
+guidance}
+
+\paragraph{Why this matters.}
+This short thread confirms that Nick and Wenbin met in person on June~11, 2026,
+in the Teresa Heinz collaboration space on the B-level of Hamburg Hall. The
+substantive research insight from this meeting is preserved separately in
+Nick's contemporaneous notes, because no transcript is available.
+
+\paragraph{Key contributions.}
+\begin{itemize}[leftmargin=*,itemsep=0.25em]
+  \item Confirms the date and physical location of the meeting.
+  \item Supports the provenance of the June~11 contemporaneous research note.
+  \item Should be cross-referenced by the main research packet.
+\end{itemize}
+
+\paragraph{Relationship to the research direction.}
+The thread itself contains no technical research content. Its value is
+evidentiary: it validates that the undocumented in-person meeting occurred.
+
+\subsection*{Full email thread}
+\Email{Thu, Jun 11, 2026 at 3:07 PM}{Wenbin Zhou
+\texttt{<wenbinz2@andrew.cmu.edu>}}{%
+Hey Nick,
+
+I'm at the Teresa Heinz collab space.
+
+Best,\\
+Wenbin}
+
+\Email{Thu, Jun 11, 2026 at 3:05 PM}{Nick Mino
+\texttt{<nmino@andrew.cmu.edu>}}{%
+I apologize for not asking this sooner, but where in Hamburg b level are we
+meeting? I have been in the Teresa Heinz collab space.}
+
+\Email{Tue, Jun 9, 2026 at 11:41 AM}{Nick Mino
+\texttt{<nmino@andrew.cmu.edu>}}{%
+B-level Hamburg Hall works for me.
+
+Best,\\
+Nick}
+
+\Email{Mon, Jun 8, 2026 at 1:57 PM}{Wenbin Zhou
+\texttt{<wenbinz2@andrew.cmu.edu>}}{%
+Thanks. How about the basement (B-level) of Hamburg Hall?}
+
+\clearpage
+\section{Required Terminology: ``Post-Hoc Inference''}
+\CriticalSource{Email thread 4 (June 12 terminology)}
+
+\Meta{Date}{June 12, 2026}
+\Meta{Participants}{Nick Mino; Wenbin Zhou}
+\Meta{Subject / thread}{SURA project description and signed form}
+\Meta{Authority}{Advisor terminology guidance embedded in administrative
+exchange}
+\Meta{Importance}{High}
+\Meta{Status}{Active terminology requirement}
+
+\paragraph{Why this matters.}
+Although this exchange primarily concerns a signed form, Nick explicitly states
+that he incorporated Wenbin's suggestion to add the phrase ``post-hoc
+inference'' to the project description. This is direct evidence that the
+inferential objective was intended to be part of the formal research framing.
+
+\paragraph{Key contributions.}
+\begin{itemize}[leftmargin=*,itemsep=0.25em]
+  \item Records Wenbin's requested terminology.
+  \item Shows that the project was not merely about generic stability or robust
+        optimization.
+  \item Supports using post-hoc inference as a defining component of the
+        current problem statement.
+\end{itemize}
+
+\paragraph{Relationship to the research direction.}
+This terminology constraint remains consistent with the later
+optimization-stability formulation. It should be treated as an active
+requirement unless superseded by explicit advisor guidance.
+
+\subsection*{Full email thread}
+\Email{Fri, Jun 12, 2026 at 3:10 PM}{Nick Mino
+\texttt{<nmino@andrew.cmu.edu>}}{%
+Hi Wenbin,
+
+Thank you, this version works. I appreciate your help.
+
+Best,\\
+Nick}
+
+\Email{Fri, Jun 12, 2026 at 3:01 PM}{Wenbin Zhou
+\texttt{<wenbinz2@andrew.cmu.edu>}}{%
+Here is the PDF version.}
+
+\Email{Fri, Jun 12, 2026 at 2:59 PM}{Wenbin Zhou
+\texttt{<wenbinz2@andrew.cmu.edu>}}{%
+Let me know if this works. There was probably some formatting issue that caused
+the signature to be unable to display.}
+
+\Email{Fri, Jun 12, 2026 at 2:56 PM}{Nick Mino
+\texttt{<nmino@andrew.cmu.edu>}}{%
+Hi Wenbin,
+
+Thank you for sending this back. I incorporated your suggestion and added
+``post-hoc inference'' to the project description.
+
+I noticed that the phone number and date were added, but the additional mentor
+signature line at the bottom is still blank. Would you be able to sign that
+line in the attached updated version?
+
+Best,\\
+Nick}
+
+\clearpage
+\section{Primitive-Operation Proposal and Advisor Reformulation}
+\CriticalSource{Email thread 5 (June 25--July 3) --- critical}
+
+\Meta{Date}{June 25--July 3, 2026}
+\Meta{Participants}{Nick Mino; Professor Woody Zhu; Wenbin Zhou}
+\Meta{Subject / thread}{Research approach, June~29 meeting, and revised problem
+setup}
+\Meta{Authority}{Student proposal followed by advisor-authored reformulation}
+\Meta{Importance}{Critical}
+\Meta{Status}{July~2 formulation supersedes earlier student wording where
+inconsistent}
+
+\paragraph{Why this matters.}
+This is the most consequential email chain in the supplied record. Nick
+proposes a framework based on stabilized algorithms, primitive operations,
+problem structure, and downstream inference goals. After the June~29 meeting,
+Wenbin states that he drafted a new problem setup in Overleaf that ``aligns
+closer to what we intended'' and authorizes Nick to begin brainstorming
+methodologies for that formulation.
+
+\paragraph{Key contributions.}
+\begin{itemize}[leftmargin=*,itemsep=0.25em]
+  \item Documents Nick's primitive-operation and stabilization-pattern proposal
+        before advisor review.
+  \item Establishes that the June~29 meeting was used to evaluate the current
+        approach and SURA proposal diagram.
+  \item Contains Wenbin's explicit statement that his revised setup is closer
+        to the advisors' intended problem.
+  \item Moves the project from problem clarification into methodology
+        development.
+\end{itemize}
+
+\paragraph{Relationship to the research direction.}
+Nick's June~25 message is evidence of the proposed architecture, not conclusive
+evidence of advisor approval. Wenbin's July~2 Overleaf formulation has higher
+authority and should control the current problem statement. The attached files
+and the actual Overleaf text are therefore essential companion evidence.
+
+\subsection*{Full email thread}
+\Email{Fri, Jul 3, 2026 at 2:24 AM}{Nick Mino
+\texttt{<nmino@andrew.cmu.edu>}}{%
+Hi Wenbin,
+
+Thank you for drafting the problem setup. I will read through it carefully and
+start brainstorming possible methodologies to add to the draft. I will let you
+know if I have any questions.
+
+For the recurring meeting, I do not think we have one set up yet. I am
+available any weekday before 10:30~AM or after 12:30~PM. A weekly meeting would
+work well for me.
+
+Best,\\
+Nick}
+
+\Email{Thu, Jul 2, 2026 at 12:53 PM}{Wenbin Zhou
+\texttt{<wenbinz2@andrew.cmu.edu>}}{%
+Hi Nick,
+
+Nice talking to you on Monday, and I am glad to see that we are making good
+progress.
+
+I drafted a version of the problem setup in the Overleaf project, which aligns
+closer to what we intended. Please feel free to give it a read and let me know
+if you have any questions. If not, you may begin brainstorming the
+methodologies we could use to approach this problem and write them down in the
+draft. We can discuss them next time we meet.
+
+Woody --- Please see attached for the two files that Nick presented on Monday.
+
+By the way, do we have a weekly recurring meeting with Nick set up? I don't see
+any on my calendar.
+
+Best,\\
+Wenbin}
+
+\Email{Fri, Jun 26, 2026 at 12:56 PM}{Nick Mino
+\texttt{<nmino@andrew.cmu.edu>}}{%
+That works for me, thank you.}
+
+\Email{Fri, Jun 26, 2026 at 11:56 AM}{Wenbin Zhou
+\texttt{<wenbinz2@andrew.cmu.edu>}}{%
+Works for me as well.}
+
+\Email{Fri, Jun 26, 2026 at 10:45 AM}{Woody Zhu
+\texttt{<shixianz@andrew.cmu.edu>}}{%
+Sorry I realized I have a meeting between 4--5. How about 5--5:30?
+
+Woody}
+
+\Email{Fri, Jun 26, 2026 at 9:04 AM}{Wenbin Zhou
+\texttt{<wenbinz2@andrew.cmu.edu>}}{%
+Works for me}
+
+\Email{Fri, Jun 26, 2026 at 8:02 AM}{Woody Zhu
+\texttt{<shixianz@andrew.cmu.edu>}}{%
+What about 4--4:30?
+
+Woody}
+
+\Email{Fri, Jun 26, 2026 at 6:37 AM}{Wenbin Zhou
+\texttt{<wenbinz2@andrew.cmu.edu>}}{%
+Hi Woody,
+
+12:30--1:00 is a bit tough for me. Would any time before 12 or after 1 work?
+
+Best,\\
+Wenbin}
+
+\Email{Thu, Jun 25, 2026 at 10:09 PM}{Woody Zhu
+\texttt{<shixianz@andrew.cmu.edu>}}{%
+Hi Nick,
+
+Thanks for reaching out. How about next Monday 12:30--1?
+
+Let me know if this works for you and Wenbin.
+
+Best,\\
+Woody}
+
+\Email{Thu, Jun 25, 2026 at 4:19 PM}{Nick Mino
+\texttt{<nmino@andrew.cmu.edu>}}{%
+Hello Professor Zhu and Wenbin,
+
+I hope you are doing well. I wanted to ask whether we could schedule a meeting
+soon to discuss my current research approach and the SURA Week~3 proposal
+diagram.
+
+My current approach is to focus on algorithmic stability for post hoc
+selection/inference by studying concrete examples of selection algorithms that
+have been `stabilized'. I have been gathering these examples so that I can
+compare the structure of the original selection algorithm with the stabilized
+version, identify the primitive operations involved, and look for recurring
+patterns in how stability is introduced. I am in the process of converting the
+examples I found into LaTeX.
+
+The goal is to begin work on a framework that analyzes a selection algorithm's
+operations, the relevant data type or problem structure, and the downstream
+inference or evaluation goal to determine an appropriate formulation for adding
+algorithmic stability.
+
+I wanted to check whether this is the right approach to continue pursuing.
+
+For the Week~3 assignment, I also need to ask a few questions about the
+research question, novelty, significance, methods, and expected outcomes, so
+the next meeting would be useful for confirming those pieces.
+
+I also wanted to ask what schedule would make sense for regular meetings going
+forward. Would you prefer weekly or biweekly meetings, and is there a recurring
+time that generally works for both of you?
+
+I am available any day before 10:30~AM or after 12:30~PM, except Saturdays.
+
+Best,\\
+Nick}
+
+\clearpage
+\section*{Concluding Synthesis: Evolution of Advisor Guidance}
+\begin{enumerate}[leftmargin=*,itemsep=0.6em]
+  \item \textbf{Initial background phase.}
+        Professor Zhu first directed Nick to study the group's
+        uncertainty-quantification and decision-focused papers. At this stage,
+        the technical problem remained broad.
+
+  \item \textbf{Technical mentorship and objective clarification.}
+        Professor Zhu then connected Nick with Wenbin and explicitly asked them
+        to clarify and outline the research objectives based on the proposal.
+        This established Wenbin as the primary source of detailed technical
+        guidance.
+
+  \item \textbf{Post-hoc inference becomes explicit.}
+        The June~12 exchange records Wenbin's suggestion that the formal
+        project description include the phrase ``post-hoc inference.'' This
+        indicates that downstream inferential validity is a defining objective,
+        not an optional application.
+
+  \item \textbf{Student-proposed primitive framework.}
+        By June~25, Nick proposed studying concrete stabilized selection
+        algorithms, decomposing them into primitive operations, and identifying
+        recurring stabilization patterns. This is the clearest email statement
+        of the architecture Nick brought to the advisors.
+
+  \item \textbf{Advisor reformulation controls.}
+        After the June~29 meeting, Wenbin drafted a new problem setup that he
+        said aligned more closely with what the advisors intended. That
+        formulation supersedes earlier student wording where the two differ and
+        should be the primary source for the current mathematical problem.
+
+  \item \textbf{Methodology phase begins.}
+        Wenbin then instructed Nick to begin brainstorming and writing
+        methodologies for the revised setup. The project had therefore moved
+        from broad reading and problem identification into the development of
+        candidate methods.
+\end{enumerate}
+
+\Takeaway{The project concerns algorithmic stability for optimization-based
+selection in support of post-hoc inference, with the final formulation governed
+by the advisor-authored July~2 problem setup. The primitive-operation framework
+is an important proposed methodology, but its status must be evaluated against
+that advisor-authored formulation and the June~29 meeting transcript.}
+
+\section*{Missing Companion Evidence}
+\begin{itemize}[leftmargin=*,itemsep=0.35em]
+  \item The actual July~2 Overleaf problem setup.
+  \item The two files attached to Wenbin's July~2 email.
+  \item The June~29 meeting transcript.
+  \item The June~11 contemporaneous notes describing the optimization-specific
+        stability intuition.
+  \item Any earlier June~5 email in which Wenbin directly connected algorithmic
+        stability to replacing data splitting in CREME, if available.
+\end{itemize}
+
+\begin{center}
+\textit{End of record.}
+\end{center}
+
+\end{document}

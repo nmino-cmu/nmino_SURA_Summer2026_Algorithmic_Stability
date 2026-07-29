@@ -1,0 +1,699 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{longtable}
+
+\hypersetup{
+  pdftitle={Research Scope, Timeline, and Authority},
+  pdfauthor={Nicholas Mino},
+  pdfsubject={How to read the Formulation context corpus},
+  colorlinks=false,
+  pdfborder={0 0 0}
+}
+
+\definecolor{critical}{RGB}{140,20,20}
+\definecolor{superseded}{RGB}{120,70,20}
+\definecolor{current}{RGB}{20,90,50}
+\definecolor{editorial}{RGB}{60,60,60}
+
+\newcommand{\Status}[1]{\textbf{Status:} #1}
+\newcommand{\Meta}[2]{\par\noindent\textbf{#1:} #2\par}
+
+\title{Research Scope, Timeline, and Authority\\[0.35em]
+\large How to read the Formulation context corpus}
+\author{Nicholas Mino\\
+Carnegie Mellon University\\[0.4em]
+\small Faculty mentor: Woody Zhu (Shixiang Zhu)\\
+\small Graduate mentor: Wenbin Zhou}
+\date{Compiled 26 July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\textit{This folder explains the research. The \texttt{history/} folder holds source PDFs only.
+Emails and transcripts remain in their own folders. Do not treat this overview as a rewrite of
+those sources.}
+\end{center}
+
+\section{What this context tree is for}
+The \texttt{Formulation/context} tree is an archival reading guide for the SURA project on
+\textbf{algorithmic stability for post-hoc / optimization-selected policies}.
+
+\begin{itemize}[leftmargin=*]
+  \item \texttt{overview/} --- this document: scope, timeline, authority, evolution, open problems.
+  \item \texttt{history/} --- source PDFs only (working survey + Wenbin problem setup).
+  \item \texttt{emails/} --- advisor email record that shaped direction.
+  \item \texttt{transcripts/} --- edited-verbatim research meeting record.
+  \item \texttt{papers/} --- reading library (priority / lab / background / tangential).
+        Priority and pivot papers are in-scope for the evolution story; PDFs live here and are
+        not duplicated into \texttt{history/}.
+\end{itemize}
+
+\section{In scope / out of scope}
+
+\subsection{In scope for this overview and \texttt{history/}}
+\begin{itemize}[leftmargin=*]
+  \item \texttt{Algorithmic\_Stability\_Working\_Document.pdf}
+        (identical to Downloads \texttt{-5}/{\texttt{-6}/{\texttt{-7}}).
+  \item \texttt{Algorithmic\_Stability\_Wenbin\_Problem\_Setup.pdf}
+        (Downloads \texttt{-8}; best available annotated draft / stand-in for the
+        \textbf{missing} July~2 Overleaf; identity with that Overleaf is
+        \textbf{unproven}).
+  \item Advisor email packet (\texttt{emails/}).
+  \item Meeting transcript packet (\texttt{transcripts/}): 27~Apr, 22~May, 29~Jun 2026.
+\end{itemize}
+
+\subsection{Out of scope (not incorporated here)}
+\begin{itemize}[leftmargin=*]
+  \item Lean operator catalog, certificates, verification pipelines under
+        \texttt{Desktop/Research/Work}.
+  \item Deep-research CSV/agent dumps outside this corpus.
+  \item Earlier proposal drafts \texttt{Algorithmic\_Stability-1} through \texttt{-4}, SURA tour
+        PDFs, mentor--mentee forms, and other Downloads material not listed above.
+  \item The \texttt{papers/} PDFs are \emph{not duplicated into} \texttt{history/}
+        (packaging). Priority/pivot papers \textbf{are} part of formulation history;
+        they live in \texttt{papers/}.
+\end{itemize}
+
+\paragraph{Historical note.}
+Excluding those materials is a \emph{corpus boundary}, not a claim that they never mattered.
+If they are later brought into \texttt{history/}, this overview should be updated.
+
+\section{Authority hierarchy (read this first)}
+Authority is \textbf{layered by role}, not a single flat ranking. Swarm council
+(26~Jul~2026): do not crown H2 over Meeting~3 for everything; do not equate H2 with the
+July~2 Overleaf.
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l >{\RaggedRight\arraybackslash}X
+  >{\RaggedRight\arraybackslash}X@{}}
+\toprule
+\textbf{Layer} & \textbf{Controller} & \textbf{Controls} \\
+\midrule
+L0 Institutional & Woody $>$ Wenbin $>$ Nick &
+  Mentorship / veto; does not auto-rank every PDF \\
+\addlinespace
+L1 Research agenda & Meeting~3 (Woody) &
+  Opt-induced \textbf{policy} stability; discontinuity; AI$\to$optimizer;
+  HT end product ``trust this decision?'' \\
+\addlinespace
+L2 Written math object & July~2 Overleaf when recovered;
+  \textbf{H2 = stand-in, identity unproven} &
+  UQ $\hat\theta$ via constrained opt; goals (i)--(iii); Part~I/II program;
+  five \texttt{[Wenbin]:} comments high for \emph{direction} \\
+\addlinespace
+L3 Methods authorization & Wenbin 2~Jul email &
+  Brainstorm methodologies for the L2 setup only;
+  does not resurrect H1 as controlling framework \\
+\addlinespace
+L4 Terminology / process & Nick-attested ``post-hoc inference'' (12~Jun);
+  H2 W4 flexibility &
+  Labels; permission to revise setting if more principal \\
+\addlinespace
+L5 Historical / reference & H1 inventory; M1--M2; June~25 proposal;
+  adaptive regret; quantization; CREAM backups &
+  Non-controlling live inventory (not scrapbook); history only for frameworks \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\medskip
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
+\textbf{Conflict rules (council).}
+(1)~L1 constrains \emph{class} (policy $=$ opt solution). L2 fills \emph{instance}
+(UQ / constrained $\hat\theta$). Woody endorsement of the UQ instance is
+\textbf{not yet in-corpus} --- treat H2$\leftrightarrow$M3 as compatible on the surface,
+latent conflict still open.\\
+(2)~Methods must target L2 under L3. H1 supplies primitives/literature, not the problem
+definition.\\
+(3)~H2 Parts~I/II are empty stubs --- direction of formalization, not finished law.\\
+(4)~Never write ``H2 $=$ July~2 Overleaf.''
+}}
+
+\section{Source inventory}
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l >{\RaggedRight\arraybackslash}X
+  >{\RaggedRight\arraybackslash}X >{\RaggedRight\arraybackslash}X@{}}
+\toprule
+\textbf{ID} & \textbf{Document} & \textbf{Location} & \textbf{Status} \\
+\midrule
+H1 & Stabilized Selection Algorithms
+    (working document, 26 Jul 2026) &
+    \texttt{history/Algorithmic\_Stability\_Working\_Document.pdf} &
+    Historical / Reference material
+    (catalog still useful) \\
+\addlinespace
+H2 & Algorithmic Stability for Post-Hoc Selection
+    (Wenbin comments + problem setup) &
+    \texttt{history/Algorithmic\_Stability\_Wenbin\_Problem\_Setup.pdf} &
+    Incomplete annotated draft
+    (best available L2 stand-in; Parts~I/II empty;
+    Overleaf identity unproven) \\
+\addlinespace
+E1 & Advisor Email Record &
+    \texttt{emails/Advisor\_Email\_Record\_Research\_Direction.\{tex,pdf\}} &
+    Current (primary email archive) \\
+\addlinespace
+T1 & Research Meeting Transcripts &
+    \texttt{transcripts/Research\_Meeting\_Transcripts\_Synthesized.\{tex,pdf\}} &
+    Current (edited verbatim;
+    plan-status tags mark superseded ideas) \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\paragraph{Triplicate note for H1.}
+Downloads files \texttt{nmino\_\_\_SURA\_\_\_Algorithmic\_Stability-5.pdf}, \texttt{-6.pdf}, and
+\texttt{-7.pdf} are byte-identical (same MD5). Only one copy is kept in \texttt{history/}.
+
+\subsection{Per-document classification headers}
+
+\subsubsection*{H1 --- Working document (stabilized selection examples)}
+\Meta{Document}{Stabilized Selection Algorithms: Research working document}
+\Meta{Date}{26 July 2026 (filename lineage: Downloads \texttt{-5}/{\texttt{-6}/{\texttt{-7}}})}
+\Meta{Type}{Student working survey / example catalog}
+\Status{Historical; catalog and taxonomies remain reference material}
+
+\paragraph{Purpose.}
+Collect concrete examples of the form
+original selector $\to$ stabilized selector $\to$ formal certificate $\to$ utility/inference cost,
+as raw material for a possible composable stability-certification framework.
+
+\paragraph{Relationship to later work.}
+Supplies the notation $\hat S=A(D)$, $\tilde S=\tilde A(D;\xi)$, certificate types
+(stability / DP / post-selection CI), and primitive/mechanism/proof taxonomies. Presented in
+spirit at Meeting~3; later narrowed by Wenbin (H2) toward optimization-selected policies in UQ.
+
+\paragraph{What remains valid.}
+Example audit tables; Zrnic--Jordan noisy winner / screening / Stable LASSO writeups;
+DP selection primitives; synthesis that DP alone is not an inference bridge.
+
+\paragraph{What changed later.}
+Universal ``composable framework for post-hoc selection algorithms'' is narrowed in H2 to a
+specific UQ + constrained-optimization setting, with an explicit two-part research program.
+
+\paragraph{Important ideas introduced.}
+Unifying template; inclusion criteria; best-first proposed theorem (gap-aware noisy
+argmax/top-$k$ $\to$ $\eta$-stability $\to$ CI correction).
+
+\paragraph{Where those ideas appear.}
+Notation and template echoed in H2's opening setup; Meeting~3 discussion of stabilized
+selection rules; email June~25 student proposal.
+
+\subsubsection*{H2 --- Wenbin problem setup (L2 stand-in; identity with July~2 Overleaf unproven)}
+\Meta{Document}{Algorithmic Stability for Post-Hoc Selection}
+\Meta{Date}{Compiled/annotated 26 July 2026 (Downloads \texttt{-8}).
+Same-lineage with Wenbin's 2~Jul Overleaf: \textbf{unproven}.}
+\Meta{Type}{Co-authored hybrid draft with inline Wenbin commentary;
+mixes student template, Meeting~3 remnants, and Wenbin UQ setup}
+\Status{Incomplete annotated draft --- best available L2 stand-in (not finished law)}
+
+\paragraph{Purpose.}
+State the project as post-hoc inference after data-dependent selection,
+and narrow the general problem to an uncertainty-quantification setting where hyperparameter
+$\theta$ is chosen by constrained optimization on shared calibration data.
+
+\paragraph{Relationship to later work.}
+July~2 email authorizes methodologies for Wenbin's Overleaf setup. H2 is the best surviving
+candidate for that direction --- \textbf{not} certified as the Overleaf text.
+
+\paragraph{What remains valid.}
+Five \texttt{[Wenbin]:} comments: intersection of post-hoc inference, algorithmic stability, and optimization;
+need to focus on one objective (UQ example); decompose into stability of constrained
+optimizations, then post-hoc inference; setting may be modified if a more principal version
+appears; strategy notes (data-driven policy / PTO; \textbf{no recalibration}; data-randomize;
+structured noise; inverse optimization; Tijana / winner's curse / algorithmic stability line).
+
+\paragraph{What changed later / still incomplete.}
+Sections 3.2--3.4 are stubs. Abstract TBA. Goal~(iii) body still says ``recalibrate'' while
+Comment~E prefers no recalibration --- \textbf{unresolved mid-edit}.
+
+\paragraph{Important ideas introduced.}
+Validity assumption~(1); optimization~(2) defining $\hat\theta(D)$; goals (i)--(iii).
+\textbf{Dual text on (iii):} body asks how to recalibrate $C$; Comment~E says no recalibration /
+data-randomize answers~(iii).
+\textbf{Notation bug (do not sanitize):} introducer writes $C(X;D,\alpha)$ while Eq.~(1) uses
+$C(X;D,\theta)$.
+
+\paragraph{Where those ideas appear.}
+Meeting~3 priorities (formal stability of optimization-induced policy; stabilization
+mechanism; trust the decision?); July~2 email authorizing methodology brainstorming.
+
+\subsubsection*{E1 --- Advisor email record}
+\Meta{Document}{Advisor Email Record --- Research Direction}
+\Meta{Date}{Threads May 11 -- July 3, 2026; packet compiled 26 July 2026}
+\Meta{Type}{Primary documentary email archive}
+\Status{Current}
+
+\paragraph{Purpose.}
+Preserve advisor-authored guidance and the student proposal that prompted reformulation.
+
+\paragraph{Key preserved decisions.}
+Reading priorities; Wenbin as technical guide; ``post-hoc inference'' terminology
+(Nick-attested, 12~Jun); June~25 primitive-operation proposal (unapproved by email);
+July~2 Wenbin Overleaf draft ``aligns closer to what we intended'' (text missing).
+
+\subsubsection*{T1 --- Meeting transcripts}
+\Meta{Document}{Research Meeting Transcripts (Edited Verbatim)}
+\Meta{Date}{Meetings 27 Apr, 22 May, 29 Jun 2026; packet compiled 26 July 2026}
+\Meta{Type}{Primary meeting archive}
+\Status{Current (with explicit superseded plan tags)}
+
+\paragraph{Purpose.}
+Retain substantive research discussion edited-verbatim; mark plan evolution so early proposals
+are not mistaken for the current agenda.
+
+\section{Chronological timeline}
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l >{\RaggedRight\arraybackslash}X
+  >{\RaggedRight\arraybackslash}X@{}}
+\toprule
+\textbf{When} & \textbf{Event} & \textbf{Sources} \\
+\midrule
+27 Apr 2026 & Meeting~1: three lab pillars (UQ for high-stakes decisions;
+  grid resilience; human--AI collaboration). Nick to read and choose. & T1 \\
+\addlinespace
+11--14 May & Woody: read supplied papers; weekly meetings; PhD student forthcoming. & E1 \\
+\addlinespace
+18--20 May & Woody connects Nick with Wenbin; clarify research objectives from proposal.
+  Papers named: inverse conformal risk control; conformalized decision risk assessment;
+  Gen-DFL; hierarchical probabilistic conformal prediction. & E1 \\
+\addlinespace
+22 May 2026 & Meeting~2: algorithmic pillar (CREDO/CREAM). Nick proposes adaptive
+  certified regret frontier. Wenbin: Overleaf formulation; backups = sequential CREAM,
+  model/solver error. Background: conformal prediction + OR optimization. & T1 \\
+\addlinespace
+8--11 Jun & Logistics confirm in-person meeting (Hamburg Hall / Teresa Heinz).
+  Substantive June~11 notes not in this corpus. & E1 \\
+\addlinespace
+12 Jun & ``Post-hoc inference'' added to formal project description
+  (per Nick's attestation of Wenbin's suggestion; Wenbin phrase not in email body). & E1 \\
+\addlinespace
+25 Jun & Nick emails primitive-operation / stabilized-selection approach for post-hoc
+  selection/inference; requests meeting on Week~3 diagram. & E1 \\
+\addlinespace
+29 Jun 2026 & Meeting~3: \textcolor{current}{\textbf{current spoken agenda}}. Stability of
+  optimization-induced policies; discontinuity challenge; AI predictions $\to$ optimizer;
+  end product as hypothesis test; priority papers PPI + algorithmic/post-selection
+  stability (Angelopoulos \& Jordan). Adaptive regret not reaffirmed. & T1 \\
+\addlinespace
+2 Jul 2026 & Wenbin: Overleaf problem setup ``aligns closer to what we intended''; Nick to
+  brainstorm methodologies. Overleaf text \textbf{MISSING} from corpus. &
+  E1; H2 (26~Jul) $=$ unverified stand-in \\
+\addlinespace
+26 Jul 2026 & H1 working survey finalized; H2 annotated draft compiled same day
+  (CreationDate later than H1). Corpus folders \texttt{history/} + \texttt{overview/} created. &
+  H1; H2; this file \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Evolution of research questions}
+
+\subsection{Idea chain (do not collapse)}
+
+\paragraph{Idea A --- Quantization $\to$ risk-profile comparison.}
+\textbf{First appearance:} before / at Meeting~2 (Nick).\\
+\textbf{Status:} \textcolor{superseded}{Redirected / no longer primary}.\\
+\textbf{Why:} Woody redirected toward pure algorithmic decision analysis, not engineering
+testing.\\
+\textbf{Remnant:} Reappears only as a special case of ``model error'' in Wenbin's Meeting~2
+backup ideas.
+
+\paragraph{Idea B --- Adaptive / certified bounded-regret frontier.}
+\textbf{First appearance:} Meeting~2 (active plan); Overleaf formulation assigned.\\
+\textbf{Status:} \textcolor{superseded}{De facto not the active plan as of Meeting~3};
+no spoken ``abandon forever''; revive unknown.\\
+\textbf{Why:} Project pivoted to stability of optimization-induced policies and post-selection
+stability literature (Woody reframes; packet editorial marks superseded).\\
+\textbf{Historical note.} Retain for intellectual history and any notation borrowed from CREAM
+during the Overleaf attempt (that Overleaf text is missing --- see Missing evidence).
+
+\paragraph{Idea C --- Sequential CREAM; accommodate model/solver error.}
+\textbf{First appearance:} Meeting~2 (Wenbin backups).\\
+\textbf{Status:} Backup only; not adopted as Meeting~3 direction; revive unknown.\\
+\textbf{Status label:} Not active (do not write bare ``Abandoned'' as if permanently killed).
+
+\paragraph{Idea D --- Stabilized selection algorithms + primitive catalog.}
+\textbf{First appearance:} Nick email 25~Jun; literature survey shown at Meeting~3; H1 PDF
+written 26~Jul (same day as H2 compile --- not an earlier artifact).\\
+\textbf{Status:} Non-controlling live inventory / Historical reference (not scrapbook).\\
+\textbf{Evolution:} Woody (M3) specializes object class to opt-induced policies;
+Wenbin (H2) further offers UQ hyperparameter-via-constrained-opt as working instance
+(Woody endorsement of that UQ instance not yet in-corpus).
+
+\paragraph{Idea E --- Stability of optimization-induced policies; trust the decision?}
+\textbf{First appearance:} Meeting~3 (Woody), linking prior Woody--Wenbin--Ryan discussion.\\
+\textbf{Current form:} L1 $=$ M3 agenda; L2 working math $=$ H2 UQ block
+($C(X;D,\hat\theta(D))$ when $\hat\theta$ solves constrained opt) --- with unresolved
+(iii)/Comment~E clash (recalibrate vs no recalibration / data-randomize).\\
+\textbf{Status:} \textcolor{current}{Current} (agenda + working direction).
+
+\subsection{Evolution (overlapping documents)}
+
+\textbf{Three distinct earlier objects (do not collapse):}
+(1)~June~25 email proposal; (2)~Meeting~3 example survey (possibly Downloads \texttt{-2});
+(3)~H1 PDF dated 26~Jul~2026.
+Shared pattern: general composable stability-certification for post-hoc selectors;
+template $\tilde S=\tilde A(D;\xi)$; certificates DP / $(\eta,\tau,\nu)$-stability /
+selective CIs.
+
+$\downarrow$
+
+\textbf{What changed:}
+Woody (M3) restricts class to policies that are optimization solutions;
+Wenbin (H2) offers UQ hyperparameter-via-constrained-opt as working instance + Part~I/II;
+method bias toward structured / data randomization (Comment~E), while goal~(iii) text still
+says recalibrate.
+
+$\downarrow$
+
+\textbf{Why it changed:}
+Wenbin (H2): ``The post-hoc inference problem is itself very general. We need to narrow\ldots''
+Woody (Meeting~3): policy is solution to an optimization problem; define stability for that
+class first.
+
+$\downarrow$
+
+\textbf{Current understanding (L1 Meeting~3 + L2 H2 stand-in):}
+study when optimization-selected $\hat\theta(D)$ preserves uncertainty-set validity; if not,
+quantify deviation; restore~(1) preferably via data-randomize / structured noise
+(\textbf{not} settled recalibration of $C$ --- mid-edit clash). Keep work inside Woody's
+opt-induced policy class.
+
+\section{Evolution of the mathematical framework}
+
+\subsection{Student unifying template (H1) --- preserved}
+\[
+\hat S = A(D),\qquad
+\tilde S = \tilde A(D;\xi),\qquad
+\mathrm{Cert}(\tilde A)\le \eta
+\quad\text{or}\quad
+(\varepsilon,\delta)\text{-DP}
+\quad\text{or}\quad
+\Pr\{\theta_{\tilde S}\in C_{\tilde S}(D)\}\ge 1-\alpha.
+\]
+Pattern: primitive + mechanism + proof strategy $\Rightarrow$ certificate at utility/inference cost.
+
+\subsection{Wenbin / working L2 setup (H2) --- direction, not finished law}
+\textbf{Primary inconsistency (keep visible):} H2 introduces
+$C(X;D,\alpha)$ then uses $C(X;D,\theta)$ in~(1). Below follows Eq.~(1)'s $\theta$ form.
+
+Uncertainty set $C(X;D,\theta)$ with validity for fixed $\theta$:
+\[
+\Pr\bigl(Y\in C(X;D,\theta)\bigr)\ge 1-\alpha. \tag{1}
+\]
+Data-dependent hyperparameter from constrained optimization:
+\[
+\pi:\quad
+\min_\theta \hat f(y;\theta)
+\quad\text{s.t.}\quad
+\hat g(\theta)\le 0, \tag{2}
+\]
+with $\hat f,\hat g$ depending on shared data $D$ (filtration note in H2).
+Goals: (i)~when does~(1) still hold for $\hat\theta(D)$; (ii)~miscoverage deviation if not;
+(iii)~\textbf{as written} $=$ recalibrate $C$; \textbf{Comment~E override} $=$ no recalibration,
+data-randomize answers~(iii). Unresolved mid-edit.
+
+\paragraph{Notation change (documented, not overwritten).}
+\begin{itemize}[leftmargin=*]
+  \item Old (H1 / Meeting~3 slides): $\hat S=A(D)$, $\tilde S=\tilde A(D;\xi)$, confidence set
+        for $\theta_{\tilde S}$.
+  \item New (H2 UQ specialization): hyperparameter $\theta$ / $\hat\theta(D)$; uncertainty set
+        $C(X;D,\theta)$; objective/constraint $\hat f,\hat g$.
+  \item Reason: narrow from arbitrary selected object to optimization-chosen UQ hyperparameter
+        (and, in Meeting~3 language, optimization-induced policy).
+\end{itemize}
+
+\paragraph{Historical note (Meeting~3).}
+Woody asked Nick to define $\theta$ / $\tilde s$ in the slide notation; definitions were
+incomplete at the meeting. H2 is the later attempt to formalize; stubs in H2 \S3.2--3.4 mean
+the formalization is still open.
+
+\section{Evolution of theorems and proofs}
+
+This corpus contains \textbf{example proofs from the literature} (H1) and
+\textbf{proposed / incomplete project theorems}, not completed original Lean proofs.
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l >{\RaggedRight\arraybackslash}X l@{}}
+\toprule
+\textbf{Claim} & \textbf{Origin} & \textbf{Status} \\
+\midrule
+Zrnic--Jordan Thm.~2 style:
+$(\eta,\tau,\nu)$-stable selector $\Rightarrow$ corrected CI coverage &
+H1 \S5.1--5.3 (literature) &
+Complete (literature); project use still open \\
+\addlinespace
+Proposed ``best first theorem'':
+gap-aware / heterogeneous noisy argmax/top-$k$ $\to$ $\eta$-stability $\to$ CI correction &
+H1 \S8.4 &
+Still open (proposed, not established) \\
+\addlinespace
+H2 goals (i)--(iii) for $C(X;D,\hat\theta(D))$ &
+H2 &
+Still open / Incomplete \\
+\addlinespace
+Part~I: stability of constrained optimizations under one-point data change &
+H2 Wenbin comment &
+Still open; stubs in \S3.3 \\
+\addlinespace
+Part~II: post-hoc inference after stable selection &
+H2 &
+Still open; stubs in \S3.4 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Meeting record (extracts to later documents)}
+
+Full edited-verbatim text lives in \texttt{transcripts/}. This section only indexes
+advisor suggestions, decisions, directions, and open problems, with pointers.
+
+\subsection{Meeting 1 --- 27 Apr 2026 (Woody, Nick)}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Advisor suggestion:} Read publication list; choose among three pillars; ideally
+        propose an unexplored follow-on.
+  \item \textbf{Decision:} No concrete project title yet --- problem space only.
+  \item \textbf{Later:} Pillar choice $\to$ algorithmic (Meeting~2).
+\end{itemize}
+
+\subsection{Meeting 2 --- 22 May 2026 (Wenbin, Nick)}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Decision (then):} Pursue adaptive regret frontier; write mathematical formulation
+        in Overleaf using CREAM notation.
+  \item \textbf{Advisor suggestions:} Background skim --- conformal prediction; LP/stochastic
+        programming. Backups --- sequential CREAM; prediction/solver error.
+  \item \textbf{Historical note:} Active plan at the time; \textbf{superseded} by Meeting~3.
+  \item \textbf{Later documents:} E1 (June emails); T1 Meeting~3 plan-status table.
+        Meeting~3 pivot supersedes this formulation path; H2 is a later formalization attempt
+        (not the replacement agent by itself).
+\end{itemize}
+
+\subsection{Meeting 3 --- 29 Jun 2026 (Woody, Wenbin, Nick)}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Decisions:} Current plan = formalize stability of optimization-induced policies;
+        find stabilization for valid inference; applications with AI predictors + optimizer;
+        end product as hypothesis testing (``should I trust this decision?'').
+  \item \textbf{Advisor suggestions:} Priority reading --- prediction-powered inference;
+        algorithmic / post-selection stability (Angelopoulos \& Jordan). Share stabilized-selection
+        example compilation by email.
+  \item \textbf{Mathematical idea:} Core challenge = discontinuity / discrete decision boundaries
+        under input perturbation (optimization structure).
+  \item \textbf{Action items:} Formal problem setup; continue literature survey; discuss
+        applications with Wenbin; pin Woody on Slack when ready for next meeting.
+  \item \textbf{Later documents:} E1 July~2 Wenbin setup; H2 problem statement; H1 catalog.
+\end{itemize}
+
+\section{Advisor feedback history}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Woody (May):} Prioritize group papers; work with Wenbin on objectives.
+  \item \textbf{Wenbin (12 Jun):} Nick attests Wenbin suggested adding ``post-hoc inference''
+        to the formal description (Wenbin's own sentence not in the email body).
+  \item \textbf{Woody (29 Jun):} Align with long-discussed stability-of-optimization-policy idea;
+        clarify notation; PPI + post-selection stability reading; discontinuity challenge.
+  \item \textbf{Wenbin (2 Jul email):} Drafted a version of the Overleaf problem setup closer to
+        intended problem; begin methodology brainstorming (Overleaf text missing from corpus).
+  \item \textbf{Wenbin (H2 inline) --- highest-authority \emph{comments} in the surviving draft:}
+        \begin{enumerate}[leftmargin=*]
+          \item Problem sits at intersection of post-hoc inference, algorithmic stability, and
+                optimization theory.
+          \item Narrow general post-hoc inference by focusing on one objective (UQ example given).
+          \item Decompose: (1)~stability of constrained optimizations (one-point change; structural
+                assumptions on $\hat f,\hat g$); (2)~post-hoc inference on top.
+          \item Setting may be modified if a more principal version appears.
+          \item Strategy notes: data-driven policy (e.g.\ PTO); no recalibration vs data-randomize
+                for validity; structured noise / inverse optimization; post-inference line
+                (Tijana; winner's curse; algorithmic stability).
+        \end{enumerate}
+\end{itemize}
+
+\section{Literature integration}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Lab algorithmic line (early reading):} CREDO/CREAM; inverse conformal risk
+        control; conformalized decision risk assessment; Gen-DFL --- directed Nick into the
+        algorithmic pillar (Meetings~1--2; E1).
+  \item \textbf{Pivot papers (Meeting~3):} Prediction-powered inference; post-selection inference
+        via algorithmic stability (Zrnic \& Jordan / Angelopoulos--Jordan line). These changed
+        the active question from regret frontiers to stable selection / trustworthy
+        AI+optimization decisions.
+  \item \textbf{H1 catalog:} Large set of MAIN examples (noisy max, stability selection, DP
+        top-$k$, Thresholdout, randomized selective inference, \ldots) plus baselines (Lee et al.\
+        LASSO SI; PoSI; winner inference without stabilization; sample splitting).
+  \item \textbf{Library location:} \texttt{papers/} with \texttt{INDEX.md}; not duplicated in
+        \texttt{history/}.
+\end{itemize}
+
+\section{Operator / primitive catalog evolution}
+Present only in H1 (\S8 taxonomies). Status: \textbf{Reference material}.
+
+Primitives listed: noisy scalar release; noisy argmax; noisy top-$k$; noisy threshold;
+validation comparison for selective inference; DP validation/tuning; support/model selection;
+randomized optimization/ERM; subsample aggregation; private candidate selection; reusable
+holdout; iterative atom selection; best-arm selection.
+
+\paragraph{Relation to current plan.}
+Catalog remains raw material. H2 asks which primitives (especially structured noise tied to
+inverse optimization / constrained opt) can serve Part~I--II; that mapping is still open.
+
+\section{Verification / discovery frameworks}
+\textbf{Not present in this corpus.} No verification outputs, Lean certificates, or discovery
+pipeline docs were included in the scoped materials. If added later, place sources under
+\texttt{history/} (or a dedicated folder) and extend this overview.
+
+\section{Open problems}
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}>{\RaggedRight\arraybackslash}X l@{}}
+\toprule
+\textbf{Question} & \textbf{Status} \\
+\midrule
+Formal definition of stability for a policy induced by an optimization problem
+(Meeting~3; H2 Part~I) & Still open \\
+\addlinespace
+Stabilization mechanism enabling valid optimization-based post-hoc inference
+(Meeting~3; H2 (iii)) & Still open \\
+\addlinespace
+When does UQ validity (1) survive plugging in $\hat\theta(D)$ from (2)? (H2 (i)) & Still open \\
+\addlinespace
+If not, what is the miscoverage deviation? (H2 (ii)) & Still open \\
+\addlinespace
+Structural assumptions needed on $\hat f,\hat g$ / constrained programs for stability
+(Wenbin H2) & Still open \\
+\addlinespace
+Application instance: AI/LLM predictions into downstream optimizer; hypothesis test
+``trust this decision?'' (Meeting~3) & Partially solved
+(vision stated; instance not fixed) \\
+\addlinespace
+Gap-aware heterogeneous noisy argmax/top-$k$ as first theorem (H1 \S8.4) & Still open
+(proposed) \\
+\addlinespace
+Modular calculus mapping heterogeneous pipelines to stability costs then optimizing noise
+for inference width (H1 conclusion) & Still open \\
+\addlinespace
+Adaptive regret frontier formulation & De facto not active as of M3;
+no spoken forever-abandon; revive unknown \\
+\addlinespace
+Quantization risk-profile primary project & Redirected / no longer primary \\
+\addlinespace
+Sequential CREAM; solver-error accommodation & Backup only; not adopted;
+revive unknown \\
+\addlinespace
+Complete H2 \S3.2--3.4 formalizations & Incomplete \\
+\addlinespace
+Goal~(iii) ``recalibrate'' vs Comment~E ``no recalibration'' & Unresolved mid-edit \\
+\addlinespace
+Recover missing companion evidence (list below) & Unknown / missing \\
+\addlinespace
+Woody endorsement of Wenbin UQ specialization & Not yet in-corpus \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Current state of the research}
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Agenda (L1):} Meeting~3 --- formal stability of optimization-induced policies;
+        discontinuity; AI$\to$optimizer; HT ``trust this decision?''
+  \item \textbf{Working math (L2 stand-in):} H2 --- post-hoc UQ with optimization-selected
+        hyperparameter; two-part program; five \texttt{[Wenbin]:} comments. Not proven $=$ July~2
+        Overleaf; Parts~I/II empty.
+  \item \textbf{Immediate work authorized (L3):} Brainstorm methodologies for Wenbin's July~2
+        setup (E1); fill Part~I then Part~II; method \emph{bias} $=$ no recalibration /
+        data-randomize / structured noise (Comment~E) --- \textbf{bias not forever-lock} while
+        (iii) text still says recalibrate.
+  \item \textbf{Inventory (L5):} Keep using H1 as non-controlling live catalog for primitives /
+        Zrnic--Jordan bridges / Woody-mandated literature neighborhood.
+  \item \textbf{Terminology:} ``post-hoc inference'' (Nick-attested Wenbin suggestion, 12~Jun).
+  \item \textbf{Incomplete:} H2 stubs; Overleaf identity gap; (iii)/W5 clash; $C(\cdot,\alpha)$ vs
+        $\theta$ bug; June~11 notes.
+\end{enumerate}
+
+\section{Missing companion evidence}
+Called out so the archive is honest about gaps (from E1 concluding section, still unresolved
+in this corpus):
+\begin{itemize}[leftmargin=*]
+  \item Exact July~2 Overleaf problem setup text.
+        H2 (26~Jul) is the best available stand-in --- \textbf{do not equate} with July~2 Overleaf.
+  \item Two files attached to Wenbin's July~2 email (Nick's Monday presentation materials).
+  \item June~11 contemporaneous notes (alleged optimization-specific stability intuition;
+        phrase ``optimization-based selection'' is \emph{not} in email bodies).
+  \item Any earlier email connecting algorithmic stability to replacing data splitting in
+        CREME/CREAM, if it exists.
+\end{itemize}
+
+\section{How to use these folders}
+\begin{enumerate}[leftmargin=*]
+  \item Read \textbf{this overview} for timeline, layered authority, and council corrections.
+  \item Read \textbf{T1 Meeting~3} for the spoken agenda (discontinuity, PPI, trust).
+  \item Read \textbf{H2} for \texttt{[Wenbin]:} comments and the working UQ math --- as L2
+        stand-in, not as proven July~2 Overleaf.
+  \item Read \textbf{E1} for the July~2 methods handoff and provenance limits.
+  \item Use \textbf{H1} as live inventory --- do not treat it as the problem definition.
+  \item Use \texttt{papers/} for PDFs cited above (in-scope for evolution; not in
+        \texttt{history/}).
+\end{enumerate}
+
+\section{Council verdicts (26 Jul 2026 swarm)}
+Primary sources sifted by parallel forensic agents; attacked by critics; settled by
+chief judge with dissenting red lines. Full reports in \texttt{overview/swarm/}.
+
+\paragraph{Absolute (do not reverse without new primary evidence).}
+July~2 Overleaf preferred but missing; H2 $\neq$ proven identical; H2 mid-edit hybrid;
+five Wenbin comments; (iii) vs Comment~E unresolved; June~25 proposal unapproved by email;
+M3 spoken agenda as above; H1 non-controlling catalog.
+
+\paragraph{What Wenbin wants Nick to do next.}
+Narrow to his UQ example; fill Part~I then Part~II; pursue (i)--(iii) with method bias toward
+data-randomize / structured noise / inverse opt (no recalibration); write methodologies into
+the draft; stay flexible if a more principal setting appears.
+
+\section{Final audit (scoped corpus)}
+\begin{itemize}[leftmargin=*]
+  \item[\checkmark] Every in-scope document appears (H1, H2, E1, T1).
+  \item[\checkmark] H1 triplicate collapsed to one file with MD5 note; content not deleted.
+  \item[\checkmark] Historical / superseded plans retained with status labels.
+  \item[\checkmark] Incorrect or redirected ideas retained (Ideas A--C).
+  \item[\checkmark] Current state identified as L1$=$M3 + L2$=$H2 stand-in + L3$=$July~2 auth.
+  \item[\checkmark] Major idea evolution paths recorded (without collapsing distinct artifacts).
+  \item[\checkmark] Open problems collected with status; mid-edit clashes flagged.
+  \item[\checkmark] Out-of-scope material explicitly listed rather than silently omitted.
+  \item[\checkmark] Overview overclaims corrected by council (no \texttt{companion $=$ H2};
+        no flat H2 crown; no bare Abandoned without caveats).
+\end{itemize}
+
+\begin{center}
+\textit{End of overview.}
+\end{center}
+
+\end{document}

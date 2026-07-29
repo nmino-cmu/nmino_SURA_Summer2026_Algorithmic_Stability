@@ -1,0 +1,70 @@
+% Mentor one-pager — research draft only (not frozen writeup/)
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{booktabs}
+\pagestyle{empty}
+\title{Stability to post-hoc UQ without recalibrating \(\mathcal{C}\)}
+\author{SURA research note (working)}
+\date{27 July 2026}
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\vspace{-1.2em}
+\noindent\textit{Scope ceiling (Wenbin):} UQ~(1)(2); selected object \(\hat\theta(\mathcal{D})\) only;
+goal~(iii) $=$ data-randomize selection (\textbf{not} recalibrate \(\mathcal{C}\)).
+
+\paragraph{Setup.}
+Fix classical level \(\alpha\) and sets \(\mathcal{C}^{(\alpha)}(X;\mathcal{D},\theta)\)
+(writeup~(1) arity: third slot $=\theta$; \(\alpha$ only as level / superscript --- not in the third slot).
+Let \(\tilde\theta(\mathcal{D})\) come from constrained opt~(2) after a randomized selection design
+(RNM / soft-argmin). If \(\tilde\theta\) is \((\eta,0,\nu)\)-stable (ZJ), then
+\[
+\mathrm{Infl}
+:=
+P\bigl(Y\notin\mathcal{C}^{(\alpha)}(X;\mathcal{D},\tilde\theta)\bigr)-\alpha
+\;\le\;
+(e^\eta-1)\alpha+\nu.
+\]
+Sending \(\eta,\nu\to0\) restores~(1) at the \emph{same} \(\alpha\) and the \emph{same} map \(\mathcal{C}\).
+
+\paragraph{Part I (design).}
+Concentrate \((\hat f,\hat g)\) at rate \(\varepsilon(n,\nu)\) (DKW).
+Choose Lap scale \(b=2\varepsilon/\eta\) or soft \(\beta=\eta/(2\varepsilon)\)
+\(\Rightarrow\) \((\eta,0,\nu)\)-stable \(\tilde\theta\), \textbf{restricted to}
+\(\Theta_{\mathrm{val}}\) (score-threshold: \(\theta\ge F^{-1}(1-\alpha)\); tradeoff: conservative \(\Theta_0^\varepsilon\)).
+\(\eta\to0\) costs selection utility (not free).
+
+\paragraph{Instances of~(2).}
+\textbf{(2$_{\mathrm{nest}}$)}: \(\hat f=1-\widehat F_n\), box \(\hat g\) --- hard argmin collapses to \(\theta=1\); live object is randomized.
+\textbf{(2$_{\mathrm{trade}}$)}: \(\hat f(\theta)=\theta\), \(\hat g=\widehat{\mathrm{misc}}-\alpha_0\) --- hard \(\hat\theta=\) empirical quantile (non-degenerate).
+Constraint $\alpha_0$ is not the classical level $\alpha$ of~(1); numerics set $\alpha_0=\alpha$.
+
+\paragraph{Part II.}
+Set-valued ZJ transfer under~(OV)+(ST) (writeup~(1) on $\mathrm{supp}(A_0)$;
+for score-threshold sets, only $\theta\ge F^{-1}(1-\alpha)$): keep classical level $\alpha$ fixed;
+bound Infl as above. Recalibrating to level $\alpha e^{-\eta}$ answers a different question (rejected by W5).
+Notation: $C^{(\alpha)}$ $=$ writeup $\mathcal{C}$ at level $\alpha$; third slot remains $\theta$.
+
+\paragraph{Numerics ((2$_{\mathrm{trade}}$), \(\eta=\varepsilon\), \(\nu=0.05\), \(\alpha_0=\alpha=0.1\)).}
+\begin{center}
+\small
+\begin{tabular}{rrrrr}
+\toprule
+$n$ & $\varepsilon$ & Infl bound & misc MC & $\widehat{\mathrm{Infl}}$ \\
+\midrule
+100 & 0.136 & 0.065 & 0.123 & $+0.023$ \\
+400 & 0.068 & 0.057 & 0.086 & $-0.015$ \\
+1600 & 0.034 & 0.053 & 0.064 & $-0.036$ \\
+6400 & 0.017 & 0.052 & 0.056 & $-0.044$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{-0.3em}
+Bound decreases in \(n\); MC miscoverage stays within \(\alpha+\)bound.
+Artifacts: \texttt{research/formal/*}, demos under \texttt{research/experiments/}, audits ALL PASS.
+
+\paragraph{Ask.}
+Does this chain (stability design \(\to\) Infl at fixed \(\mathcal{C}^{(\alpha)}\) on~(2$_{\mathrm{trade}}$)) match the intended SURA target, or should~(iii) emphasize a different randomization?
+
+\end{document}

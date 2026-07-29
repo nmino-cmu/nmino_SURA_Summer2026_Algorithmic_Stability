@@ -1,0 +1,204 @@
+% instance_tradeoff_uq.tex — Concrete (2): cost–miscoverage tradeoff with nontrivial ĝ
+% Standalone. Selected object = θ̂/θ̃ only. Hard argmin non-degenerate (not θ≡1).
+% Supplies Ass. concentration for (f̂,ĝ); notes plug-in to part_i_randomized_design.
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{proposition}{Proposition}
+
+\title{Instance --- Tradeoff UQ hyperparameter of~(2) with nontrivial $\hat g$}
+\author{research/formal (working)}
+\date{27 July 2026}
+
+\begin{document}
+\maketitle
+
+\noindent\textit{Selected object $=$ $\hat\theta/\tilde\theta$ from~(2) only.
+UQ hyperparameter selection (not CREDO $z$).
+Unlike \texttt{instance\_nested\_uq.tex}, the deterministic program is
+\emph{non-degenerate}: hard $\hat\theta$ tracks an empirical quantile and varies with $\mathcal{D}$.
+Goal~(iii) path remains: randomize selection; do \textbf{not} recalibrate $\mathcal{C}$.}
+
+\section{Instance of~(2)}
+
+Let $\mathcal{D}=\{(X_i,Y_i)\}_{i=1}^n$ be i.i.d.\ from $P$, and let $s(x,y)\in[0,1]$ be a fixed score
+(trained on a disjoint proper-training split if desired; treated as nonrandom w.r.t.\ $\mathcal{D}$ below).
+For $\theta\in\Theta:=[0,1]$ define the nested sets
+\begin{equation}
+\label{eq:Ctheta}
+\mathcal{C}_\theta(x)
+\;:=\;
+\{y:s(x,y)\le\theta\}.
+\end{equation}
+Monotonicity: $\theta\le\theta'\Rightarrow\mathcal{C}_\theta(x)\subseteq\mathcal{C}_{\theta'}(x)$.
+Write $s_i:=s(X_i,Y_i)$ and $\widehat F_n$ for the empirical CDF of $\{s_i\}$.
+
+\begin{definition}[Cost objective --- increasing in set size]
+\label{def:fhat}
+Take the deterministic size proxy
+\[
+\hat f(\theta)
+\;:=\;
+\theta,
+\qquad
+f^\star(\theta)\;:=\;\theta.
+\]
+Larger $\theta$ yields weakly larger nested sets~\eqref{eq:Ctheta}, so minimizing $\hat f$ prefers smaller sets.
+(Any strictly increasing continuous cost $c(\theta)$ works the same; identity is the lazy choice.)
+\end{definition}
+
+\begin{definition}[Empirical miscoverage constraint --- nontrivial $\hat g$]
+\label{def:ghat}
+Fix a nominal level $\alpha_0\in(0,1)$. Define
+\begin{equation}
+\label{eq:ghat}
+\hat g(\theta)
+\;:=\;
+\bigl(1-\widehat F_n(\theta)\bigr)-\alpha_0
+\;=\;
+\frac1n\sum_{i=1}^n \mathbf{1}\{s_i>\theta\}-\alpha_0,
+\end{equation}
+with oracle
+$g^\star(\theta):=(1-F(\theta))-\alpha_0$.
+Feasible set
+$\Theta_0(\mathcal{D}):=\{\theta\in[0,1]:\hat g(\theta)\le 0\}
+=\{\theta:1-\widehat F_n(\theta)\le\alpha_0\}$.
+\end{definition}
+
+The deterministic program is the constrained form of writeup~(2):
+\begin{equation}
+\hat\theta(\mathcal{D})
+\in
+\operatorname*{arg\,min}_{\theta\in[0,1]}
+\bigl\{\hat f(\theta):\hat g(\theta)\le 0\bigr\}
+\;=\;
+\operatorname*{arg\,min}\bigl\{\theta:\tfrac1n\sum_i\mathbf{1}\{s_i>\theta\}\le\alpha_0\bigr\}.
+\tag{2$_{\mathrm{trade}}$}
+\end{equation}
+
+\begin{proposition}[Hard $\hat\theta$ $=$ empirical quantile --- non-degenerate]
+\label{prop:quantile}
+Assume $\Theta_0(\mathcal{D})\neq\emptyset$ (equivalently $\widehat F_n(1)\ge 1-\alpha_0$, always true if scores lie in $[0,1]$ and $\alpha_0\ge 0$).
+With the left-continuous / smallest-feasible tie-break,
+\begin{equation}
+\label{eq:qhat}
+\hat\theta(\mathcal{D})
+\;=\;
+\inf\bigl\{\theta\in[0,1]:\widehat F_n(\theta)\ge 1-\alpha_0\bigr\}
+\;=\;
+s_{(k)},
+\end{equation}
+where $s_{(1)}\le\cdots\le s_{(n)}$ are the ordered scores and
+$k=\lceil n(1-\alpha_0)\rceil$ (standard empirical quantile index; adjust for discrete ties as preferred).
+In particular, if $F$ is continuous with $F^{-1}(1-\alpha_0)\in(0,1)$, then $\hat\theta$ is a.s.\ in $(0,1)$ and is a non-constant function of $\mathcal{D}$
+(contrast: nested instance~(2$_{\mathrm{nest}}$) collapses to $\theta=1$ a.s.).
+\end{proposition}
+
+\begin{lemma}[LOO movement of hard $\hat\theta$ --- W3]
+\label{lem:loo-trade}
+Let $d$ be absolute value on $[0,1]$. Under continuous $F$ with positive density at
+$F^{-1}(1-\alpha_0)$, the empirical quantile $\hat\theta$ from~\eqref{eq:qhat} satisfies
+$\Delta_{\mathrm{LOO}}(\mathcal{D})=O_P(n^{-1})$
+(one order-statistic swap under replace-one; standard quantile LOO / influence-function scale).
+In particular Part~I question~(1) is non-vacuous on~(2$_{\mathrm{trade}}$), unlike~(2$_{\mathrm{nest}}$).
+\end{lemma}
+
+\begin{remark}[(FV)/(1) warrant --- valid $\theta$ only]
+\label{rem:FV}
+Writeup~(1) assumes validity for each \emph{prespecified} $\theta$ in the valid domain.
+For~\eqref{eq:Ctheta}, $\mathbb{P}\{Y\notin\mathcal{C}_\theta(X)\}=1-F(\theta)$, so
+level-$\alpha$ validity requires $\theta\ge F^{-1}(1-\alpha)$.
+In~(2$_{\mathrm{trade}}$) with $\alpha_0=\alpha$ and continuous $F$, the oracle feasible set
+$\{g^\star\le 0\}=[F^{-1}(1-\alpha),1]$ lies inside that domain, so oracle soft / RNM
+on $\{g^\star\le 0\}$ satisfies Part~II~(OV) at $q=\alpha$.
+Empirical $\varepsilon$-slack feasible sets may exit the valid domain; use
+$\Theta_0^\varepsilon=\{\hat g\le-\varepsilon\}$ (Remark~\ref{rem:hausdorff}) or restrict the
+grid to $[t_\alpha,1]$. This remark does \textbf{not} import CRC's $\hat\lambda$ as $\hat\theta$.
+\end{remark}
+
+\section{Ass.\ concentration for $(\hat f,\hat g)$}
+
+\begin{lemma}[Joint concentration]
+\label{lem:conc}
+Fix $\nu\in(0,1)$. Under i.i.d.\ scores $s_i\in[0,1]$,
+\begin{equation}
+\label{eq:eps-nu}
+\varepsilon(n,\nu)
+\;:=\;
+\sqrt{\frac{\log(2/\nu)}{2n}},
+\qquad
+\nu(n)\;:=\;\nu
+\end{equation}
+satisfy
+\[
+\mathbb{P}\Bigl\{\|\hat f-f^\star\|_{\infty,[0,1]}=0,\;
+\|\hat g-g^\star\|_{\infty,[0,1]}\le\varepsilon(n,\nu)\Bigr\}
+\;\ge\; 1-\nu.
+\]
+\textit{Proof:} $\hat f\equiv f^\star$ pathwise.
+$\|\hat g-g^\star\|_\infty=\|\widehat F_n-F\|_\infty$; DKW gives
+$\mathbb{P}\{\|\widehat F_n-F\|_\infty>\varepsilon\}\le 2e^{-2n\varepsilon^2}$; set equal to $\nu$ and solve.
+\end{lemma}
+
+\begin{corollary}[Finite grid]
+\label{cor:grid}
+On $\Theta_m=\{\theta_1,\ldots,\theta_m\}\subset[0,1]$,
+$\varepsilon_{\mathrm{grid}}(n,\nu;m)=\sqrt{\log(2m/\nu)/(2n)}$
+controls $\|\hat g-g^\star\|_{\infty,\Theta_m}$ at level $1-\nu$
+(Hoeffding $+$ union bound). Still $\|\hat f-f^\star\|_\infty=0$.
+\end{corollary}
+
+\begin{remark}[Ass.\ conc / feasible sets]
+\label{rem:hausdorff}
+\texttt{part\_i\_randomized\_design.tex} Ass.\ concentration uses Hausdorff / inclusion,
+with exact $\Theta_0=\{g^\star\le 0\}$ only as a special case.
+Here $\Theta_0(\mathcal{D})=\{\hat g\le 0\}$ is data-dependent, so pathwise equality fails.
+On the good event of Lemma~\ref{lem:conc},
+\[
+\{g^\star\le -\varepsilon\}\;\subseteq\;\{\hat g\le 0\}\;\subseteq\;\{g^\star\le\varepsilon\}.
+\]
+Conservative grid $\Theta_0^\varepsilon:=\{\theta:\hat g(\theta)\le-\varepsilon\}$ satisfies
+$\Theta_0^\varepsilon\subseteq\{g^\star\le 0\}$ on that event (one-sided bridge into the
+exact-match special case for RNM/soft). This is inclusion, not identity of random and
+oracle sets.
+\end{remark}
+
+\section{Plug-in to randomized design (goal~(iii))}
+
+\begin{corollary}[RNM / soft on the tradeoff program]
+\label{cor:plug}
+Restrict~(2$_{\mathrm{trade}}$) to a finite net $\Theta_m\subset[0,1]$.
+On the good event of Cor.~\ref{cor:grid}, feed $\varepsilon_{\mathrm{grid}}$ into
+\texttt{part\_i\_randomized\_design.tex} on the
+\textbf{conservative} feasible set $\Theta_0^\varepsilon=\{\hat g\le-\varepsilon\}$
+(Remark~\ref{rem:hausdorff}), so on that event
+$\Theta_0^\varepsilon\subseteq\{g^\star\le 0\}\subseteq\Theta_{\mathrm{val}}$ and~(OV) holds at
+$q=\alpha$ when $\alpha_0=\alpha$:
+\[
+\tilde\theta=\arg\min_{\theta\in\Theta_0^\varepsilon}
+\bigl(\hat f(\theta)-\xi_\theta\bigr),\qquad
+\xi_\theta\sim\mathrm{Lap}(b),\quad b=2\varepsilon/\eta
+\]
+(or soft-argmin with $\beta=\eta/(2\varepsilon)$; here $\|\hat f-f^\star\|_\infty=0$, so any
+$\beta$ is in fact $(0,0,\nu)$-stable on a shared oracle-feasible grid --- the displayed
+scale is the general Part~I template).
+Live object for~(iii): randomized $\tilde\theta$, not a recalibration of $\mathcal{C}$.
+Part~II Infl at fixed classical level:
+$\mathrm{Infl}\le(e^\eta-1)\alpha+\nu$ as $\eta\downarrow 0$.
+\textit{Anti-claim:} RNM/soft on unrestricted empirical $\{\hat g\le 0\}$ alone does
+\textbf{not} inherit the Infl bound --- that set can exit $\Theta_{\mathrm{val}}$
+(Remark~\ref{rem:FV}).
+\end{corollary}
+
+\begin{remark}[What is \emph{not} claimed]
+No CREDO $z$, no CRC $\hat\lambda$ as live $\hat\theta$, no recalibration of $\mathcal{C}$.
+Hard~(2$_{\mathrm{trade}}$) is already a nontrivial radius selector; randomization is for goal~(iii) stability, not to ``un-degeneratize'' the argmin.
+\end{remark}
+
+\end{document}

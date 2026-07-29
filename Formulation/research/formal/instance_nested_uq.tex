@@ -1,0 +1,156 @@
+% instance_nested_uq.tex — Concrete (2): nested score-threshold UQ + Ass. conc rates
+% Standalone. Selected object = θ̂/θ̃ only. Supplies ε(n),ν(n) for part_i_randomized_design Ass.~conc.
+% CRC nested monotone cited only to justify fixed-θ (FV); not CREME / not CREDO z.
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\title{Instance --- Nested UQ hyperparameter of~(2) with explicit Ass.\ concentration}
+\author{research/formal (working)}
+\date{27 July 2026}
+
+\begin{document}
+\maketitle
+
+\noindent\textit{Selected object $=$ $\hat\theta/\tilde\theta$ from~(2) only.
+Specialization of writeup~(2) for UQ hyperparameter selection (not CREDO decision $z$).
+Closes the open gap in \texttt{part\_i\_randomized\_design.tex}: explicit $\varepsilon(n),\nu(n)$ for Ass.\ concentration.
+CRC nested structure is used only to warrant fixed-$\theta$ validity~(FV)/(1); it is not imported as a CREME algorithm.}
+
+\section{Instance of~(2)}
+
+Let $\mathcal{D}=\{(X_i,Y_i)\}_{i=1}^n$ be i.i.d.\ from $P$, and let $s(x,y)\in[0,1]$ be a fixed score
+(trained on a disjoint proper-training split if desired; treated as nonrandom w.r.t.\ $\mathcal{D}$ below).
+For $\theta\in\Theta:=[0,1]$ define the nested sets
+\begin{equation}
+\label{eq:Ctheta}
+\mathcal{C}_\theta(x)
+\;:=\;
+\{y:s(x,y)\le\theta\}.
+\end{equation}
+Monotonicity: $\theta\le\theta'\Rightarrow\mathcal{C}_\theta(x)\subseteq\mathcal{C}_{\theta'}(x)$.
+
+\begin{definition}[Empirical miscoverage objective]
+\label{def:fhat}
+Write $s_i:=s(X_i,Y_i)$ and
+\[
+\hat f(\theta)
+\;:=\;
+\frac1n\sum_{i=1}^n \mathbf{1}\{Y_i\notin\mathcal{C}_\theta(X_i)\}
+\;=\;
+\frac1n\sum_{i=1}^n \mathbf{1}\{s_i>\theta\}
+\;=\;
+1-\widehat F_n(\theta),
+\]
+where $\widehat F_n$ is the empirical CDF of $\{s_i\}$. Population counterpart:
+$f^\star(\theta):=\mathbb{P}\{s_1>\theta\}=1-F(\theta)$.
+\end{definition}
+
+\begin{definition}[Box constraints $=$ trivial $\hat g$]
+\label{def:ghat}
+Take $\hat g(\theta):=(\,-\theta,\;\theta-1\,)$ so
+$\Theta_0=\{\theta:\hat g(\theta)\le 0\}=[0,1]$ pathwise.
+Oracle match: $g^\star\equiv\hat g$, hence $\Theta_0=\{g^\star\le 0\}$ holds with probability~$1$
+(no feasible-set estimation error).
+\end{definition}
+
+The deterministic program is then
+\begin{equation}
+\hat\theta(\mathcal{D})
+\in
+\operatorname*{arg\,min}_{\theta\in[0,1]}
+\hat f(\theta).
+\tag{2$_{\mathrm{nest}}$}
+\end{equation}
+\textit{Note:} $\hat f$ is nonincreasing, so a measurable tie-break yields $\hat\theta=1$ a.s.\
+Randomized designs of~\texttt{part\_i\_randomized\_design.tex} (RNM on a grid / soft-argmin)
+still act on the score vector $\hat f|_{ \Theta_m}$ and are the objects of interest for goal~(iii).
+
+\begin{remark}[{(FV)/(1) warrant --- NOT for all $\theta\in[0,1]$}]
+\label{rem:FV}
+Writeup~(1) is an assumption for each \emph{prespecified} $\theta$ in the domain where the
+family is valid. For the score-threshold sets~\eqref{eq:Ctheta},
+\[
+\mathbb{P}\{Y\notin\mathcal{C}_\theta(X)\}=1-F(\theta),
+\]
+so~(1) at level $\alpha$ holds iff $\theta\ge F^{-1}(1-\alpha)$ (population),
+not for arbitrary $\theta\in[0,1]$.
+\textbf{Do not} cite CRC as giving~(1) for every fixed threshold; CRC controls a
+data-driven threshold, which is not our selection map.
+Operational domain for Part~II: keep randomized $\tilde\theta$ (and oracle $A_0$)
+supported on a valid set, e.g.\ $\Theta_{\mathrm{val}}=[t_\alpha,1]$ with
+$t_\alpha=F^{-1}(1-\alpha)$, or invoke oracle-validity~(OV) only for that $A_0$
+(Part~II needs~(OV), not a blanket $\sup_{\theta\in[0,1]}$ form of~(FV)).
+\end{remark}
+
+\section{Ass.\ concentration with explicit rates}
+
+\begin{lemma}[DKW concentration for nested miscoverage]
+\label{lem:dkw-conc}
+Fix $\nu\in(0,1)$. Under i.i.d.\ scores $s_i\in[0,1]$,
+\begin{equation}
+\label{eq:eps-nu}
+\varepsilon(n,\nu)
+\;:=\;
+\sqrt{\frac{\log(2/\nu)}{2n}},
+\qquad
+\nu(n)\;:=\;\nu
+\end{equation}
+satisfy Ass.\ concentration of \texttt{part\_i\_randomized\_design.tex}
+(exact feasible-match special case: box $\hat g$):
+\[
+\mathbb{P}\Bigl\{\|\hat f-f^\star\|_{\infty,[0,1]}\le\varepsilon(n,\nu),\;
+\Theta_0=\{g^\star\le 0\}\Bigr\}
+\;\ge\; 1-\nu.
+\]
+\textit{Proof:} $\Theta_0=\{g^\star\le 0\}$ always (Def.~\ref{def:ghat}).
+$\|\hat f-f^\star\|_\infty=\|\widehat F_n-F\|_\infty$, and the Dvoretzky--Kiefer--Wolfowitz
+inequality gives $\mathbb{P}\{\|\widehat F_n-F\|_\infty>\varepsilon\}\le 2e^{-2n\varepsilon^2}$;
+set the right-hand side to $\nu$ and solve for $\varepsilon$.
+\end{lemma}
+
+\begin{corollary}[Finite grid --- Hoeffding $+$ union bound]
+\label{cor:grid}
+If instead $\Theta_m=\{\theta_1,\ldots,\theta_m\}\subset[0,1]$ and~(2) is restricted to $\Theta_m$, then
+\begin{equation}
+\label{eq:eps-grid}
+\varepsilon_{\mathrm{grid}}(n,\nu;m)
+\;:=\;
+\sqrt{\frac{\log(2m/\nu)}{2n}}
+\end{equation}
+satisfies $\|\hat f-f^\star\|_{\infty,\Theta_m}\le\varepsilon_{\mathrm{grid}}$ with probability at least $1-\nu$
+(Hoeffding on each coordinate $+$ union bound). Same trivial $\hat g$ / $\Theta_0=\Theta_m$.
+\end{corollary}
+
+\section{Plug-in to randomized design (goal~(iii))}
+
+\begin{corollary}[RNM / soft rates with concrete $\varepsilon,\nu$]
+\label{cor:plug}
+On the good event of Lemma~\ref{lem:dkw-conc} (or Cor.~\ref{cor:grid}), take
+$b=2\varepsilon(n,\nu)/\eta$ (report-noisy-min) or
+$\beta=\eta/(2\varepsilon(n,\nu))$ (soft-argmin) on a finite net of the
+\textbf{valid} domain $\Theta_{\mathrm{val}}=[t_\alpha,1]$ with
+$t_\alpha=F^{-1}(1-\alpha)$ (Remark~\ref{rem:FV}) --- not on all of $[0,1]$.
+Then Lemmas~rnm / soft of \texttt{part\_i\_randomized\_design.tex} yield
+$(\eta,0,\nu)$-stability of $\tilde\theta$, with $\eta>0$ a free design knob.
+Part~II Infl at fixed classical level then applies because oracle soft / RNM on
+$\Theta_{\mathrm{val}}$ satisfies~(OV) at $q=\alpha$:
+$\mathrm{Infl}\le(e^\eta-1)\alpha+\nu$, which $\to\nu$ (then $\nu\downarrow 0$ with $n$) as $\eta\downarrow 0$.
+\textit{Anti-claim:} the same design on a net of full $[0,1]$ is still
+$(\eta,0,\nu)$-stable, but~(OV)/(FV) fail as $\eta\to 0$ (mass escapes below $t_\alpha$),
+so the Infl bound is \textbf{not} claimed there.
+\end{corollary}
+
+\begin{remark}[What is \emph{not} claimed]
+No claim that deterministic~(2$_{\mathrm{nest}}$) is an interesting radius selector
+(it collapses to $\theta=1$).
+No CREDO $z$, no CRC $\hat\lambda$ as live $\hat\theta$, no recalibration of $\mathcal{C}$.
+\end{remark}
+
+\end{document}

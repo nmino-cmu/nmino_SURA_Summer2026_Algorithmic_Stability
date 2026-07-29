@@ -1,0 +1,243 @@
+% part_i_randomized_design.tex — Part I design lemmas: (η,τ,ν) rates for noisy (2)
+% Standalone. Selected object = θ̃ only. Goal (iii) path: drive η → 0.
+% Template: Zrnic–Jordan design theorems (Props.~2/4, Ex.~1); remapped to (2), not LASSO-PoSI.
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\title{Part I --- Randomized design of (2): explicit $(\eta,\tau,\nu)$ rates}
+\author{research/formal (working)}
+\date{27 July 2026}
+
+\begin{document}
+\maketitle
+
+\noindent\textit{Selected object $=$ $\tilde\theta$ from a randomized version of constrained opt~(2) only.
+Does \textbf{not} import Zrnic--Jordan LASSO / PoSI targets; cites their design Props.\ only as rate templates.
+Goal~(iii) path: choose noise so that $\eta$ (and $\tau+\nu$) can be driven small while the fixed-$\theta$ map of $\mathcal{C}$ is untouched.}
+
+\section{Setup (writeup (2))}
+
+Let $\mathcal{D}$ be calibration data with law $P$. Empirical maps $\hat f,\hat g$ satisfy
+$\sigma(\hat f),\sigma(\hat g)\subseteq\sigma(\mathcal{D})$. The deterministic program is
+\begin{equation}
+\hat\theta(\mathcal{D})
+\in
+\operatorname*{arg\,min}_{\theta}
+\bigl\{\hat f(y;\theta):\hat g(\theta)\le 0\bigr\}.
+\tag{2}
+\end{equation}
+Write $\Theta_0(\mathcal{D}):=\{\theta:\hat g(\theta)\le 0\}$ for the (data-dependent) feasible set.
+When $\hat g$ is treated as fixed / oracle-matched on the good event below, we write $\Theta_0$.
+
+\begin{definition}[$(\eta,\tau)$-indistinguishability --- ZJ Def.~1]
+\label{def:indist}
+$Q\approx_{\eta,\tau} W$ if for every measurable $O$,
+$\mathbb{P}\{Q\in O\}\le e^\eta\,\mathbb{P}\{W\in O\}+\tau$.
+\end{definition}
+
+\begin{definition}[$(\eta,\tau,\nu)$-stability --- ZJ Def.~2]
+\label{def:zj-stable}
+A randomized map $A:\mathcal{D}\mapsto\tilde\theta$ is $(\eta,\tau,\nu)$-stable w.r.t.\ $P$ if there
+exists an oracle $A_0$ (may depend on $P$, \emph{not} on the realized $\mathcal{D}$) such that
+\[
+\mathbb{P}\bigl\{\omega:\; A(\omega)\approx_{\eta,\tau} A_0\bigr\}\ge 1-\nu.
+\]
+\end{definition}
+
+\section{Assumptions on $\hat f,\hat g$}
+
+\begin{assumption}[Bounded feasible diameter]
+\label{ass:diam}
+On the good event of Ass.~\ref{ass:conc}, $\Theta_0$ is nonempty and
+$\mathrm{diam}(\Theta_0)\le D<\infty$ in a fixed norm $\|\cdot\|$ on the ambient space of $\theta$.
+\end{assumption}
+
+\begin{assumption}[Lipschitz objective --- reserved / unused in rates]
+\label{ass:lip}
+\textit{Not a hypothesis of Lemmas~\ref{lem:rnm}--\ref{lem:soft}.}
+Optional for future utility / sensitivity bounds: on the good event,
+$\theta\mapsto\hat f(y;\theta)$ is $L$-Lipschitz on $\Theta_0$.
+Do not treat $L$ as required for the $(\eta,0,\nu)$ rates below.
+\end{assumption}
+
+\begin{assumption}[Concentration toward an oracle program]
+\label{ass:conc}
+There exist $f^\star,g^\star$ depending on $P$ only (not on the realized $\mathcal{D}$) and
+$\varepsilon>0$, $\nu\in(0,1)$ such that with probability at least $1-\nu$,
+\[
+\|\hat f-f^\star\|_{\infty,\Theta_0}\le\varepsilon
+\quad\text{and}\quad
+d_{\mathrm{H}}\bigl(\Theta_0(\mathcal{D}),\,\{\theta:g^\star(\theta)\le 0\}\bigr)\le \omega(\varepsilon),
+\]
+where $d_{\mathrm{H}}$ is Hausdorff distance (or a one-sided level-set inclusion) and
+$\omega(\varepsilon)\to0$ as $\varepsilon\to0$ under the instance's regularity
+(e.g.\ continuous strictly increasing CDF).
+\textit{Special case (exact feasible match):} $\Theta_0=\{\theta:g^\star(\theta)\le 0\}$
+pathwise --- used by the nested box-$\hat g$ instance.
+\textit{Rate lemmas below} are stated under the exact-match special case (or after
+restricting to a conservative $\Theta_0^\varepsilon\subseteq\{g^\star\le 0\}$ so the
+oracle feasible set is a deterministic supersystem for RNM/soft). Do not claim
+pathwise equality for empirical miscoverage constraints without that bridge.
+\end{assumption}
+
+\begin{assumption}[Uniqueness / measurable tie-break]
+\label{ass:uniq}
+For almost every noise draw used below, the noisy program has a unique minimizer
+(or a fixed measurable tie-break), so $A(\mathcal{D})$ is a well-defined r.v.\ in $\Theta_0$.
+\end{assumption}
+
+\section{Noisy-objective selection}
+
+\begin{definition}[Noisy-objective version of (2)]
+\label{def:noisy-obj}
+Independent of the test point, draw noise $\xi$ and set
+\begin{equation}
+\tilde\theta(\mathcal{D};\xi)
+\in
+\operatorname*{arg\,min}_{\theta}
+\bigl\{\hat f(y;\theta)+\langle\xi,\theta\rangle:\hat g(\theta)\le 0\bigr\}.
+\tag{2$_\xi$}
+\end{equation}
+\end{definition}
+
+\subsection{Finite feasible set --- report-noisy-max}
+
+\begin{lemma}[RNM rates for finite $\Theta_0$]
+\label{lem:rnm}
+Assume Ass.~\ref{ass:conc}--\ref{ass:uniq} in the \emph{exact-match} special case
+(or after restricting to a conservative finite $\Theta_0^\varepsilon\subseteq\{g^\star\le 0\}$
+shared by $A$ and $A_0$), and that this common feasible set is finite.
+For each $\theta\in\Theta_0$ draw $\xi_\theta\stackrel{\mathrm{iid}}{\sim}\mathrm{Lap}(b)$ with scale
+\begin{equation}
+\label{eq:rnm-scale}
+b \;=\; \frac{2\varepsilon}{\eta},\qquad \eta>0,
+\end{equation}
+and set
+\[
+\tilde\theta(\mathcal{D};\xi)
+\;=\;
+\operatorname*{arg\,min}_{\theta\in\Theta_0}
+\bigl(\hat f(y;\theta)-\xi_\theta\bigr)
+\]
+(report-noisy-min; equivalent to report-noisy-max on $-\hat f$).
+Let the oracle $A_0$ use the \emph{same} $\xi$ and $f^\star$ in place of $\hat f$.
+Then $A:\mathcal{D}\mapsto\tilde\theta$ is
+\begin{equation}
+\label{eq:rnm-rate}
+(\eta,\,0,\,\nu)\text{-stable}.
+\end{equation}
+\textit{Cite:} density-ratio argument as in Zrnic--Jordan Ex.~1 / stable screening (Prop.~4);
+sensitivity $2\varepsilon$ on the good event of Ass.~\ref{ass:conc}.
+\textit{Anti-claim:} RNM on a data-dependent $\{\hat g\le 0\}$ with a different oracle support
+is not covered by this rate.
+\end{lemma}
+
+\subsection{Linear Laplace perturbation (one LMO / polytope)}
+
+\begin{lemma}[Linear Laplace $=$ RNM on extreme points]
+\label{lem:lin-lap}
+Assume Ass.~\ref{ass:diam}, \ref{ass:conc}--\ref{ass:uniq}, that $\Theta_0$ is a polytope, and that
+$\hat f$ is \emph{linear} on $\Theta_0$ (or that~(2$_\xi$) is replaced by a single linear
+minimization oracle over $\Theta_0$).
+Then for almost every $\xi$,
+\[
+\operatorname*{arg\,min}_{\theta\in\Theta_0}\bigl\{\hat f(y;\theta)+\langle\xi,\theta\rangle\bigr\}
+\]
+is attained at an extreme point, so noisy~(2$_\xi$) reduces to report-noisy-min over
+$\mathrm{ext}(\Theta_0)$ with effective scores $\hat f(v)+\langle\xi,v\rangle$.
+Sampling $\xi$ so that the induced extreme-point scores receive independent
+$\mathrm{Lap}(b)$ perturbations with
+\begin{equation}
+\label{eq:lin-scale}
+b \;=\; \frac{2\varepsilon}{\eta}
+\end{equation}
+(as in~\eqref{eq:rnm-scale}; or $\xi$ with dual-Lap tails scaled by diameter $D$ so that
+$\langle\xi,v-v'\rangle$ realizes the same score sensitivity bound on $\mathrm{ext}(\Theta_0)$)
+yields the same rate as Lemma~\ref{lem:rnm}:
+\begin{equation}
+\label{eq:lin-rate}
+(\eta,\,0,\,\nu)\text{-stability}.
+\end{equation}
+\textit{Cite:} one noisy LMO step in Zrnic--Jordan Prop.~2 / Alg.~2, remapped from LASSO
+to general~(2); density ratio as Ex.~1. For \emph{nonlinear} $\hat f$ on a polytope, do
+\textbf{not} claim extreme-point attainment; use Lemma~\ref{lem:soft} or discretize to a
+net and apply Lemma~\ref{lem:rnm}.
+\end{lemma}
+
+\begin{remark}[Multi-step Frank--Wolfe composition --- optional]
+\label{rem:fw}
+If~(2$_\xi$) is solved by $k$ noisy linear minimization steps, each $(\eta_0,0,\nu_0)$-stable as in
+Lemma~\ref{lem:lin-lap}, Zrnic--Jordan composition (their Supp.\ Lemmas~3--4 / Prop.~2) yields either
+\begin{align}
+\label{eq:fw-basic}
+&(k\eta_0,\;0,\;k\nu_0)\text{-stability},\\
+\label{eq:fw-adv}
+&\bigl(\tfrac12 k\eta_0^2+\sqrt{2k\log(1/\delta)}\,\eta_0,\;\delta,\;k\nu_0+\delta\bigr)
+\text{-stability}
+\end{align}
+(advanced composition; $\delta\in(0,1)$ free).
+For goal~(iii), set $\eta_0=\eta_{\mathrm{target}}/k$ (basic) or solve~\eqref{eq:fw-adv} for $\eta_0$ so the
+leading parameter equals a prescribed small $\eta_{\mathrm{target}}$.
+\end{remark}
+
+\section{Soft near-minimizer (exponential tilt)}
+
+\begin{definition}[Soft-argmin / Gibbs selection]
+\label{def:soft}
+For inverse-temperature $\beta>0$, draw
+\[
+\tilde\theta\sim\pi_\beta(\,\cdot\mid\mathcal{D}),
+\qquad
+\frac{d\pi_\beta}{d\mu}(\theta)
+\propto
+\exp\bigl(-\beta\,\hat f(y;\theta)\bigr)\,1_{\Theta_0}(\theta),
+\]
+with $\mu$ a fixed reference measure on $\Theta_0$ (counting measure if finite).
+\end{definition}
+
+\begin{lemma}[Soft-argmin $(\eta,0,\nu)$ rate]
+\label{lem:soft}
+Under Ass.~\ref{ass:conc} in the exact-match special case
+(or on a common conservative $\Theta_0^\varepsilon\subseteq\{g^\star\le 0\}$),
+and Ass.~\ref{ass:uniq} if a further argmax post-process is used, set
+\begin{equation}
+\label{eq:soft-beta}
+\beta \;=\; \frac{\eta}{2\varepsilon}.
+\end{equation}
+Then $\pi_\beta(\,\cdot\mid\mathcal{D})\approx_{\eta,0}\pi_\beta^\star$ on the good event, where $\pi_\beta^\star$ uses $f^\star$,
+so soft-argmin selection is
+\begin{equation}
+\label{eq:soft-rate}
+(\eta,\,0,\,\nu)\text{-stable}.
+\end{equation}
+\textit{Cite:} exponential-mechanism density ratio; same role as ZJ ``noisy winner'' design, without PoSI.
+(If $\|\hat f-f^\star\|_\infty=0$ pathwise on the common set, any $\beta$ yields $(0,0,\nu)$-stability.)
+\end{lemma}
+
+\section{Goal~(iii) reading}
+
+\begin{corollary}[Small-$\eta$ design]
+\label{cor:small-eta}
+Lemmas~\ref{lem:rnm}--\ref{lem:soft} make the stability parameter $\eta$ a free design knob
+via~\eqref{eq:rnm-scale}, \eqref{eq:lin-scale}, or~\eqref{eq:soft-beta}.
+Part~II Cor.~vanish consumes a sequence $A_r$ with $\eta_r\to 0$ and $\tau_r+\nu_r\to 0$
+at fixed classical level of $\mathcal{C}$ (no recalibration).
+Operationally: pick target $\eta_r\downarrow 0$, set noise scales from $\varepsilon,\nu$ of Ass.~\ref{ass:conc},
+and accept the utility cost (softer / noisier selection) as the price of~(iii).
+\end{corollary}
+
+\begin{remark}[What is \emph{not} claimed]
+Rates here stabilize the \textbf{selection law} of $\tilde\theta$ (ZJ Def.~2).
+They are not leave-one-out displacement bounds for deterministic~(2)
+(see \texttt{part\_i\_stability.tex}).
+$e^\eta$-inflation of $\mathcal{C}$ is a goal~(i)--(ii) path only.
+\end{remark}
+
+\end{document}

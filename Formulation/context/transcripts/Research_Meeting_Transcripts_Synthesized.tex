@@ -1,0 +1,1083 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+
+\hypersetup{
+  pdftitle={Research Meeting Transcripts (Edited Verbatim)},
+  pdfauthor={Nicholas Mino},
+  pdfsubject={SURA research meetings with Woody Zhu and Wenbin Zhou},
+  colorlinks=false,
+  pdfborder={0 0 0}
+}
+
+\definecolor{critical}{RGB}{140,20,20}
+\definecolor{superseded}{RGB}{120,70,20}
+\definecolor{current}{RGB}{20,90,50}
+\definecolor{editorial}{RGB}{60,60,60}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\CriticalSource}[1]{%
+  \par\noindent\textcolor{critical}{\textbf{EXTREMELY IMPORTANT SOURCE --- #1}}%
+  \par\medskip
+}
+\newcommand{\PlanNote}[2]{%
+  \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
+    \RaggedRight\textcolor{#1}{\textbf{PLAN STATUS (editorial):} #2}%
+  }}\par\medskip
+}
+\newcommand{\Omit}[1]{%
+  \par\noindent{\footnotesize\textit{[Omitted: #1]}}\par\medskip
+}
+\newcommand{\Turn}[2]{%
+  \medskip\noindent\textbf{#1 --- #2}\par\nobreak\noindent\ignorespaces
+}
+\newcommand{\Editorial}[1]{%
+  \par\medskip\noindent\textcolor{editorial}{\textbf{Editorial note.} #1}\par\medskip
+}
+\newcommand{\Takeaway}[1]{%
+  \par\medskip
+  \noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
+    \RaggedRight\textcolor{editorial}{\textbf{Editorial summary (not transcript).} #1}%
+  }}\par
+}
+
+\title{Research Meeting Transcripts\\[0.35em]
+\large Edited Verbatim Research Record\\[0.15em]
+\normalsize Uncertainty Quantification, Decision Making,\\
+and Stability of Optimization-Induced Policies}
+\author{Nicholas Mino\\
+Carnegie Mellon University\\[0.4em]
+\small Faculty mentor: Woody Zhu\\
+\small Graduate mentor: Wenbin Zhou}
+\date{Document compiled 26 July 2026\\
+\small Meetings: 27~Apr, 22~May, 29~Jun 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Editorial Policy}
+This packet is an archival record of three research meetings. Each meeting is an
+\textbf{extremely important primary source} for the research problem.
+
+\paragraph{Retain.}
+All substantive research discussion is retained \textbf{edited-verbatim}: wording
+follows the source transcript except for the transcription corrections listed
+below. Meaning of retained discussion is never altered.
+
+\paragraph{Remove.}
+The following are removed and replaced by a specific omission marker:
+greetings; Zoom / audio / video troubleshooting; waiting for participants;
+screen-sharing and permissions logistics; scheduling unless directly relevant
+to research work; SURA/SURF administrative logistics; unrelated conversation.
+
+\paragraph{Speaker labels.}
+Device labels in the source (\texttt{Nicholas's iPhone},
+\texttt{Nicholas Mino (Posematic)}) are normalized to \textbf{Nick Mino}.
+Faculty is labeled \textbf{Woody Zhu}; graduate mentor \textbf{Wenbin Zhou}.
+
+\paragraph{Transcription corrections (only).}
+Obvious ASR errors are corrected without changing meaning. Documented
+corrections include: Chu$\to$Zhu; Minow$\to$Mino; Shura/Sur$\to$SURA;
+iTriton$\to$Triton; go part$\to$grid part; iClear$\to$ICLR;
+confrodiction$\to$conformal prediction; brief skin$\to$brief skim;
+overlapping draft$\to$Overleaf draft; Women$\to$Wenbin; JetGPT/JGPT$\to$ChatGPT; AIS system$\to$AI system;
+Tiana$\to$Angelopoulos; author message model$\to$optimization model;
+height of intuition$\to$high-level intuition;
+automatic models$\to$optimization models (in context);
+pre-paper$\to$CREAM paper (in context). Light punctuation and
+filler cleanup that does not change meaning is allowed. Ellipsis
+(\ldots) marks intra-turn cuts of non-research fragments only.
+
+\paragraph{Editorial apparatus.}
+``PLAN STATUS,'' ``Editorial note,'' and ``Editorial summary'' boxes are
+\textbf{not} transcript text. They exist to prevent superseded plans from being
+mistaken for the current agenda.
+
+\section*{Sources (all critical)}
+\begin{enumerate}[leftmargin=*,itemsep=0.35em]
+  \item \textbf{Meeting~1} --- SURA: nmino + Dr.~Zhu \quad Mon, 27 Apr 2026\\
+        Source: \texttt{SURA\_ nmino + Dr\_ Zhu Transcript(1)}
+  \item \textbf{Meeting~2} --- Nick / Wenbin \quad Fri, 22 May 2026\\
+        Source: \texttt{Nick \_ Wenbin Transcript(1)}
+  \item \textbf{Meeting~3} --- Nick / Wenbin / Woody \quad Mon, 29 Jun 2026\\
+        Source: \texttt{Nick \_ Wenbin \_ Woody Transcript}
+\end{enumerate}
+Also consulted during compilation: a prior rewritten draft and the earlier
+transcript packet PDF.
+
+\section*{Plan Evolution (Read First)}
+Later meetings supersede earlier proposals. Do not treat early proposals as the
+current agenda.
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l >{\RaggedRight\arraybackslash}X l@{}}
+\toprule
+\textbf{When} & \textbf{Idea / direction} & \textbf{Status} \\
+\midrule
+Apr 2026 & Lab framed by three pillars: (1)~UQ for high-stakes decisions;
+  (2)~grid-resilience applications; (3)~human--AI collaboration.
+  Nick to read papers and choose a pillar. &
+  \textcolor{current}{\textbf{Still foundational}} \\
+\addlinespace
+May 2026 & Nick chooses \textbf{algorithmic} pillar (CREDO / CREAM). &
+  \textcolor{current}{\textbf{Still foundational}} \\
+\addlinespace
+May 2026 & Proposal~A: quantization $\to$ risk-profile comparison
+  (engineering / testing). Woody redirected toward pure algorithmic decision
+  analysis. &
+  \textcolor{superseded}{\textbf{NO LONGER THE PLAN}} \\
+\addlinespace
+May 2026 & Proposal~B: \textbf{adaptive regret / certified bounded-regret
+  frontier}. Overleaf formulation assigned. &
+  \textcolor{superseded}{\textbf{NO LONGER THE PLAN}} \\
+\addlinespace
+May 2026 & Wenbin backups: (i)~CREAM in sequential / non-i.i.d.\ setting;
+  (ii)~accommodate model / solver error. &
+  \textcolor{superseded}{\textbf{Backup only; not active}} \\
+\addlinespace
+Jun 2026 & \textbf{Current direction:} stability of policies induced by
+  optimization; stabilized selection; formal problem setup; AI predictors +
+  downstream optimization; ``should I trust this decision?'' as hypothesis
+  testing. Priority reading: prediction-powered inference; algorithmic /
+  post-selection stability (Angelopoulos \& Jordan line). &
+  \textcolor{current}{\textbf{CURRENT PLAN}} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\clearpage
+\section{Meeting 1 --- Lab Framing and Three Pillars}
+\textbf{Date:} Mon, 27 Apr 2026 \quad
+\textbf{Participants:} Nick Mino, Woody Zhu\\
+\textbf{Source title:} SURA: nmino + Dr.~Zhu
+
+\CriticalSource{Meeting 1 (SURA kickoff with Dr.~Zhu)}
+\PlanNote{current}{Introduces the lab's three research pillars and the
+expectation that Nick will read publications, choose a pillar/methodology,
+and (ideally) propose an unexplored follow-on idea. No concrete project title
+yet---this meeting sets the problem space, not the final formulation.}
+
+\Omit{0:01--2:16 audio checks, AI note-taker remarks, waiting}
+
+\Turn{2:17}{Nick Mino}
+Just in case Professor Zhu isn't able to come to the meeting, but might read
+this AI meeting notes transcript. I'm Nick Mino. I'm a sophomore in AI and SCS.
+I'm minoring in algorithms and complexity. And I'm very interested in this
+project because I've had a lot of experience or a good amount of experience in
+like machine learning implementation. But I think the thing that I've learned
+from that is that I want to go more in the research route.
+
+\Turn{2:57}{Nick Mino}
+I have experience in PyTorch and deployment through Triton servers and some
+Docker and Linux experience as well. I have strong mathematical foundations
+from 15-151 and I'm in 36-219 probability theory. Yep. I'm very interested in
+this project as well, because from what I understand, it's about uncertainty
+modeling and decision making as it relates to energy infrastructure. From
+looking through some of Professor Zhu's research, he's done work on things like
+power grids. And I live in California. I have PG\&E. They could definitely use
+some help with that kind of work. And I want to do work that helps my community
+in looking into more mathematical grounded machine learning, which this is
+compared to what I've been doing so far.
+
+\Turn{4:14}{Nick Mino}
+And yeah, my strengths are in implementation, but I do want to closer to the
+math theory and theory in general.
+
+\Turn{4:27}{Nick Mino}
+I can devote a lot of time and I'll be on campus.
+
+\Turn{4:59}{Nick Mino}
+Another reason I'm interested in doing research this summer, specifically, is
+that after doing all this implementation, I think that the route I want to go
+is into research. So I'm focusing on research now. That I can hopefully get a
+PhD.
+
+\Omit{5:33--6:07 greeting after Woody joins; late-arrival / meeting-link remark}
+
+\Turn{6:08}{Nick Mino}
+Yeah, I'm a sophomore in artificial intelligence. I'm minoring in algorithms
+and complexity. And for the summer, I'm looking to do research specifically. I
+have a lot of implementation experience. I've worked as an ML engineer at a
+startup.
+
+\Turn{6:26}{Nick Mino}
+And after doing that, I think that I've learned that while I appreciate the
+implementation part, I like the research part more. I've talked to some
+research engineers from DeepMind and their experiences told me has made me
+think that I like research more. I've done some research as well. I did some
+paleobiology research at Stanford by data modeling. Okay.
+
+\Turn{6:53}{Woody Zhu}
+And what type of things that you like or interest you the most, just out of
+curiosity? I know you're interested in ML, math, maybe stats as well, but for
+example, what's What particular methodologies that interest you the most or
+what specific applications that you feel most interested in?
+
+\Turn{7:16}{Nick Mino}
+I'm pretty eco-conscious. I like projects that relate to green energy and
+things. I did a hackathon where we won the most sustainable project for this
+thing that decreased LLM token usage. Like compacting chat history in a
+specific way and routing models. Okay. And I did the paleobiology research
+because, you know, I care about the environment. That was very interesting to
+learn about fossil displacement.
+
+\Turn{7:51}{Woody Zhu}
+Okay. What type of course that you have taken so far with respect to, let's
+say, machine learning, statistics, optimization and the math?
+
+\Turn{8:02}{Nick Mino}
+I took discrete mathematics 15-151. Okay. 21-241 is our linear algebra. Okay.
+Right now I'm in 36-219 probability theory and it covers basic probability
+theory up to random processes.
+
+\Turn{8:21}{Woody Zhu}
+Over the summer I'll be taking statistics and 3D calc Got it. On campus.
+
+\Editorial{ASR attribution on 8:21 is ambiguous in the source (Woody labeled;
+content is Nick stating summer courses). Sense of the exchange: Nick will take
+statistics and multivariable calculus on campus over the summer.}
+
+\Turn{8:30}{Woody Zhu}
+So you'll be staying around the campus over the summer if I understand
+correctly.
+
+\Turn{8:35}{Nick Mino}
+Yeah. Okay.
+
+\Turn{8:37}{Woody Zhu}
+So yeah, so if you will be remaining physically here on campus, then I can give
+a thought and trying to come up with a project that fits your interest the
+best. But before we go into that, so you're looking for SURA, right? Mentorship
+through the SURA program, if I'm not wrong. Yeah.
+
+\Omit{9:01--9:09 SURA application deadline logistics}
+
+\Turn{9:10}{Woody Zhu}
+So what I suggested to do is to go ahead and read the papers that we have in
+our publication list. So you can just take a look at those papers that is
+either published recently or the paper that is current still ongoing. So we
+have a list of the preprints and ongoing papers, but I also have some recent
+papers been published in 2026. So you can just take a look at this papers and
+to see if you feel comfortable with the depth of the methodology and the
+theory, because usually a student feel very enthusiastic about the research,
+but whenever they really get their hands on the project, they feel like, oh,
+This is not what I'm looking for. I'm not expecting that much as an undergrad
+research project. So what I suggest to do is to look at those papers and to get
+the sense what type of methodologies we might need to use in our research
+project, and also to get the sense what type of applications we're dealing
+with. And then you can get back to me and say, hey, Woody, I read the paper
+XYZ. I feel like, well, this aligns my interests really well. And I can give
+you some ideas about maybe the title and abstract for SURA project for your
+application based on your interest, and then we can start things from there, if
+that makes sense to you.
+
+\Omit{10:36--10:45 brief exchange on locating publications on Woody's webpage}
+
+\Turn{10:46}{Nick Mino}
+Yeah, I think I've been looking around a bit on there before. You've done some
+research on uncertainty modeling for energy grids, which is why I brought up
+the grid part.
+
+\Turn{10:58}{Woody Zhu}
+Yeah, exactly. So again, I think our research consists of three major pillars.
+So one pillar is about uncertainty quantification for high stake decision
+making, right? And mostly motivated by the application from energy systems. So
+the high level idea is we want to figure out a way to tell people how uncertain
+is the future in a way that can lead to better decision or most robust
+decisions. So one of the good example I can give you is just put yourself in
+the shoes of home buyers, right? You want to make a purchase of the property
+and oftentimes you have to mentally you need to predict how much is the
+property, right? You have to make a prediction about the price of the house and
+then based on the prediction you will make a decision I say, hey, if the house
+is worth, I don't know, \$500{,}000, I happen to have \$500{,}000 in my pocket,
+I'm going to go ahead and make the purchase. So that's just the way how we
+usually make our decision. And if this is like a high stake decision, meaning
+I'm kind of risk averse, it usually implies that during that particular
+prediction phase, I have to be a little bit more conservative. Instead of
+making a prediction of the price of the property, I'm going to anticipate what
+is the worst case scenario, like how expensive this house could be in the worst
+case, right? So usually the way how we approach it is to construct a confidence
+interval, right? For example, the house worth, I mean, the true price for this
+property may be like \$500{,}000, but what I'm going to do is to construct an
+upper bound and lower bound. Maybe the upper bound could be \$600{,}000 and
+lower bound could be \$400{,}000. And then you're going to take actions in
+response to the worst case scenario, which is \$600{,}000. If it is above your
+budget, then we're going to say, hey, I don't want to buy it because there is a
+chance that it's going to go above my budget. If your worst case is lower than
+\$500{,}000, you can take an action more confidently, because you know, at
+worst case, you can still afford it. So here really leads to our research
+question. How we can construct this uncertainty band in a way that can give us
+the best result? So it involves a good understanding on the optimization, and
+more specifically, robust optimization. But most importantly, it involves a
+good understanding on the statistical method and the machine learning models,
+because you This is something goes beyond the traditional ML method because in
+ML, people are usually less concerned about uncertainty, more concerned about
+predicted accuracy. If you're familiar with ML models, right, they usually just
+minimize the predicted error. But now we want to go beyond the minimization of
+the prediction error. Instead, we want to focus on more on how confident we can
+quantify the uncertainty that is given by a predicted model like, you know,
+logistic regression or linear regression.
+
+\Turn{14:15}{Woody Zhu}
+So this is one pillar. The other pillar is more like application driven. We're
+working very closely with the utility and regulators that's trying to help them
+build a model to answer the practical questions with respect to the enhancement
+of the grid resilience. So that's kind of the major focus of our application
+domain. And last but not least, we also care a lot about human-AI collaboration
+in high-stakes decision making, because in the future, we can anticipate the
+way how we make our decisions is not completely dependent on ourselves, but
+also dependent on how we utilize the knowledge and expertise coming from AI
+agents. So how we can come up with a paradigm that can enable efficient and
+effective collaboration between human and AI agents is something we also are
+interested in. So there are the three line research agenda, as you can tell
+from our publication, and you can just look at these papers that falls within
+each one of the category, and you can decide which one interests you the most.
+And then you can get back to me and tell me, you know, which one you like
+better than the others. And then we can start it from there. I can give you
+more concrete ideas about the title, the abstract of the program, about your
+project and then you can make use of those information to submit your
+application if that makes sense.
+
+\Omit{14:15 continued: weekly/biweekly meeting cadence; group meetings;
+visitor/undergrad cohort logistics; SURF/CERF funding pipeline}
+
+\Turn{17:08}{Nick Mino}
+I think I have one or two questions here. I wrote them down. Go ahead.
+
+\Turn{17:18}{Nick Mino}
+What does a strong SURA outcome look like, hope students to accomplish by the
+end of the summer?
+
+\Turn{17:27}{Woody Zhu}
+I have to be honest with you, I have no expectation, especially for students at
+second or even first year. I think the main purpose is trying to inspire the
+students who are interested in the research. So it's more like a long-term
+investment for myself. I wanted to invest at least like a tiny portion of my
+time over the summer to the students who potentially could be a leading
+researcher in the future. And I wanted to see if they're interested. If they're
+interested, definitely I would like to spend more time with the students maybe
+in the next summer through the CERF. And I have very luckily advised a few
+other students who have successfully, you know, get the grants from the CERF
+and also because of the CERF, they get a really nice PhD offers from other
+universities.
+
+\Turn{18:21}{Woody Zhu}
+So yeah, that's the things I'm expecting. So I do not expect anything
+concretely from the students on the research project. Instead, I'm more
+interested in seeing whether or not you're interested in the research.
+
+\Turn{18:35}{Woody Zhu}
+As long as you feel, oh, I really love research. I enjoyed working with Woody
+over the first summer. That's what I'm expecting. But if you don't like it, let
+me know, no pressure at all. Um, because if you don't love something doing that
+kind of stuff, just waste of a time. Okay.
+
+\Turn{19:00}{Nick Mino}
+And I think I had one more. Yeah. Um, how independent would we be? You say we
+meet weekly or biweekly. Would we be doing like our own mini project or would
+we be working? That's a great question.
+
+\Editorial{Trailing ``That's a great question.'' in the source is likely Woody;
+retained attached to Nick's turn as in the raw transcript.}
+
+\Turn{19:17}{Woody Zhu}
+So the way how it works within our group is I'm normally going to give students
+a mini project so the student can work independently on this project. Because
+by the end of the day, what really defines a researcher is your independence,
+right? If you can independently come up with the idea and figure out the
+solution and turn it into academic publication, that would be the entire
+training pipeline you have to go through as a researcher in the future, no
+matter which discipline you're looking at, right? So this is a kind of
+standard. But on top of that, I'm also encouraging students to participate in
+group meetings, and other projects, you don't necessarily have to do anything.
+You can just be the observer to see how things are moved forward by the other
+senior students. So you can learn from the interaction with those senior
+cohorts. But if you have the capability to make your own contribution, that
+will be highly recommended and highly welcome, but it's not required. It varies
+from person to person. Some people just get things very slowly at at the
+beginning, then all of a sudden, once they figure things out, they can be super
+productive. Or some people, they're more enjoying the teamwork rather than
+working on a single project themselves. So I always change the strategies along
+the way. And the strategy may vary from student to student.
+
+\Turn{20:54}{Nick Mino}
+Thank you. Yeah, those are the questions I had. Sure.
+
+\Turn{21:02}{Nick Mino}
+I'm going to read through your papers and come back to you with the things that
+I found most interesting, like methodologies and which of the three pillars.
+
+\Turn{21:13}{Woody Zhu}
+Right. Just keep those three pillars in mind and read those papers accordingly
+and get things back to me about what are you interested in, if you're
+comfortable with the methodologies, with respect to to the pillar that you're
+interested in. And also, it would be even better if you can come up with some
+of your own ideas to let me know, hey, Woody, I read your paper. I feel like
+there's one exciting area that is unexplored by your paper. Can we work on that
+together? That would be awesome, but not required again. OK? Yep. That sounds
+great. Thank you. You have a very tight timeline, so I would expect that you
+have to things back to me within a week. Otherwise, you wouldn't be able to
+make up the deadline. But again, it's up to you. No pressure at all.
+
+\Omit{21:13 continued closing pleasantries / goodbye (22:16)}
+
+\Takeaway{Three pillars define the lab. Core research question on pillar~1:
+construct uncertainty bands that support robust high-stakes decisions (beyond
+minimizing prediction error). Nick to select a pillar and, ideally, propose an
+unexplored idea.}
+
+\clearpage
+\section{Meeting 2 --- Algorithmic Pillar; CREDO/CREAM; Adaptive Regret Proposal}
+\textbf{Date:} Fri, 22 May 2026 \quad
+\textbf{Participants:} Nick Mino, Wenbin Zhou\\
+\textbf{Source title:} Nick / Wenbin
+
+\CriticalSource{Meeting 2 (Nick / Wenbin project scoping)}
+\PlanNote{superseded}{At this meeting, the \textbf{active plan} was Nick's
+adaptive / certified bounded-regret frontier idea, to be written as a
+mathematical problem formulation in Overleaf (CREAM notation as starting
+point). Wenbin also offered sequential-CREAM and error-accommodation ideas as
+\textbf{backups}.\\[0.35em]
+\textbf{IMPORTANT:} As of Meeting~3 (29 Jun 2026), the adaptive-regret-frontier
+proposal is \textcolor{superseded}{\textbf{NO LONGER THE PLAN}}. Retain this
+meeting for intellectual history, CREDO/CREAM context, rejected directions
+(quantization-as-engineering), and backup ideas---not as the current agenda.}
+
+\Omit{0:03--1:25 greetings; summer-class small talk; SURA vs SURF credit/pay
+logistics}
+
+\Turn{1:26}{Wenbin Zhou}
+\ldots I think the most important thing for research is about like interest, is
+the interest to like dig into like one thing to. Go really deep into that and
+don't get frustrated when you meet like problems, especially in like this field
+of like in this era of like AI when you have like these LLMs to help you. I
+don't really think like technical knowledge is that important anymore because
+you can literally just prompt LLMs to teach you how to write code, teach you how
+to do the math and teach you a lot of things. Things. So yeah, I think
+motivation is like the key thing. And I'm glad you're very motivated. Thank you.
+So yeah, so could you tell me a little bit about what you have and what you have
+discussed in your like previous meetings and what kind of like papers you have
+already read? I just want to know like some sort of like background knowledge on
+what what we're expecting for for this sort of like collaboration together.
+
+\Omit{2:40 opening: SURA hour-commitment logistics (minimum 90 hours)}
+
+\Turn{2:40}{Nick Mino}
+\ldots first our meeting was more of a, he gave me some papers to read from was
+the like AI human decision making like collaboration process was the first
+pillar. The second pillar was like the algorithmic part. And then the other
+pillar was its applications to the spatial temporal models like energy grids?
+
+\Turn{3:44}{Nick Mino}
+So I've been reading\ldots\ A paper.
+
+\Turn{3:49}{Wenbin Zhou}
+Could you tell me the exact name of the paper, or do you remember who wrote it?
+Yeah.
+
+\Turn{3:55}{Nick Mino}
+Well, I ended up choosing the algorithmic one. I read the CREDO paper. Okay.
+
+\Turn{4:03}{Wenbin Zhou}
+CREAM paper.
+
+\Turn{4:04}{Nick Mino}
+Well, I read, I'm still, you know, uh, trying to to go more into the science
+because it's it's not my area of expertise yet. But um, yeah, um, I'm also, I
+mean, I recently, I think I have a list here.
+
+\Turn{4:26}{Nick Mino}
+got some more papers that I plan on reading that I looked around apparently
+good for like background information.
+
+\Turn{4:37}{Nick Mino}
+Yeah, yeah. So, the specific papers were CREDO and CREAM.
+
+\Turn{4:42}{Wenbin Zhou}
+Yeah, those are the paper that I wrote. So, that's good.
+
+\Turn{4:55}{Wenbin Zhou}
+Like after the papers, was there any like specific thing Woody said he wanted
+to do or anything?
+
+\Omit{4:47--4:52 brief acknowledgment that Nick saw Wenbin's name on the papers}
+
+\Turn{5:03}{Nick Mino}
+He suggested that I well, he said that he would like it if I like came up with
+an idea that wasn't previously explored in the papers. And I was interested in
+some of my engineering work, I've messed around with like quantizing models.
+And I was interested in how different quantization techniques might not affect
+accuracy very much in comparison to each other, but might affect a risk
+profile, because that seems like an interesting, important area to study. So
+that was something I suggested to him. And then his feedback was. To make it, I
+think I have, I don't know what exactly in the email, but it was to make it
+more closely like the pure algorithmic like decision analysis part rather than
+as much like engineering type applied stuff, which is what my original proposal
+was, because mostly like testing and comparing.
+
+\Turn{6:14}{Nick Mino}
+But I want to do the algorithmic research.
+
+\PlanNote{superseded}{Quantization $\to$ risk-profile comparison (engineering /
+testing framing) was Nick's first proposal and was redirected by Woody.
+\textcolor{superseded}{\textbf{NO LONGER THE PLAN}} as a primary project
+(later partially reappears only as a special case of ``model error'' in
+Wenbin's backup ideas).}
+
+\Editorial{Source labels 6:17 as Wenbin Zhou, but the wording (``my second
+proposal'') continues Nick's project narrative. Attribution corrected to Nick.}
+
+\Turn{6:17}{Nick Mino}
+So we ended up, my second proposal was to make an adaptive regret risk frontier
+for like bounded, certified bounded regret. So say a model, you know, is a
+99\% chance.
+
+\Turn{6:37}{Nick Mino}
+or it's a 98\% chance that the regret is going to be maximum of like 100 units,
+but then there's a 99\% chance it's going to be under 10{,}000 units. Well,
+knowing that very big jump would be useful. So, if I could make an algorithm
+that basically creates like an adaptive frontier, so it sorts out where the
+biggest like jumps are, and then gives bounded regret for those that might be
+useful for. Decision making because in a lot of the decision making stuff, I
+saw mostly focus on average regret or expected regret.
+
+\PlanNote{superseded}{Adaptive / certified bounded-regret frontier was the
+\textbf{active plan after Meeting~2}. Overleaf formulation was the next step.
+As of Meeting~3, this direction is
+\textcolor{superseded}{\textbf{NO LONGER THE PLAN}}.}
+
+\Turn{7:16}{Wenbin Zhou}
+Yeah, I see. That's a good idea. That's a good direction to pursue. Yeah, I
+think that sounds good. Also, regarding, so I think what you have just
+mentioned is actually very closely related to like a cream, the cream paper,
+right? So, with the how you want to construct like this sort of regret profile,
+I would expect, like, also, if you were to achieve that sort of task, you want
+to construct this sort of like Pareto frontier and also to sort of see how this
+can be evaluated. I think this are, these are like, yeah, I think this is good
+because both Credo and Cream. So Credo was accepted by ICLR and also Cream was
+accepted by ICML. So these are like good ML conferences. So yeah, I think we
+definitely can do some like follow-up works on these. I think they all have
+great potentials. Yeah, and also aligns with your with your background. Like, I
+think you're doing like a CS major, right? In or like in AI, yeah\ldots\ And
+aside from this idea that you brought up, I also actually personally have some
+other ideas regarding some kind of follow-up work, especially regarding like
+cream. These were like
+some things that when I was doing like the rebuttal, so like when we do like
+sort of reviewers review my paper, they kind of challenge some of the parts of
+the paper. I have to give them like a rebuttal, which is to clarify why we
+think like these challenges can be resolved or like it's already resolved in
+the paper. So, there were some interesting ideas that they had mentioned. So,
+like, one thing is that maybe like cream can be extended to sort of like a
+dynamic adaptive setting where if your decision can, if you're sort of like is
+making like a sequential decision. So, um, the current setting here assumes
+everything to be like IID. So, like, you making decisions independently, but in
+many real-world applications, your decisions must be sequential. So, then, how
+can we ensure that our constructed like Pareto Frontier to be valid in this
+sort of sequential setting? This is a good idea, in my opinion, especially for
+you, because I think this is. Kind of like straightforward. This problem is
+very well formulated because, yeah, as I've just said, this is basically just
+extending this cream framework into the sequential setting. And there are
+already some useful literatures on the sequential side that's something we can
+leverage. And yeah, so. The other idea is that can we consider like some sort
+of like error, maybe like errors in different components? This kind of relates
+to like your quantized model idea, right? So like when you, so like just to
+clarify, when you mentioned like quantized, you're just basically saying like
+when your model is able to only like output like numbers in some sort of
+resolutions. Is that what quantitize means? I'm not super familiar with that.
+
+\Turn{11:07}{Nick Mino}
+It's when you take the weights and say they're in like 16-bit, you make them
+8-bit. So you have less accuracy, but you still hope.
+
+\Turn{11:18}{Wenbin Zhou}
+Yeah. So like approximation. Yeah, yeah. Okay. Well, yeah, I think then it's
+the same idea. So basically, it means your model is. Is not accurate due to
+some like real-world physical constraint because of like this sort of
+quantization. Yeah, so basically, this problem can your idea of quantitization
+can be like generalized to like sort of considering if there is some kind of
+error in this kind of model that makes it not accurate, how can we really
+adjust for this sort of like estimation? This is also like a generic problem
+that. Framework can look into, how to accommodate different errors. One, aside
+from your quantitization model idea, another thing that we can look into is
+that, for example, when your optimization solver is not accurate, is there any
+way we can adjust this frontier in any ways? So, the reason why there's, I
+mentioned optimization solver, is because, like, if you read the CREAM paper,
+so there. Is one step where you have to solve for like the regret. So you have to
+solve for the optimization problem and get that number. And there might be some
+errors without solvers because they might not always give you the exact
+solutions. So how can we approximate that frontier during that setting? This is
+also one possible idea.
+
+\PlanNote{superseded}{Wenbin's two ideas (sequential CREAM; model/solver error)
+were explicitly framed as \textbf{backup plans} if Nick's adaptive-regret idea
+did not work out. They were not adopted as the Meeting~3 direction either.}
+
+\Turn{12:50}{Nick Mino}
+Yeah, I'm totally open to switching project ideas to whatever you think is
+best. Yeah, I'm. Yeah, yeah.
+
+\Turn{13:04}{Wenbin Zhou}
+Yeah, no pressure on that. So, yeah, what I was just saying are like, I guess,
+some backup plans. These are things because. Like, I know it's challenging for
+like undergrads to work on like projects, especially if you want to think
+independently of an idea and try to work on it. This might be challenging, but
+it's also rewarding because this gets you to taste like the raw feeling of
+research. This is like essentially how an independent scholar should be doing.
+But in case you need more guidance, what I just mentioned are two
+well-formulated ideas that I'm personally confident about doing. And I'm
+confident I can work with you. I can guide you in writing out something like a
+successful manuscript or even turning into some sort of submission, like
+conference submission. If you want a publication during your undergrad, which
+is. Like, I would think a good thing if you consider to apply for like grad
+schools or jobs.
+
+\Turn{14:10}{Wenbin Zhou}
+So, yeah, but yeah, I think maybe as for the next set plan, I think it's a
+since I think you already have like some sort of proposal on your side about
+this adapted, I adapted idea. So I I would suggest like as a next step, maybe
+we can try to. I'm not sure if you used, do you know how to use LaTeX? Yes.
+
+\Turn{14:39}{Nick Mino}
+So, I think maybe as a next step, we can open like an Overleaf draft together.
+
+\Editorial{Source labels 14:39 as Nick, but the Overleaf suggestion continues
+Wenbin's next-step plan; Nick's audible reply is assent. Sense preserved.}
+
+\Turn{14:47}{Wenbin Zhou}
+And maybe you can put down some of the formulation of that idea into that
+draft. And by formulation, what I mean is to. Try to write out everything
+mathematically. A good practice is to like first start off by referencing all
+some of the notations that is already used in the cream paper, like how I set
+it up the problem. You can just sort of like copy the sort of like text and
+also like the notations here and try to make some kind of incremental changes
+to express what you. Have proposed. Like, what do you mean by sort of adaptive
+choice of regret in there? So, once we have that sort of clear formulation of
+the idea, it will be more easier for me and also Woody to help you to think
+about what we can do next. Right?
+
+\Turn{15:48}{Nick Mino}
+Yeah, I think that I think that's a cool next step here.
+
+\Turn{15:52}{Wenbin Zhou}
+And we can see if this idea eventually works out in case if it doesn't, I think
+it would be always possible for us to sort of fall back to these sort of ideas
+that I mentioned. Yeah.
+
+\Omit{16:13--16:49 whether Woody had other plans; Woody travel / return timing}
+
+\Turn{16:50}{Wenbin Zhou}
+So for the next step, I think maybe you can open like an Overleaf draft\ldots\
+And as a first step, you can start with like a section that's called like a
+problem formulation. And try to write out like things mathematically, how you
+want to set up the problem that you raised in your proposal. And yeah, maybe we
+can aim for like after you finish it, we can then schedule like another short,
+quick chat meeting. I can help you look over the formulation and yeah, and see
+we can finalize that. Before we meet with Woody. So, like, by the next time we
+meet with Woody, we can present to him like this sort of formulation and get
+some feedback from his end.
+
+\Turn{17:42}{Nick Mino}
+Yeah, that sounds good.
+
+\Turn{17:48}{Nick Mino}
+Yeah, I mean, I have like one or two questions about. Okay. So, you know,
+thinking about my problem. I'm not like, I'm not very experienced in the field,
+so I'm not 100\% sure how useful my like suggestion would be in practice. Cause
+I really want to do research, but I also want to like, you know, do impactful
+research that isn't just like a random idea I had that's novel, but not, you
+know.
+
+\Turn{18:36}{Wenbin Zhou}
+Yeah, so could you elaborate on that or what you're trying to express?
+
+\Turn{18:43}{Nick Mino}
+Yeah, so I just wanted to know if like the adaptive like regret bound frontier
+idea is would like would it actually be something useful in decision making, or
+am I being like naive about the usefulness of regret bounds changing sharply?
+
+\Turn{19:13}{Wenbin Zhou}
+Well, yeah. Well, first of all, I think this is a good question that you
+raised. And this is one thing that. Should be aware of: is that research itself
+is actually full of uncertainty. So, like, when you have an idea, it's normal
+to think about how, like, whether or not this idea is going to work out,
+whether it's impactful, whether it's going to do this or do that, whether it's
+going to make us successful. So, these are all the things that you can think
+about before you write things out. Usually this is a bad thing if you become
+hesitant because of these things, because you haven't even implemented it or
+like wrote it out. So, there's no way to even judge whether or not this idea to
+work out. So, my suggestion is always to encourage you to start doing things
+first to just finish doing things and then look back at whether or not it works
+well, right? Don't let these kind of like difficulties or challenges that you
+think might be ahead of to impede like your impede your process of like doing
+things like to harm your productivity. And yeah, this is the first thing. And
+the second thing is that. Actually, like, just by plain language, I wasn't able
+to fully understand what you actually mean by adaptive. So, this is also why I
+want you to write out this formulation so I can give it a closer look. Like,
+whether or not this thing will be impactful, it is me and also Woody, we can
+both look at it and decide. And also, this is not, it doesn't, it's not too
+costly, right? I think writing out the formulation would. At most take you like
+one week, so this is not a too time-consuming thing to do. So, even if it
+doesn't work out, um, we can then, if it doesn't work out, we can just stop
+pursuing this direction, we can change our formulation, perhaps to like
+something that I mentioned, which is somewhat guaranteed to work, yeah, but um,
+yeah. So but I would still encourage you to think independently on that process
+because I think essentially what you came for for the SURA project is to get
+some sort of like training on research. And I and also Woody, I don't think to
+deprive this sort of like interest, the most interesting part of research,
+which is to think about what kind of problem you want to work on from you. So
+instead of like just assigning you some sort of project we want to do. At least
+we want you to like first try, try out to sort of like think about this project
+problem yourself, and then to use whatever we think as like a backup thing,
+right? So, at least this is what I'm planning.
+
+\Turn{22:13}{Nick Mino}
+Yep, that sounds great. Thank you.
+
+\Omit{22:15--22:31 paper-sharing logistics while Wenbin searches}
+
+\Turn{22:32}{Wenbin Zhou}
+Because I'm sure you're not too familiar with. So, first of all, conformal
+prediction, that's not something you're familiar with, right? No.
+
+\Turn{22:41}{Nick Mino}
+Okay.
+
+\Turn{22:42}{Wenbin Zhou}
+And familiar with like optimization, especially in the context of like
+operations research? Not the ones you see in like at machine learning, like
+SGD, not these kind of optimization, but like linear programs and stochastic
+programs.
+
+\Turn{23:01}{Nick Mino}
+Oh, I don't have experience in that.
+
+\Omit{23:08--23:50 Wenbin searching for tutorial papers; linear-program tutorial
+hand-off logistics}
+
+\Turn{23:51}{Wenbin Zhou}
+So I think in the meantime, while you are doing that sort of like formulation
+for this problem that you want to solve, I will also recommend to like read
+these sort of like paper to get some like background knowledge. I expect like
+these are things that we might need to use like down the line. Down the road
+for this research. So, one is conformal prediction, and the other is like some
+kind of optimization. Okay, this seems like an okay paper.
+
+\Turn{24:31}{Wenbin Zhou}
+Yeah, okay, so yeah, please save these two paper for like your future
+reference. You can like look at them like while you're writing the problem
+formulation. There's no pressure, you don't have to necessarily finish it in
+one week. And you don't have to go into too much details of this paper. Just
+like going through it with a brief skim will be okay. And also, these papers
+shouldn't be too relevant with the problem formulation that you want to write.
+So you don't have to be like, so it doesn't like have to go sequentially, like,
+you have to first read the paper and then write the problem formulation. No,
+you can write the formulation even without knowing the things in these paper,
+yeah.
+
+\Omit{25:20--26:23 Overleaf invite logistics (send to Wenbin first while Woody
+traveling); closing}
+
+\Takeaway{Algorithmic pillar selected (CREDO/CREAM). Active proposal at the
+time: adaptive certified regret frontier + Overleaf formulation. Background
+reading: conformal prediction + OR-style optimization. Backups: sequential
+CREAM; accommodate prediction/solver error. \textbf{Status now:} those plans
+are \textcolor{superseded}{\textbf{not the current plan}} after Meeting~3.}
+
+\clearpage
+\section{Meeting 3 --- Stability of Optimization-Induced Policies}
+\textbf{Date:} Mon, 29 Jun 2026 \quad
+\textbf{Participants:} Nick Mino, Wenbin Zhou, Woody Zhu\\
+\textbf{Source title:} Nick / Wenbin / Woody
+
+\CriticalSource{Meeting 3 (Nick / Wenbin / Woody --- current research direction)}
+\PlanNote{current}{This meeting establishes the \textbf{CURRENT PLAN}. The
+research focus is no longer the adaptive regret frontier. It is:\\[0.25em]
+(1) formally define \textbf{stability of a policy induced by an optimization
+problem};\\
+(2) find a \textbf{stabilization mechanism} enabling valid optimization-based
+policies / post-selection-style inference;\\
+(3) application vision: AI (e.g.\ LLM) predictions feeding a downstream
+optimizer; end product framed as hypothesis testing---``should I trust this
+decision?'';\\
+(4) priority reading: prediction-powered inference; algorithmic /
+post-selection stability (Angelopoulos \& Jordan); continue literature survey
+of stabilized selection methods.\\[0.25em]
+Earlier proposals (quantization engineering; adaptive regret frontier;
+sequential CREAM backup; solver-error backup) are
+\textcolor{superseded}{\textbf{NO LONGER THE ACTIVE PLAN}} unless later
+explicitly revived.}
+
+\Omit{0:05--1:45 screen-sharing permissions / Zoom host troubleshooting;
+assignment paperwork mention}
+
+\Turn{1:46}{Nick Mino}
+Yeah. So from working on the algorithmic stability. Framework. I kind of
+decided on the notation for a stabilized selection rule to look like this
+because I couldn't really find any specific examples. So I consulted some AIs
+and they said this was the closest to standard that I could find.
+
+\Omit{2:19 waiting while Woody reads the shared notation}
+
+\Turn{2:19}{Woody Zhu}
+They denote the observation data set and case on decision A would be a data
+dependent selection strategy and as hats denote the selected object.
+
+\Turn{2:45}{Woody Zhu}
+We seek a stabilized selection rule, a theoda producing okay where a theta is
+the stabilized selection algorithm as is the stabilized selected jet and
+perceive represent the shapeless and other stabilizing device. Depending on the
+stabilization of candidate, okay. Um, the target construction inference
+guarantee is so. What is theta as tilde in this context?
+
+\Editorial{2:19--2:45 is Woody reading slide/notation aloud; ASR is heavily
+garbled. Retained as spoken. Sense: Woody asks Nick to define the notation,
+especially \(\theta\) / \(\tilde{s}\), for the proposed coverage guarantee.}
+
+\Omit{3:31--3:34 brief ask-to-repeat / connection remark while clarifying notation}
+
+\Turn{3:37}{Nick Mino}
+Oh, that's the probability that the selected object falls into the confidence
+interval. So that it ends up being valid.
+
+\Turn{3:57}{Woody Zhu}
+Okay, so theta is basically the p-value, and you are hoping the p-value. Is
+larger than or is it larger than one minus or like 0.95? Is that what you're
+suggesting? I don't know. Yeah, Nick, can you define theta s and also the
+confidence interval for us? I think there are some missing definitions here.
+
+\Turn{4:25}{Nick Mino}
+Yeah, theta s is the confidence interval. Here is saying that the interval where
+s tilde is like correct, so the probability that theta tilde is in the
+confidence interval should be hopefully one minus alpha, which would be like
+95\%. So no, I mean, my question is: what is theta here?
+
+\Editorial{Trailing ``So no, I mean, my question is: what is theta here?''
+appears to be Woody in the source flow; retained as transcribed.}
+
+\Turn{4:56}{Woody Zhu}
+Because there's no formal. Explaining what theta is?
+
+\Turn{5:06}{Nick Mino}
+I don't remember specifically why I ended up using theta as the notation. I
+think it was.
+
+\Turn{5:12}{Woody Zhu}
+Yeah, it's fine. I think overall, this direction is interesting. There are.
+Large valued literature that has done something similar like this before. But I
+think this idea in part aligns with one of the ideas Wenbin and I we have
+discussed for quite a while. So I'm not sure if you still remember one of the
+conversations that we have with Ryan regarding how do we define the stability
+for a policy that is induced by optimization model. Yeah, I think that's what
+exactly Nick wants to do. Okay. Yeah. But we probably wanted to make it more,
+we have to have more clarity on the problem setup. I think this is a good
+starting point, but we have to define everything we need more formally. In
+terms of the notations and the problem setup. So, for example, you have defined
+what the policy is, right? In this context, the not just like a random
+data-dependent selection algorithm, it is a solution to an optimization
+problem, right? So, if you remember that you, I think the policy is sort of
+like takes as input some context variable. And outputs and prescribed decisions
+by solving an optimization problem. And we have to, I think, one of the top
+priorities is to formally define the stability of the policy induced by an
+optimization problem. And once we have a clear definition of the stability for
+this particular type of policies, then how do we find this stabilization
+mechanism that will enable a valid optimization-based policy, which is be the
+end of the objective of the study? I guess the end, one of the applications I
+can think of is you can ask. Any kind of black box models or like AI systems
+like ChatGPT to tell you what is the prediction of certain quantities. For
+example, I wanted to know what is the stock price for Apple or for, I don't
+know, a SpaceX tomorrow. You can certainly ask the same question to ChatGPT,
+right? And the ChatGPT is give you some random number, or GPT can do some
+reasoning and then give you some kind of more reasonable number that can be
+used as the input to a downstream optimization model. And I would assume the
+output of a GPT. Is supposed to be data dependent, right? Because the GPT was
+trained on a specific large set of data. And we wanted to recalibrate the
+output of this kind of combination of AI systems and optimization models so
+that the output of this system is trustworthy. And one of the paper you can
+look at. Is something actually I shared in the chat last night. You can search
+it right now and Google is titled by no, it's called the prediction-powered
+inference, right? Written by Angelopoulos and Michael Jordan. So, the basic
+idea is pretty similar. So, they're trying to combine a powerful prediction
+model. And some testing techniques in the way that the output can be
+trustworthy. So, they wanted to assess the hypothesis with the help of an AI
+model. So, that's basically what they do in this paper.
+
+\Turn{9:34}{Woody Zhu}
+Yeah, I think that's pretty much everything I can share, at least for now,
+based on what I have written. So, two suggestions. One is you wanted to read
+the paper first to get some high-level idea on the what, well, this is one of
+the paper. The other paper is the, I assume you probably have read them before,
+which is the algorithm of stability, right? Written by also Angelopoulos and
+Michael Jordan.
+
+\Turn{9:59}{Nick Mino}
+Yeah, I think I've got it.
+
+\Turn{10:01}{Woody Zhu}
+Yeah, I think these are the two major papers that you probably wanted to read.
+Yes, post-selection, right? Post- post-selection inference stability. So, you
+probably want a closer look at both of these papers. And the top priority is to
+set up the problem more formally. So, we will get a sense what kind of problem
+we wanted to solve and what major technical challenges. And then we can come
+back together again to have another meeting to discuss our next step.
+
+\Turn{10:37}{Woody Zhu}
+And in the meantime, you could think about maybe you can have a separate
+discussion with Wenbin on possible applications, right? So where you need both
+the AI system, like a ChatGPT, and optimization models in prescribing, for
+example, high-stake decisions. I would assume, by the end of the day, we wanted
+to. To set up the problem as a hypothesis testing.
+
+\Turn{11:08}{Woody Zhu}
+You can let the AI to prescribe a decision by producing some kind of random
+quantity and then soft optimization, solve-by-authorization model. And then we
+wanted to answer the question: should I trust this decision or not? So I think
+that's going to be the end product I could envision right now.
+
+\Editorial{``soft optimization, solve-by-authorization model'' is ASR garble;
+sense in context: solve an optimization model / optimization-based decision.}
+
+\Turn{11:35}{Woody Zhu}
+Yeah, free to reach out to Wenbin if any, if you have any ideas or anything you
+would like to discuss, once more concrete update or progress, just pin me in
+the Slack chat so we can arrange another time to continue our discussion.
+
+\Omit{11:54--12:34 assignment questions / SURA signature paperwork}
+
+\Turn{12:35}{Nick Mino}
+Oh, just like my current approach to trying to find the generalization has
+been: here's like one of the compilations of the different. I have another one
+that was here.
+
+\Turn{12:58}{Nick Mino}
+This is, yeah. So, like, I found as many like clean like formulas that then
+were, or algorithms that then stabilized like selection.
+
+\Turn{13:14}{Woody Zhu}
+And I got a bunch of examples. Yeah, this is great. This is super helpful.
+
+\Editorial{``And I got a bunch of examples.'' is likely Nick in the source flow;
+ASR/source labeling is inconsistent here. Sense: Nick presented examples;
+Woody praised them.}
+
+\Turn{13:19}{Woody Zhu}
+Maybe you can just share this document with us by email\ldots\ Yeah. Yeah, I
+think, yeah, that's great.
+
+\Omit{13:19 ASR fragment about adding Wenbin to the shared document}
+
+\Turn{13:32}{Nick Mino}
+I think this is a really good literature review and which can serve as a great
+starting point.
+
+\Editorial{13:32 is labeled Nick in the source. Content sounds like praise of
+Nick's survey and may be Woody misattributed by ASR; left as in the source.}
+
+\Turn{13:43}{Woody Zhu}
+I think we have some discussion about it before, right? So the challenge of of
+analyzing the stability for this type of policy lies at the discontinuity
+induced by the optimization structure, if I understand correctly. So, because
+if you, in the general setup, if I perturb the input, and correspondingly,
+you're going to see the perturbation in the output space as well, right? So, I
+think the perturbation should remain consistent and continuous. Across input
+and output space. Whereas in the optimization problem, if you perturb the
+input, it doesn't necessarily induce a perturbation in the output space because
+the discrete nature of the decision boundary imposed by the optimization
+structure itself.
+
+\Turn{14:43}{Woody Zhu}
+Yeah, so that's kind of the high-level intuition we have built up right now. We
+know this problem is going to be non-trivial, but we also intuition how we want
+to tackle this challenge because of the, one of the papers that Wenbin has done
+before. So we sort of have some height of ideas, but we probably wanted into
+the practice and give it more thoughts before we actually come up with the idea
+how we want to solve this problem. But I think this is really good. This is a
+really nice survey of the literature that has at least for some of the paper I
+have read before and some of them I haven't read at all. Have you read all of
+this paper or is just like a summarization done by AI?
+
+\Editorial{``height of ideas'' / ``wanted into the practice'' left close to ASR;
+sense: high-level ideas; dig into practice.}
+
+\Turn{15:27}{Nick Mino}
+No, I like looked for a bunch of papers and like tried to find examples and
+then I also had AI do it. I spun up a bunch of agents and like to search through
+a bunch to add more.
+
+\Turn{15:45}{Nick Mino}
+This has all of the citations for these. So you can go here and it'll bring you
+to the link.
+
+\Omit{15:39--15:44 fragmentary search for another slide/document}
+
+\Turn{15:55}{Woody Zhu}
+This is great. Yeah, this is great. This is fantastic.
+
+\Turn{15:58}{Nick Mino}
+And also, the little proofs on how they worked exactly.
+
+\Turn{16:02}{Woody Zhu}
+Oh, that's great. That's fantastic. Yeah. I think you're definitely on the very
+good start point to work with. And just keep us posted if you have any
+questions. And once you're ready, we can once we have a clear idea on the
+problem setup. Maybe we can set up like a bi-weekly meeting with a fixed
+schedule to catch up with the progress that you're making, while you're making
+the progress. But at least for now, I think that's pretty much everything I can
+think of.
+
+\Omit{16:40--16:44 closing thanks}
+
+\Takeaway{\textbf{CURRENT PLAN:} (1)~formalize stability for
+optimization-induced policies; (2)~core challenge: discontinuity / discrete
+decision boundaries under input perturbation; (3)~stabilization for valid
+inference / trustworthy AI+optimizer pipelines; (4)~end product as hypothesis
+test---trust the prescribed decision or not; (5)~immediate work: formal problem
+setup; continue stabilized-selection literature survey; applications with
+Wenbin; priority papers (prediction-powered inference; algorithmic /
+post-selection stability).}
+
+\clearpage
+\section*{Appendix: Quick Reference Card}
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}l >{\RaggedRight\arraybackslash}X@{}}
+\toprule
+\textbf{Item} & \textbf{Note} \\
+\midrule
+Extremely important sources & Meetings 1, 2, and 3 --- all three \\
+Lab pillars & UQ / high-stakes decisions; grid resilience apps; human--AI collab \\
+Chosen pillar & Algorithmic (CREDO, CREAM) \\
+Superseded & Quantization engineering proposal \\
+Superseded & Adaptive certified regret frontier (+ Overleaf formulation task) \\
+Superseded (backup only) & Sequential CREAM; model/solver error accommodation \\
+\textbf{Current plan} & Stability of optimization-induced policies; AI+opt trust /
+  hypothesis testing \\
+Key challenge & Optimization-induced discontinuity in decision boundaries \\
+Priority papers (M3) & Prediction-powered inference; algorithmic / post-selection
+  stability (Angelopoulos \& Jordan) \\
+Background (M2, still useful) & Conformal prediction; LP / stochastic OR optimization \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section*{Archive Metadata}
+\begin{tabular}{@{}ll@{}}
+Document type & Edited verbatim research meeting transcript packet \\
+Institution & Carnegie Mellon University \\
+Student & Nicholas Mino \\
+Faculty mentor & Woody Zhu \\
+Graduate mentor & Wenbin Zhou \\
+Meetings covered & 3 \\
+Date range & 27 Apr 2026 -- 29 Jun 2026 \\
+Compilation date & 26 July 2026 \\
+\end{tabular}
+
+\end{document}

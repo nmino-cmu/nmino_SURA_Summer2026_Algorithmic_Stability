@@ -1,0 +1,76 @@
+% common_setup.tex — shared objects for Part I/II formalization
+% Scope: frozen writeup only. Do not import CREDO/CREME problem objects.
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\title{Common setup --- Wenbin UQ (frozen)}
+\author{research/formal (working)}
+\date{27 July 2026}
+
+\begin{document}
+\maketitle
+
+\section{Objects}
+Let $\mathcal{D}=\{(X_i,Y_i)\}_{i=1}^n$ denote calibration data.
+Let $\theta$ be a hyperparameter of an uncertainty set
+$\mathcal{C}(X;\mathcal{D},\theta)$.
+Miscoverage level $\alpha\in(0,1)$.
+
+\begin{assumption}[Fixed-$\theta$ validity]
+For any given $\mathcal{D}$ and \emph{prespecified} $\theta$,
+\begin{equation}
+\mathbb{P}\bigl(Y\in\mathcal{C}(X;\mathcal{D},\theta)\bigr)\ge 1-\alpha.
+\tag{1}
+\end{equation}
+\end{assumption}
+
+\begin{assumption}[Data-dependent selection program]
+There exist $\hat f,\hat g$ with $\sigma(\hat f),\sigma(\hat g)\subseteq\sigma(\mathcal{D})$ and
+\begin{equation}
+\hat\theta(\mathcal{D})
+\in
+\operatorname*{arg\,min}_{\theta}
+\bigl\{\hat f(y;\theta):\hat g(\theta)\le 0\bigr\}.
+\tag{2}
+\end{equation}
+\end{assumption}
+
+\begin{remark}[Notation quarantine]
+Writeup (1) uses third argument $\theta$; prose may say $\alpha$.
+Writeup uses lowercase $y$ in $\hat f(y;\theta)$.
+See \texttt{research/notes/notation\_quarantine.md}.
+Local convention here: treat $y$ in (2) as a placeholder argument of $\hat f$
+(possibly a fixed template outcome / empirical functional of $\mathcal{D}$),
+not necessarily equal to the test $Y$ in (1). Flag if lemmas need a sharper reading.
+\end{remark}
+
+\begin{remark}[Alias $C^{(q)}$]
+Later Part~II files may write $C^{(q)}(X;D,\theta)$ for the writeup set
+$\mathcal{C}(X;\mathcal{D},\theta)$ run at classical miscoverage level $q$
+(instead of $\alpha$). This does \textbf{not} put the level into the third slot;
+$\theta$ remains the optimized hyperparameter.
+\end{remark}
+
+\begin{definition}[Leave-one-out neighbor]
+$\mathcal{D}^{(i)}$ is obtained from $\mathcal{D}$ by replacing the $i$-th pair
+by an independent draw from the same distribution (or deleting it --- state which
+when used).
+\end{definition}
+
+\begin{definition}[Selected object]
+The live selected object is only $\hat\theta(\mathcal{D})$ from (2).
+\end{definition}
+
+\section{Goals (reference)}
+\begin{enumerate}
+  \item[(i)] When does (1) hold at $\theta=\hat\theta(\mathcal{D})$?
+  \item[(ii)] If not, what is the nominal-vs-actual miscoverage deviation?
+  \item[(iii)] Restore (1) at the selected hyperparameter \emph{without} recalibrating
+  $\mathcal{C}$, by data-randomizing the selection map (W5).
+\end{enumerate}
+
+\end{document}

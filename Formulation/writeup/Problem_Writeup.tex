@@ -1,0 +1,578 @@
+\documentclass[12pt]{article}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{amsthm,amsmath,amsfonts,amssymb}
+\usepackage[authoryear]{natbib}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{authblk}
+\usepackage{cleveref}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{array}
+
+\theoremstyle{plain}
+
+\newcommand*{\eg}{\emph{e.g.}{}}
+\newcommand*{\ie}{\emph{i.e.}{}}
+\newcommand*{\etc}{\emph{etc}{}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\renewcommand{\d}{\mathrm{d}}
+
+\newtheorem{axiom}{Axiom}
+\newtheorem{claim}[axiom]{Claim}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{assumption}{Assumption}
+\newtheorem{prop}{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{fact}{Fact}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+\newtheorem{problem}{Problem}
+
+\title{Algorithmic Stability for Optimization-Selected Uncertainty Quantification}
+
+\author[1]{Nicholas Mino}
+\author[1]{Wenbin Zhou}
+\author[1]{Shixiang Zhu}
+\affil[1]{Carnegie Mellon University}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We study uncertainty quantification when a hyperparameter is chosen by constrained optimization on the same calibration data used to construct the set.
+Fixed-hyperparameter coverage guarantees need not survive this data-dependent hyperparameter: the selected hyperparameter is statistically entangled with the assessment sample.
+The problem sits at the intersection of post-hoc inference, algorithmic stability, and optimization.
+Part~I asks how the constrained program's output changes when one observation in the calibration sample is replaced, and what structural assumptions on the data-dependent objective and constraints are needed to control that change.
+Part~II asks when coverage remains valid after data-dependent hyperparameter selection, how far actual miscoverage can deviate from the nominal level, and how to restore a coverage guarantee without recalibrating the uncertainty set---by adding randomness to the selection map.
+Our primary methodological approach injects stabilizing randomness into the hyperparameter selection procedure, producing a randomly selected hyperparameter that is then used in the existing uncertainty set construction.
+The construction $\mathcal{C}(X;\mathcal{D},\theta)$ itself remains unchanged; only the procedure used to select $\theta$ is modified.
+\end{abstract}
+
+%% =====================================================================
+\section{Introduction}
+\label{sec:intro}
+%% =====================================================================
+
+Post-hoc inference asks for valid statistical conclusions after a data-dependent choice has been made on the same sample used for assessment.
+Algorithmic stability asks how much a procedure's output changes when its input is perturbed by a small amount.
+Optimization theory supplies the language for many modern selection rules: the selected object is a solution of a constrained program whose objective and constraints are learned from data.
+
+This paper studies one concrete problem at that intersection.
+We consider uncertainty quantification in which a hyperparameter $\theta$ indexes an uncertainty set $\mathcal{C}(X;\mathcal{D},\theta)$, and $\theta$ is chosen by solving a constrained optimization program on the same calibration data $\mathcal{D}$ used to construct the set.
+The selected object is that hyperparameter: either the deterministic output $\hat\theta(\mathcal{D})$ of the program, or, when randomness is added to selection, a randomized hyperparameter $\widetilde\theta(\mathcal{D};\xi)$ from the same program.
+It is not a general abstract selector, not a co-equal downstream decision, and not a rebuilt uncertainty set.
+
+The obstacle is statistical entanglement between selection and assessment.
+If $\mathcal{C}$ satisfies a coverage guarantee for every fixed, prespecified hyperparameter $\theta$, that guarantee need not hold when $\theta$ is replaced by the data-dependent choice $\hat\theta(\mathcal{D})$.
+We therefore organize the problem in two parts.
+Part~I asks how the constrained program's output changes when one observation in the calibration sample is replaced, and what structural assumptions on the data-dependent objective and constraints are needed to control that change.
+Part~II asks when coverage remains valid after data-dependent hyperparameter selection, how far actual miscoverage can deviate from the nominal level, and how to restore a coverage guarantee without recalibrating the uncertainty set---by adding randomness to the selection map.
+In that restoration, the construction $\mathcal{C}(X;\mathcal{D},\theta)$ itself remains unchanged; only the procedure used to select $\theta$ is modified.
+
+%% =====================================================================
+\section{Problem Setup}
+\label{sec:setup}
+%% =====================================================================
+
+\phantomsection\label{def:prob-space}
+Let $(\Omega,\mathcal{F},\mathbb{P})$ be the underlying probability space; all random objects below are defined on this space.
+Write $\mathbb{P}$ for probability and $\mathbb{E}$ for expectation under this measure unless stated otherwise.
+
+\phantomsection\label{def:P}
+Let $P$ be an unknown probability distribution on a measurable space $\mathcal{Z}$, called the population distribution.
+\phantomsection\label{def:Zi}
+A data point (observation) is a random element $Z\in\mathcal{Z}$.
+In the uncertainty-quantification setting we take
+\[
+\mathcal{Z}=\mathcal{X}\times\mathcal{Y},
+\qquad
+Z=(X,Y),
+\]
+where $X\in\mathcal{X}$ is a feature and $Y\in\mathcal{Y}$ is a response.
+
+\phantomsection\label{def:D}
+Let $n\in\mathbb{N}$ with $n\ge 1$ denote the sample size.
+The calibration dataset is the random $n$-tuple
+\[
+\mathcal{D}
+\;=\;
+(Z_1,\dots,Z_n)
+\;=\;
+\bigl((X_1,Y_1),\dots,(X_n,Y_n)\bigr),
+\]
+where
+\[
+Z_1,\dots,Z_n
+\overset{\mathrm{i.i.d.}}{\sim}
+P.
+\]
+When a filtration is needed, write $\sigma(\mathcal{D})$ for the $\sigma$-algebra generated by $\mathcal{D}$.
+
+\phantomsection\label{def:test}
+An independent test point is a fresh draw
+\[
+(X,Y)\;\sim\; P,
+\qquad
+(X,Y)\;\perp\!\!\!\perp\;\mathcal{D},
+\]
+with the same population distribution $P$ as each calibration point.
+(When an indexed alias is needed in a proof, write $(X_{n+1},Y_{n+1})$ for $(X,Y)$; the primary notation is the unindexed pair.)
+
+\phantomsection\label{def:theta}
+Let $\Theta$ be a measurable space, called the hyperparameter space.
+A hyperparameter is an element $\theta\in\Theta$.
+In this paper, $\theta$ is the third argument of the uncertainty set defined next: it indexes how $\mathcal{C}$ is constructed, and it is not the nominal miscoverage level $\alpha$.
+\phantomsection\label{def:alpha}
+Fix a number $\alpha\in(0,1)$, called the nominal miscoverage level.
+The corresponding nominal coverage level is $1-\alpha$.
+The roles are distinct: $\alpha$ is the coverage budget in~\eqref{eq:validity}; $\theta$ is the hyperparameter selected by~\eqref{eq:opt}.
+
+\phantomsection\label{def:C}
+Define an uncertainty set as a set-valued map
+\[
+\mathcal{C}
+:
+\mathcal{X}\times\bigl(\mathcal{Z}^n\bigr)\times\Theta
+\;\longrightarrow\;
+2^{\mathcal{Y}},
+\]
+written
+\[
+\mathcal{C}(X;\mathcal{D},\theta)
+\;\subseteq\;
+\mathcal{Y},
+\]
+where the first argument is the feature at which the set is evaluated, the second is the calibration dataset used to construct the set, and the third is the input hyperparameter $\theta$.
+The set $\mathcal{C}(X;\mathcal{D},\theta)$ may use independent internal randomness; if so, $\mathbb{P}$ below includes that randomness.
+\phantomsection\label{rem:C-arity}
+Throughout this paper the third argument of $\mathcal{C}$ is always $\theta$.
+Some informal notes write $\mathcal{C}(X;\mathcal{D},\alpha)$; that notation is not used in displayed mathematics here, because it would place the coverage level $\alpha$ in the same slot as the selected hyperparameter.
+All displayed mathematics uses $\mathcal{C}(X;\mathcal{D},\theta)$, with $\alpha$ appearing only in coverage statements of the form $1-\alpha$.
+
+\phantomsection\label{def:validity}
+We say that $\mathcal{C}$ satisfies validity at level $\alpha$ if, for any given $\mathcal{D}$ and any fixed (non-data-dependent) hyperparameter $\theta\in\Theta$,
+\begin{equation}
+    \label{eq:validity}
+    \mathbb{P}\bigl( Y \in \mathcal{C}(X;\mathcal{D},\theta) \bigr)
+    \;\ge\;
+    1-\alpha.
+\end{equation}
+Here $\mathbb{P}$ is over the test point $(X,Y)$ and any internal randomness of $\mathcal{C}$, with $\mathcal{D}$ and $\theta$ held fixed.
+In particular,~\eqref{eq:validity} assumes $\theta$ is chosen without using $\mathcal{D}$ for selection; it does not automatically apply when $\theta=\hat\theta(\mathcal{D})$.
+\phantomsection\label{rem:exchangeability}
+A standard sufficient condition for constructions satisfying~\eqref{eq:validity} is exchangeability of the calibration points and the test point (as in conformal prediction / conformal risk control).
+Any lemma that uses this premise states it explicitly.
+
+\phantomsection\label{def:fhat-ghat}
+Suppose there exist two maps $\hat f$ and $\hat g$, both determined by $\mathcal{D}$.
+The objective map is a function
+\[
+\hat f
+:
+\mathcal{Y}\times\Theta
+\;\longrightarrow\;
+\mathbb{R},
+\qquad
+(y,\theta)\;\longmapsto\;\hat f(y;\theta),
+\]
+and the constraint map is a function
+\[
+\hat g
+:
+\Theta
+\;\longrightarrow\;
+\mathbb{R},
+\qquad
+\theta\;\longmapsto\;\hat g(\theta)
+\]
+(vector-valued $\hat g:\Theta\to\mathbb{R}^{m}$ is allowed for a fixed constraint dimension $m\in\mathbb{N}$; then $\hat g(\theta)\le 0$ is read coordinatewise).
+Using filtration notation,
+\begin{equation}
+  \label{eq:filtration}
+  \sigma(\hat f)\;\subseteq\;\sigma(\mathcal{D}),
+  \qquad
+  \sigma(\hat g)\;\subseteq\;\sigma(\mathcal{D}).
+\end{equation}
+In words: $\hat f$ and $\hat g$ are data-dependent; they are learned from (or otherwise determined by) $\mathcal{D}$.
+\phantomsection\label{rem:y-vs-Y}
+(The objective is written $\hat f(y;\theta)$ with lowercase $y$, while~\eqref{eq:validity} uses the random test response $Y$: $y$ is a placeholder argument of the objective map---a template outcome, or an empirical functional of $\mathcal{D}$---and is not identified with the test $Y$ unless a later lemma states that identification explicitly.)
+
+\phantomsection\label{def:pi}
+The maps $\hat f$ and $\hat g$ jointly form the constrained optimization problem that selects a hyperparameter:
+\begin{equation}
+    \label{eq:opt}
+    \pi:
+    \quad
+    \min_{\theta\in\Theta}
+    \;
+    \hat f(y;\theta)
+    \quad
+    \text{s.t.}
+    \quad
+    \hat g(\theta)\le 0.
+\end{equation}
+Here $\pi$ is a label for this program: it is not a decision rule, not an $\varepsilon$-optimal policy, and not an inverse map.
+\phantomsection\label{def:feasible}
+The data-dependent feasible set of~\eqref{eq:opt} is
+\[
+\Theta_0(\mathcal{D})
+\;:=\;
+\bigl\{\theta\in\Theta:\hat g(\theta)\le 0\bigr\}.
+\]
+We assume $\Theta_0(\mathcal{D})$ is nonempty whenever a minimizer is discussed; otherwise the selection is undefined.
+
+\phantomsection\label{def:thetahat}
+Let $\hat\theta(\mathcal{D})$ denote an output of~\eqref{eq:opt}: a measurable minimizer
+\[
+\hat\theta(\mathcal{D})
+\;\in\;
+\operatorname*{arg\,min}_{\theta\in\Theta_0(\mathcal{D})}
+\hat f(y;\theta),
+\]
+with a fixed measurable tie-break if the argmin is set-valued.
+Under deterministic selection, the selected object is $\hat\theta(\mathcal{D})$.
+Under goal~(iii), the selected object may instead be a randomized hyperparameter $\widetilde\theta(\mathcal{D};\xi)$ produced from the same program by adding randomness to selection (Section~\ref{sec:methods}).
+In every case the selected object remains a hyperparameter for $\mathcal{C}$: it enters $\mathcal{C}$ only as the third argument $\theta$.
+
+\phantomsection\label{def:alpha-act}
+For any (possibly data-dependent) hyperparameter $\vartheta\in\Theta$, define the actual miscoverage at $\vartheta$ by
+\begin{equation}
+  \label{eq:alpha-act}
+  \alpha_{\mathrm{act}}(\vartheta)
+  \;:=\;
+  \mathbb{P}\bigl( Y\notin\mathcal{C}(X;\mathcal{D},\vartheta) \bigr),
+\end{equation}
+where the probability is over the joint experiment $(\mathcal{D},X,Y)$, any internal randomness of $\mathcal{C}$, and any selection randomness $\xi$ when $\vartheta$ depends on $\xi$, unless a lemma explicitly conditions on $\mathcal{D}$ (and/or $\xi$).
+When $\vartheta=\hat\theta(\mathcal{D})$, write $\alpha_{\mathrm{act}}\bigl(\hat\theta(\mathcal{D})\bigr)$; when $\vartheta=\widetilde\theta(\mathcal{D};\xi)$, write $\alpha_{\mathrm{act}}\bigl(\widetilde\theta(\mathcal{D};\xi)\bigr)$.
+
+\phantomsection\label{def:Delta-mc}
+Define the deviation between nominal miscoverage and actual miscoverage at the deterministically selected hyperparameter by
+\begin{equation}
+  \label{eq:Delta-mc}
+  \Delta_{\mathrm{mc}}
+  \;:=\;
+  \alpha_{\mathrm{act}}\bigl(\hat\theta(\mathcal{D})\bigr)
+  \;-\;
+  \alpha.
+\end{equation}
+Goal~(ii) asks for the sign and magnitude of $\Delta_{\mathrm{mc}}$, and for conditions under which it vanishes.
+
+The three goals are:
+\begin{enumerate}[label=(\roman*),leftmargin=*,ref=(\roman*)]
+  \item\label{goal:i}
+        When does coverage remain valid after data-dependent selection?
+        That is, when does~\eqref{eq:validity} still hold with $\theta$ replaced by $\hat\theta(\mathcal{D})$, equivalently
+        $\mathbb{P}\bigl(Y\in\mathcal{C}(X;\mathcal{D},\hat\theta(\mathcal{D}))\bigr)\ge 1-\alpha$,
+        or $\alpha_{\mathrm{act}}\bigl(\hat\theta(\mathcal{D})\bigr)\le\alpha$?
+  \item\label{goal:ii}
+        If not, how far can actual miscoverage deviate from the nominal level?
+        That is, characterize $\Delta_{\mathrm{mc}}$.
+  \item\label{goal:iii}
+        How can a coverage guarantee of the same form as~\eqref{eq:validity} be restored after data-dependent selection,
+        without recalibrating $\mathcal{C}$,
+        by adding randomness to the selection map to obtain $\widetilde\theta(\mathcal{D};\xi)$
+        (Section~\ref{sec:methods}) with $\alpha_{\mathrm{act}}\bigl(\widetilde\theta(\mathcal{D};\xi)\bigr)\le\alpha$?
+\end{enumerate}
+\phantomsection\label{rem:goal-iii}
+Goal~\ref{goal:iii} changes only the selection procedure.
+It does not rebuild $\mathcal{C}$, does not re-estimate its scores, does not change its nominal miscoverage level $\alpha$, and does not reshape the map $(X,\mathcal{D},\theta)\mapsto\mathcal{C}(X;\mathcal{D},\theta)$ after selection.
+The randomly selected hyperparameter $\widetilde\theta(\mathcal{D};\xi)$ is then used in the existing construction $\mathcal{C}(X;\mathcal{D},\theta)$.
+This is the intended answer to~(iii) in the present setting (selection-side repair), not a claim that recalibrating $\mathcal{C}$ can never appear in a later, more principal reformulation of the problem.
+
+%% =====================================================================
+\section{Part I: Stability of the Constrained Optimization}
+\label{sec:part-i}
+%% =====================================================================
+
+Part~I addresses only the optimization~\eqref{eq:opt} and its output $\hat\theta(\mathcal{D})$: how that output changes when one observation in the calibration sample $\mathcal{D}$ is replaced, and what structural assumptions on $(\hat f,\hat g)$ are needed to control that change.
+
+\subsection{Replace-one movement}
+\label{sec:loo}
+
+\phantomsection\label{def:D-loo}
+For each index $i\in\{1,\dots,n\}$, let $\mathcal{D}^{(i)}$ denote a replace-one neighbor of $\mathcal{D}$: the dataset obtained from $\mathcal{D}$ by replacing the $i$-th observation $Z_i$ by an independent draw $Z_i'\sim P$, independent of $\mathcal{D}$ and of the test point.
+(If a construction deletes $Z_i$ without replacement, write $\mathcal{D}^{\setminus i}$ and state that convention; the default here is replace-one.)
+\phantomsection\label{def:d-Theta}
+Let $d:\Theta\times\Theta\to[0,\infty)$ be a metric on the hyperparameter space $\Theta$ (concrete instances specify $d$; \eg absolute value on $\Theta\subseteq\mathbb{R}$, or a norm metric $\|\theta-\theta'\|$).
+
+\phantomsection\label{def:Delta-LOO}
+Define the replace-one deviation of $\hat\theta$ on a realized dataset $\mathcal{D}$ by
+\begin{equation}
+  \label{eq:Delta-LOO}
+  \Delta_{\mathrm{LOO}}(\mathcal{D})
+  \;:=\;
+  \max_{1\le i\le n}
+  \;
+  d\bigl(\hat\theta(\mathcal{D}),\,\hat\theta(\mathcal{D}^{(i)})\bigr).
+\end{equation}
+\phantomsection\label{def:exact-LOO}
+We say $\hat\theta$ is exactly replace-one stable if
+$\hat\theta(\mathcal{D})=\hat\theta(\mathcal{D}^{(i)})$ for all $i\in\{1,\dots,n\}$, almost surely.
+\phantomsection\label{def:bounded-LOO}
+Fix $\varepsilon_{\mathrm{LOO}}\ge 0$ and an event $E\subseteq\Omega$; we say $\hat\theta$ is $(\varepsilon_{\mathrm{LOO}})$-replace-one stable on $E$ if $\Delta_{\mathrm{LOO}}(\mathcal{D})\le\varepsilon_{\mathrm{LOO}}$ on the event $E$.
+\phantomsection\label{def:expected-LOO}
+We say $\hat\theta$ is $(\varepsilon_{\mathrm{LOO}})$-replace-one stable in expectation if $\mathbb{E}\bigl[\Delta_{\mathrm{LOO}}(\mathcal{D})\bigr]\le\varepsilon_{\mathrm{LOO}}$.
+
+\phantomsection\label{prob:part-i}
+Therefore, the Part~I problem is to study replace-one stability of the constrained program~\eqref{eq:opt}:
+\begin{enumerate}[leftmargin=*]
+  \item\label{prob:part-i-1}
+        If one observation in the calibration sample is replaced, how much does the output $\hat\theta(\mathcal{D})$ change?
+        (Formal target: characterize or bound $\Delta_{\mathrm{LOO}}(\mathcal{D})$, in probability and/or in expectation.)
+  \item\label{prob:part-i-2}
+        What structural assumptions are needed on the optimization, including how $\hat f$ and $\hat g$ are learned from $\mathcal{D}$?
+        (Examples of assumption classes to investigate---not yet adopted as axioms:
+        Lipschitz / smoothness / strong convexity of $\theta\mapsto\hat f(y;\theta)$;
+        constraint qualification for $\hat g$;
+        uniqueness of the minimizer;
+        stability of the active set;
+        explicit dependence of $(\hat f,\hat g)$ on empirical functionals of $\mathcal{D}$.)
+\end{enumerate}
+\phantomsection\label{rem:LOO-vs-ZJ}
+Part~I asks how much $\hat\theta$ changes when one observation in $\mathcal{D}$ is replaced---a replace-one sensitivity question---rather than a max-divergence / indistinguishability stability certificate for a randomized selection law; the latter may appear later as a Part~II proof device, but it is not the Part~I question.
+
+%% =====================================================================
+\section{Part II: Post-Hoc Inference after Selection}
+\label{sec:part-ii}
+%% =====================================================================
+
+Part~II is the second half of the program: post-hoc inference on top of Part~I.
+It has two jobs, not a third top-level part: \emph{diagnose} coverage after data-dependent selection (goals~\ref{goal:i}--\ref{goal:ii}), then \emph{repair} coverage without recalibrating $\mathcal{C}$ (goal~\ref{goal:iii}).
+
+\subsection{Goals (i)--(ii): validity and miscoverage after selection}
+\label{sec:part-ii-ab}
+
+\phantomsection\label{prob:part-ii}
+Using Part~I, answer goals~\ref{goal:i}--\ref{goal:ii} for validity of $\mathcal{C}$ when a data-dependent hyperparameter is substituted into~\eqref{eq:validity}:
+\begin{enumerate}[leftmargin=*]
+  \item[(i)]
+        Give conditions under which coverage remains valid after data-dependent selection,
+        \[
+        \mathbb{P}\bigl(Y\in\mathcal{C}(X;\mathcal{D},\hat\theta(\mathcal{D}))\bigr)
+        \;\ge\;
+        1-\alpha,
+        \]
+        i.e.\ under which~\eqref{eq:validity} remains valid when $\theta$ is replaced by $\hat\theta(\mathcal{D})$.
+  \item[(ii)]
+        If not, characterize how far actual miscoverage $\alpha_{\mathrm{act}}\bigl(\hat\theta(\mathcal{D})\bigr)$ can deviate from the nominal level $\alpha$ (the gap $\Delta_{\mathrm{mc}}$).
+\end{enumerate}
+
+\phantomsection\label{def:plugin}
+Write the coverage event at the deterministically selected hyperparameter as
+\[
+\bigl\{ Y\in\mathcal{C}\bigl(X;\mathcal{D},\hat\theta(\mathcal{D})\bigr) \bigr\}.
+\]
+Goal~\ref{goal:i} asks when this event has probability at least $1-\alpha$.
+
+\subsection{Goal (iii): restore coverage by randomizing selection}
+\label{sec:part-ii-c}
+
+Goal~\ref{goal:iii} asks how to restore a coverage guarantee of the same form as~\eqref{eq:validity} after data-dependent selection,
+without recalibrating $\mathcal{C}$,
+by adding randomness to the selection map to obtain $\widetilde\theta(\mathcal{D};\xi)$
+with $\alpha_{\mathrm{act}}\bigl(\widetilde\theta(\mathcal{D};\xi)\bigr)\le\alpha$.
+(Under goal~\ref{goal:iii}, the coverage event uses $\widetilde\theta(\mathcal{D};\xi)$ in place of $\hat\theta(\mathcal{D})$.)
+
+\phantomsection\label{rem:part-ii-ceiling}
+One may add randomness to the map $\mathcal{D}\mapsto\theta$ produced from~\eqref{eq:opt}.
+One may not answer~(iii) by recalibrating $\mathcal{C}$: that is, by changing the map $(X,\mathcal{D},\theta)\mapsto\mathcal{C}(X;\mathcal{D},\theta)$, its scores, or its nominal miscoverage level $\alpha$ after selection.
+A more conservative nominal level for $\mathcal{C}$ may appear later as a certificate relating stability parameters to coverage, but it is not the repair named for~(iii).
+(As in the remark after goals~\ref{goal:i}--\ref{goal:iii}, this is the intended present path, not a claim that recalibrating $\mathcal{C}$ is forever impossible under a later reformulation.)
+
+\subsubsection{Methodological directions for~(iii)}
+\label{sec:methods}
+
+\phantomsection\label{def:thetatilde}
+A randomized selection map for program~\eqref{eq:opt} is a measurable map
+\[
+\widetilde\theta(\mathcal{D};\xi)
+\;=\;
+\widetilde A(\mathcal{D};\xi)
+\;\in\;
+\Theta,
+\]
+where $\widetilde A$ is a randomized algorithm whose deterministic skeleton is~\eqref{eq:opt}, and $\xi$ is additional randomness independent of the test point $(X,Y)$.
+The randomness $\xi$ may be noise, subsampling randomness, a randomized optimization perturbation, privacy randomness, or another stabilizing device.
+The map $(X,\mathcal{D},\theta)\mapsto\mathcal{C}(X;\mathcal{D},\theta)$ is left unchanged: no recalibration of $\mathcal{C}$.
+Under a successful~(iii) procedure, the selected object is the randomly selected hyperparameter $\widetilde\theta(\mathcal{D};\xi)$, not a rebuilt uncertainty set.
+
+The intended answer to goal~\ref{goal:iii} is to inject stabilizing randomness~$\xi$ into the hyperparameter selection procedure~$\widetilde A$, producing $\widetilde\theta(\mathcal{D};\xi)$, and then to evaluate the existing set at that hyperparameter:
+\[
+\mathcal{C}\bigl(X;\mathcal{D},\widetilde\theta(\mathcal{D};\xi)\bigr).
+\]
+The construction $\mathcal{C}(X;\mathcal{D},\theta)$ itself remains unchanged; only the procedure used to select $\theta$ is modified.
+A coverage guarantee is sought for
+$\mathbb{P}\bigl(Y\in\mathcal{C}(X;\mathcal{D},\widetilde\theta(\mathcal{D};\xi))\bigr)\ge 1-\alpha$,
+equivalently $\alpha_{\mathrm{act}}\bigl(\widetilde\theta(\mathcal{D};\xi)\bigr)\le\alpha$.
+Concrete mechanisms of primary interest are report-noisy-max (RNM) and soft near-minimizer (soft-argmin) randomization on a shared feasible support of~\eqref{eq:opt}, with coverage transferred by an inflation bound that vanishes as the selection noise tends to zero, all at the fixed classical level of~$\mathcal{C}$.
+
+Independently of this UQ formulation, a companion operator-stability library records Lean-formalized and/or computationally certified margin and invariance certificates for selection operators under bounded score or threshold noise.
+Those certificates motivate treating selection-under-perturbation as a tractable object for goal~(iii).
+They are not imported here as problem equations, and they do not enlarge the selected object beyond a hyperparameter for~$\mathcal{C}$.
+Companion notes on randomized designs for~$\widetilde\theta$ and on transferring a vanishing miscoverage inflation at fixed~$\mathcal{C}$ are cited for existence only; they do not redefine Part~I, which studies how $\hat\theta$ changes under replace-one.
+
+Adjacent lines remain relevant as context but are not the primary path for~(iii) here: Predict-Then-Optimize (PTO) style data-driven policies; structured noise guided by inverse-optimization geometry; and the post-selection / winner's-curse / algorithmic-stability literature.
+
+\phantomsection\label{rem:methods-not-problem}
+The methodology above is a candidate answer to goal~\ref{goal:iii}, not a redefinition of the problem.
+It does not enlarge the selected object beyond a hyperparameter for $\mathcal{C}$, and it does not import decision-risk or robust-policy problem statements from other papers as the problem definition.
+
+%% =====================================================================
+\section{Notation Table}
+\label{sec:symbol-table}
+%% =====================================================================
+
+Every symbol below is defined in this document.
+Click a symbol to jump to its definition.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.22\linewidth}
+                  >{\raggedright\arraybackslash}p{0.48\linewidth}
+                  >{\raggedright\arraybackslash}p{0.22\linewidth}@{}}
+\toprule
+\textbf{Symbol} & \textbf{Meaning} & \textbf{Defined at} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Symbol} & \textbf{Meaning} & \textbf{Defined at} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+\hyperref[def:prob-space]{$(\Omega,\mathcal{F},\mathbb{P})$} &
+  Underlying probability space &
+  \hyperref[def:prob-space]{\S\ref{sec:setup}} \\
+\hyperref[def:prob-space]{$\mathbb{E}$} &
+  Expectation under $\mathbb{P}$ &
+  \hyperref[def:prob-space]{\S\ref{sec:setup}} \\
+\hyperref[def:P]{$P$} &
+  Population distribution on $\mathcal{Z}$ &
+  \hyperref[def:P]{\S\ref{sec:setup}} \\
+\hyperref[def:Zi]{$Z=(X,Y)$} &
+  Data point: feature--response pair &
+  \hyperref[def:Zi]{\S\ref{sec:setup}} \\
+\hyperref[rem:y-vs-Y]{$y$} &
+  Placeholder argument of $\hat f(y;\theta)$ (not identified with test $Y$) &
+  \hyperref[rem:y-vs-Y]{\S\ref{sec:setup}} \\
+\hyperref[def:Zi]{$\mathcal{X},\mathcal{Y},\mathcal{Z}$} &
+  Feature, response, and observation spaces &
+  \hyperref[def:Zi]{\S\ref{sec:setup}} \\
+\hyperref[def:D]{$n$} &
+  Calibration sample size &
+  \hyperref[def:D]{\S\ref{sec:setup}} \\
+\hyperref[def:D]{$\mathcal{D}=(Z_1,\dots,Z_n)$} &
+  Calibration dataset (i.i.d.\ from $P$) &
+  \hyperref[def:D]{\S\ref{sec:setup}} \\
+\hyperref[def:D]{$\sigma(\mathcal{D})$} &
+  $\sigma$-algebra generated by $\mathcal{D}$ &
+  \hyperref[def:D]{\S\ref{sec:setup}} \\
+\hyperref[def:test]{$(X,Y)$} &
+  Independent test point &
+  \hyperref[def:test]{\S\ref{sec:setup}} \\
+\hyperref[def:theta]{$\Theta$} &
+  Hyperparameter space &
+  \hyperref[def:theta]{\S\ref{sec:setup}} \\
+\hyperref[def:theta]{$\theta$} &
+  Hyperparameter indexing $\mathcal{C}$ (third argument; not the level $\alpha$) &
+  \hyperref[def:theta]{\S\ref{sec:setup}} \\
+\hyperref[def:alpha]{$\alpha$} &
+  Nominal miscoverage level $\in(0,1)$ (coverage budget; not the third argument of $\mathcal{C}$) &
+  \hyperref[def:alpha]{\S\ref{sec:setup}} \\
+\hyperref[def:C]{$\mathcal{C}(X;\mathcal{D},\theta)$} &
+  Uncertainty set at feature $X$, data $\mathcal{D}$, hyperparameter $\theta$ &
+  \hyperref[def:C]{\S\ref{sec:setup}} \\
+\hyperref[eq:validity]{\eqref{eq:validity}} &
+  Fixed-$\theta$ validity: $\mathbb{P}(Y\in\mathcal{C}(X;\mathcal{D},\theta))\ge 1-\alpha$ &
+  \hyperref[def:validity]{\S\ref{sec:setup}} \\
+\hyperref[def:fhat-ghat]{$\hat f(y;\theta)$} &
+  Data-dependent objective map of~\eqref{eq:opt} &
+  \hyperref[def:fhat-ghat]{\S\ref{sec:setup}} \\
+\hyperref[def:fhat-ghat]{$\hat g(\theta)$} &
+  Data-dependent constraint map of~\eqref{eq:opt} &
+  \hyperref[def:fhat-ghat]{\S\ref{sec:setup}} \\
+\hyperref[def:fhat-ghat]{$m$} &
+  Constraint dimension when $\hat g$ is vector-valued &
+  \hyperref[def:fhat-ghat]{\S\ref{sec:setup}} \\
+\hyperref[eq:filtration]{\eqref{eq:filtration}} &
+  $\sigma(\hat f),\sigma(\hat g)\subseteq\sigma(\mathcal{D})$ &
+  \hyperref[eq:filtration]{\S\ref{sec:setup}} \\
+\hyperref[def:pi]{$\pi$} &
+  Label of the constrained program~\eqref{eq:opt} &
+  \hyperref[def:pi]{\S\ref{sec:setup}} \\
+\hyperref[eq:opt]{\eqref{eq:opt}} &
+  $\min_\theta\hat f(y;\theta)$ s.t.\ $\hat g(\theta)\le 0$ &
+  \hyperref[eq:opt]{\S\ref{sec:setup}} \\
+\hyperref[def:feasible]{$\Theta_0(\mathcal{D})$} &
+  Feasible set $\{\theta:\hat g(\theta)\le 0\}$ &
+  \hyperref[def:feasible]{\S\ref{sec:setup}} \\
+\hyperref[def:thetahat]{$\hat\theta(\mathcal{D})$} &
+  Selected hyperparameter (output of~\eqref{eq:opt}) &
+  \hyperref[def:thetahat]{\S\ref{sec:setup}} \\
+\hyperref[def:alpha-act]{$\vartheta$} &
+  Generic (possibly data-dependent) hyperparameter argument &
+  \hyperref[def:alpha-act]{\S\ref{sec:setup}} \\
+\hyperref[def:alpha-act]{$\alpha_{\mathrm{act}}(\vartheta)$} &
+  Actual miscoverage at hyperparameter $\vartheta$ &
+  \hyperref[def:alpha-act]{\S\ref{sec:setup}} \\
+\hyperref[def:Delta-mc]{$\Delta_{\mathrm{mc}}$} &
+  Nominal--actual miscoverage deviation &
+  \hyperref[def:Delta-mc]{\S\ref{sec:setup}} \\
+\hyperref[goal:i]{(i)--(iii)} &
+  Goals: coverage after selection; miscoverage deviation; restore coverage by randomizing selection (not recalibrating $\mathcal{C}$) &
+  Goals~\ref{goal:i}--\ref{goal:iii} \\
+\hyperref[def:D-loo]{$\mathcal{D}^{(i)}$} &
+  Replace-one neighbor of $\mathcal{D}$ &
+  \hyperref[def:D-loo]{\S\ref{sec:part-i}} \\
+\hyperref[def:D-loo]{$Z_i'$} &
+  Independent replacement draw for the $i$-th replace-one neighbor &
+  \hyperref[def:D-loo]{\S\ref{sec:part-i}} \\
+\hyperref[def:D-loo]{$\mathcal{D}^{\setminus i}$} &
+  Deletion neighbor (non-default; state when used) &
+  \hyperref[def:D-loo]{\S\ref{sec:part-i}} \\
+\hyperref[def:d-Theta]{$d$} &
+  Metric on $\Theta$ &
+  \hyperref[def:d-Theta]{\S\ref{sec:part-i}} \\
+\hyperref[def:Delta-LOO]{$\Delta_{\mathrm{LOO}}(\mathcal{D})$} &
+  Replace-one deviation of $\hat\theta$ &
+  \hyperref[def:Delta-LOO]{\S\ref{sec:part-i}} \\
+\hyperref[def:bounded-LOO]{$\varepsilon_{\mathrm{LOO}}$} &
+  Replace-one stability budget &
+  \hyperref[def:bounded-LOO]{\S\ref{sec:part-i}} \\
+\hyperref[def:bounded-LOO]{$E$} &
+  Event on which a bounded replace-one stability claim holds &
+  \hyperref[def:bounded-LOO]{\S\ref{sec:part-i}} \\
+\hyperref[prob:part-i]{Part~I problem} &
+  Part~I questions (replace-one movement + assumptions) &
+  \hyperref[prob:part-i]{\S\ref{sec:part-i}} \\
+\hyperref[def:plugin]{coverage event at $\hat\theta(\mathcal{D})$} &
+  $\{Y\in\mathcal{C}(X;\mathcal{D},\hat\theta(\mathcal{D}))\}$ &
+  \hyperref[def:plugin]{\S\ref{sec:part-ii}} \\
+\hyperref[prob:part-ii]{Part~II problem} &
+  Part~II: (i)--(ii) diagnosis; (iii) repair by randomizing selection &
+  \hyperref[prob:part-ii]{\S\ref{sec:part-ii}} \\
+\hyperref[def:thetatilde]{$\widetilde\theta(\mathcal{D};\xi)$} &
+  Randomly selected hyperparameter (selection randomized; $\mathcal{C}$ unchanged) &
+  \hyperref[def:thetatilde]{\S\ref{sec:methods}} \\
+\hyperref[def:thetatilde]{$\xi$} &
+  Additional selection randomness (independent of the test point) &
+  \hyperref[def:thetatilde]{\S\ref{sec:methods}} \\
+\hyperref[def:thetatilde]{$\widetilde A$} &
+  Randomized selection algorithm with deterministic skeleton~\eqref{eq:opt} &
+  \hyperref[def:thetatilde]{\S\ref{sec:methods}} \\
+\end{longtable}
+\end{center}
+
+\end{document}

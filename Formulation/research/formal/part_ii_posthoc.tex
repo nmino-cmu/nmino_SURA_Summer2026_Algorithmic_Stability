@@ -1,0 +1,143 @@
+% part_ii_posthoc.tex — Part II: post-hoc validity of (1) at θ̂
+% Includes Sol-derived set-valued ZJ transfer (2026-07-27_setvalued_thm2.txt)
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{problem}{Problem}
+
+\title{Part II --- Post-hoc validity of $\mathcal{C}$ at $\hat\theta(\mathcal{D})$}
+\author{research/formal (working)}
+\date{27 July 2026}
+
+\begin{document}
+\maketitle
+
+\noindent\textit{Depends on \texttt{common\_setup.tex} and Part~I.
+Goal (iii): data-randomize selection; \textbf{never} recalibrate $\mathcal{C}$.
+Set-valued transfer: \texttt{proofs/sol\_gaps/2026-07-27\_setvalued\_thm2.txt}.}
+
+\section{Targets}
+
+\begin{definition}[Failure indicator]
+For a family $C^{(q)}(X;D,\theta)$ calibrated at miscoverage level $q$,
+\[
+\ell_q(W,\theta):=\mathbf{1}\{Y\notin C^{(q)}(X;D,\theta)\},
+\quad W=(D,X,Y).
+\]
+Writeup (1) is the special case $q=\alpha$ for \emph{prespecified} $\theta$.
+\end{definition}
+
+\section{Goal (i) --- set-valued stability transfer}
+
+\begin{assumption}[Joint fixed-$\theta$ validity on the selection support]
+\label{ass:FV}
+Let $\Theta_{\mathrm{val}}\subseteq\Theta$ be the (problem-specific) set of hyperparameters
+for which writeup~(1) holds at miscoverage level $q$. Assume
+\[
+\sup_{\theta\in\Theta_{\mathrm{val}}}
+\mathbb{P}\bigl\{Y\notin C^{(q)}(X;D,\theta)\bigr\}\le q.
+\tag{FV}
+\]
+Probability is over the joint experiment $(D,X,Y)$ (and set randomization);
+$\theta\in\Theta_{\mathrm{val}}$ is held fixed.
+\textit{Notation:} $C^{(q)}(X;D,\theta)$ is writeup~$\mathcal{C}(X;\mathcal{D},\theta)$
+when the classical miscoverage level in~(1) equals $q$ (superscript $=$ level;
+third argument $=$ hyperparameter $\theta$). Do not read the superscript as replacing $\theta$.
+\textit{Score-threshold families:} $\Theta_{\mathrm{val}}=\{\theta:F(\theta)\ge 1-q\}$;
+do not claim~(FV) on all of $[0,1]$.
+\end{assumption}
+
+\begin{theorem}[Set-valued stability transfer]
+\label{thm:set-valued}
+Let $\hat\theta=A(D)$ be $(\eta,\tau,\nu)$-stable with oracle $A_0\perp W$ and
+good event $G$ of probability $\ge 1-\nu$ such that on $G$,
+$K_w(B)\le e^\eta Q_0(B)+\tau$ for all measurable $B\subseteq\Theta$
+(Zrnic--Jordan Def.~2 / (ST)).
+Assume oracle validity
+$\mathbb{P}\{Y\notin C^{(q)}(X;D,A_0)\}\le q$
+(implied by~(FV) if $A_0\perp W$ and $A_0$ is supported on $\Theta_{\mathrm{val}}$;
+\textbf{(OV) alone suffices} ---~(FV) is only a convenient sufficient condition).
+Assume $C$'s downstream randomization is a common Markov kernel given $(W,\theta)$
+(no unaccounted coupling of $A$ into the construction of $C$ beyond plugging $\theta$).
+Then
+\[
+\mathbb{P}\bigl\{Y\notin C^{(q)}(X;D,\hat\theta)\bigr\}
+\le e^\eta q+\tau+\nu.
+\]
+In particular, with $q=\delta e^{-\eta}$,
+\[
+\mathbb{P}\bigl\{Y\notin C^{(\delta e^{-\eta})}(X;D,\hat\theta)\bigr\}
+\le \delta+\tau+\nu.
+\]
+\end{theorem}
+
+\begin{remark}[Proof idea]
+Failure section $B_q(w)=\{\theta:y\notin C^{(q)}(x;d,\theta)\}$; apply (ST) to the
+data-dependent section; add $\nu$-mass of $G^c$; use $A_0\perp W$.
+\end{remark}
+
+\begin{remark}[Goals (i)--(ii) vs (iii)]
+Using $C^{(\delta e^{-\eta})}$ instead of $C^{(\alpha)}$ is classical-level inflation
+(recalibration of the \emph{level}). That addresses (i)--(ii) when $\eta$ is fixed.
+Goal~(iii) forbids rebuilding $\mathcal{C}$; it drives $\eta,\tau,\nu\to 0$ by
+randomizing \emph{selection} only.
+\end{remark}
+
+\section{Goal (ii) --- inflation}
+
+\begin{definition}[Inflation]
+$\mathrm{Infl}:=\mathbb{P}\{Y\notin C^{(\alpha)}(X;D,\hat\theta)\}-\alpha$.
+Theorem~\ref{thm:set-valued} implies
+$\mathrm{Infl}\le (e^\eta-1)\alpha+\tau+\nu$ when $q=\alpha$ is used without level change.
+\end{definition}
+
+\section{Goal (iii) --- vanishing stability correction}
+
+\begin{corollary}[Vanishing inflation at fixed classical level --- W5/(iii)]
+\label{cor:vanish}
+Let $\{A_r\}$ be $(\eta_r,\tau_r,\nu_r)$-stable with
+$\eta_r\to 0$ and $\tau_r+\nu_r\to 0$, and suppose randomizing $A_r$ does
+\textbf{not} alter the fixed-$\theta$ map $(D,X)\mapsto C^{(\alpha)}(X;D,\theta)$
+(same classical level $\alpha$ as in writeup~(1); \emph{no} level change).
+If~(OV) holds for the oracle of $A_r$ at level $q=\alpha$ and the fixed-$\theta$ map
+is unchanged, then Theorem~\ref{thm:set-valued} with
+$q=\alpha$ yields
+\[
+\mathbb{P}\bigl\{Y\notin C^{(\alpha)}(X;D,A_r(D))\bigr\}
+\le e^{\eta_r}\alpha+\tau_r+\nu_r,
+\]
+hence
+\[
+\mathrm{Infl}_r
+\le (e^{\eta_r}-1)\alpha+\tau_r+\nu_r
+\to 0.
+\]
+In the limit $\eta=\tau=\nu=0$, classical (1) holds at the selected parameter
+with the \emph{same} $C^{(\alpha)}$.
+(The optional path $C^{(\delta e^{-\eta})}$ belongs only under goals~(i)--(ii);
+it is \textbf{not} the (iii) mechanism.)
+\end{corollary}
+
+\begin{definition}[Randomized selection map]
+$(\mathcal{D},\xi)\mapsto\tilde\theta(\mathcal{D};\xi)$ with $\xi$ independent of the
+test point; fixed-$\theta$ map of $\mathcal{C}$ unchanged.
+\end{definition}
+
+\begin{corollary}[Forbidden repairs]
+Sample-splitting re-estimation of $\mathcal{C}$ and threshold/score recalibration of
+$\mathcal{C}$ are out of scope as answers to (iii) (contrast literature only).
+\end{corollary}
+
+\begin{problem}[Remaining]
+Instantiate $A_r$ via \texttt{part\_i\_randomized\_design.tex}
+(RNM / Lap $b=2\varepsilon/\eta_r$, or soft-argmin $\beta=\eta_r/(2\varepsilon)$)
+with $\eta_r\to 0$; verify (FV) and Ass.\ concentration $\varepsilon(n),\nu(n)$ for the
+project's $(\hat f,\hat g)$ and $\mathcal{C}$.
+\end{problem}
+
+\end{document}

@@ -1,0 +1,48 @@
+% chain_i_to_ii.tex — how Part I rates feed Part II Cor vanish (W5)
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}{Remark}
+
+\title{Chain: randomized (2) $\to$ vanishing Infl at fixed $C^{(\alpha)}$}
+\author{research/formal (working)}
+\date{27 July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{theorem}[Design $\to$ goal~(iii) --- schematic]
+\label{thm:chain}
+Fix classical level $\alpha$ and a family $C^{(\alpha)}$ satisfying joint fixed-$\theta$
+validity (FV) on a valid support $\Theta_{\mathrm{val}}$
+(Part~II Ass.~FV; for score-threshold sets, $\Theta_{\mathrm{val}}=\{\theta:F(\theta)\ge 1-\alpha\}$).
+Let $A_r$ be the noisy-objective (or soft-argmin) map of
+\texttt{part\_i\_randomized\_design.tex} with user budget $\eta_r\to 0$,
+Laplace scale $b_r=2\varepsilon/\eta_r$ (or $\beta_r=\eta_r/(2\varepsilon)$),
+\textbf{restricted so that $A_r$ and its oracle $A_0$ are supported on $\Theta_{\mathrm{val}}$}
+(nested: net of $[t_\alpha,1]$; tradeoff: conservative $\Theta_0^\varepsilon\subseteq\{g^\star\le 0\}$),
+and concentration $(\varepsilon(n,\nu_r),\nu_r)$ from
+\texttt{instance\_nested\_uq.tex} or \texttt{instance\_tradeoff\_uq.tex}
+(DKW $\varepsilon=\sqrt{\log(2/\nu)/(2n)}$), via Ass.\ concentration.
+Then $A_r$ is $(\eta_r,0,\nu_r)$-stable and~(OV) holds at $q=\alpha$.
+If the fixed-$\theta$ map of $C^{(\alpha)}$
+is unchanged by the noise in $A_r$, Part~II Cor.\ vanish yields
+\[
+\mathbb{P}\bigl\{Y\notin C^{(\alpha)}(X;D,A_r(D))\bigr\}
+\le e^{\eta_r}\alpha+\nu_r,
+\qquad
+\mathrm{Infl}_r\le (e^{\eta_r}-1)\alpha+\nu_r\to 0
+\]
+along any sequence with $\eta_r\to 0$ and $\nu_r\to 0$ (e.g.\ $n\to\infty$ tightening
+concentration, or $\nu_r$ absorbed into a fixed Part~II error budget).
+\end{theorem}
+
+\begin{remark}
+Operational W5 answer to (iii): pay selection softness (large $b_r$) to
+buy small $\eta_r$; keep classical level of $\mathcal{C}$ fixed; keep selection inside
+$\Theta_{\mathrm{val}}$ so~(OV) is not lost as $\eta\to 0$.
+Soft-on-all-$[0,1]$ is stable but \textbf{not} a (iii) path for score-threshold $\mathcal{C}_\theta$.
+\end{remark}
+
+\end{document}

@@ -13,5 +13,4 @@
 *.toc
 
 # === temp: installment ignores (remove as we commit each chunk) ===
-Formulation/
 Work/

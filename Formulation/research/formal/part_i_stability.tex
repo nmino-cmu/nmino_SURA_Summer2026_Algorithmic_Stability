@@ -1,0 +1,148 @@
+% part_i_stability.tex — Part I: LOO stability of constrained opt (2)
+% Live object: θ̂(D) only. Methods literature may inspire norms; do not import CREDO/CREME objects.
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\input{macros_stub.tex}
+
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{problem}{Problem}
+\newtheorem{remark}{Remark}
+
+\title{Part I --- Leave-one-out stability of $\hat\theta(\mathcal{D})$}
+\author{research/formal (working)}
+\date{27 July 2026}
+
+\begin{document}
+\maketitle
+
+\noindent\textit{Depends on \texttt{common\_setup.tex}. Selected object = $\hat\theta$ from (2) only.}
+
+\section{Stability notions (candidates)}
+
+\begin{definition}[Exact LOO stability]
+$\hat\theta$ is \emph{exactly LOO-stable} if for all $i$,
+$\hat\theta(\mathcal{D})=\hat\theta(\mathcal{D}^{(i)})$ almost surely.
+\end{definition}
+
+\begin{definition}[Bounded LOO deviation]
+For a metric $d$ on the hyperparameter space $\Theta$,
+\[
+\Delta_{\mathrm{LOO}}(\mathcal{D})
+:=
+\max_{1\le i\le n}
+d\bigl(\hat\theta(\mathcal{D}),\hat\theta(\mathcal{D}^{(i)})\bigr).
+\]
+$\hat\theta$ is $(\varepsilon)$-LOO stable on an event $E$ if
+$\Delta_{\mathrm{LOO}}(\mathcal{D})\le\varepsilon$ on $E$.
+\end{definition}
+
+\begin{definition}[Expected LOO stability]
+$\hat\theta$ is $(\varepsilon)$-stable in expectation if
+$\mathbb{E}[\Delta_{\mathrm{LOO}}(\mathcal{D})]\le\varepsilon$.
+\end{definition}
+
+\begin{definition}[$(\eta,\tau,\nu)$-stability of selection --- Zrnic--Jordan Def.~2]
+\label{def:zj-stable}
+A (possibly randomized) map $A:\mathcal{D}\mapsto\hat\theta$ is
+$(\eta,\tau,\nu)$-stable w.r.t.\ the data law if there exists an oracle
+$A_0$ (may depend on the law, \emph{not} on the realized $\mathcal{D}$) such that
+with probability at least $1-\nu$ over $\mathcal{D}$,
+the conditional law of $A(\mathcal{D})$ is $(\eta,\tau)$-indistinguishable from $A_0$
+in max-divergence:
+$\mathbb{P}\{A(\mathcal{D})\in O\mid\mathcal{D}\}
+\le e^\eta\,\mathbb{P}\{A_0\in O\}+\tau$ for all measurable $O$
+(see digest \texttt{digest\_zrnic\_jordan\_stability.md}, PDF Defs.~1--2).
+\end{definition}
+
+\begin{remark}[LOO $\neq$ Def.~\ref{def:zj-stable}]
+Part~I of the writeup asks leave-one-out \emph{movement} of $\hat\theta$.
+Zrnic--Jordan stability is \emph{distributional indistinguishability of the selection law},
+typically enforced by randomizing selection.
+Both are tracked: LOO metrics above feed structural analysis of (2);
+Def.~\ref{def:zj-stable} feeds Part~II validity certificates.
+Do not conflate them.
+\end{remark}
+
+\section{Assumptions on $\hat f,\hat g$ (W3)}
+
+\begin{assumption}[Measurable dependence]
+$\hat f(\,\cdot\,;\theta)$ and $\hat g(\theta)$ are determined by $\mathcal{D}$
+(filtration already in (2)).
+\end{assumption}
+
+\begin{assumption}[Candidate regularity --- OPEN]
+State per lemma, with warrant:
+\begin{itemize}
+  \item Lipschitz / strong convexity of $\hat f$ in $\theta$;
+  \item constraint qualification for $\hat g$;
+  \item uniqueness of $\hat\theta(\mathcal{D})$.
+\end{itemize}
+No regularity imported from CREDO/CREME unless re-derived for (2).
+\end{assumption}
+
+\section{Target lemmas (stubs)}
+
+\begin{lemma}[LOO bound under strong convexity --- STUB]
+\label{lem:loo-sc}
+\textit{Hypothesis TBD after literature digest.}
+If $\hat f$ is $\mu$-strongly convex in $\theta$ and the active constraint set is
+stable under LOO, then $\Delta_{\mathrm{LOO}}(\mathcal{D})\le \frac{2}{\mu} L_{\mathrm{LOO}}$
+for an explicit LOO perturbation size $L_{\mathrm{LOO}}$ of the objective.
+\end{lemma}
+
+\begin{lemma}[Randomized selection reduces LOO --- STUB]
+\label{lem:rand-loo}
+\textit{W5 hook.}
+There exists a randomized map $\tilde\theta(\mathcal{D};\xi)$ such that
+$\mathbb{E}_\xi[\Delta_{\mathrm{LOO}}(\tilde\theta)]
+\le
+\mathbb{E}[\Delta_{\mathrm{LOO}}(\hat\theta)]$
+(or a high-probability analogue), without modifying $\mathcal{C}(\,\cdot\,;\mathcal{D},\theta)$'s
+construction for fixed $\theta$.
+\end{lemma}
+
+\section{Randomized versions of (2) for goal~(iii)}
+
+\begin{definition}[Noisy-objective selection]
+\label{def:noisy-obj}
+Given noise $\xi$, set
+\[
+\tilde\theta(\mathcal{D};\xi)
+\in
+\operatorname*{arg\,min}_{\theta}
+\bigl\{\hat f(y;\theta)+\langle\xi,\theta\rangle:\hat g(\theta)\le 0\bigr\}.
+\]
+\end{definition}
+
+\begin{definition}[Soft near-minimizer selection]
+\label{def:soft-argmin}
+For budget $\varepsilon>0$, draw $\tilde\theta$ from the set
+$\{\theta:\hat f(y;\theta)\le\hat f(y;\hat\theta)+\varepsilon,\ \hat g(\theta)\le 0\}$
+(or an exponential tilt on suboptimality). Symbols from CREDO $\varepsilon$-argmin are
+quarantined --- this is a selection thickener only.
+\end{definition}
+
+\begin{lemma}[Structured vs isotropic --- STUB]
+\label{lem:structured}
+If $\xi$ is supported on the sensitivity subspace of the KKT system of (2)
+(active constraint normals / reduced Hessian), then for the same stability budget
+$(\eta,\tau,\nu)$ the selection utility loss is weakly smaller than for isotropic
+$\xi\sim N(0,\sigma^2 I)$ under standard local quadratic approximations
+(pattern: \texttt{patterns\_inverse\_opt\_structured\_noise.md}).
+\end{lemma}
+
+\begin{problem}[Part I deliverable]
+Prove usable forms of Lemmas~\ref{lem:loo-sc}--\ref{lem:rand-loo},
+instantiate Defs.~\ref{def:noisy-obj}--\ref{def:soft-argmin} with explicit
+$(\eta,\tau,\nu)$ rates (Zrnic--Jordan design theorems as template), and feed
+into Part~II.
+\textbf{Rates delivered:} see standalone
+\texttt{part\_i\_randomized\_design.tex}
+(RNM / linear-Laplace $b=2\varepsilon/\eta$; soft-argmin $\beta=\eta/(2\varepsilon)$;
+FW composition). Remaining: concrete $\varepsilon(n),\nu(n)$ for a chosen $(\hat f,\hat g)$.
+\end{problem}
+
+\end{document}
