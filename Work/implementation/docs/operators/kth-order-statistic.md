@@ -1,0 +1,1 @@
+# k-th order statistic\n\nOrderStat kth-margin alias. Lean: `Research.Operators.KthOrderStatistic.Preservation`.\n

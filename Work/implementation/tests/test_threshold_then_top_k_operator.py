@@ -1,0 +1,5 @@
+from operators.threshold_then_top_k.math import EVALUATION_METHOD, OPERATOR, SHARPNESS_STATEMENT, THEOREM_ID, THEOREM_STATEMENT
+from operators.threshold_then_top_k.verify import verify_threshold_then_top_k_margin
+def test_verifier():
+    claim={"operator":OPERATOR,"theorem_id":THEOREM_ID,"evaluation":EVALUATION_METHOD,"statement":THEOREM_STATEMENT,"sharpness_statement":SHARPNESS_STATEMENT}
+    vr=verify_threshold_then_top_k_margin(claim); assert vr.ok,(vr.detail,vr.counterexamples)
