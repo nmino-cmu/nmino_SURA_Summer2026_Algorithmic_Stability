@@ -1,0 +1,115 @@
+---
+description: Mandatory Git branching, merge gates, and remote verification for every operation
+alwaysApply: true
+---
+
+# Branching, merging, and release policy
+
+Every new operation, feature, implementation task, repair, or research objective must be developed on its own dedicated Git branch.
+
+- Never perform implementation work directly on `main`.
+- Never merge partially complete work.
+- Never reuse a feature branch for unrelated work.
+- Each operation is an independent unit of development.
+
+## Operation identification
+
+At the beginning of every new operation, determine the primary purpose and create a concise deterministic branch name.
+
+Preferred format: `feature/<operation-name>`
+
+Examples: `feature/operator-analyzer`, `feature/phase-a-verifier`, `feature/feedback-export`
+
+- Bug fix only: `fix/<bug-name>`
+- Documentation only: `docs/<topic>`
+- Infrastructure: `infra/<topic>`
+
+## Create the branch
+
+Before changing any code:
+
+1. Fetch the latest remote state.
+2. Verify the working tree is clean.
+3. Verify no uncommitted changes exist.
+4. Update the local `main`.
+5. Create the new branch from the latest `main`.
+
+```bash
+git fetch origin
+git checkout main
+git pull origin main
+git checkout -b feature/<operation-name>
+```
+
+Do not begin implementation until the branch exists.
+
+## Implementation workflow
+
+All implementation for this operation must occur on this branch.
+
+Follow the complete implementation workflow: implementation, testing, conformance, replay testing, documentation, independent audits, self-repair loops, commits with detailed messages.
+
+Continue looping until the operation is complete. Do not stop after partial success.
+
+## Push policy
+
+Push the branch regularly. At minimum: after each independently audited major milestone, after any significant repair, and after release-ready completion.
+
+Verify each push succeeded. Confirm remote branch exists, remote HEAD equals local HEAD, and no push errors occurred.
+
+## Independent audit requirement
+
+Before considering the operation complete, spawn fresh independent audit agents verifying architecture conformance, implementation correctness, testing, documentation, replay, authority boundaries, security, Git state, and release readiness.
+
+If either audit reports BLOCKING or MAJOR: repair, rerun tests, spawn new auditors, repeat until BLOCKING = 0 and MAJOR = 0.
+
+## Completion criteria
+
+An operation is complete only if ALL are true:
+
+- implementation complete
+- documentation updated
+- architecture synchronized
+- tests / integration / conformance / replay / required e2e pass
+- working tree clean
+- branch pushed
+- independent audits passed
+- BLOCKING = 0 and MAJOR = 0
+
+No operation may be merged before satisfying every requirement.
+
+## Pre-merge verification
+
+Before merging: fetch origin; update local main; if main has advanced, rebase or merge per repo policy, resolve conflicts, rerun affected and full suites, and rerun independent audits if changes are material. Do not merge stale branches.
+
+## Merge gate
+
+Merge ONLY with high confidence that the operation is fully implemented, satisfies architecture and specification, all required tests and audits pass, and no BLOCKING/MAJOR defects remain.
+
+If any uncertainty remains: DO NOT MERGE.
+
+## Merge process
+
+When merge conditions are satisfied:
+
+1. Merge the feature branch into `main` using the repository's preferred strategy.
+2. Verify the merge completed successfully.
+3. Push `main`.
+4. Verify remote main exists, equals local main, and the merge/squash commit is present remotely.
+5. Confirm the operation branch is fully represented in main.
+
+Only claim success after verifying the remote.
+
+## Post-merge
+
+Record branch name, operation name, merge commit hash, commits included, tests executed, audit verdicts, and release status.
+
+Optionally delete the feature branch locally and remotely only if repository policy allows it. Never delete a branch before confirming the merge exists on the remote.
+
+## Self-repair loop
+
+WHILE the operation is not successfully merged into remote main: implement → test → document → independently audit → repair → commit → push branch → verify push → verify merge readiness → merge into main → push main → verify remote main; repair and repeat on failure.
+
+Stop only when the operation is implemented, independently verified, merged into `main`, and the merge is confirmed on the remote repository.
+
+Do not claim a merge occurred unless it actually occurred. Do not claim remote preservation unless verified. Do not merge incomplete work merely because tests currently pass.

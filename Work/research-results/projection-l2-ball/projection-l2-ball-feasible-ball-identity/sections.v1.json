@@ -1,0 +1,27 @@
+{
+  "fundamentality": "reduction",
+  "title": "Projection onto the l2 ball: Real Stability",
+  "abstract": "If a projector fixes feasible points and the closed $\\varepsilon$-ball about $x$ lies in the feasible set, then every $x'$ in the ball is fixed. This is an identity certificate, not full Euclidean projection nonexpansiveness. Lean \\texttt{LEAN\\_FULL}.",
+  "problem": "\\leanpath{projection-l2-ball} is treated via a feasibility indicator / projection that fixes InSet points.",
+  "stability": "Interior feasible-ball identity under $|x'-x|\\le\\varepsilon$.",
+  "definitions": "Assumptions: $\\mathrm{proj}(z)=z$ whenever $\\mathrm{InSet}(z)$, and $|y-x|\\le\\varepsilon\\Rightarrow\\mathrm{InSet}(y)$.",
+  "theorem": "\\begin{theorem}\\label{thm:inv}\nUnder those assumptions, every $|x'-x|\\le\\varepsilon$ satisfies $\\mathrm{proj}(x')=x'$ and $\\mathrm{proj}(x)=x$. Sharpness: if some ball point is infeasible, the ball-feasibility hypothesis fails.\n\\end{theorem}",
+  "intuition": "Deep inside the feasible set, projection is the identity, so small moves stay fixed points.",
+  "examples": "\\begin{example}\nIf $\\mathrm{InSet}=[-1,1]$, $x=0$, $\\varepsilon=0.25$, every $x'$ in the ball is feasible and fixed by identity projection.\n\\end{example}",
+  "proof": "Take $|x'-x|\\le\\varepsilon$. Feasibility of the ball gives $\\mathrm{InSet}(x')$ and $\\mathrm{InSet}(x)$. Fixing feasible points yields $\\mathrm{proj}(x')=x'$ and $\\mathrm{proj}(x)=x$ (Theorem~\\ref{thm:inv}). Sharpness is the contrapositive of ball feasibility. \\textbf{Limitation:} this does not prove general Euclidean projection nonexpansiveness.",
+  "formal": "\\begin{description}[style=nextline,leftmargin=1.1em,font=\\normalfont\\bfseries]\n\\item[Lean module] \\leanpath{Research.Operators.ProjectionL2Ball.Preservation}\n\\item[Source file] \\leanpath{lean/Research/Operators/ProjectionL2Ball/Preservation.lean}\n\\item[Theorems]\\leavevmode\\par\\vspace{0.15em}\\begin{itemize}[leftmargin=1.2em]\n  \\item \\leanpath{projection_l2_ball_feasible_ball_identity}\n  \\item \\leanpath{projection_l2_ball_feasible_ball_sharpness}\n\\end{itemize}\n\\item[Note] Uses Projection.FeasibleId (not Euclidean nonexpansiveness).\n\\item[Certificate] \\leanpath{lean/certificates/projection-l2-ball/projection-l2-ball-feasible-ball-identity}\n\\item[Status] \\texttt{LEAN\\_FULL} on Mathlib $\\mathbb{R}$ (\\texttt{REAL\\_MATHLIB})\n\\end{description}",
+  "dependencies": "\\begin{itemize}\\item \\texttt{Projection.FeasibleId}.\\item No Euclidean nonexpansiveness claim.\\end{itemize}",
+  "consequences": "Honest limited certificate for simplex/$\\ell_p$-ball style operators in this library. Related: projection-interval, coordinate-clipping.",
+  "paper_card": {
+    "difficulty": "elementary",
+    "applications": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "dependencies": [
+      "Research.Operators.Projection.FeasibleId"
+    ],
+    "reduces_to": "projection-feasible-id",
+    "reduced_by": []
+  }
+}

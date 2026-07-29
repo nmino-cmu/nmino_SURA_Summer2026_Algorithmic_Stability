@@ -1,0 +1,91 @@
+---
+description: Generate publication-quality papers only after Lean LEAN_FULL verification
+alwaysApply: true
+---
+
+# Verified research-result publication policy
+
+Whenever an operator-specific research result reaches a state where there is strong evidence that it is mathematically complete, produce a publication-quality write-up.
+
+Do **not** generate this document for speculative, partially verified, `DEMO_*`-only, or **computational-only** results.
+
+## When to generate (Lean gate — mandatory)
+
+Generate the document only if **ALL** are true:
+
+- the result has passed the complete Discovery → Verification workflow;
+- the final verifier does not report unresolved proof obligations;
+- **System 3 Lean formalization reports `derived_lean_status = LEAN_FULL`** for the theorem (live `lake build` + axiom capture; certificate under `lean/certificates/<operator>/<theorem-id>/`);
+- independent mathematical audit passes;
+- BLOCKING = 0;
+- MAJOR = 0;
+- documentation accurately reflects the implementation **and** the Lean certificate;
+- the theorem is considered complete according to repository standards.
+
+If any of the above are false — including computational PASS without Lean:
+
+- Do **NOT** generate (or regenerate) the paper.
+- Instead record why generation was skipped under `research-results/_skip-log/`.
+
+Computational dischargers (`*_COMPUTATIONAL_V1`) may support engineering tests; they **do not** authorize publication.
+
+## Output location
+
+```text
+research-results/
+  <operator>/
+    <theorem-slug>/
+      paper.tex
+      <operator>_paper.pdf   # - in operator_id → _
+      README.md
+      metadata.json          # includes paper_card
+      proof-outline.md
+      figures/
+      references.bib
+      _archive/              # prior thin / superseded versions
+```
+
+Never overwrite an existing published PDF/tex without preserving history (`_archive/v0-thin/` or a new version directory).
+
+Use `scripts/generate_operator_paper.py` with a sections JSON payload. Ship paths must not emit thin stub papers.
+
+## LaTeX content (operator-stability-v1)
+
+Front matter: **This theorem is:** exactly one of `Primitive` | `Derived` | `Reduction`.
+
+Body sections in this exact order:
+
+1. Problem
+2. Stability notion
+3. Definitions
+4. Theorem
+5. Intuition
+6. Examples
+7. Proof — **complete** mathematical proof suitable for a research paper (not a sketch)
+8. Formal statement — Lean module path, source file, theorem names, certificate dir, `LEAN_FULL`, `REAL_MATHLIB`
+9. Proof dependencies
+10. Consequences
+
+Prompts: `prompts/operator-paper/`. Template: `research-results/paper-templates/operator-stability-v1.tex`.
+
+## Mathematics
+
+- Exact match to the verified theorem / CRP / Lean `*Prop` statements.
+- Do not strengthen claims or omit assumptions.
+- Prose is filled **deterministically from metadata and verified Lean information**; never synthesize mathematics beyond the certified claim.
+- Cite the certificate domain verbatim — `REAL_MATHLIB` (Mathlib ℝ) for every accepted certificate.
+- Residual gaps named in the certificate may appear in Limitations/dependencies notes; naming a gap does not block publication if the Lean gate holds.
+
+## Metadata
+
+`metadata.json` must include legacy ART fields plus `paper_card` with at least:
+
+- `layout`: `operator-stability-v1`
+- `fundamentality`: `primitive` | `derived` | `reduction`
+- `dependencies`: list
+- `verified.lean_status`: `LEAN_FULL`
+- `verified.manifest_digest`, `verified.domain`
+
+## Hard prohibition
+
+Do not generate papers for incomplete mathematics, `DEMO_*`-only passes, computational-only passes, unresolved obligations, Lean status other than `LEAN_FULL`, or audit FAIL/BLOCKED/MAJOR findings.

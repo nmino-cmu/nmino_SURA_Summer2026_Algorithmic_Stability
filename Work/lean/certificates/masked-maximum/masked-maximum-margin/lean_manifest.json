@@ -1,0 +1,37 @@
+{
+  "claim_digest": "4554b230aef51fe17390094111c8c17e994cf0a59b8403bceba8c5249fcdf25f",
+  "claim_math_fingerprint": "4554b230aef51fe17390094111c8c17e994cf0a59b8403bceba8c5249fcdf25f",
+  "limitations": [
+    "AXIOM_CLOSURE_CAPTURED",
+    "DEFINITION_PINS_SURROGATE",
+    "LEAN_MANIFEST_WITHOUT_COMMIT"
+  ],
+  "manifest_digest": "ac90b1ac802f1e75c50fe3b9a831ed1298c1e9a5494a323b7b82bd94c3a396fd",
+  "store_kind": "ART10b_SURROGATE_V1",
+  "transcript": {
+    "admit_count": 0,
+    "axiom_closure_captured": true,
+    "build_ok": true,
+    "custom_axiom_asserts_target": false,
+    "custom_axiom_ids_sorted": [],
+    "definition_pin_set": [
+      "0aa41527606d1f2ca64029bec8464dac27d7dbf0e1da8d779a45bc3ab90a57a8",
+      "f7db07ae674c4e86ed0b080f42264aa6e0b61bb7648a7f945331f48d86c9dec6",
+      "a07717eba70574abd0f88c2568428f22e5cbad17dc760c47b59a841da4519844",
+      "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+    ],
+    "entry_module_id": "Research.Operators.MaskedMaximum.Margin",
+    "import_closure_digest": "4cb6ad6466a536b47a653cde42512baaa30fdc9de185e4cad5735ddb06129c04",
+    "imported_axiom_closure_sorted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lean_statement_digest": "2f7a5513b29f4e9b33b7e2d165ada545b762f4608c4321732e01e357168b2310",
+    "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+    "proof_tree_digest": "f7db07ae674c4e86ed0b080f42264aa6e0b61bb7648a7f945331f48d86c9dec6",
+    "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+    "sorry_count": 0,
+    "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+  }
+}

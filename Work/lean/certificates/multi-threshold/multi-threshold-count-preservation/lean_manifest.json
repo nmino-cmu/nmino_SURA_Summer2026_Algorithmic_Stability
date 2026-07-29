@@ -1,0 +1,37 @@
+{
+  "claim_digest": "327ba148199573b5548bc7d004523895b0d86144d88200aaa75b5a0605d7c650",
+  "claim_math_fingerprint": "327ba148199573b5548bc7d004523895b0d86144d88200aaa75b5a0605d7c650",
+  "limitations": [
+    "AXIOM_CLOSURE_CAPTURED",
+    "DEFINITION_PINS_SURROGATE",
+    "LEAN_MANIFEST_WITHOUT_COMMIT"
+  ],
+  "manifest_digest": "f8054dde819c75d3e238aa6cad658b8bd77c9ad1ca5f2a764bba5899c9a5c1fe",
+  "store_kind": "ART10b_SURROGATE_V1",
+  "transcript": {
+    "admit_count": 0,
+    "axiom_closure_captured": true,
+    "build_ok": true,
+    "custom_axiom_asserts_target": false,
+    "custom_axiom_ids_sorted": [],
+    "definition_pin_set": [
+      "b6299f6210b73e2d60ae3f5b6d7a4d476ad822099a04a5a76fd989684697b66a",
+      "95f22d9dce330c745d156b17ae07e37b8278c697778147d3c61ecdeef80e90d0",
+      "1e42960392610191aae1b11737438a6bd13153dd5e012f948aee0fbd3306379a",
+      "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+    ],
+    "entry_module_id": "Research.Operators.MultiThreshold.Preservation",
+    "import_closure_digest": "7675c70f36c8292a2ae25ed8cc36db37f3a473c8e840505ea8f0ae8b4e703b34",
+    "imported_axiom_closure_sorted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lean_statement_digest": "ae17f78a0650c20ca5bdbcee299f400f02e78e320f29bbc8926b1f56a715508f",
+    "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+    "proof_tree_digest": "95f22d9dce330c745d156b17ae07e37b8278c697778147d3c61ecdeef80e90d0",
+    "rebuild_log_digest": "018e0cd8d327aea55a50e638c4b28c565a65a50f320102cf49cf0d40ce860bf1",
+    "sorry_count": 0,
+    "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+  }
+}

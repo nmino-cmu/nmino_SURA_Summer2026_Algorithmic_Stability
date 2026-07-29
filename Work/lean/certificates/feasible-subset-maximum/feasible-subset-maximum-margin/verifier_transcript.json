@@ -1,0 +1,26 @@
+{
+  "admit_count": 0,
+  "axiom_closure_captured": true,
+  "build_ok": true,
+  "custom_axiom_asserts_target": false,
+  "custom_axiom_ids_sorted": [],
+  "definition_pin_set": [
+    "163d2070762124d622d587c67afb7a9b931a77dcf707ad20659cec272072661f",
+    "2f317435efdbe384cbd709174ce7fd2e0fa92e511b52f3518d99a0e990873603",
+    "a07717eba70574abd0f88c2568428f22e5cbad17dc760c47b59a841da4519844",
+    "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+  ],
+  "entry_module_id": "Research.Operators.FeasibleSubsetMaximum.Margin",
+  "import_closure_digest": "f1d0c0ba58dd449fc6ac2fd43c67fb9d8c01826b91914b39ba5647fc0fb9523f",
+  "imported_axiom_closure_sorted": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_statement_digest": "26d8cff977fcc1974ea96b627bc739f93e130210f41d83e19de85ea1cdd4110b",
+  "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+  "proof_tree_digest": "2f317435efdbe384cbd709174ce7fd2e0fa92e511b52f3518d99a0e990873603",
+  "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+  "sorry_count": 0,
+  "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+}

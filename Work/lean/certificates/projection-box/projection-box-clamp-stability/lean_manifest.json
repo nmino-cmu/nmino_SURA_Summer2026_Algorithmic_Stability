@@ -1,0 +1,37 @@
+{
+  "claim_digest": "cddd1ff82bb88c5629e10858e228f7d0895e488a4d06e82588b5aad8dcfe6c04",
+  "claim_math_fingerprint": "cddd1ff82bb88c5629e10858e228f7d0895e488a4d06e82588b5aad8dcfe6c04",
+  "limitations": [
+    "AXIOM_CLOSURE_CAPTURED",
+    "DEFINITION_PINS_SURROGATE",
+    "LEAN_MANIFEST_WITHOUT_COMMIT"
+  ],
+  "manifest_digest": "ba5a8d9591b16da9d823fa84a43fd0f8e06dbd57a49c2338084befea17d9c975",
+  "store_kind": "ART10b_SURROGATE_V1",
+  "transcript": {
+    "admit_count": 0,
+    "axiom_closure_captured": true,
+    "build_ok": true,
+    "custom_axiom_asserts_target": false,
+    "custom_axiom_ids_sorted": [],
+    "definition_pin_set": [
+      "b413ae84d3f117f8a588d460f71c8f4d64dce71cabbb4bb5b7c80f04ecb8d0fe",
+      "f20fcaf1c09f55b704946b0bbf82f3e9a6616dca1ea148b2e9bb39e39f70e690",
+      "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71",
+      "847e9aa44d813d1f32a18331968f84c08cbadc9bfd52e4069f1f020986c156d3"
+    ],
+    "entry_module_id": "Research.Operators.ProjectionBox.Preservation",
+    "import_closure_digest": "29a28843bddd4eb47bb83918ae5843588a3b4db99d192da5a1ee288876677dd3",
+    "imported_axiom_closure_sorted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lean_statement_digest": "a7b2ab12309c79bce14b64e8a023592070ae01051ed3039d40c8659977134735",
+    "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+    "proof_tree_digest": "847e9aa44d813d1f32a18331968f84c08cbadc9bfd52e4069f1f020986c156d3",
+    "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+    "sorry_count": 0,
+    "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+  }
+}

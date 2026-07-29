@@ -1,0 +1,10 @@
+import Research.Operators.Projection.Constraint
+namespace Research.Operators.ConstraintThresholdConjunction.Preservation
+open Research.Operators.Projection.Constraint
+/- STATEMENT_BEGIN -/
+def ConstraintThresholdConjunctionPreservationProp : Prop := ConjunctionPreservationProp
+def ConstraintThresholdConjunctionSharpnessProp : Prop := ConjunctionSharpnessProp
+/- STATEMENT_END -/
+theorem constraint_threshold_conjunction_conjunction_preservation : ConstraintThresholdConjunctionPreservationProp := conjunction_preservation
+theorem constraint_threshold_conjunction_conjunction_sharpness : ConstraintThresholdConjunctionSharpnessProp := conjunction_sharpness
+end Research.Operators.ConstraintThresholdConjunction.Preservation

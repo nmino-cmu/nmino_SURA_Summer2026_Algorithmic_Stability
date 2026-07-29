@@ -1,0 +1,27 @@
+{
+  "admit_count": 0,
+  "axiom_closure_captured": true,
+  "build_ok": true,
+  "custom_axiom_asserts_target": false,
+  "custom_axiom_ids_sorted": [],
+  "definition_pin_set": [
+    "5ae05941fd312d64528c6b5a45512e8d06e8116f210f96dab3446e32756b9c79",
+    "9be37acbd5c7b6bd38b5c916f802b3c8e262c4fbb373064ce52365d436fa031c",
+    "2d0dcdbe0fc5fc349895f93f1506932a4bab2d530664cd319f622d5fe0c29934",
+    "89819a78d45b8b4e72221c074b93519d4b0b4ad376902cb00c1a50be3f27ac2f",
+    "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+  ],
+  "entry_module_id": "Research.Operators.KthOrderStatistic.Preservation",
+  "import_closure_digest": "9aca7918e5a93c0ce5fcbbc716cb7118dce7d8bc9afb4d98f616a5592f0bb96c",
+  "imported_axiom_closure_sorted": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_statement_digest": "00f9d400d695d173e10da3899564b55daaae33c22221becf852c2f79dea31939",
+  "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+  "proof_tree_digest": "9be37acbd5c7b6bd38b5c916f802b3c8e262c4fbb373064ce52365d436fa031c",
+  "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+  "sorry_count": 0,
+  "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+}

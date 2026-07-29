@@ -1,0 +1,39 @@
+{
+  "claim_digest": "b3a035576ae81509530e2b0cd7056d693126c70dd5aece0fda12528dbdc25eea",
+  "claim_math_fingerprint": "b3a035576ae81509530e2b0cd7056d693126c70dd5aece0fda12528dbdc25eea",
+  "limitations": [
+    "AXIOM_CLOSURE_CAPTURED",
+    "DEFINITION_PINS_SURROGATE",
+    "LEAN_MANIFEST_WITHOUT_COMMIT"
+  ],
+  "manifest_digest": "7c3393e0219c3a99aa0430a56582dbe8a08dd1211b9256c8de8af3973b10595a",
+  "store_kind": "ART10b_SURROGATE_V1",
+  "transcript": {
+    "admit_count": 0,
+    "axiom_closure_captured": true,
+    "build_ok": true,
+    "custom_axiom_asserts_target": false,
+    "custom_axiom_ids_sorted": [],
+    "definition_pin_set": [
+      "4522f1fad3c38114a172304e7f1cc5c85110ff822d12b526f8138c0a9b46618c",
+      "70434d4d344f03f44a3c707504c1cc3cda038590b08b285bda8828d156b95c00",
+      "eccf1281eee6cd64a95aa5fea91c5d39bd9ba7330733b2613b49c36c07a6b3d8",
+      "2d0dcdbe0fc5fc349895f93f1506932a4bab2d530664cd319f622d5fe0c29934",
+      "89819a78d45b8b4e72221c074b93519d4b0b4ad376902cb00c1a50be3f27ac2f",
+      "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+    ],
+    "entry_module_id": "Research.Operators.LexicographicOrdering.Preservation",
+    "import_closure_digest": "f22e375cfb34d83329451681f6fbff8be599486f5ea3c5724ea9d2961ab5fd03",
+    "imported_axiom_closure_sorted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lean_statement_digest": "529453f59092aefe99fac85837d665fbbd50bbcbe2968ada834debc574172f0d",
+    "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+    "proof_tree_digest": "70434d4d344f03f44a3c707504c1cc3cda038590b08b285bda8828d156b95c00",
+    "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+    "sorry_count": 0,
+    "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+  }
+}

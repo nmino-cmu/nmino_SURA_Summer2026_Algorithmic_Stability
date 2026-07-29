@@ -1,0 +1,229 @@
+\documentclass[12pt]{article}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bbm}
+\usepackage{booktabs}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+
+\newcommand*{\eg}{\emph{e.g.}{}}
+\newcommand*{\ie}{\emph{i.e.}{}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{assumption}{Assumption}
+\newtheorem{prop}{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+
+\title{Working Formalization:\\
+Stable Post-Hoc Inference for Optimization-Selected Policies}
+\author{Nicholas Mino \and Wenbin Zhou \and Shixiang Zhu\\
+Carnegie Mellon University}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note records the working problem formulation for the project
+\emph{Algorithmic Stability for Post-Hoc Selection}.
+It expands the end formalization from the project draft:
+stability of constrained, data-driven optimizations, and post-hoc
+inference after stable selection.
+It is a formulation document, not a theorem paper.
+\end{abstract}
+
+\section{Introduction}
+We observe data, run a data-dependent optimization-based selection
+algorithm, and then want to make an inference or evaluation statement
+about the selected object.
+The difficulty is that selection uses the same data as inference, so the
+selected object is statistically dependent on the data used to assess it.
+
+The goal is to reduce or avoid data splitting by finding a general
+framework for post-hoc optimization-based selection algorithms:
+convert an optimization-based selection algorithm into a
+\emph{stable} selection algorithm.
+Such a framework should identify when a selection rule can be randomized
+or otherwise controlled so that its output is sufficiently and
+certifiably stable for valid downstream inference or evaluation.
+
+The post-hoc inference problem is itself very general.
+We narrow it by focusing on a concrete objective---uncertainty
+quantification---in which a hyperparameter is chosen by constrained
+optimization on shared calibration data.
+The overall objective mixes algorithm stability, post-hoc inference,
+and optimization theory, and is decomposed into two parts:
+\begin{enumerate}
+\item stability of constrained optimizations;
+\item post-hoc inference on top of those stability results.
+\end{enumerate}
+
+\section{Common Setup}
+Let
+\[
+D=(Z_1,\dots,Z_n)
+\]
+denote the observed dataset, where
+\[
+Z_1,\dots,Z_n \overset{\mathrm{i.i.d.}}{\sim} P
+\]
+and \(P\) is an unknown population distribution.
+
+Let \(A\) be a data-dependent optimization-based selection algorithm, and let
+\[
+\widehat S = A(D)
+\]
+denote the selected object.
+
+We seek a stabilized selection rule \(\widetilde A\) producing
+\[
+\widetilde S = \widetilde A(D;\xi),
+\]
+where \(\xi\) represents additional randomness or another stabilizing
+device.
+Depending on the mechanism, \(\xi\) may represent noise, subsampling
+randomness, randomized optimization perturbation, privacy randomness,
+or another source of algorithmic randomization.
+
+The target post-selection inference guarantee is
+\[
+\mathbb{P}\bigl(\theta_{\widetilde S}\in C_{\widetilde S}(D)\bigr)
+\ge 1-\alpha.
+\]
+In words: after using the data to select an object, the confidence set
+reported for that selected object should contain its true parameter with
+probability at least \(1-\alpha\).
+
+\paragraph{Policy view.}
+We treat the selected object as (or as inducing) a \emph{policy}:
+the solution of an optimization problem that maps context to a decision
+or hyperparameter.
+Stability is formalized for the policy induced by that optimization.
+The stabilization mechanism is then chosen so that the induced policy
+is stable enough for the target guarantee above.
+
+\section{Narrowed Setting: Uncertainty Quantification via Constrained Optimization}
+Consider a post-hoc inference setting in uncertainty quantification,
+where a hyperparameter \(\theta\) is determined by optimization using
+shared calibration data.
+
+Let \(\mathcal{C}(X;\mathcal{D},\theta)\) denote an uncertainty set
+constructed from dataset \(\mathcal{D}\) and hyperparameter \(\theta\).
+Assume that, for any fixed \(\mathcal{D}\) and any prespecified \(\theta\),
+the set satisfies \emph{validity}:
+\begin{equation}
+\label{eq:validity}
+\mathbb{P}\bigl(Y\in\mathcal{C}(X;\mathcal{D},\theta)\bigr)
+\ge 1-\alpha.
+\end{equation}
+
+Suppose there exist two data-dependent functions \(\hat f\) and \(\hat g\)
+(with \(\sigma(\hat f)\subseteq\sigma(\mathcal{D})\) and
+\(\sigma(\hat g)\subseteq\sigma(\mathcal{D})\)) that jointly define a
+constrained optimization problem determining \(\theta\):
+\begin{equation}
+\label{eq:opt}
+\pi:\qquad
+\min_{\theta}\ \hat f(y;\theta)
+\quad\text{s.t.}\quad
+\hat g(\theta)\le 0.
+\end{equation}
+Let \(\hat\theta(\mathcal{D})\) denote the output of~\eqref{eq:opt}.
+
+The questions are:
+\begin{enumerate}
+\item[(i)] under what conditions does~\eqref{eq:validity} still hold when
+\(\hat\theta(\mathcal{D})\) is plugged in for \(\theta\)?
+\item[(ii)] if not, what is the deviation between nominal and actual
+miscoverage?
+\item[(iii)] what procedure can recalibrate the uncertainty set, or
+stabilize the selection, so that~\eqref{eq:validity} is recovered?
+\end{enumerate}
+
+\paragraph{Strategy emphasis.}
+One intended line of attack is data-driven policy selection
+(\eg\ predict-then-optimize style), without classical recalibration:
+randomize the data / inject structured noise---depending on inverse
+optimization structure---to achieve a validity guarantee, thereby
+answering~(iii).
+Related touchstones include winner's-curse phenomena and algorithm
+stability in post-selection inference.
+
+\section{Part I: Stability of Constrained Optimizations}
+\subsection{Problem Formulation}
+Fix an optimization of the form~\eqref{eq:opt}, with data-dependent
+objective \(\hat f\) and constraint \(\hat g\) learned from \(\mathcal{D}\).
+
+The stability question is:
+\begin{quote}
+If the dataset changes by one data point, how much does the optimizer
+output \(\hat\theta(\mathcal{D})\) change?
+\end{quote}
+More generally, under a specified neighbor relation on datasets
+(leave-one-out, replace-one, or another structured perturbation),
+bound the sensitivity of
+\[
+\mathcal{D}\mapsto\hat\theta(\mathcal{D})
+\]
+and of the induced policy / selected object.
+
+Structural assumptions may be required on how \(\hat f\) and \(\hat g\)
+are learned from \(\mathcal{D}\), and on the geometry of~\eqref{eq:opt}
+(convexity, uniqueness, margin / constraint qualification, etc.).
+
+The deliverable of Part~I is a certificate of the form
+``under assumptions \(\mathcal{A}\), the map \(\mathcal{D}\mapsto\hat\theta(\mathcal{D})\)
+(or the induced policy) is stable in sense \(\mathcal{S}\) with
+quantitative bound \(B\).''
+
+\section{Part II: Post-Hoc Inference after Stable Selection}
+\subsection{Problem Formulation}
+Assume Part~I provides a stability certificate for a (possibly
+randomized) selection rule \(\widetilde A\) with output
+\(\widetilde S=\widetilde A(D;\xi)\).
+
+The inference question is:
+\begin{quote}
+Given that stability certificate, construct a confidence set
+\(C_{\widetilde S}(D)\) such that
+\[
+\mathbb{P}\bigl(\theta_{\widetilde S}\in C_{\widetilde S}(D)\bigr)
+\ge 1-\alpha,
+\]
+or, in the UQ specialization, recover~\eqref{eq:validity} when
+\(\theta=\widetilde\theta(D;\xi)\) is the stabilized optimizer output.
+\end{quote}
+
+Part~II should make precise:
+\begin{itemize}
+\item what parameter \(\theta_{\widetilde S}\) is being covered;
+\item what form of stability (\eg\ replacement stability, TV / Hellinger
+stability of the selection law, score-perturbation stability) is
+sufficient for the target coverage;
+\item how the confidence set or uncertainty set is built from \(D\) and
+\(\widetilde S\) without a naive data split, when possible.
+\end{itemize}
+
+\section{Program Decomposition}
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Part & Focus \\
+\midrule
+I & Stability of constrained data-driven optimizations \\
+II & Post-hoc inference / UQ validity after stable selection \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The problem setting may be refined if a more principal formulation
+emerges, but any revision should preserve the two-part split:
+optimization stability first, then post-hoc inference on top.
+
+\end{document}

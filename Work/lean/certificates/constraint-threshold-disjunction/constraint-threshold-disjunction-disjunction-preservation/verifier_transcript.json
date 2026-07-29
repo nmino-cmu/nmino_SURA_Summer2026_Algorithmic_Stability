@@ -1,0 +1,27 @@
+{
+  "admit_count": 0,
+  "axiom_closure_captured": true,
+  "build_ok": true,
+  "custom_axiom_asserts_target": false,
+  "custom_axiom_ids_sorted": [],
+  "definition_pin_set": [
+    "2459d2ca23b65b019289390ad5a1851d19902abdb2118911bad15eb7611017fd",
+    "ac33a5418d7004b9abff95abd57af2caed7313bdcfb0eb5c3e3dd366ea9e5476",
+    "95f22d9dce330c745d156b17ae07e37b8278c697778147d3c61ecdeef80e90d0",
+    "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71",
+    "0be16b22f5861d0ed3295765d5c22ff13009ccb8bbe4489e5fcb97f35c230444"
+  ],
+  "entry_module_id": "Research.Operators.ConstraintThresholdDisjunction.Preservation",
+  "import_closure_digest": "ba9a7d907f5678e179840fc99af92d6dfaa8fba3671bb27869c265131599e783",
+  "imported_axiom_closure_sorted": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_statement_digest": "74d881617c1f011ca986b4a321cb8c122eb614b63366e05743ed1f90b5921fc2",
+  "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+  "proof_tree_digest": "0be16b22f5861d0ed3295765d5c22ff13009ccb8bbe4489e5fcb97f35c230444",
+  "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+  "sorry_count": 0,
+  "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+}

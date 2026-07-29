@@ -1,0 +1,37 @@
+{
+  "claim_digest": "eb35383fb99466932d1e854eabdda9e713972f71bd58eb3c8c420b0aee8b457d",
+  "claim_math_fingerprint": "eb35383fb99466932d1e854eabdda9e713972f71bd58eb3c8c420b0aee8b457d",
+  "limitations": [
+    "AXIOM_CLOSURE_CAPTURED",
+    "DEFINITION_PINS_SURROGATE",
+    "LEAN_MANIFEST_WITHOUT_COMMIT"
+  ],
+  "manifest_digest": "6d9aa87af3d42d559777f6522aed2540dfa0a3132ed35d98d944776101744047",
+  "store_kind": "ART10b_SURROGATE_V1",
+  "transcript": {
+    "admit_count": 0,
+    "axiom_closure_captured": true,
+    "build_ok": true,
+    "custom_axiom_asserts_target": false,
+    "custom_axiom_ids_sorted": [],
+    "definition_pin_set": [
+      "adff6a881a89449b18b79bd46b5006256963a63b6dc45a262822b4546e9b5fbe",
+      "9620501ffea8e86376481d0a75f5cbe86e6773670c49fcfeceac7b3e7968f9a2",
+      "a07717eba70574abd0f88c2568428f22e5cbad17dc760c47b59a841da4519844",
+      "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+    ],
+    "entry_module_id": "Research.Operators.BestFirstNodeSelection.Margin",
+    "import_closure_digest": "c7d5faf4cb583629f7affca9b0d18161595a35e85fef6b224417f606d2426376",
+    "imported_axiom_closure_sorted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lean_statement_digest": "b3b3661187debc036d1ab346dabbbd2a5b56b436d3528baa8ffb0bac1baee877",
+    "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+    "proof_tree_digest": "9620501ffea8e86376481d0a75f5cbe86e6773670c49fcfeceac7b3e7968f9a2",
+    "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+    "sorry_count": 0,
+    "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+  }
+}

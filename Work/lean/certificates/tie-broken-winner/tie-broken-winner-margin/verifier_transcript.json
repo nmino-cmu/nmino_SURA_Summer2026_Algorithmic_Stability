@@ -1,0 +1,26 @@
+{
+  "admit_count": 0,
+  "axiom_closure_captured": true,
+  "build_ok": true,
+  "custom_axiom_asserts_target": false,
+  "custom_axiom_ids_sorted": [],
+  "definition_pin_set": [
+    "23a41a676eb36a42e388582a97d11b1b3fc88052280557f42bef781c279f2528",
+    "0c5c65e9d6b9ddff95ff9b55a8b425e15f9335a3d61c43b68d5ba05df6f82af5",
+    "a07717eba70574abd0f88c2568428f22e5cbad17dc760c47b59a841da4519844",
+    "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+  ],
+  "entry_module_id": "Research.Operators.TieBrokenWinner.Margin",
+  "import_closure_digest": "5265f9cff7e78b6581e3f50d7b8e4f42b965f13b1d038cd44705b7998523974f",
+  "imported_axiom_closure_sorted": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_statement_digest": "e6ac3b7e5dec35419900e3307590e4c8edb9361c24fafae7cda40c1f7a4e8430",
+  "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+  "proof_tree_digest": "0c5c65e9d6b9ddff95ff9b55a8b425e15f9335a3d61c43b68d5ba05df6f82af5",
+  "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+  "sorry_count": 0,
+  "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+}

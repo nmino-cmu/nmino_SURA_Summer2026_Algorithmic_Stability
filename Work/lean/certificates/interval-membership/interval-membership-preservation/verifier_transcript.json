@@ -1,0 +1,25 @@
+{
+  "admit_count": 0,
+  "axiom_closure_captured": true,
+  "build_ok": true,
+  "custom_axiom_asserts_target": false,
+  "custom_axiom_ids_sorted": [],
+  "definition_pin_set": [
+    "f305ae2532faa9a091654fba7b1164b0470a0dc2a241cc55d6ed8ebeee5082f0",
+    "91dc8f9255acb3d9f3931812488e357450e29983c83d2a105d725343e1afa10e",
+    "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+  ],
+  "entry_module_id": "Research.Operators.IntervalMembership.Preservation",
+  "import_closure_digest": "146d8cc2e5dc515cf830545051d0d43b149bf0abe6136d24face736ee16e2c09",
+  "imported_axiom_closure_sorted": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_statement_digest": "647cd06592d8dfc16a34f39fec4070e8a397650faa22d31a13ab09d876e10d4a",
+  "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+  "proof_tree_digest": "91dc8f9255acb3d9f3931812488e357450e29983c83d2a105d725343e1afa10e",
+  "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+  "sorry_count": 0,
+  "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+}

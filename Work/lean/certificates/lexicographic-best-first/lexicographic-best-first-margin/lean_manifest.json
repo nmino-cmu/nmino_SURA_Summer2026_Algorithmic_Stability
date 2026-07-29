@@ -1,0 +1,37 @@
+{
+  "claim_digest": "c8201c38cb84638edbc4ede6967901a88250cab0b325cd0cbe77199dfb7fb370",
+  "claim_math_fingerprint": "c8201c38cb84638edbc4ede6967901a88250cab0b325cd0cbe77199dfb7fb370",
+  "limitations": [
+    "AXIOM_CLOSURE_CAPTURED",
+    "DEFINITION_PINS_SURROGATE",
+    "LEAN_MANIFEST_WITHOUT_COMMIT"
+  ],
+  "manifest_digest": "922b78fde573ba81e59dde710705e2ee4a2417efd24b2b6396448215fee0bdf0",
+  "store_kind": "ART10b_SURROGATE_V1",
+  "transcript": {
+    "admit_count": 0,
+    "axiom_closure_captured": true,
+    "build_ok": true,
+    "custom_axiom_asserts_target": false,
+    "custom_axiom_ids_sorted": [],
+    "definition_pin_set": [
+      "5b8dcf82f4f043b91bcc2aebaa0284b2322f9096e431bc2d61f28b145a55468f",
+      "446251341c50fa3d81b6a99176663fa754e2b562f118a9de0620bac475dcfa91",
+      "a07717eba70574abd0f88c2568428f22e5cbad17dc760c47b59a841da4519844",
+      "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+    ],
+    "entry_module_id": "Research.Operators.LexicographicBestFirst.Margin",
+    "import_closure_digest": "40eee1ffde761749c6d6d0c7d14d732fffa1a511d5097c154e532fc6e0199573",
+    "imported_axiom_closure_sorted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lean_statement_digest": "8f81823d8054f8d1bcde9d5cf8867605c6c80664c02439c59ee0cc321f7fc9e1",
+    "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+    "proof_tree_digest": "446251341c50fa3d81b6a99176663fa754e2b562f118a9de0620bac475dcfa91",
+    "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+    "sorry_count": 0,
+    "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+  }
+}

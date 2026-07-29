@@ -1,0 +1,119 @@
+{
+  "operator": "feasibility-indicator",
+  "title": "Feasibility indicator over a fixed set: Real Stability",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/feasibility-indicator",
+  "crp_identifiers": {
+    "operator": "feasibility-indicator",
+    "theorem_id": "feasibility-indicator-feasible-ball-identity"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "faa7e3209397a6fd48ab97604b9b501ac9987ded8a43192bc69585e7c16c5c10"
+  ],
+  "lean_manifest_digest": "faa7e3209397a6fd48ab97604b9b501ac9987ded8a43192bc69585e7c16c5c10",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.FeasibilityIndicator.Preservation",
+  "lean_certificate_dir": "lean/certificates/feasibility-indicator/feasibility-indicator-feasible-ball-identity",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "feasibility-indicator",
+    "theorem": "feasibility-indicator-feasible-ball-identity",
+    "assumptions": [
+      "kind=feasible"
+    ],
+    "perturbation_model": "abs ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Projection core (feasible)",
+    "limitations": [
+      "feasible"
+    ],
+    "references": [
+      "research-results/feasibility-indicator/feasibility-indicator-feasible-ball-identity/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "feasibility_indicator_feasible_ball_identity",
+      "feasibility_indicator_feasible_ball_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "c2b0f47d9ab2064bfa1da71280fd30d2b051144b859cbff47e0319d88153abb8",
+    "proof_digest": "e5f397a37ac89cc190cacef39e15ab2c2010ab4ea8eb6995e29dbeb02187beaf",
+    "certificate_path": "lean/certificates/feasibility-indicator/feasibility-indicator-feasible-ball-identity",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "faa7e3209397a6fd48ab97604b9b501ac9987ded8a43192bc69585e7c16c5c10",
+      "claim_digest": "5d08c565d5785918e3d728b06f497ab8eb28786a72c05f84ebb0687278ab4551",
+      "entry_module_id": "Research.Operators.FeasibilityIndicator.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "projection",
+    "selected_object": "feasible",
+    "instability_mechanism": "boundary_crossing",
+    "structural_stability_quantity": "feasible",
+    "perturbation_class": "bounded_additive_abs",
+    "guarantee_kind": "deterministic",
+    "stable_region": "core-dependent",
+    "unstable_region": "near boundary",
+    "sharpness": true,
+    "compositional_properties": [
+      "projection_feasible"
+    ],
+    "related_operators": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "assumptions": [
+      "Feasible-ball / indicator identity on ℝ; not full Euclidean projection nonexpansiveness"
+    ],
+    "limitations": [
+      "feasible"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "dependencies": [
+      "Research.Operators.Projection.FeasibleId"
+    ],
+    "reduces_to": "projection-feasible-id",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "faa7e3209397a6fd48ab97604b9b501ac9987ded8a43192bc69585e7c16c5c10",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "admit_count": 0,
+  "axiom_closure_captured": true,
+  "build_ok": true,
+  "custom_axiom_asserts_target": false,
+  "custom_axiom_ids_sorted": [],
+  "definition_pin_set": [
+    "c637ad18eb46b1fcf0f4b4575fa6b77b41fb29a5b84e16100e8012f6d2e48a40",
+    "9c99cbe7920329a5e44c1f73349d053fef88ef4f1a098529ab46be583d586a20",
+    "a07717eba70574abd0f88c2568428f22e5cbad17dc760c47b59a841da4519844",
+    "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+  ],
+  "entry_module_id": "Research.Operators.NmsFinite.Margin",
+  "import_closure_digest": "6525ead1da7e4f166402cffd6c5006ab49403cc28947216633059dfa659026c2",
+  "imported_axiom_closure_sorted": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_statement_digest": "4dcd842e99e9c4cc0116d962ffb8226cc59e88975d6989b8c04633b9a7e3b453",
+  "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+  "proof_tree_digest": "9c99cbe7920329a5e44c1f73349d053fef88ef4f1a098529ab46be583d586a20",
+  "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+  "sorry_count": 0,
+  "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+}

@@ -1,0 +1,26 @@
+{
+  "admit_count": 0,
+  "axiom_closure_captured": true,
+  "build_ok": true,
+  "custom_axiom_asserts_target": false,
+  "custom_axiom_ids_sorted": [],
+  "definition_pin_set": [
+    "8498672a677787aba535b4c019ec89e31b4878976e5775422a17cbe61838502b",
+    "33e641bb4562ba9c9142a1490690b1273357f7609e334b652cdeaaff5a30d9ef",
+    "a07717eba70574abd0f88c2568428f22e5cbad17dc760c47b59a841da4519844",
+    "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+  ],
+  "entry_module_id": "Research.Operators.TournamentWinner.Margin",
+  "import_closure_digest": "95fc5c4696ff93ffe9b30237aa409f77c959add1977c02f4f9340ee396f22c6a",
+  "imported_axiom_closure_sorted": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_statement_digest": "719a3b06208257387fdb0a5225c9703c1f3ca1333c57a2a12d7122591e5b5276",
+  "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+  "proof_tree_digest": "33e641bb4562ba9c9142a1490690b1273357f7609e334b652cdeaaff5a30d9ef",
+  "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+  "sorry_count": 0,
+  "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+}

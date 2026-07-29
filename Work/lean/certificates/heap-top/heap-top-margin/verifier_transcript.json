@@ -1,0 +1,26 @@
+{
+  "admit_count": 0,
+  "axiom_closure_captured": true,
+  "build_ok": true,
+  "custom_axiom_asserts_target": false,
+  "custom_axiom_ids_sorted": [],
+  "definition_pin_set": [
+    "6b0c7df7707f2a0d20cc573986908c2c2d20d6bbd9b15778e207ee174d51da0a",
+    "d239d1dd504d73bf0c8c3d5978e287ae3fb574039d41dd363956a74dae95fc69",
+    "a07717eba70574abd0f88c2568428f22e5cbad17dc760c47b59a841da4519844",
+    "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+  ],
+  "entry_module_id": "Research.Operators.HeapTop.Margin",
+  "import_closure_digest": "52daf40417f44233c23e08e1a51ee65f485a5b925eabf9b82e963f648387b38c",
+  "imported_axiom_closure_sorted": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_statement_digest": "0e364a5adb4f33bb01f33133296770c48ef051d7b7c77c33e5e9c096dfd63014",
+  "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+  "proof_tree_digest": "d239d1dd504d73bf0c8c3d5978e287ae3fb574039d41dd363956a74dae95fc69",
+  "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+  "sorry_count": 0,
+  "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+}

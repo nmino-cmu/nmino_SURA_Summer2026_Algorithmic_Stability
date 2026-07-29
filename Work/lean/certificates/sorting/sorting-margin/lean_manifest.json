@@ -1,0 +1,39 @@
+{
+  "claim_digest": "c2b5a47c2838686a68c005df09191041611875c9459a99a31e4f0e8d1e02b1c1",
+  "claim_math_fingerprint": "c2b5a47c2838686a68c005df09191041611875c9459a99a31e4f0e8d1e02b1c1",
+  "limitations": [
+    "AXIOM_CLOSURE_CAPTURED",
+    "DEFINITION_PINS_SURROGATE",
+    "LEAN_MANIFEST_WITHOUT_COMMIT"
+  ],
+  "manifest_digest": "f3de6ec2057476e658b694212accb0a3451ec7dd0db209dad5fbbebd64d03c7c",
+  "store_kind": "ART10b_SURROGATE_V1",
+  "transcript": {
+    "admit_count": 0,
+    "axiom_closure_captured": true,
+    "build_ok": true,
+    "custom_axiom_asserts_target": false,
+    "custom_axiom_ids_sorted": [],
+    "definition_pin_set": [
+      "e54593dcffbc00238e295b8d077127e9b0f639cd9bd0b760ff1f28d637481725",
+      "537adedb0d967cbf01893cc08d9899b9d0be41e9561ac6543dd949cc2aded074",
+      "eccf1281eee6cd64a95aa5fea91c5d39bd9ba7330733b2613b49c36c07a6b3d8",
+      "2d0dcdbe0fc5fc349895f93f1506932a4bab2d530664cd319f622d5fe0c29934",
+      "89819a78d45b8b4e72221c074b93519d4b0b4ad376902cb00c1a50be3f27ac2f",
+      "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+    ],
+    "entry_module_id": "Research.Operators.Sorting.Preservation",
+    "import_closure_digest": "d6b5ece9ba24cbfe5ad4da8bc3df9f4ec10bb848b7d7a616c5c9343095e1eac5",
+    "imported_axiom_closure_sorted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lean_statement_digest": "52125e6c64abc8526ca36d1d17bb544bc00593138a581516d7b97614364babb0",
+    "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+    "proof_tree_digest": "537adedb0d967cbf01893cc08d9899b9d0be41e9561ac6543dd949cc2aded074",
+    "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+    "sorry_count": 0,
+    "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+  }
+}

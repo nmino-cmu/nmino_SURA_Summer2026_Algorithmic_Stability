@@ -1,0 +1,25 @@
+{
+  "admit_count": 0,
+  "axiom_closure_captured": true,
+  "build_ok": true,
+  "custom_axiom_asserts_target": false,
+  "custom_axiom_ids_sorted": [],
+  "definition_pin_set": [
+    "0204a326718dc9727e9d05e1703989f02acdd5fcf0973360c91b431ac15a3277",
+    "d4a8a5d22601d12cae495c9414bceedb99d083708d5c9d63ac323c96e719eacf",
+    "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+  ],
+  "entry_module_id": "Research.Operators.AbsThreshold.Preservation",
+  "import_closure_digest": "3c2730cbf55e9570210213fccc26617ae7fdece61c2d69243dce17b7ca81c3cd",
+  "imported_axiom_closure_sorted": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_statement_digest": "b3b8f8a98339775ca42f2591488cdc7db12d5cd9ef3dd40a5d1de0b53d82ad2a",
+  "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+  "proof_tree_digest": "d4a8a5d22601d12cae495c9414bceedb99d083708d5c9d63ac323c96e719eacf",
+  "rebuild_log_digest": "018e0cd8d327aea55a50e638c4b28c565a65a50f320102cf49cf0d40ce860bf1",
+  "sorry_count": 0,
+  "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+}
