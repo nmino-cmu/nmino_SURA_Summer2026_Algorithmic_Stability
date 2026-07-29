@@ -1,0 +1,26 @@
+{
+  "admit_count": 0,
+  "axiom_closure_captured": true,
+  "build_ok": true,
+  "custom_axiom_asserts_target": false,
+  "custom_axiom_ids_sorted": [],
+  "definition_pin_set": [
+    "5134e04320bbfa1aa1dafe9ed45443316b9d6ca8889cf94a21024968bd81986f",
+    "881f3168c2897bb4ac3126c993b74553f9d8674f45f20482657b0d547e6c7841",
+    "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71",
+    "e5f397a37ac89cc190cacef39e15ab2c2010ab4ea8eb6995e29dbeb02187beaf"
+  ],
+  "entry_module_id": "Research.Operators.FeasibilityIndicator.Preservation",
+  "import_closure_digest": "e98a9c9ff5578d871a59bdedb7d73be8f92f33f46454e75a1c0777a894ad4d0a",
+  "imported_axiom_closure_sorted": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_statement_digest": "c2b0f47d9ab2064bfa1da71280fd30d2b051144b859cbff47e0319d88153abb8",
+  "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+  "proof_tree_digest": "e5f397a37ac89cc190cacef39e15ab2c2010ab4ea8eb6995e29dbeb02187beaf",
+  "rebuild_log_digest": "018e0cd8d327aea55a50e638c4b28c565a65a50f320102cf49cf0d40ce860bf1",
+  "sorry_count": 0,
+  "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+}

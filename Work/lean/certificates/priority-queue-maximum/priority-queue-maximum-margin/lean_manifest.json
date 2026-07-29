@@ -1,0 +1,37 @@
+{
+  "claim_digest": "bfb9abec4ae30e39cbaae104e1e35ef0172ec6a978f43873ec079afb3458e417",
+  "claim_math_fingerprint": "bfb9abec4ae30e39cbaae104e1e35ef0172ec6a978f43873ec079afb3458e417",
+  "limitations": [
+    "AXIOM_CLOSURE_CAPTURED",
+    "DEFINITION_PINS_SURROGATE",
+    "LEAN_MANIFEST_WITHOUT_COMMIT"
+  ],
+  "manifest_digest": "8a80c92dfb1a47515219b59a5cf4f37a258e991c7d0b4d15704cc750950c9e97",
+  "store_kind": "ART10b_SURROGATE_V1",
+  "transcript": {
+    "admit_count": 0,
+    "axiom_closure_captured": true,
+    "build_ok": true,
+    "custom_axiom_asserts_target": false,
+    "custom_axiom_ids_sorted": [],
+    "definition_pin_set": [
+      "b380ad89a88e01fea3319ef72425a048b36645b3eb1de6aa7b30989e71d926b9",
+      "91bd608948a75a6edd1312a4db0e5e302b42436e271c9dfe7398ca0931c3d789",
+      "a07717eba70574abd0f88c2568428f22e5cbad17dc760c47b59a841da4519844",
+      "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+    ],
+    "entry_module_id": "Research.Operators.PriorityQueueMaximum.Margin",
+    "import_closure_digest": "b4f68295649780e7dc03415b0e93096fc6c093fe7c55d8c8f66eef5352b1236a",
+    "imported_axiom_closure_sorted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lean_statement_digest": "b5c1362528e2f7d8d62b5bbb25961284af2c24fc185adeebec3cee83aaf57ffb",
+    "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+    "proof_tree_digest": "91bd608948a75a6edd1312a4db0e5e302b42436e271c9dfe7398ca0931c3d789",
+    "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+    "sorry_count": 0,
+    "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+  }
+}

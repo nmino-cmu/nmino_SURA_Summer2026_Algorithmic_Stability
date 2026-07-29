@@ -1,0 +1,38 @@
+{
+  "claim_digest": "23a8af3cab6652ce607bfc357aaeb37bda31ffb101c37748216af0873706b1e6",
+  "claim_math_fingerprint": "23a8af3cab6652ce607bfc357aaeb37bda31ffb101c37748216af0873706b1e6",
+  "limitations": [
+    "AXIOM_CLOSURE_CAPTURED",
+    "DEFINITION_PINS_SURROGATE",
+    "LEAN_MANIFEST_WITHOUT_COMMIT"
+  ],
+  "manifest_digest": "1898ecec6410f32d4abad638ce5de9d6163acc0cfd75868306770d93b102ebbf",
+  "store_kind": "ART10b_SURROGATE_V1",
+  "transcript": {
+    "admit_count": 0,
+    "axiom_closure_captured": true,
+    "build_ok": true,
+    "custom_axiom_asserts_target": false,
+    "custom_axiom_ids_sorted": [],
+    "definition_pin_set": [
+      "afd461cc3c2cf462b2983c98cbd2926fab1270b0f0f40967c02317ec071ba6bb",
+      "b10673675bb7859d367e55759b17e3bbc344eeb157d8d15cb31161e533e2de80",
+      "2d0dcdbe0fc5fc349895f93f1506932a4bab2d530664cd319f622d5fe0c29934",
+      "89819a78d45b8b4e72221c074b93519d4b0b4ad376902cb00c1a50be3f27ac2f",
+      "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+    ],
+    "entry_module_id": "Research.Operators.Percentile.Preservation",
+    "import_closure_digest": "4503080274153faa74520886ff29d16d31f454fe4eeda3e15fab09a1a15a9313",
+    "imported_axiom_closure_sorted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lean_statement_digest": "00fdf5dad37dd92047d9c36638068c1d8fb674bec9ad06174ed0087130ff1e8d",
+    "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+    "proof_tree_digest": "b10673675bb7859d367e55759b17e3bbc344eeb157d8d15cb31161e533e2de80",
+    "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+    "sorry_count": 0,
+    "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+  }
+}

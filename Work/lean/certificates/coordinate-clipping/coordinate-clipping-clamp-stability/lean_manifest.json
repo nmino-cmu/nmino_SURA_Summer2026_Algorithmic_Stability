@@ -1,0 +1,37 @@
+{
+  "claim_digest": "b7d2b790e860d9e75760e9df96702b9c7b9882faacb50e73c9cb14f149d0b12a",
+  "claim_math_fingerprint": "b7d2b790e860d9e75760e9df96702b9c7b9882faacb50e73c9cb14f149d0b12a",
+  "limitations": [
+    "AXIOM_CLOSURE_CAPTURED",
+    "DEFINITION_PINS_SURROGATE",
+    "LEAN_MANIFEST_WITHOUT_COMMIT"
+  ],
+  "manifest_digest": "3238729ecf19ed4def6ffe766d7e334596452e7b9a16fd1fd87b27f251ba9448",
+  "store_kind": "ART10b_SURROGATE_V1",
+  "transcript": {
+    "admit_count": 0,
+    "axiom_closure_captured": true,
+    "build_ok": true,
+    "custom_axiom_asserts_target": false,
+    "custom_axiom_ids_sorted": [],
+    "definition_pin_set": [
+      "6f381df3cbe390682055655b7a6cf2692bfe4290d3c8a8295165670e3b34c7db",
+      "f20fcaf1c09f55b704946b0bbf82f3e9a6616dca1ea148b2e9bb39e39f70e690",
+      "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71",
+      "b0c3b32e0e4f0f5eba4acb5400f0fcef56ab82767e7ee7c8f709b238713128f8"
+    ],
+    "entry_module_id": "Research.Operators.CoordinateClipping.Preservation",
+    "import_closure_digest": "466c76419c5e8dd9cbee6e1f66c44831dd9e981afd75552ab761a1f915846d3f",
+    "imported_axiom_closure_sorted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lean_statement_digest": "005ac975bbcc02c2601f2cd5c0a7a73decae513131b545c92a7eb625364b241c",
+    "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+    "proof_tree_digest": "b0c3b32e0e4f0f5eba4acb5400f0fcef56ab82767e7ee7c8f709b238713128f8",
+    "rebuild_log_digest": "87a6ac2ad9231249eb100f5f4d8fba064c72d8c0db7eea0f4f30060be98c0d1a",
+    "sorry_count": 0,
+    "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+  }
+}

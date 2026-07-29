@@ -1,0 +1,26 @@
+{
+  "admit_count": 0,
+  "axiom_closure_captured": true,
+  "build_ok": true,
+  "custom_axiom_asserts_target": false,
+  "custom_axiom_ids_sorted": [],
+  "definition_pin_set": [
+    "e87f8af047ac841ba7f3f595308a09121d5544cac46452d3e62509a2911763d7",
+    "881f3168c2897bb4ac3126c993b74553f9d8674f45f20482657b0d547e6c7841",
+    "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71",
+    "f074f7a2a4e5084c7af864ee12b3b98b8bca33612a2d4d613dc4ac4d7ae09034"
+  ],
+  "entry_module_id": "Research.Operators.ProjectionSimplex.Preservation",
+  "import_closure_digest": "91e2ededbe40155b59f33865f95dafb189e02e0635cb80d70111a4cf7a9f8595",
+  "imported_axiom_closure_sorted": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "lean_statement_digest": "be6a87d1d8cec17e337f448d16253a7ef987c14eea7b9a1812c6ef1fd0ce47db",
+  "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+  "proof_tree_digest": "f074f7a2a4e5084c7af864ee12b3b98b8bca33612a2d4d613dc4ac4d7ae09034",
+  "rebuild_log_digest": "018e0cd8d327aea55a50e638c4b28c565a65a50f320102cf49cf0d40ce860bf1",
+  "sorry_count": 0,
+  "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+}

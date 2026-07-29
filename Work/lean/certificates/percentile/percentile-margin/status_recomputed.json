@@ -1,0 +1,6 @@
+{
+  "derived_lean_status": "LEAN_FULL",
+  "domain": "REAL_MATHLIB",
+  "manifest_digest": "1898ecec6410f32d4abad638ce5de9d6163acc0cfd75868306770d93b102ebbf",
+  "note": "informational; recompute via derived_lean_status / verify_certificate"
+}

@@ -1,0 +1,36 @@
+{
+  "claim_digest": "8b6dbd96a1b103e627bed491d01eebdf9091f1fd621d6aad2002b89600fefb8a",
+  "claim_math_fingerprint": "8b6dbd96a1b103e627bed491d01eebdf9091f1fd621d6aad2002b89600fefb8a",
+  "limitations": [
+    "AXIOM_CLOSURE_CAPTURED",
+    "DEFINITION_PINS_SURROGATE",
+    "LEAN_MANIFEST_WITHOUT_COMMIT"
+  ],
+  "manifest_digest": "f74d70956bba3a7602d85d0ab0e4282eac605b0e44b128e4d397e726bde5a3dd",
+  "store_kind": "ART10b_SURROGATE_V1",
+  "transcript": {
+    "admit_count": 0,
+    "axiom_closure_captured": true,
+    "build_ok": true,
+    "custom_axiom_asserts_target": false,
+    "custom_axiom_ids_sorted": [],
+    "definition_pin_set": [
+      "a47b891085416e525ead630c2b8a2896d5e6b1052d44f2413db0a91b8e4d2a3d",
+      "ce5f1ef196d47a09ea4ee31ba06be1589dcdc24e7e9e53de5fb46b762712e59f",
+      "721dfe5231125cae6d367ec881b82bcf2c137147d42bc9ad07660fa520ab1f71"
+    ],
+    "entry_module_id": "Research.Operators.Sign.Preservation",
+    "import_closure_digest": "743809d925da5be987cc825e81dc268649bcc79fe6ea7d30a5504ea1d0edeb7c",
+    "imported_axiom_closure_sorted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "lean_statement_digest": "6c3789fa08dcd8f0d38729dcd69cd306af46fe054c598c703db63558816f71c5",
+    "mathlib_pin_digest": "530fe283e6469814437f79b967b10d076e6bbcccd8214dbcfc57be6f6a4207e8",
+    "proof_tree_digest": "ce5f1ef196d47a09ea4ee31ba06be1589dcdc24e7e9e53de5fb46b762712e59f",
+    "rebuild_log_digest": "018e0cd8d327aea55a50e638c4b28c565a65a50f320102cf49cf0d40ce860bf1",
+    "sorry_count": 0,
+    "toolchain_digest": "38e1db7f371dcb49f3c83ddd2a7b9298c71455dc8f86e5605bb4c1e269863e45"
+  }
+}
