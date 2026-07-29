@@ -1,0 +1,17 @@
+# === permanent ===
+**/.lake/
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+.DS_Store
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.out
+*.toc
+
+# === temp: installment ignores (remove as we commit each chunk) ===
+Formulation/
+Work/

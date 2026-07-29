@@ -1,0 +1,191 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,top=0.68in,bottom=0.68in,left=0.78in,right=0.78in]{geometry}
+\input{../Assets/packet_style.tex}
+\usepackage{xurl}
+\PacketHeader{SURA Stabilized-Algorithm Catalog Overview}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{navy} Stabilized-Algorithm Catalog Overview}\\[3pt]
+{\normalsize\color{slate} Intellectual contribution of the literature extraction}\\[2pt]
+{\small\textbf{Nick Mino}\quad\textcolor{accent}{|}\quad 29 July 2026}
+\end{center}
+
+\vspace{2pt}
+
+\begin{tcolorbox}[notebox]
+This overview summarizes the intellectual contribution of the catalog.
+It does \emph{not} reproduce the catalog itself.
+\end{tcolorbox}
+
+\section{Purpose}
+
+The catalog was built to identify recurring structures in how data-dependent
+algorithms and selection procedures are stabilized---so that later theoretical work
+could search for reusable mechanisms rather than inventing a one-off construction.
+In the intellectual timeline it is recorded as a primary research product
+(approximately 20 reconstructed hours within the June--July effort), not a minor
+reading list.
+
+\section{What was extracted}
+
+Comparable fields used when processing sources included (where available):
+
+\begin{itemize}
+  \item source and citation;
+  \item algorithm or selection rule;
+  \item selected object;
+  \item stability notion;
+  \item assumptions;
+  \item stabilization mechanism;
+  \item noise, perturbation, randomization, or regularization;
+  \item primitive decomposition;
+  \item proof strategy;
+  \item composition rule;
+  \item utility cost;
+  \item downstream inference or generalization guarantee;
+  \item limitations;
+  \item relevance to the current project.
+\end{itemize}
+
+\section{Representative entries (by mechanism)}
+
+Entries below are chosen to illustrate \emph{distinct stabilization mechanisms}.
+They are grounded in repository digests, the H1 catalog note, and the paper index.
+They are not claimed to be exhaustive, and they are not themselves proofs of
+Formulation~II.
+
+\begin{tcolorbox}[entrybox, title=Randomized selection / noisy max]
+\textbf{Paper / method.} Zrnic \& Jordan, \emph{Post-Selection Inference via Algorithmic Stability}
+(digest: \texttt{Formulation/research/literature/digest\_zrnic\_jordan\_stability.md}).\\
+\textbf{Selected object.} A (possibly randomized) selection map $\hat S$ (e.g.\ noisy /
+stable screening or Stable LASSO support).\\
+\textbf{Mechanism.} Explicit randomization (Laplace / report-noisy-max style; noisy
+Frank--Wolfe) inducing $(\eta,\tau,\nu)$-stability of the selection law.\\
+\textbf{Guarantee.} Stability transfers to post-selection CI validity with
+$e^\eta$-adjusted classical level (Thm.~2 in the digest).\\
+\textbf{Relevance.} Closest technical template for ``stabilize selection, then retain a
+classical inferential object''---subject to advisor judgment on baselines.
+\end{tcolorbox}
+
+\begin{tcolorbox}[entrybox, title=Algorithmic stability (distributional)]
+\textbf{Paper / method.} Same Zrnic--Jordan line; Bassily--Freund typical stability cited
+as related (digest §1).\\
+\textbf{Selected object.} Randomized algorithm $A$ outputting a selection.\\
+\textbf{Mechanism.} Indistinguishability of the selection law from an oracle law on a
+high-probability set (Def.~2).\\
+\textbf{Guarantee.} Composition / post-processing closure; transfer lemmas to
+post-selection coverage corrections.\\
+\textbf{Relevance.} Clarifies that ``stability'' here is often about selection
+\emph{laws}, which must be carefully related to Part~I replace-one movement of
+$\hat\theta$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[entrybox, title=Regularization / constrained randomized optimization]
+\textbf{Paper / method.} Stable LASSO / stable marginal screening constructions in
+Zrnic--Jordan (digest §2, design propositions).\\
+\textbf{Selected object.} Model support or screened coordinates.\\
+\textbf{Mechanism.} Optimization with injected noise and regularization-style control of
+sensitivity; utility propositions quantify selection-quality cost.\\
+\textbf{Guarantee.} Explicit $(\eta,\tau,\nu)$-stability rates with stated assumptions.\\
+\textbf{Relevance.} Concrete precedent for randomizing a constrained program---a
+structural cousin of randomizing problem~(2) in the write-up.
+\end{tcolorbox}
+
+\begin{tcolorbox}[entrybox, title=Conformal risk control (fixed hyperparameter)]
+\textbf{Paper / method.} Angelopoulos et al., \emph{Conformal Risk Control}
+(digest: \texttt{Formulation/research/literature/digest\_angelopoulos\_crc.md}).\\
+\textbf{Selected object.} Threshold / risk-control parameter $\lambda$ when treated as
+\emph{prespecified} (or chosen by the CRC rule under exchangeability).\\
+\textbf{Mechanism.} Monotone risk + exchangeability; not a post-selection stabilizer
+for a shared-data optimizer.\\
+\textbf{Guarantee.} Fixed-parameter risk control / split-conformal coverage templates.\\
+\textbf{Relevance.} Supplies the fixed-$\theta$ validity template behind write-up
+assumption~(1); selecting $\hat\theta(\mathcal{D})$ on the same $\mathcal{D}$ breaks the
+prespecified premise.
+\end{tcolorbox}
+
+\begin{tcolorbox}[entrybox, title=Differential privacy / max-information style control]
+\textbf{Paper / method.} Max-divergence / $(\eta,\tau)$-indistinguishability in
+Zrnic--Jordan Def.~1; H1 catalog note lists DP top-$k$ / Thresholdout-style examples among
+MAIN catalog themes
+(\texttt{Formulation/context/overview/swarm/04\_H1\_catalog.md};
+overview literature integration).\\
+\textbf{Selected object.} Private or information-bounded released selection.\\
+\textbf{Mechanism.} Noise calibrated to sensitivity; privacy/max-info budgets as
+stability parameters.\\
+\textbf{Guarantee.} Distributional closeness of released outputs; often used as a bridge
+to inference corrections.\\
+\textbf{Relevance.} Suggests reusable accounting language ($\eta$, $\tau$, $\nu$) for
+Part~II transfer statements---without identifying DP with the live UQ theorem.
+\end{tcolorbox}
+
+\begin{tcolorbox}[entrybox, title=Optimization robustness / structured selection noise]
+\textbf{Paper / method.} Pattern notes synthesizing inverse-opt geometry with selection
+randomization
+(\texttt{Formulation/research/literature/patterns\_inverse\_opt\_structured\_noise.md});
+lab CREDO/CREAM papers remain \emph{context}, not the live problem
+(\texttt{Formulation/context/papers/INDEX.md}).\\
+\textbf{Selected object.} Hyperparameter / decision variable from a constrained program.\\
+\textbf{Mechanism.} Structured (not isotropic) noise on objectives/constraints, or soft
+near-argmin sampling---aimed at selection stability.\\
+\textbf{Guarantee.} Currently a \emph{design hypothesis} for randomizing write-up
+problem~(2), not a completed theorem in this repository.\\
+\textbf{Relevance.} Motivates Part~I assumptions and Part~II goal~(iii): randomize
+selection; do not recalibrate $\mathcal{C}$.
+\end{tcolorbox}
+
+\section{Recurring patterns}
+
+\paragraph{Supported by the extracted literature (observations).}
+\begin{itemize}
+  \item Margins / gaps often control selection instability (near-ties are hard).
+  \item Strong convexity, regularization, or explicit noise can reduce optimizer /
+        selector sensitivity.
+  \item Randomized selection smooths discontinuous hard decisions (e.g.\ $\arg\max$).
+  \item Stability parameters can transfer into inference corrections (coverage inflation,
+        PoSI constants, etc.).
+  \item Utility / selection quality is typically traded against inferential validity.
+\end{itemize}
+
+\paragraph{Hypotheses motivating the broader framework (not established theorems here).}
+\begin{itemize}
+  \item Primitive decompositions may support reusable proof modules across algorithms.
+  \item Composition of primitives requires care; certificates need not be freely
+        interchangeable.
+  \item Structured noise tied to the geometry of constrained optimization may be more
+        efficient than isotropic noise for stabilizing $\hat\theta$.
+\end{itemize}
+
+\section{Relation to the current formulation}
+
+The catalog helped motivate Formulation~I and the later narrowing to Formulation~II.
+It does \textbf{not} prove a universal stability framework, and operator-library results
+do \textbf{not} automatically imply the Part~I--II UQ theorems.
+The immediate research target is the narrower Part~I replace-one stability theorem under
+explicit assumptions (see \texttt{Problem\_Writeup.pdf} and
+\texttt{Research\_Update\_Summary.pdf}).
+
+\section{Where to find the underlying material}
+
+\begin{itemize}[itemsep=2pt]
+  \item \path{Formulation/context/overview/swarm/04_H1_catalog.md} ---
+        H1 working-survey summary ($\approx$25 MAIN examples claimed).
+  \item \path{Formulation/context/overview/Research_Scope_Timeline_and_Authority.tex} ---
+        Catalog status, primitives list, literature integration.
+  \item \path{Formulation/research/literature/} ---
+        Digests and pattern cards used for extraction.
+  \item \path{Formulation/context/papers/INDEX.md} ---
+        Prioritized paper corpus in the repository.
+  \item \path{Advisor_Packet/Intellectual_Timeline/Intellectual_Timeline.pdf} ---
+        Effort and role of the catalog in the research arc.
+\end{itemize}
+
+\vspace{4pt}
+\noindent\textbf{Missing artifact.}
+No full structured catalog spreadsheet/database dump was found in the repository on
+29 July 2026. If a separate Overleaf/database export exists outside this tree, it is not
+currently checked in; the packet therefore points to the surviving in-repo sources above.
+
+\end{document}

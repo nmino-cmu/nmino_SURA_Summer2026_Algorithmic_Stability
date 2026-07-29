@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,top=0.65in,bottom=0.65in,left=0.75in,right=0.75in]{geometry}
+\input{../Assets/packet_style.tex}
+\PacketHeader{SURA Questions for Advisors}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{navy} Questions for Advisors}\\[3pt]
+{\normalsize\color{slate} Meeting preparation --- Professor Zhu \& Wenbin}\\[2pt]
+{\small\textbf{Nick Mino}\quad\textcolor{accent}{|}\quad 29 July 2026}
+\end{center}
+
+\vspace{2pt}
+
+\begin{tcolorbox}[prioritybox, title=Top three (please prioritize)]
+\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
+  \item Is the current optimization-selected UQ formulation sufficiently close to the intended research direction?
+  \item Is the Part~I / Part~II decomposition the right project structure?
+  \item Should the first theorem focus on one motivating constrained-optimization instance before a general result?
+\end{enumerate}
+\end{tcolorbox}
+
+\section*{A.\ Mathematical formulation}
+
+\begin{enumerate}[leftmargin=1.4em,itemsep=1.5pt]
+  \item Is the current uncertainty-quantification formulation now sufficiently close to the intended research direction?
+  \item Is the Part~I / Part~II decomposition the right way to structure the project?
+  \item Is replace-one stability the appropriate stability notion for the optimizer in this setting?
+  \item Are the proposed assumptions on the objective, constraints, feasible set, regularity, and perturbation mechanism reasonable (as sketched in the problem write-up)?
+  \item Should the first theorem focus on one motivating constrained-optimization problem before pursuing a general result?
+\end{enumerate}
+
+\section*{B.\ Novelty and literature positioning}
+
+\begin{enumerate}[leftmargin=1.4em,itemsep=1.5pt]
+  \item Does the intended contribution appear sufficiently distinct from existing conformal risk control, decision-focused uncertainty quantification, and post-selection inference work?
+  \item Which papers should be treated as the closest technical baselines?
+  \item Should Part~II aim first for a direct coverage bound, a risk-control statement, or a more general transfer theorem from stability to validity?
+\end{enumerate}
+
+\section*{C.\ Research sequencing}
+
+\begin{enumerate}[leftmargin=1.4em,itemsep=1.5pt]
+  \item Should further operator-library expansion stop until Part~I is complete?
+  \item Which concrete special case of constrained optimization would be most useful for validating the general theorem?
+  \item What result would constitute meaningful progress before the next meeting?
+\end{enumerate}
+
+\section*{D.\ Continued collaboration}
+
+\begin{enumerate}[leftmargin=1.4em,itemsep=1.5pt]
+  \item What meeting cadence is realistic for the remainder of SURA?
+  \item Is continuing this line after SURA appropriate if Part~I lands cleanly?
+  \item What milestones would make the work suitable for a paper or longer-term collaboration?
+\end{enumerate}
+
+\vspace{4pt}
+\noindent{\small\color{slate}
+Context documents: \texttt{Research\_Update\_Summary.pdf} (overview);
+\texttt{Formulation/writeup/Problem\_Writeup.pdf} (mathematics);
+\texttt{Intellectual\_Timeline.pdf} (history).}
+
+\end{document}

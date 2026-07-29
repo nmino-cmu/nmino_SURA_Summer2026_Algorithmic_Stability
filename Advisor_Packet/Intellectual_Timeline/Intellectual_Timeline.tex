@@ -1,0 +1,512 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,top=0.58in,bottom=0.58in,left=0.75in,right=0.75in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx,array,colortbl}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{ragged2e}
+\usepackage{needspace}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+\usepackage[most]{tcolorbox}
+
+\definecolor{navy}{HTML}{1B3A5C}
+\definecolor{slate}{HTML}{5B6B7C}
+\definecolor{bluegray}{HTML}{E4EBF3}
+\definecolor{lightgray}{HTML}{F4F5F7}
+\definecolor{accent}{HTML}{6B7F93}
+\definecolor{panelgreen}{HTML}{E8F0EA}
+\definecolor{panelborder}{HTML}{C5D0DB}
+\definecolor{currentfill}{HTML}{D5E3F0}
+
+\hypersetup{colorlinks=true,linkcolor=navy,urlcolor=navy}
+\setlist[itemize]{leftmargin=1.35em,itemsep=1.5pt,topsep=1.5pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=1.55em,itemsep=1.5pt,topsep=1.5pt,parsep=0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\setlength{\headheight}{22pt}
+\raggedbottom
+
+\titleformat{\section}{\large\bfseries\color{navy}}{}{0pt}{}[\vspace{1pt}{\color{panelborder}\titlerule[0.6pt]}]
+\titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\titlespacing*{\subsection}{0pt}{5pt}{2pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small\color{slate} SURA Intellectual Timeline}
+\rhead{\small\color{slate} Nicholas Mino}
+\cfoot{\small\color{slate}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{panelborder}\leaders\hrule height \headrulewidth\hfill}}
+
+\tcbset{
+  basebox/.style={
+    enhanced, breakable,
+    colback=lightgray, colframe=panelborder,
+    boxrule=0.5pt, arc=1.5pt,
+    left=8pt, right=8pt, top=5pt, bottom=5pt
+  },
+  notebox/.style={
+    enhanced, breakable=false,
+    colback=bluegray, colframe=navy,
+    boxrule=0.55pt, arc=1.5pt,
+    left=7pt, right=7pt, top=4pt, bottom=4pt
+  },
+  weekbox/.style={
+    enhanced, breakable,
+    colback=white, colframe=panelborder,
+    boxrule=0.55pt, arc=1.5pt,
+    left=7pt, right=7pt, top=4pt, bottom=4pt,
+    before skip=5pt, after skip=2pt,
+    fonttitle=\bfseries\color{navy}\normalsize,
+    colbacktitle=bluegray, coltitle=navy,
+    attach boxed title to top left={yshift=-2pt, xshift=7pt},
+    boxed title style={boxrule=0pt, arc=1pt, left=5pt, right=5pt, top=1.5pt, bottom=1.5pt}
+  },
+  featurebox/.style={
+    enhanced, breakable,
+    colback=lightgray, colframe=navy,
+    boxrule=0.7pt, arc=1.5pt,
+    left=9pt, right=9pt, top=6pt, bottom=6pt,
+    before skip=3pt, after skip=3pt,
+    fonttitle=\bfseries\color{navy},
+    colbacktitle=bluegray, coltitle=navy,
+    attach boxed title to top left={yshift=-2pt, xshift=7pt},
+    boxed title style={boxrule=0pt, arc=1pt, left=5pt, right=5pt, top=2pt, bottom=2pt}
+  },
+  catalogbox/.style={
+    enhanced, breakable=false,
+    colback=bluegray, colframe=navy,
+    boxrule=0.9pt, arc=1.5pt,
+    left=9pt, right=9pt, top=8pt, bottom=7pt,
+    before skip=4pt, after skip=5pt
+  },
+  finalpanel/.style={
+    enhanced, breakable=false,
+    colback=panelgreen, colframe=navy,
+    boxrule=0.8pt, arc=2pt,
+    left=9pt, right=9pt, top=6pt, bottom=6pt
+  },
+  minipanel/.style={
+    enhanced, breakable=false,
+    colback=panelgreen, colframe=navy,
+    boxrule=0.7pt, arc=1.5pt,
+    left=7pt, right=7pt, top=4pt, bottom=4pt
+  }
+}
+
+\newcommand{\field}[2]{%
+  \par\vspace{1pt}\noindent{\color{navy}\textbf{#1.}}~#2\par%
+}
+
+\begin{document}
+
+% ============================================================
+% 1. TITLE BLOCK
+% ============================================================
+\begin{center}
+{\LARGE\bfseries\color{navy} Intellectual Timeline of SURA Research}\\[2pt]
+{\large\color{slate} From adaptive regret to optimization-selected uncertainty quantification}\\[3pt]
+{\normalsize\textbf{Nicholas Mino}\quad\textcolor{accent}{|}\quad April 27--July 29, 2026\quad\textcolor{accent}{|}\quad
+\textbf{Reconstructed effort: 92 hours (June 1--July 29)}}
+\end{center}
+
+\vspace{2pt}
+
+\begin{tcolorbox}[notebox]
+\textbf{\color{navy}Methodological note.}
+Intellectual timeline, not a timesheet. Hours are conservative reconstructions from
+meetings, emails, drafts, repository history, papers, catalogs, and proofs.
+Weakly documented intervals are labeled; no undocumented mathematical pivots are invented.
+\end{tcolorbox}
+
+% ============================================================
+% 3. EXECUTIVE SUMMARY (strengthened page 1)
+% ============================================================
+\section{Executive summary}
+
+\subsection*{Research evolution}
+\begin{center}
+\begin{tikzpicture}[
+  node distance=0.14cm and 0.14cm,
+  box/.style={
+    draw=navy, line width=0.5pt, fill=bluegray,
+    rounded corners=1.2pt, align=center, text width=2.3cm,
+    font=\scriptsize\bfseries\color{navy},
+    inner xsep=2pt, inner ysep=2.5pt, minimum height=1.85em
+  },
+  curbox/.style={
+    draw=navy, line width=1.05pt, fill=currentfill,
+    rounded corners=1.2pt, align=center, text width=2.65cm,
+    font=\scriptsize\bfseries\color{navy},
+    inner xsep=2pt, inner ysep=2.5pt, minimum height=1.85em
+  },
+  arr/.style={-{Stealth[length=1.6mm]}, line width=0.65pt, color=accent}
+]
+\node[box] (a) {Quantization};
+\node[box, right=of a] (b) {Adaptive\\Certified Regret};
+\node[box, right=of b] (c) {Stabilized-Algorithm\\Catalog};
+\node[box, right=of c] (d) {Optimization-Based\\Selection};
+\node[curbox, right=of d] (e) {Optimization-Selected UQ\\{\footnotesize(Current)}};
+\draw[arr] (a) -- (b);
+\draw[arr] (b) -- (c);
+\draw[arr] (c) -- (d);
+\draw[arr] (d) -- (e);
+\end{tikzpicture}
+\end{center}
+
+\vspace{1pt}
+\noindent June~29 meeting and July~2 written feedback drove the pivot to Formulation~II:
+uncertainty sets whose hyperparameter is selected by constrained optimization on the
+same calibration data.
+
+\vspace{1pt}
+\subsection*{Milestone status}
+\renewcommand{\arraystretch}{1.02}
+\begin{tabularx}{\textwidth}{@{}>{\RaggedRight\arraybackslash}X >{\centering\arraybackslash}p{2.0cm}@{}}
+\toprule
+\textbf{Milestone} & \textbf{Status} \\
+\midrule
+\rowcolor{bluegray}
+Formulation I & Completed \\
+Stabilized-algorithm catalog & Completed \\
+\rowcolor{bluegray}
+Formulation II (problem statement) & Completed \\
+Discovery architecture & Completed \\
+\rowcolor{bluegray}
+Supporting formalization library & Completed \\
+Part I theorem & \textbf{Next} \\
+\bottomrule
+\end{tabularx}
+
+\vspace{2pt}
+\begin{tcolorbox}[minipanel]
+\textbf{\color{navy}Current problem.}
+Validity of an uncertainty set after data-dependent hyperparameter selection on calibration data;
+quantify miscoverage deviation; restore coverage by randomizing selection.\\[1pt]
+\textbf{\color{navy}Completed.}
+Formulation~I $\cdot$
+stabilized-algorithm catalog $\cdot$
+Formulation~II (problem statement) $\cdot$
+supporting discovery infrastructure $\cdot$
+advisor-facing documentation.\\[1pt]
+\textbf{\color{navy}Next theorem.}
+Prove Part~I replace-one stability under explicit assumptions; then obtain advisor feedback.
+\end{tcolorbox}
+
+\vspace{2pt}
+\subsection*{Effort reconstruction (92 hours)}
+\noindent
+\renewcommand{\arraystretch}{1.02}
+\setlength{\tabcolsep}{3pt}%
+\begin{tabularx}{0.995\textwidth}{@{}>{\RaggedRight\arraybackslash}X >{\centering\arraybackslash}p{1.15cm}@{}}
+\toprule
+\textbf{Workstream} & \textbf{Hours} \\
+\midrule
+\rowcolor{bluegray}
+Mathematical Formulation I & \textbf{20} \\
+Catalog of stabilized algorithms and literature synthesis & \textbf{20} \\
+\rowcolor{bluegray}
+Mathematical Formulation II & \textbf{10} \\
+Discovery architecture and supporting infrastructure & \textbf{18} \\
+\rowcolor{bluegray}
+Lean verification, certification, and audit & \textbf{8} \\
+Documentation, repository organization, diagrams, and advisor-facing materials & \textbf{10} \\
+Meetings, planning, and feedback integration & \textbf{6} \\
+\midrule
+\textbf{Total} & \textbf{92} \\
+\bottomrule
+\end{tabularx}
+
+\vspace{1pt}
+{\small Hours exclude the April--May prelude. Estimates are conservative reconstructions.}
+
+% ============================================================
+% 5. MAJOR INTELLECTUAL CONTRIBUTIONS
+% ============================================================
+\Needspace{10\baselineskip}
+\section{Major intellectual contributions}
+
+\subsection{Formulation I --- broad stability framework (20 hours)}
+\begin{tcolorbox}[featurebox, breakable=false, title=Formulation I]
+Earlier June work (June~25 email; June~29 meeting) developed a broad framework connecting
+algorithmic stability for post-hoc selection; optimization-based selectors; primitive
+decompositions; stabilization via noise, randomization, or regularization; reduced data
+splitting; and downstream inference.
+
+\textbf{What was learned.} Concrete algorithms share recurring patterns once decomposed into
+primitives---motivating a catalog-driven search rather than a one-off construction.
+The June~25 framework was \emph{student-proposed} and not yet approved.
+\end{tcolorbox}
+
+\Needspace{14\baselineskip}
+\begin{tcolorbox}[catalogbox]
+{\large\bfseries\color{navy} Stabilized Algorithm Catalog (20 hours)}\\[3pt]
+A primary research contribution: structured extraction of algorithms that had already been
+stabilized in the literature, used to motivate Formulation~I and later support Formulation~II.
+\begin{itemize}
+  \item Identified concrete selection procedures that had been stabilized, and extracted the
+        original algorithm together with the selected object.
+  \item Recorded the stability notion, assumptions, and the stabilization mechanism
+        (noise, randomization, or regularization), including noise distributions where relevant.
+  \item Decomposed each algorithm into primitive operations and compared utility costs.
+  \item Recorded proof strategies and downstream inference or generalization guarantees.
+  \item Searched for recurring structural patterns across examples.
+  \item Converted the results into a structured database and LaTeX artifacts that informed
+        the later optimization-selected UQ formulation.
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Formulation II --- optimization-selected uncertainty quantification (10 hours)}
+\begin{tcolorbox}[featurebox, breakable=false, title=Formulation II]
+Narrower current problem: uncertainty sets from calibration data whose hyperparameter is
+selected by constrained optimization on the \emph{same} data.
+\begin{itemize}
+  \item Validity after data-dependent hyperparameter selection; miscoverage deviation.
+  \item Part~I: replace-one stability of $\hat\theta(\mathcal{D})$.
+  \item Part~II: diagnose post-selection coverage; restore coverage by randomizing selection.
+  \item Retain the fixed-$\theta$ uncertainty set construction while changing
+        \emph{how} the hyperparameter is selected (realized set generally changes with $\theta$).
+\end{itemize}
+\textbf{Decomposition.} Part~I: replace-one stability of $\hat\theta(\mathcal{D})$.
+Part~II: validity and miscoverage after data-dependent selection; restore coverage by
+randomizing selection (no recalibration of $\mathcal{C}$).
+\end{tcolorbox}
+
+\subsection{Supporting infrastructure}
+Discovery architecture and a modest formalization library support the mathematical program.
+They should enable---not replace---the Part~I theorem.
+
+% ============================================================
+% 6. PRELUDE
+% ============================================================
+\section{Prelude: selecting the research pillar (April 27--May 22)}
+
+\textbf{Focus.} Select a lab research pillar connected to CREDO/CREAM.
+
+\textbf{What changed.} Three candidate pillars; Wenbin entered the discussion; algorithmic
+pillar became active.
+
+\textbf{What was learned.} High-stakes UQ: when can a data-produced decision be trusted?
+
+\textbf{Pivot.} Quantization set aside; adaptive certified regret frontier became the plan.
+CREAM backups remained unused.
+
+\textit{Prelude hours are not included in the 92-hour reconstruction.}
+
+% ============================================================
+% 7. WEEKLY INTELLECTUAL TIMELINE (compressed)
+% ============================================================
+\Needspace{8\baselineskip}
+\section{Weekly intellectual timeline}
+
+\begin{tcolorbox}[weekbox, title={Week 1: June 1--7 \hfill 5 hours}]
+\field{Focus}{Adaptive-regret continuation; re-entry after June~1.}
+\field{Key developments}{Reviewed materials; re-established advisor context. No new pivot
+documented.}
+\field{Outputs}{None retained beyond re-entry notes.}
+\field{Evidence}{\emph{Weakly documented}; no undocumented progress inferred.}
+\end{tcolorbox}
+
+\begin{tcolorbox}[weekbox, title={Week 2: June 8--14 \hfill 7 hours}]
+\field{Focus}{Nicholas--Wenbin contact; post-hoc inference named.}
+\field{Key developments}{June~11 meeting (logistics only in notes). ``Post-hoc inference''
+added to June~12 SURA form (Wenbin). Framing shifted toward inferential validity after
+data-dependent procedures---not yet optimization-based selection.}
+\field{Outputs}{Updated SURA form terminology.}
+\end{tcolorbox}
+
+\begin{tcolorbox}[weekbox, title={Week 3: June 15--21 \hfill 9 hours}]
+\field{Focus}{Early stabilized-algorithm catalog.}
+\field{Key developments}{Organized stability / randomization / regularization /
+post-selection examples into a structured catalog (not a reading list). Began LaTeX
+operator and mechanism representations. Shift from regret construction toward reusable
+stabilization patterns.}
+\field{Outputs}{Initial catalog entries and LaTeX sketches.}
+\field{Evidence}{Daily sequence \emph{inferred from surviving artifacts} and the June~25 email.}
+\end{tcolorbox}
+
+\begin{tcolorbox}[weekbox, title={Week 4: June 22--28 \hfill 12 hours}]
+\field{Focus}{Student-proposed Formulation~I architecture.}
+\field{Key developments}{Expanded literature database; primitive decompositions;
+noise / regularization / randomization; drafted framework linking algorithm, data,
+primitives, and inference. June~25 email asked whether this was the correct direction.}
+\field{Outputs}{June~25 email; meeting prep for June~29. Status: \emph{student-proposed}.}
+\end{tcolorbox}
+
+\begin{tcolorbox}[weekbox, title={Week 5: June 29--July 5 \hfill 14 hours}]
+\field{Focus}{Central pivot: optimization-induced policies and decisions.}
+\field{Key developments}{June~29 presentation connected the catalog to the
+Woody--Wenbin--Ryan thread. Selected object reframed as optimization solution / policy;
+discontinuity as the stability obstacle. July~2 written feedback authorized narrower
+methodological exploration. Adaptive regret ceased to be active.}
+\field{Outputs}{Meeting notes; new formulation/context corpus begun.}
+\end{tcolorbox}
+
+\begin{tcolorbox}[weekbox, title={Week 6: July 6--12 \hfill 15 hours}]
+\field{Focus}{Formulation~II: specific UQ instance.}
+\field{Key developments}{Formalized calibration data $\to$ uncertainty set; same data $\to$
+constrained hyperparameter selection. Separated Part~I (replace-one stability of
+$\hat\theta(\mathcal{D})$) from Part~II (validity / miscoverage deviation; randomizing
+selection). Explored randomizing selection while retaining the fixed-$\theta$ uncertainty
+set construction.}
+\field{Outputs}{Revised problem write-up; early discovery tooling.}
+\end{tcolorbox}
+
+\begin{tcolorbox}[weekbox, title={Week 7: July 13--19 \hfill 14 hours}]
+\field{Focus}{Discovery workflow in support of the formulation.}
+\field{Key developments}{Refined Part~I / Part~II notation; separated speculative discovery
+from later checking; structured intermediate representations. Infrastructure was becoming
+broader than the current theorem required.}
+\field{Outputs}{Architecture visuals; intermediate representations.}
+\end{tcolorbox}
+
+\begin{tcolorbox}[weekbox, title={Week 8: July 20--26 \hfill 11 hours}]
+\field{Focus}{Supporting formalization, audit, and freeze.}
+\field{Key developments}{Audited and froze supporting formal artifacts on July~26
+($\approx$50 complete operators; 53~\texttt{LEAN\_FULL} packages as of the later library
+audit). Lesson: formalization should
+support---not replace---Part~I.}
+\field{Outputs}{Frozen artifact set (July~26).}
+\end{tcolorbox}
+
+\begin{tcolorbox}[weekbox, title={Week 9: July 27--29 \hfill 5 hours}]
+\field{Focus}{Advisor-facing consolidation.}
+\field{Key developments}{Polished Formulation~II; mentor summaries; repository navigation
+with the problem write-up as front door; this timeline.}
+\field{Outputs}{Advisor packet materials; return plan centered on Part~I.}
+\end{tcolorbox}
+
+% ============================================================
+% 8. MAJOR TRANSITIONS
+% ============================================================
+\Needspace{12\baselineskip}
+\section{Major intellectual transitions}
+
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{>{\RaggedRight\bfseries\color{navy}\arraybackslash}p{0.19\textwidth}
+  >{\RaggedRight\arraybackslash}X
+  >{\RaggedRight\arraybackslash}X}
+\toprule
+Transition & What changed & Why it mattered \\
+\midrule
+Quantization $\to$ regret &
+Engineering quantization replaced by adaptive certified regret. &
+Shifted toward guarantees for decisions. \\
+\addlinespace
+Regret $\to$ stabilized-algorithm catalog &
+Stabilized algorithms organized by selector, primitive, mechanism, proof, guarantee. &
+Empirical basis for reusable patterns. \\
+\addlinespace
+Generic selection $\to$ optimization-induced decisions &
+Object became an optimization solution or policy; discontinuity central. &
+Connected catalog to advisor thread; concrete object. \\
+\addlinespace
+Broad framework $\to$ UQ instance &
+Formulation~I narrowed to Formulation~II. &
+Tractable Part~I / Part~II agenda. \\
+\addlinespace
+Tool building $\to$ theorem-first &
+Infrastructure recognized as support, not the primary result. &
+Next: prove Part~I, then feedback. \\
+\bottomrule
+\end{tabularx}
+
+\vspace{4pt}
+\noindent\textbf{Clarifications.}
+June~25 framework was \emph{student-proposed}. June~29 meeting and July~2 feedback drove
+the central pivot.
+
+% ============================================================
+% 9. CURRENT FORMULATION
+% ============================================================
+\Needspace{12\baselineskip}
+\section{Current formulation}
+
+\begin{tcolorbox}[basebox]
+\textbf{Research question.}
+Study when an uncertainty set $\mathcal{C}(X;\mathcal{D},\theta)$ remains valid after its
+hyperparameter is selected by constrained optimization on the same calibration data
+$\mathcal{D}$; quantify validity or miscoverage deviation; restore coverage by randomizing
+the selection map while retaining the existing fixed-$\theta$ uncertainty set construction.
+
+The map $\mathcal{C}(\,\cdot\,;\mathcal{D},\theta)$ for fixed, prespecified $\theta$ is
+unchanged. Changing the selected hyperparameter
+($\hat\theta(\mathcal{D})$ or $\widetilde\theta(\mathcal{D};\xi)$) generally changes the
+realized set.
+\end{tcolorbox}
+
+\vspace{3pt}
+\textbf{Part I.} Replace-one stability of $\hat\theta(\mathcal{D})$ under explicit assumptions.
+
+\textbf{Part II.} Validity and miscoverage after data-dependent selection; restore coverage by
+randomizing selection (no recalibration of $\mathcal{C}$). Part~I informs diagnosis;
+goal~(iii) modifies the selection map.
+
+\textbf{Immediate theorem target.} Prove Part~I for the motivating problem; obtain advisor
+feedback; only then extend.
+
+% ============================================================
+% 10. OUTPUTS
+% ============================================================
+\Needspace{8\baselineskip}
+\section{Outputs}
+
+\begin{itemize}
+  \item Mathematical formulations (Formulation~I; Formulation~II with Part~I / Part~II).
+  \item Stabilized-algorithm catalog and structured literature database.
+  \item Discovery architecture and supporting formal artifacts.
+  \item Problem write-up; diagrams; documentation; evidence packet; repository navigation.
+\end{itemize}
+
+% ============================================================
+% 11. REFLECTION
+% ============================================================
+\Needspace{8\baselineskip}
+\section{Reflection and corrected research strategy}
+
+The most important accomplishment was reaching Formulation~II with a concrete theorem agenda.
+The stabilized-algorithm catalog remains a major contribution. Supporting infrastructure was
+generalized earlier than necessary. Advisor communication should have been earlier and more
+consistent.
+
+\textbf{Corrected strategy.} Theorem-first execution with regular advisor checkpoints; use
+the catalog and infrastructure selectively in service of the proof.
+
+% ============================================================
+% 12. FINAL CURRENT-STATE PANEL
+% ============================================================
+\Needspace{12\baselineskip}
+\section{Current state}
+
+\begin{tcolorbox}[finalpanel]
+\textbf{\color{navy}Completed}
+\begin{itemize}
+  \item Formulation~I;
+  \item stabilized-algorithm catalog;
+  \item Formulation~II (problem statement);
+  \item supporting discovery infrastructure;
+  \item repository and advisor-facing documentation.
+\end{itemize}
+
+\textbf{\color{navy}Immediate milestone}\\[1pt]
+Complete the Part~I theorem.
+
+\vspace{3pt}
+\textbf{\color{navy}Longer-term direction}
+\begin{itemize}
+  \item Characterize data-dependent-selection validity and miscoverage;
+  \item develop Part~II (including selection randomization);
+  \item assess whether the results support a broader framework or paper.
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

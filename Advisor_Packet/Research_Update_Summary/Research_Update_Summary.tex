@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,top=0.55in,bottom=0.55in,left=0.72in,right=0.72in]{geometry}
+\input{../Assets/packet_style.tex}
+\PacketHeader{SURA Research Update Summary}
+\setlength{\parskip}{2.5pt}
+\titlespacing*{\section}{0pt}{7pt}{3pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{navy} Research Update Summary}\\[2pt]
+{\normalsize\color{slate} Optimization-Selected Uncertainty Quantification}\\[1pt]
+{\small\textbf{Nicholas Mino}\quad\textcolor{accent}{|}\quad Advisors: Wenbin Zhou, Shixiang Zhu\quad\textcolor{accent}{|}\quad 29 July 2026}
+\end{center}
+
+\section{Current research question}
+
+\begin{tcolorbox}[notebox]
+The current formulation studies uncertainty quantification when a hyperparameter
+$\theta$ indexing an uncertainty set $\mathcal{C}(X;\mathcal{D},\theta)$ is chosen by
+constrained optimization on the \emph{same} calibration data $\mathcal{D}$ used to
+construct the set.
+Fixed-hyperparameter coverage need not survive this data-dependent choice.
+The project asks (i)~when validity remains after data-dependent selection,
+(ii)~how far actual miscoverage can deviate from the nominal level, and
+(iii)~whether coverage can be restored by randomizing the
+\emph{selection} map (stabilizing randomness $\xi$) while retaining the existing
+fixed-$\theta$ construction of $\mathcal{C}$.
+\end{tcolorbox}
+
+\noindent\textbf{Precision.}
+The map $\mathcal{C}(\,\cdot\,;\mathcal{D},\theta)$ for fixed, prespecified $\theta$ is unchanged.
+What changes is the procedure that produces $\theta$ (deterministic
+$\hat\theta(\mathcal{D})$ vs.\ randomized $\widetilde\theta(\mathcal{D};\xi)$).
+Changing the selected hyperparameter generally changes the realized set.
+
+\section{Intellectual progression}
+
+Adaptive certified regret
+$\to$ stabilized-algorithm catalog
+$\to$ broad optimization-based selection stability framework (Formulation~I; student-developed)
+$\to$ current optimization-selected UQ formulation (Formulation~II).
+Full narrative: \texttt{Intellectual\_Timeline.pdf}.
+
+\section{Main accomplishments}
+
+In order of intellectual development (subject to advisor feedback):
+\begin{itemize}[itemsep=1pt]
+  \item \textbf{Mathematical Formulation I} --- broad stability framework for post-hoc /
+        optimization-based selection.
+  \item \textbf{Stabilized-algorithm catalog} --- structured extraction of stabilized selectors
+        and recurring mechanisms.
+  \item \textbf{Mathematical Formulation II} --- Parts~I--II agenda
+        (\texttt{Formulation/writeup/Problem\_Writeup.pdf}).
+  \item \textbf{Discovery architecture} --- supporting infrastructure for operator propositions.
+  \item \textbf{Operator library and formal verification support} --- selection-stability
+        primitives with Lean certificates (supporting evidence; not the Part~I--II chain).
+  \item \textbf{Repository organization and advisor-facing documentation.}
+\end{itemize}
+Approximately \textbf{92 hours} reconstructed (June~1--July~29); detailed effort breakdown is in the
+intellectual timeline.
+
+\section{Current theorem agenda}
+
+\begin{itemize}[itemsep=1pt]
+  \item \textbf{Part I.} Replace-one stability of the optimization-selected hyperparameter
+        $\hat\theta(\mathcal{D})$ under explicit assumptions.
+  \item \textbf{Part II.} Validity and miscoverage after data-dependent selection; restore
+        coverage by randomizing selection (no recalibration of $\mathcal{C}$). Part~I informs
+        diagnosis~(i)--(ii); goal~(iii) modifies the selection map.
+\end{itemize}
+
+\section{Immediate next step}
+
+\begin{tcolorbox}[basebox]
+Complete the Part~I theorem under explicit assumptions, obtain advisor feedback on formulation
+and assumptions, and only then extend.
+\end{tcolorbox}
+
+\section{What I would like to discuss}
+
+Concrete questions are in \textbf{\texttt{Questions\_for\_Advisors.pdf}} (formulation fit, novelty
+baselines, sequencing, collaboration). Please treat that one-pager as the discussion agenda.
+
+\end{document}

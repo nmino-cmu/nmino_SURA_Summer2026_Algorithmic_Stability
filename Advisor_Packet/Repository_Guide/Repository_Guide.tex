@@ -1,0 +1,70 @@
+\documentclass[10.5pt]{article}
+\usepackage[letterpaper,top=0.55in,bottom=0.55in,left=0.7in,right=0.7in]{geometry}
+\input{../Assets/packet_style.tex}
+\PacketHeader{SURA Repository Guide}
+\setlength{\parskip}{2pt}
+\titlespacing*{\section}{0pt}{7pt}{3pt}
+\usepackage{xurl}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{navy} Repository Guide}\\[2pt]
+{\normalsize\color{slate} How to Review This Project}\\[1pt]
+{\small\textbf{Nick Mino}\quad\textcolor{accent}{|}\quad 29 July 2026}
+\end{center}
+
+\section{Recommended reading order}
+
+\noindent\textbf{If you have 5 minutes}
+\begin{enumerate}[itemsep=1pt]
+  \item \path{Advisor_Packet/Research_Update_Summary/Research_Update_Summary.pdf}
+  \item Current problem / theorem agenda in \path{Formulation/writeup/Problem_Writeup.pdf}
+\end{enumerate}
+
+\noindent\textbf{If you have 15--20 minutes}
+\begin{enumerate}[itemsep=1pt]
+  \item \path{Advisor_Packet/Research_Update_Summary/Research_Update_Summary.pdf}
+  \item \path{Formulation/writeup/Problem_Writeup.pdf}
+  \item \path{Advisor_Packet/Intellectual_Timeline/Intellectual_Timeline.pdf}
+  \item \path{Advisor_Packet/Questions_for_Advisors/Questions_for_Advisors.pdf}
+\end{enumerate}
+Optionally:
+\path{Advisor_Packet/Stabilized_Algorithm_Catalog_Overview/Stabilized_Algorithm_Catalog_Overview.pdf}.
+
+\section{Supporting evidence (verified paths)}
+
+Paths checked 29 July 2026; omitted if missing.
+
+\begin{itemize}[itemsep=2pt]
+  \item \path{Formulation/writeup/Problem_Writeup.pdf} ---
+        Authoritative mathematical problem statement (Parts~I--II).
+  \item \path{Submission_Only/Timeline/intellectual_timeline.pdf} ---
+        Working redesign of the intellectual timeline (source for the packet copy).
+  \item \path{Work/research-results/primitive-library/FINAL-VERDICT.md} ---
+        Concise audit of the operator library and Lean certificates.
+  \item \path{Work/research-results/} ---
+        Human-readable operator papers and theorem packages.
+  \item \path{Work/research-results/median/median-margin/median_paper.pdf} ---
+        Example clean entry point into one operator paper.
+  \item \path{Formulation/context/overview/swarm/04_H1_catalog.md} ---
+        Summary note on the stabilized-selection catalog (H1 working survey).
+  \item \path{Formulation/context/overview/Research_Scope_Timeline_and_Authority.tex} ---
+        Scope, authority, and literature integration.
+  \item \path{Formulation/context/papers/INDEX.md} ---
+        Prioritized reading list of papers in the repository.
+  \item \path{Formulation/research/literature/} ---
+        Digests and pattern notes used in catalog synthesis.
+  \item \path{Work/architecture-discovery/README.md} ---
+        Entry point to discovery-architecture documentation.
+  \item \path{README.md} ---
+        Top-level package map.
+\end{itemize}
+
+\begin{tcolorbox}[basebox]
+The repository contains substantial implementation and verification infrastructure.
+The recommended reading order above is intended to foreground the mathematical question
+rather than the software architecture.
+\end{tcolorbox}
+
+\end{document}

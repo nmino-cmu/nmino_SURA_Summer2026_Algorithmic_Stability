@@ -1,0 +1,85 @@
+% Shared style for Advisor_Packet documents.
+% Input after \documentclass and geometry (or let documents set geometry first).
+% Documents should: \usepackage{...} then \input{../Assets/packet_style.tex}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx,array,colortbl}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{ragged2e}
+\usepackage{needspace}
+\usepackage[most]{tcolorbox}
+
+\definecolor{navy}{HTML}{1B3A5C}
+\definecolor{slate}{HTML}{5B6B7C}
+\definecolor{bluegray}{HTML}{E4EBF3}
+\definecolor{lightgray}{HTML}{F4F5F7}
+\definecolor{accent}{HTML}{6B7F93}
+\definecolor{panelgreen}{HTML}{E8F0EA}
+\definecolor{panelborder}{HTML}{C5D0DB}
+
+\hypersetup{colorlinks=true,linkcolor=navy,urlcolor=navy}
+\setlist[itemize]{leftmargin=1.35em,itemsep=2pt,topsep=2pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=1.55em,itemsep=2pt,topsep=2pt,parsep=0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt}
+\setlength{\headheight}{22pt}
+\raggedbottom
+
+\titleformat{\section}{\large\bfseries\color{navy}}{}{0pt}{}[\vspace{1pt}{\color{panelborder}\titlerule[0.6pt]}]
+\titleformat{\subsection}{\normalsize\bfseries\color{navy}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+
+\newcommand{\PacketHeader}[1]{%
+  \pagestyle{fancy}%
+  \fancyhf{}%
+  \lhead{\small\color{slate} #1}%
+  \rhead{\small\color{slate} Nicholas Mino}%
+  \cfoot{\small\color{slate}\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\headrule}{\hbox to\headwidth{\color{panelborder}\leaders\hrule height \headrulewidth\hfill}}%
+}
+
+\tcbset{
+  basebox/.style={
+    enhanced, breakable,
+    colback=lightgray, colframe=panelborder,
+    boxrule=0.5pt, arc=1.5pt,
+    left=8pt, right=8pt, top=5pt, bottom=5pt
+  },
+  notebox/.style={
+    enhanced, breakable=false,
+    colback=bluegray, colframe=navy,
+    boxrule=0.55pt, arc=1.5pt,
+    left=8pt, right=8pt, top=5pt, bottom=5pt
+  },
+  prioritybox/.style={
+    enhanced, breakable=false,
+    colback=bluegray, colframe=navy,
+    boxrule=0.9pt, arc=1.5pt,
+    left=8pt, right=8pt, top=5pt, bottom=5pt,
+    fonttitle=\bfseries\color{navy},
+    colbacktitle=bluegray, coltitle=navy,
+    attach boxed title to top left={yshift=-1.5pt, xshift=6pt},
+    boxed title style={boxrule=0pt, arc=1pt, left=5pt, right=5pt, top=1.5pt, bottom=1.5pt}
+  },
+  entrybox/.style={
+    enhanced, breakable,
+    colback=white, colframe=panelborder,
+    boxrule=0.55pt, arc=1.5pt,
+    left=7pt, right=7pt, top=4pt, bottom=4pt,
+    before skip=5pt, after skip=3pt,
+    fonttitle=\bfseries\color{navy}\normalsize,
+    colbacktitle=bluegray, coltitle=navy,
+    attach boxed title to top left={yshift=-2pt, xshift=7pt},
+    boxed title style={boxrule=0pt, arc=1pt, left=5pt, right=5pt, top=1.5pt, bottom=1.5pt}
+  }
+}
