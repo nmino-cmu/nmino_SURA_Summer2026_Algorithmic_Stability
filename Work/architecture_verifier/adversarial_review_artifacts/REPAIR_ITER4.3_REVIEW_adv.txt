@@ -1,0 +1,5 @@
+- **Prior 4.2 CRITICAL — CLOSED.** Construction is now acyclic: `ProofEvidence P → ProofAttachment A → CertificationRecord C → HumanDecision D → ATTACH_CERTIFICATION`. Neither `P` nor `C` hashes `D`; the decision only targets the already-computed `certification_digest`. [ProofEvidence](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:443) [CertificationRecord](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:157)
+
+- **Remaining CRITICAL/HIGH:** None found within ART-04c ITER4.3 adversarial scope.
+
+ITER4_ADV_VERDICT: PASS

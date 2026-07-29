@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"RECORD_COUNTEREXAMPLE","payload":{"dependents":["D1"],"hits":["S1"],"refutation_type":"FULL"}}],"expect":"SUCCESS","expect_effects":{"S1":"SUPERSEDED","wave_work_items":["D1"]},"fixture_id":"CF-7A","initial_state":{"claims":["S1","D1"]},"kind":"behavioral"}

@@ -1,0 +1,11 @@
+CRITICAL: none.
+
+HIGH: none.
+
+Prior Iteration 3.0 findings:
+
+- **Unbound effects — CLOSED.** Effects are deterministically derived from the command and pre-state, validated together, and stored in the event envelope. [ART-06b §3](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:76)
+- **Kind-wide hard-stop bypass — CLOSED.** Exceptions require `{CONTROL}` targeting and zero Research/Design effects; any such effect is rejected. [ART-06b §5](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:131)
+- **Incomplete legacy quarantine — CLOSED.** ART-08b, ART-15, ART-16, and ART-17 now have explicit status labels and incompatibility warnings establishing ART-06b `I.Commit` and ControlState precedence. [ART-08b](/Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/QUESTION_SELECTION.md:6), [ART-15](/Users/nicholasmino/Desktop/Research/Work/architecture/15-human-gates/HUMAN_GATES.md:5), [ART-16](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/FAILURE_RECOVERY.md:6), [ART-17](/Users/nicholasmino/Desktop/Research/Work/architecture/17-indefinite-ops/INDEFINITE_OPS.md:5)
+
+ITER3_ADV_VERDICT: PASS

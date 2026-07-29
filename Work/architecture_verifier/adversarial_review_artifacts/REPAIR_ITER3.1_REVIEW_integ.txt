@@ -1,0 +1,9 @@
+- **CRITICAL D-01 — CLOSED.** ControlState is now authoritative; legacy ResearchState/direct `I.HardStop` paths are explicitly non-authoritative and precedence is fail-closed. [ART-06b](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:131), [integration rule](/Users/nicholasmino/Desktop/Research/Work/architecture/00-repair/INTEGRATION_RULE.md:35)
+
+- **HIGH D-02 — CLOSED.** Caller booleans are rejected, affected consumers are warned, and axis application is deferred to Iteration 5. [ART-06b](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:152)
+
+- **HIGH D-03 — CLOSED.** ART-04b, ART-08b, ART-12, and the information-flow guide now explicitly subordinate ID-native/direct registry paths to `I.Commit`.
+
+- **HIGH D-04 — OPEN.** The migration inventory remains incomplete and internally stale. ART-22 is omitted despite displaying direct `I.Frontier`/registry-write behavior. [ART-22](/Users/nicholasmino/Desktop/Research/Work/architecture/22-example-trace/E2E_TRACE.md:19) The iteration record also advertises removed/public `I.ProposeCommand` and `I.Reduce` interfaces, contradicting ART-24, and references only TRACE-3A–3F although 3G–3H validate the 3.1 repairs. [iteration record](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER3_MUTATION_STATE.md:47), [ART-24](/Users/nicholasmino/Desktop/Research/Work/architecture/24-interfaces/INTERFACE_CONTRACTS.md:39), [traces](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:187)
+
+ITER3_INTEG_VERDICT: FAIL

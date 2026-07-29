@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"REGISTER_DD_VERIFICATION","payload":{"closure_digest":"EMPTY","status":"VERIFIED"}}],"expect":"VERIFIED","fixture_id":"CF-DDV-OK","initial_state":{"dd":{"dd_class_fixed":true,"reads":[]}},"kind":"behavioral"}

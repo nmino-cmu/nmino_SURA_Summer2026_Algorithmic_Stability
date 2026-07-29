@@ -1,0 +1,7 @@
+- **HIGH — ART-01 lifecycle warning: CLOSED.** ART-01 now directs consumers to ART-07c endpoints, applicability evaluation, and proof floors, explicitly rejecting a bridge lifecycle dialect. [ART-01](/Users/nicholasmino/Desktop/Research/Work/architecture/01-charter/CHARTER.md:9)
+
+- **HIGH — ART-02/ART-20 migration scheduling: CLOSED.** The Iter2.4 migration matrix assigns both artifacts to named later **Iteration 5**, and both retain active incompatibility warnings. [Migration matrix](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md:91)
+
+No CRITICAL/HIGH findings remain from the requested recheck.
+
+ITER2_INTEG_VERDICT: PASS

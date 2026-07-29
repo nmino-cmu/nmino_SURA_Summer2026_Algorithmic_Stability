@@ -1,0 +1,15 @@
+## CRITICAL
+
+1. **Transfer consumer binding: CLOSED.** Consumer endpoint equality and `APPLICABLE` evaluation are now mandatory in [ART-07c §8.5](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:290), with ART-07b delegating enforcement at [I-CERT-02b](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:321).
+
+2. **Structural write sets: CLOSED.** Each structural transform has an exclusive writable endpoint field; all others must remain byte-identical under [I-XFORM-STRUCT-02](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:194).
+
+3. **Proof-context laundering: OPEN.** `I-XFORM-PROOF-02` carries proof context only into the bridge Claim—not fully into the derived target endpoint. Pins are merely required on the bridge, while proof scope/domain are compared with the bridge rather than the final endpoint. Certificate-transfer consumers need only an `EvidenceUse`, not a Claim dependency on B, so they do not inherit that bridge context. Moreover, subset relations are written over digest values, which are not sets. A proof-bound map can therefore produce a target omitting proof pins or changing scope/domain, after which a transfer consumer can accept that target. [Context rule](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:205), [transfer rule](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:290), [dependency inheritance](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:144).
+
+## HIGH
+
+4. **Composition endpoint: OPEN.** Total projection is now required, but a one-input composition may still change its endpoint whenever the change matches the rule’s declared projection. “Registered composition semantics” has no proof/Bridge binding, so an explicit—not silent—relabel of notion, relation, quantifier, or other endpoint fields remains possible despite the closing prohibition. [I-COMP-ENDPOINT-01](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:355).
+
+5. **`UTILITY_CONSTRAINT`: OPEN.** The dependency-enum contradiction is closed in [ART-07b §4.5](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:346), but compatibility remains underbound. It does not compare the utility’s optional `data_domain_digest` or mathematical scope, nor bind the consumer’s required loss kind, comparator, threshold, or quantifier to the cited utility Claim. An irrelevant or differently scoped utility theorem can therefore satisfy the dependency. [Utility carrier and compatibility](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:300).
+
+ITER2_ADV_VERDICT: FAIL

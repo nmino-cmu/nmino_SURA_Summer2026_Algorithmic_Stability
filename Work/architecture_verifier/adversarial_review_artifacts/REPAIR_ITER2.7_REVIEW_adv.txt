@@ -1,0 +1,5 @@
+Prior 2.6 HIGH: **CLOSED**. `I-UTIL-02` now requires every `UTILITY_CONSTRAINT` consumer schema to declare the complete utility signature, match the cited utility Claim exactly, and rejects omitted slots ([ART-07c §9](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:323)).
+
+No remaining CRITICAL/HIGH findings in Iteration 2.7.
+
+ITER2_ADV_VERDICT: PASS

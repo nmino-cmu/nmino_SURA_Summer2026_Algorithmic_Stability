@@ -1,0 +1,9 @@
+No remaining CRITICAL/HIGH integration findings.
+
+- **ART-24 EIO every-APPLY mismatch — CLOSED.** ART-24 now matches ART-13b’s mandatory intent-bound EIO `ALLOW` for every `APPLY_PROMOTION`. [ART-24](/Users/nicholasmino/Desktop/Research/Work/architecture/24-interfaces/INTERFACE_CONTRACTS.md:56) · [ART-13b](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:172)
+- **ART-20 later iteration — CLOSED.** Both the artifact and migration matrix assign residual migration to Iteration 14 with an active warning. [ART-20](/Users/nicholasmino/Desktop/Research/Work/architecture/20-invariants/INVARIANTS.md:5) · [Matrix](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER5_PROMOTION_INTENT.md:45)
+- **ART-22 scheduling mismatch — CLOSED.** Both locations now specify Iteration 14, with ART-22 marked `PENDING_MIGRATION` and warned as non-release evidence. [ART-22](/Users/nicholasmino/Desktop/Research/Work/architecture/22-example-trace/E2E_TRACE.md:6) · [Matrix](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER5_PROMOTION_INTENT.md:46)
+
+Targeted integration assertions passed.
+
+ITER5_INTEG_VERDICT: PASS

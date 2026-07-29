@@ -1,0 +1,7 @@
+Gate: FAIL. Two blockers remain.
+
+- **CRITICAL — Discharge is not bound to the discharger’s conclusion.** `conclusion_digest` is self-asserted in `DischargeRecord`; no invariant derives it from the discharger Claim. An unrelated informal Claim can therefore discharge any assumption. [ART-07b §3](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:129)
+
+- **HIGH — Evidence compatibility remains incomplete.** `I-CERT-02` omits definition-pin compatibility, while `evidence_segment_pairs` matches only coarse segment types—not evidence assertion schemas or guarantee kinds. Certificates with incompatible definitions or guarantees can still pass. [ART-07b §4.3](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:217), [SchemaRegistry](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:352)
+
+Iteration-1 ready for Iter2? NO.

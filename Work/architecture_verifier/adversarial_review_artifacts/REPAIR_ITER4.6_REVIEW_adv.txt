@@ -1,0 +1,7 @@
+No CRITICAL/HIGH findings.
+
+- Prior `I-MP-02` HIGH: **CLOSED.** Model provenance is derived from the authenticated caller’s `RoleBinding`; no nonexistent `caller_model_prov_digest` is referenced. Non-model callers require absent/`⊥` provenance. [ART-04c §3](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:75)
+- Atom-mirror HIGH: **CLOSED.** `CertificationRecordUnsigned` now contains only `proof_evidence_digest` and `certifier_binding_digest`; proposer/certifier atoms are derived at attachment sequence. [ART-04c §7](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:160)
+- No new adversarial CRITICAL/HIGH found within ART-04c ITER4.6 scope.
+
+ITER4_ADV_VERDICT: PASS

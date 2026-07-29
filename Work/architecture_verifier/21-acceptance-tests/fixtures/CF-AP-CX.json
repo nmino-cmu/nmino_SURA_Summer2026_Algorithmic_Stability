@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"APPLY_PROMOTION","payload":{}}],"expect":"CX_BLOCKS_PROMOTION","fixture_id":"CF-AP-CX","initial_state":{"full_cx_hits_target":true,"maturity":"RESULT"},"kind":"behavioral"}

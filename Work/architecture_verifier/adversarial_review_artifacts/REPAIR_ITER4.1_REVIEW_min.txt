@@ -1,0 +1,15 @@
+### Findings
+
+- **CRITICAL — Detachment is not closed.** The signature now verifies only the unsigned payload, eliminating the original self-signing loop, but `decision_digest` still hashes `signature_material`. Thus re-signing identical content can create multiple authoritative identities. Make `decision_digest = decision_payload_digest` and keep the signature envelope-only. [ART-04c §6](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:131)
+
+- **CRITICAL — A new certification digest cycle exists.** `certification_digest = H(all fields)` includes `certify_decision_digest`, while that decision’s target must be `certification_digest`. Neither digest can be constructed first. Remove `certify_decision_digest` from the record identity; carry it as `ATTACH_CERTIFICATION` authorization metadata preserved by the event log. [CertificationRecord](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:148)
+
+- **HIGH — New zero-loss lifecycle mirror.** `CertificationRecord.recorded_at_event_seq` is exactly derivable from the accepted attachment `MutationEvent`, whose full command and effects are replay-sufficient. Remove the field and evaluate certifier-binding liveness at the derived attachment sequence. [recorded_at_event_seq](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:164), [replay invariant](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:95)
+
+Prior closure status:
+
+- Detached signature: **OPEN**
+- Named lifecycle mirrors: **mostly removed**, but ART-07b still mentions `issued_at_event_seq`, and the new certification mirror repeats the defect. [ART-07b](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:442)
+- Commit-only interfaces: **CLOSED**; only `I.Commit` plus pure `I.IndependenceCheck` remain. [Interfaces](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:196)
+
+ITER4_MIN_VERDICT: FAIL

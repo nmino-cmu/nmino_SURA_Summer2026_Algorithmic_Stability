@@ -1,0 +1,7 @@
+No CRITICAL findings. Two HIGH findings remain OPEN.
+
+- **HIGH — Inference tuple: OPEN.** The tuple now names target and quantifier schema IDs, but `InferenceEndpoint` stores only their digests. The referenced `target_payload` and `quantifier_payload` have no defined carrier or resolution rule, so the new hash equalities remain non-computable. [ART-07c §6](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:130)
+
+- **HIGH — `CONSTRAINT_INPUT`: OPEN.** The Claim encoding adds `UTILITY_CONSTRAINT`, but ART-07b’s normative dependency section still restricts kinds to `LOGICAL | DEFINITIONAL | BRIDGE`. This contradiction leaves the dependency invalid or implementation-dependent. The `use_class` clarification alone does not close the finding. [Claim encoding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:165) · [Dependency restriction](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:344)
+
+ITER2_MATH_VERDICT: FAIL

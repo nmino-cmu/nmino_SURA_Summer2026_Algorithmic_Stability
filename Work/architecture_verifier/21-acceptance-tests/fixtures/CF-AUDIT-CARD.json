@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"RECORD_AUDIT","payload":{"answers":[{"question_id":"Q01"}]}}],"expect":"UNKNOWN_AUDIT_QUESTION","fixture_id":"CF-AUDIT-CARD","initial_state":{},"kind":"behavioral"}

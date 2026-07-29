@@ -1,0 +1,20 @@
+CRITICAL
+
+- Self-authored `INFORMAL_STRUCTURED` evidence automatically gains `INFORMAL` authority. That suffices for assumption discharge, equivalence, and FULL counterexample admission. No verifier, reviewer, signature, or authorized admission is required (§§ I-PF-04, I-ASM-02, I-REL-01, I-CX-04).
+- `HumanDecision` is forgeable: `actor_id` is unsigned and unchecked against any trusted identity or role. An attacker can mint approvals for `PROOF_CERTIFY`, `HISTORICAL_SCOPE_ACK`, or `CONTINUOUS_LAMBDA`; `expires_at` is also never enforced.
+
+HIGH
+
+- Data-independence is self-attested provenance: an author can omit hidden data/adaptive inputs and obtain `FIXED`. Typed derivation trees validate declared structure, not factual provenance.
+- CX laundering remains possible through semantic re-encoding. The fingerprint detects digest-equivalent reissues, not equivalent mathematics encoded under different schema, subject, mechanism, scope, or domain representations.
+- Authority remains mutable outside claim identity: adding ProofAttachments or DischargeRecords changes `DerivedProofFloor` or `NetRequired`; moving `ActiveDefinitionHead` changes promotability. Iteration 1 defines no authenticated transition, snapshot, or authoritative side-table root.
+- `RENAMES` edges are always CX-valid without evidence or authorization, permitting malicious cross-claim contamination.
+- Historical approval is content-addressing-cyclic: the Claim hashes `historical_scope_dec_digest`, while that decision must target the resulting `claim_digest`.
+
+MEDIUM
+
+- `symbol_table: symbol → local meaning` is normative and unschematized, leaving a free-text definition-meaning loophole outside I-DEF-03.
+- Bridge transforms carry endpoint digests plus a registry rule handle, but no content-addressed transform or proof; correctness can be laundered through rule admission.
+- Hash algorithm and canonical serialization remain deferred, so digest non-forgeability and cross-implementation identity are not yet testable.
+
+ADV_VERDICT: FAIL

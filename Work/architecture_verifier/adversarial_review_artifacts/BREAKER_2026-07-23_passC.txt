@@ -1,0 +1,67 @@
+# Independent Breaker Audit — Pass C
+
+Scanned 107 files containing 31 artifact IDs. The package has no source-control root, release manifest, package digest, or checksum inventory. I found 62 broken local Markdown links across 36 targets.
+
+## CRITICAL findings
+
+1. **No immutable release identity**
+
+   `ARCH-0.3-REPAIR` is only a prose banner; individual files remain labeled `ARCH-0.2`, `ARCH-0.3`, `ARCH-0.3-ITER5`, and `ARCH-0.3-REPAIR-ITER1.26`. The README’s declaration that its banner overrides file headers does not identify exact package bytes. [README version pin](/Users/nicholasmino/Desktop/Research/Work/architecture/00-README.md:11)
+
+   Therefore no audit, acceptance result, or handoff can prove which snapshot it covers. ART-25 itself acknowledges that ART-21 is not digest-bound. [ART-25](/Users/nicholasmino/Desktop/Research/Work/architecture/25-audit-reports/FINAL_AUDIT.md:15)
+
+2. **ART-21 presents false current PASS results**
+
+   ART-21 calls its table “Current status” under R17, then declares R20 for T16 and C12=2 for T17. [ART-21 status heading](/Users/nicholasmino/Desktop/Research/Work/architecture/21-acceptance-tests/ACCEPTANCE_TESTS.md:35) [T16/T17 PASS](/Users/nicholasmino/Desktop/Research/Work/architecture/21-acceptance-tests/ACCEPTANCE_TESTS.md:54)
+
+   Meanwhile the authoritative repair ledger says R20 is superseded, `audit_pass_id=RESET_PENDING_REPAIR`, and clean rounds are zero. [ART-25 ledger](/Users/nicholasmino/Desktop/Research/Work/architecture/25-audit-reports/FINAL_AUDIT.md:19)
+
+   Thus T16 and T17 fail their own criteria. T05 is also obsolete because it passes the old ART-07 certificate enum while typed certificates are deferred to repair Iteration 2. The acceptance file lacks a superseded/unverified banner and can be mistakenly handed off as clearance.
+
+3. **ART-07 and ART-07b form two unbound object models**
+
+   ART-07 declares ART-07b authoritative and its Bridge sketch superseded. [ART-07 authority](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/SCHEMAS.md:5) ART-07b requires registry handles to bind 1:1 to content digests. [ART-07b digest rule](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:39)
+
+   Active runtime documents still use legacy `claim_id`, `cert_id`, `bridge_id`, independent certificate/bridge registries, and unary `from_status/to_status`. [ART-06 registries](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/STATE_MODEL.md:31) [legacy promotion](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/STATE_MODEL.md:69) ART-11, ART-12, and ART-10 likewise consume legacy IDs without an ID-to-digest binding.
+
+   A receiving team must choose between incompatible persistence and promotion contracts; no migration or adapter is normative.
+
+4. **The current repair is explicitly not an end-to-end blueprint**
+
+   Typed certificates/bridges, mutation authority, authenticated human identity, promotion transitions, FSM integration, canonical hashing, executable fixtures, and minimal-profile alignment are deferred through repair Iterations 2–13. [repair ownership](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER1_CANONICAL_OBJECTS.md:64) [validation deferred](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER1_CANONICAL_OBJECTS.md:93) [open dependencies](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER1_CANONICAL_OBJECTS.md:124)
+
+   Iteration 1 is a useful object-model repair, but it cannot support blueprint handoff.
+
+## HIGH findings
+
+5. **Version and iteration namespaces collide**
+
+   Active artifacts include `ARCH-0.2`, `ARCH-0.3`, `REPAIR`, and `REPAIR-ITER1.26`. The information-flow document still identifies the package as `ARCH-0.3-ITER5` and directs readers to a canvas file that is absent. [information-flow header](/Users/nicholasmino/Desktop/Research/Work/architecture/ARCHITECTURE_INFORMATION_FLOW.md:4)
+
+   “Iteration 5” also means both a completed historical design iteration and a future repair milestone for promotion semantics. History is not the problem; the absence of a machine-readable active/superseded inventory is.
+
+6. **`OPERABLE_MINIMAL` is neither minimal nor operable**
+
+   The full roster assigns required work to Mechanism Designer and Utility Analyst. [full roster](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/AGENT_ROLES.md:42) Both are absent from the minimal roster and neither receives a usable conditional trigger, although S06 and S08 remain mandatory. [minimal roster](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/OPERABLE_MINIMAL_PROFILE.md:29) [conditional roles](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/OPERABLE_MINIMAL_PROFILE.md:40)
+
+   Its registry list also omits authoritative certificates, utilities, contradictions, scope exceptions, failed proofs, and `hard_stop`. [minimal registries](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/OPERABLE_MINIMAL_PROFILE.md:43) The repair record explicitly defers ART-07b alignment until Iteration 13.
+
+7. **Overengineered assurance surface creates dual truth**
+
+   The package distributes readiness state across README, IMPLEMENTATION_BLOCK, ART-15, ART-20b, ART-21, ART-25, critique ledgers, and iteration records. It claims “25 artifacts” while actually defining 31 artifact IDs, and different T01/blocking lists omit different supplements. [ART-21 artifact rule](/Users/nicholasmino/Desktop/Research/Work/architecture/21-acceptance-tests/ACCEPTANCE_TESTS.md:67)
+
+   ART-04b justifies non-deletion using nonexistent “charter §IX.” [ART-04b](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/OPERABLE_MINIMAL_PROFILE.md:25) Sixty-two broken evidence links further prevent reproduction of T18/T19 and historical critique claims. [critique index example](/Users/nicholasmino/Desktop/Research/Work/architecture/critiques/INDEX.md:5)
+
+## Required closure before handoff
+
+- Publish one manifest containing release ID, active/superseded status, relative path, artifact ID/version, SHA-256, source revision, and evidence hashes.
+- Integrate ART-07b identifiers through state, audit, counterexample, Lean, FSM, and promotion contracts; remove legacy authoritative paths.
+- Mark every ART-21 result unverified and separate test definitions from digest-bound execution results.
+- Reconcile one authoritative runtime roster and registry model.
+- Namespace repair iterations separately from historical iterations.
+- Collapse duplicated readiness ledgers and repair all evidence links.
+- Run acceptance, a full independent audit, and subsequent adversarial rounds against the same frozen digest.
+
+The package is directionally stronger and correctly keeps implementation blocked, but its maturity is that of a partially repaired requirements catalogue—not an implementable team handoff.
+
+PASS_C_VERDICT: BLUEPRINT_READY? NO maturity 3/10

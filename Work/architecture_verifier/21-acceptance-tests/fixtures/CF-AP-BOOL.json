@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"APPLY_PROMOTION","payload":{"audit_ok":true}}],"expect":"CALLER_BOOLEAN_FORBIDDEN","fixture_id":"CF-AP-BOOL","initial_state":{},"kind":"behavioral"}

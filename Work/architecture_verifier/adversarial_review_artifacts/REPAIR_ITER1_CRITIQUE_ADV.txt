@@ -1,0 +1,126 @@
+ART-07b is not a canonical object model yet. It contains direct routes for refuted, assumption-dependent, or mismatched theorems to retain promotable status. I did not credit later-iteration artifacts.
+
+### 1. Free text remains authoritative mathematical content
+
+**Severity:** CRITICAL  
+**Confidence:** High
+
+**Failure scenario:** A Claim supplies a prose theorem plus a token `quantified_objects` entry or opaque `OTHER_TYPED` schema. It is no longer “free-text alone,” so nothing defined here rejects it. A proof or audit can then bind to a weaker interpretation while promotion displays the stronger prose.
+
+**Evidence:** The statement is only “structured form preferred,” quantifiers have no schema, and arbitrary custom object schemas remain open: [CANONICAL_OBJECTS.md:111](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:111), [CANONICAL_OBJECTS.md:112](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:112), [CANONICAL_OBJECTS.md:117](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:117). Definitions also expressly permit untyped “math text” or an unbound AST reference: [CANONICAL_OBJECTS.md:63](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:63).
+
+**Smallest repair:** Make `statement` a closed tagged structure with a content-addressed AST, typed binders, and complete symbol-to-definition bindings. Treat TeX/prose as explanatory rendering. Require custom schemas to come from a versioned, content-addressed registry with a validator.
+
+### 2. Definition pinning is vacuous and DefinitionVersion has no body
+
+**Severity:** CRITICAL  
+**Confidence:** High
+
+**Failure scenario:** A Claim submits `definition_pins=[]`; “each pin is current” passes vacuously. Alternatively, it pins a `def_version_id` whose record contains a body digest but no body or immutable body reference. Auditor and prover can silently use different definitions.
+
+**Evidence:** `DefinitionVersion` contains no definition body: [CANONICAL_OBJECTS.md:71](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:71). Claims carry only bare version IDs, not `{def_id, version_id, symbol occurrences}`: [CANONICAL_OBJECTS.md:121](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:121). The active-head invariant applies only to definitions the Claim happens to pin: [CANONICAL_OBJECTS.md:91](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:91).
+
+**Smallest repair:** Put the complete body or immutable body reference in `DefinitionVersion`; digest an envelope containing `def_id` and body. Replace bare pins with typed pin records and require complete coverage of every symbol and operator referenced by the Claim, assumptions, and evidence.
+
+### 3. The dependency DAG is self-authored and dependencies can be declared nonessential
+
+**Severity:** CRITICAL  
+**Confidence:** High
+
+**Failure scenario:** A theorem depends on an open lemma. Its author either omits that edge or sets `essential=false`. The only global check is acyclicity of the submitted graph, so the theorem can clear dependency floors.
+
+**Evidence:** The Claim supplies its own edge list: [CANONICAL_OBJECTS.md:114](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:114). The author-controlled `essential` boolean determines whether floors apply: [CANONICAL_OBJECTS.md:143](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:143). Proof evidence has a separate lemma list with no equality invariant: [CANONICAL_OBJECTS.md:226](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:226). I-OBJ-03 requires only acyclicity, while I-OBJ-09 says caller booleans are non-authoritative without replacing `essential`: [CANONICAL_OBJECTS.md:398](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:398), [CANONICAL_OBJECTS.md:404](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:404).
+
+**Smallest repair:** Seal an authoritative dependency manifest derived or independently certified from every proof/evidence object. Require exact agreement with Claim edges. Treat all logical, definitional, and bridge dependencies as essential unless a separately evidenced rule derives otherwise.
+
+### 4. Refuted claims can be laundered through a new Claim identity
+
+**Severity:** CRITICAL  
+**Confidence:** High
+
+**Failure scenario:** Claim A is fully refuted. An agent publishes byte-different Claim B with `revises_claim_id=A`, `supersedes_claim_id=A`, or rename metadata. The counterexample remains targeted only at A, while B has a clean counterexample scan and promotes.
+
+**Evidence:** Supersession and revision are optional, unconstrained fields: [CANONICAL_OBJECTS.md:124](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:124). `EquivalenceEdge` is required by the prose but is never defined as an object: [CANONICAL_OBJECTS.md:47](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:47). Counterexamples target Claim IDs and may remain targetless: [CANONICAL_OBJECTS.md:238](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:238). I-OBJ-06 says bindings are not cleared, but never propagates them to successors: [CANONICAL_OBJECTS.md:401](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:401).
+
+**Smallest repair:** Define an immutable `ClaimRelation/EquivalenceEdge` with endpoint digests, relation kind, pins, evidence, and anti-cycle rules. Promotion must scan counterexamples across the candidate, revision/supersession ancestors, equivalence closure, and dependency closure. Unresolved targetless counterexamples with overlapping fingerprints must block conservatively.
+
+### 5. Promotion can accept arbitrary predicates against stale state
+
+**Severity:** CRITICAL  
+**Confidence:** High
+
+**Failure scenario:** An intent and audit pass; afterward a counterexample is registered, evidence is invalidated, or status changes. The decision still records `ACCEPTED`. It may omit `cx_closure_ok` entirely—or include it as false—because no rule connects `result` to a closed mandatory predicate set.
+
+**Evidence:** `PromotionIntent` carries no counterexample closure, status snapshot, gate snapshot, active-head snapshot, or referenced-object digest map: [CANONICAL_OBJECTS.md:281](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:281). `derived_predicates` is an unrestricted map and `result` is independently supplied: [CANONICAL_OBJECTS.md:309](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:309). The invariants do not say `ACCEPTED iff all mandatory predicates pass`: [CANONICAL_OBJECTS.md:392](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:392).
+
+**Smallest repair:** Add a content-addressed evaluation snapshot covering claims, status, relation closure, counterexamples, active definition heads, assumptions, evidence, gates, and policy. Use a closed versioned predicate set and require atomic recomputation at decision time. Define `ACCEPTED` as a derived result, not an independent field.
+
+### 6. StatusAxes is neither canonical state nor a safe lattice
+
+**Severity:** CRITICAL  
+**Confidence:** High
+
+**Failure scenario:** The same Claim simultaneously has `counterexample_status=FULLY_REFUTED`, `integration_status=AUDIT_FAIL`, and `release_status=HUMAN_RELEASED`. Nothing in Iteration 1 makes that state invalid or records who produced it.
+
+**Evidence:** `StatusAxes` is merely “per claim_id”; it has no status ID, Claim digest, prior snapshot, policy, event, or PromotionDecision binding: [CANONICAL_OBJECTS.md:321](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:321). Several supposedly canonical enums contain ellipses or deferred values: [CANONICAL_OBJECTS.md:322](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:322). The only invariant says transitions must name axes; it imposes no cross-axis safety rules: [CANONICAL_OBJECTS.md:331](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:331).
+
+**Smallest repair:** Define immutable `StatusSnapshot` and `StatusTransition` objects keyed to `claim_digest`, with before/after digests, decision, policy, and event. Close the minimal enums now. At minimum, `FULLY_REFUTED`, `AUDIT_FAIL`, or stale mandatory evidence must block inference and release.
+
+### 7. A BridgeTheorem can declare itself PROVED
+
+**Severity:** CRITICAL  
+**Confidence:** High
+
+**Failure scenario:** A Bridge object sets `status=PROVED`, leaves `proof_evidence_id` empty, and points `claim_id` at an unrelated Claim. It can then authorize an inference-facing promotion despite no proved transform.
+
+**Evidence:** Proof evidence is optional even when Bridge status is `PROVED`: [CANONICAL_OBJECTS.md:212](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:212). Status is stored directly on the Bridge: [CANONICAL_OBJECTS.md:213](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:213). I-OBJ-04 requires only a Claim ID and typed schemas, not proof or identity equivalence between the Claim and Bridge contents: [CANONICAL_OBJECTS.md:399](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:399).
+
+**Smallest repair:** Derive Bridge status from the bridge-as-Claim status and matching evidence. Bind `claim_digest` to an exact projection of all Bridge fields. Require matching proof evidence for `PROVED` and a valid HumanDecision for milestone use of `ASSUMED`.
+
+### 8. Human-gated exceptions have no authenticated binding
+
+**Severity:** CRITICAL  
+**Confidence:** High
+
+**Failure scenario:** An author sets `historical_scoped=true`, adds a bare `GATE_WAIVER` assumption, or describes continuous Λ inside `parameter_domain` while retaining the finite-scope enum. No Claim or PromotionIntent field identifies the required approving decision.
+
+**Evidence:** Continuous Λ requires a gate: [CANONICAL_OBJECTS.md:18](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:18). Historical promotion requires human acknowledgement: [CANONICAL_OBJECTS.md:91](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:91), but the Claim contains only a Boolean: [CANONICAL_OBJECTS.md:127](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:127). `GATE_WAIVER` is permitted as a bare assumption kind: [CANONICAL_OBJECTS.md:99](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:99).
+
+**Smallest repair:** Add decision ID and digest bindings to the Claim and PromotionIntent for every exception. Validate gate kind, exact target, approval, expiry, revocation, and blast radius. Remove bare `GATE_WAIVER`, or make it structurally require the HumanDecision.
+
+### 9. Claims do not identify the mechanism or certificate they are about
+
+**Severity:** HIGH  
+**Confidence:** High
+
+**Failure scenario:** A Claim asserts stability for an adaptive, private-data mechanism but attaches a certificate for a fixed external mechanism with the same selection operator. The fields can coexist without violating an Iteration-1 invariant.
+
+**Evidence:** Claim carries only a certificate kind and selection-operator ID, not `mechanism_id` or certificate identity: [CANONICAL_OBJECTS.md:118](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:118). Mechanism and Certificate are separate objects with materially relevant fields: [CANONICAL_OBJECTS.md:146](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:146), [CANONICAL_OBJECTS.md:162](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:162). PromotionIntent permits a certificate ID but provides no equality/compatibility invariant: [CANONICAL_OBJECTS.md:291](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:291).
+
+**Smallest repair:** Add normative mechanism and certificate digest bindings to Claims that assert their properties. Require exact compatibility across selected object, operator, parameter regime, data dependence, assumptions, scope, and definition pins.
+
+### 10. Content addressing is not a closed identity function
+
+**Severity:** HIGH  
+**Confidence:** High
+
+**Failure scenario:** Auditor and mutation boundary use different canonical encodings, schema versions, field-presence rules, or hash suites. They compute different identities—or the same preimage for different object types—while each claims compliance. Evidence can then bind to the wrong representation.
+
+**Evidence:** Both hash algorithm and canonicalization are deferred: [CANONICAL_OBJECTS.md:31](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:31). Identity nevertheless depends exclusively on matching digests: [CANONICAL_OBJECTS.md:46](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:46). Claim digest says “normative fields below,” while `claim_id` is itself called normative above that boundary: [CANONICAL_OBJECTS.md:107](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:107). There is no object-type/schema domain separator or registry-binding object.
+
+**Smallest repair:** Define a canonical digest envelope containing object type, schema ID/version, hash-suite ID, explicit normative-field manifest, ordering rules, null/absence rules, and referenced digests. Record immutable ID-to-digest publication events.
+
+### 11. The authoritative package banner contradicts the active Iteration-1 ledger
+
+**Severity:** MEDIUM  
+**Confidence:** High
+
+**Failure scenario:** A reviewer follows the README’s declared authoritative version and credits Iteration-5 artifacts, despite ART-25 and the implementation block saying the repair phase is Iteration 1. The block remains explicit, but the review baseline is ambiguous.
+
+**Evidence:** README says Iteration 1 is in progress: [00-README.md:3](/Users/nicholasmino/Desktop/Research/Work/architecture/00-README.md:3), then calls `ARCH-0.3-ITER5` authoritative: [00-README.md:10](/Users/nicholasmino/Desktop/Research/Work/architecture/00-README.md:10). ART-25 and the block both identify Iteration 1: [FINAL_AUDIT.md:20](/Users/nicholasmino/Desktop/Research/Work/architecture/25-audit-reports/FINAL_AUDIT.md:20), [IMPLEMENTATION_BLOCK.md:36](/Users/nicholasmino/Desktop/Research/Work/architecture/IMPLEMENTATION_BLOCK.md:36).
+
+**Smallest repair:** Replace the Iter5 banner with the actual Iteration-1 repair version and name later records non-authoritative. Prefer one content-addressed release-status manifest referenced by all three documents.
+
+The readiness revocation itself remains explicit and active in ART-25, IMPLEMENTATION_BLOCK, and the README. It should not be lifted: the object model still permits unsupported or refuted theorems to survive by construction.
+
+Iteration-1 ready for Iter2? NO.

@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"HARD_STOP_SET","payload":{"also_write_research":true,"signal_ref_digest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","source":"SYSTEM"}}],"expect":"HARD_STOP_ACTIVE","fixture_id":"CF-3G","initial_state":{"control":{"hard_stop":{"active":true}}},"kind":"behavioral"}

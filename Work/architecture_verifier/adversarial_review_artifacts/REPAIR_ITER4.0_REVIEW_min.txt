@@ -1,0 +1,11 @@
+### CRITICAL
+
+1. **Remove `signature_material` from the `decision_digest` preimage.** Currently the digest hashes every normative field, including the signature that must verify over that same digest—an unconstructible circular dependency. Keep the signature detached and verify it over `H(unsigned decision fields)`. Authenticity remains intact. [ART-04c §5](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:98)
+
+### HIGH
+
+2. **Remove lifecycle mirrors:** `Principal.status`, `revoked_at_event_seq`, `ModelProvenanceRecord.recorded_at_event_seq`, and `HumanDecision.issued_at_event_seq`. Registration, revocation, and issuance sequences are derivable from the replay-sufficient `MutationEvent` log; active/revoked status derives from that history. [Principal](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:18) [provenance](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:37) [decision](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:98) [replay invariant](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:90)
+
+3. **Remove the four write/builder interface aliases:** `I.PrincipalRegister`, `I.RoleBind`, `I.ModelProvenanceRegister`, and `I.HumanDecide`. Represent their operations as typed `Command` kinds through `I.Commit`; retain only the pure `I.IndependenceCheck`. ART-06b already declares `I.Commit` the sole public write interface. [ART-04c interfaces](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:151) [ART-06b mutation boundary](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:105)
+
+ITER4_MIN_VERDICT: FAIL

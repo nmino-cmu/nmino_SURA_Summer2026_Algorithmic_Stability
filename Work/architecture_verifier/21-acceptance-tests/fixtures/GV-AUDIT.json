@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","expected_digest_hex":"c9fa4a57a687a97efb3e88e3ccc9e2c00d7d16661c1992b15bbd41acfd168459","fixture_id":"GV-AUDIT","hash":"SHA-256","input":{"answers":[{"evidence_digests":[],"question_id":"Q01","response":"YES"}],"intent_digest":"2222222222222222222222222222222222222222222222222222222222222222","verdict":"PASS"},"kind":"golden"}

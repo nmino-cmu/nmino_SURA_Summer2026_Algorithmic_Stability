@@ -1,0 +1,7 @@
+No CRITICAL/HIGH findings.
+
+- Prior `caller_model_prov_digest` HIGH: **CLOSED**. Model provenance is derived directly from the authenticated caller RoleBinding, with `⊥` required for non-model principals. [ART-04c §3](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:75)
+- Certification uses the same sound derivation for caller and proposer model provenance. [I-CERTIFY-01](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:171)
+- Derived atoms remain deterministic: I-IND-01 supplies exactly one live membership per applicable policy, evaluated at the attachment sequence; the replay-sufficient event log preserves that historical state. [Independence invariants](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:123) [MutationEvent](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:94)
+
+ITER4_CORR_VERDICT: PASS

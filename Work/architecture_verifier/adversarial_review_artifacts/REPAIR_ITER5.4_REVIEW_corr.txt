@@ -1,0 +1,6 @@
+No CRITICAL/HIGH findings.
+
+- Prior CRITICAL — **CLOSED.** ART-13b now includes the exhaustive five-row genesis registry and complete APPLY invariants; no operative ITER5.2 references remain. [ART-13b](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:31)
+- Prior HIGH — **CLOSED.** `policy_facing` now requires canonical `chain_segment=selection_stability` and derived `subject_ref.object_class=POLICY`, consistent with ART-07b. [Predicate](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:161) [Canonical schema](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:228)
+
+ITER5_CORR_VERDICT: PASS

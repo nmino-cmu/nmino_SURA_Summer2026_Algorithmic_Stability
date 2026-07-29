@@ -1,0 +1,11 @@
+- **CRITICAL — Composition still launders assumptions and guarantees.** Inputs are referenced through `input_cert_claim_digests[]` and `EvidenceUse`, but are not required Claim dependencies; `InheritedRequired` therefore omits their assumptions. Rule validation binds only output subject/mechanism/domain—not guarantee or failure budget. [Composition](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:248), [assumption closure](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:145)
+
+- **CRITICAL — Data-dependence identity is circular or undefined.** The domain contains `data_dependence_digest`, while that DD digest hashes `bound_domain_digest`, which must equal the citing domain’s digest. No acyclic domain-core digest excluding the DD reference is defined. [Data dependence](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:314)
+
+- **HIGH — Bridge mediation remains semantically incomplete.** It binds subject, assumptions, parameter domain, and failure budget, but not mathematical scope, DefPins, mechanism, comparison relation, guarantee kind, or evidence schema compatibility. Same-subject evidence can therefore cross incompatible mathematical contexts. [Bridge invariants](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:263), [EvidenceUse](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:308)
+
+- **HIGH — `TransformRule` is referenced but not modeled.** `compatibility_rule_id` must resolve to `TransformRule.rule_digest`, yet ART-07b defines no canonical `TransformRule` object or resolution predicate. [TransformObject](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:278)
+
+- **HIGH — `ConclusionDigest` is undefined.** It controls fingerprints, renaming equality, counterexample closure, and discharge matching, but has no canonical extraction/recomputation rule. [Fingerprint](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:186)
+
+Iteration-1 ready for Iter2? **NO**

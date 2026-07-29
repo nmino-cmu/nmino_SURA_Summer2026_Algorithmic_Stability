@@ -1,0 +1,11 @@
+FAIL — CRITICAL/HIGH findings only.
+
+1. **CRITICAL — Bridge certificate is disconnected from the selected object’s covering certificate.** The bridge source need only share the subject with `selected_object`; it need not equal `covering_cert_digest`. Protected fields compare the source certificate with inference—not with the actual generator. A certificate for the same subject under a different mechanism/context can therefore authorize inference. [CANONICAL_OBJECTS.md:255](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:255), [CANONICAL_OBJECTS.md:269](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:269)
+
+2. **CRITICAL — Score provenance remains unbound across the chain.** `perturbation_law` depends on a `score_construction` but does not equate its score family to that predecessor. `selection_application` then invokes `apply_operator(..., scores)` without normatively identifying `scores`. An unrelated score construction with matching scope/DefPins can complete the chain. [CANONICAL_OBJECTS.md:249](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:249)
+
+3. **HIGH — Composition permits a vacuous zero-input certificate.** Neither the segment rule nor I-COMP-02 requires at least one input. Empty LOGICAL dependencies satisfy every “each input” condition, allowing a nullary rule to emit certificate-eligible output without an underlying stability certificate. [CANONICAL_OBJECTS.md:254](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:254)
+
+4. **HIGH — Counterexample propagation bypasses fingerprint equality for revisions.** `REVISION_OF` and `SUPERSEDES` are unconditional CX edges, so a materially repaired claim can be hit despite having a different mathematical fingerprint and no proved equivalence. [CANONICAL_OBJECTS.md:52](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:52), [CANONICAL_OBJECTS.md:384](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:384)
+
+MATH_VERDICT: FAIL

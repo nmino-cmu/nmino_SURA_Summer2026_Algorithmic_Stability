@@ -1,0 +1,7 @@
+- **HIGH — Historical-scope digest cycle.** `claim_digest` includes `historical_scope_dec_digest`, while that decision’s digest includes `target_digest = claim_digest` (lines 102, 183, 404–407). Historical-scoped Claims require an infeasible content-address fixed point.
+
+- **HIGH — `DerivedProofFloor` is non-deterministic with multiple attachments.** Multiple `ProofAttachment`s per Claim are permitted, but lines 374–382 select an unspecified singular attachment. Authority predicates can therefore disagree between `UNPROVED`, `INFORMAL`, and `CERTIFIED_INFORMAL`.
+
+- **HIGH — Unvalidated ClaimRelations control counterexample propagation.** `EQUIVALENT_TO` requires only an `evidence_claim_digest`; it need not resolve to a sufficiently proved Claim whose payload binds both endpoints. Lines 41–58 and 343 therefore allow arbitrary equivalence edges to propagate FULL counterexamples to unrelated Claims.
+
+Iteration-1 ready for Iter2? NO

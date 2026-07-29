@@ -1,0 +1,9 @@
+CRITICAL: none.
+
+HIGH: none.
+
+- `commit_busy` is removed from state, head hashing, and commit execution; serialization remains explicit.
+- `HARD_STOP_SET` deterministically clears `release_dec_digest`.
+- No new hard-stop bypass, stale-head ambiguity, or alternate mutation path found.
+
+ITER3_ADV_VERDICT: PASS

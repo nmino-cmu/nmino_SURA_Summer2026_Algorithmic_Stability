@@ -1,0 +1,10 @@
+No CRITICAL or HIGH minimality findings.
+
+MEDIUM — accepted Iter13 cleanup:
+
+- Inert authority stubs can later collapse to hard rejection: historical-scope approval, continuous-Λ approval, certified/Lean proof branches, and `HumanDecision`. Iter1 already blocks them through I-HD-01. [CANONICAL_OBJECTS.md](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:429)
+- Residual derived carriers could be removed or normalized: `ProofAttachment`, derived `COMPOSITION_INPUT` EvidenceUse records, optional standalone DD storage, and unused/derived cache fields such as `known_failure_cx_classes[]` and `construct_fingerprint`. [CANONICAL_OBJECTS.md](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:212)
+
+The required Iter1 safeguards—chain continuity, mandatory selected-object stage, composition binding, protected bridge fields, typed transform rules, and acyclic DD binding—are not safely removable.
+
+MIN_VERDICT: PASS

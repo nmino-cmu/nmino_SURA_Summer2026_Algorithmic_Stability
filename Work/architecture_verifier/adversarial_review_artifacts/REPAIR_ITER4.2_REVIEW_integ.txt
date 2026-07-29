@@ -1,0 +1,15 @@
+FAIL. Three prior CRITICAL/HIGH issues remain open.
+
+- **CRITICAL D-01 — CLOSED.** TrustRoot now hashes genesis subject materials, principals hash the completed root, and initial RoleBindings are package seed records available before the first Commit. The bootstrap digest cycle is removed. [ART-04c genesis](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:18)
+
+- **CRITICAL D-03 — OPEN.** The direct CertificationRecord/decision cycle was removed, but ART-07b recreates it: `CERTIFIED_STRUCTURED` ProofEvidence requires `certification_dec_digest`; that field contributes to `proof_evidence_digest`; CertificationRecord hashes that evidence digest; and the decision must target the resulting `certification_digest`. Therefore `decision → evidence → certification → decision` remains unconstructible. [ART-07b digest rule](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:31) [ProofEvidence](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:441) [CertificationRecord](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:149)
+
+- **HIGH D-04 — CLOSED.** ART-07b now delegates exclusively to ART-04c’s unsigned-payload/detached-signature schema. The flattened competing schema, `issued_at_event_seq`, and nonexistent `I-HD-AUTH-03` are gone. [ART-07b HumanDecision](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:432)
+
+- **HIGH D-05 — CLOSED.** A stopped system may commit a Control-only release decision, and `HARD_STOP_CLEAR` may embed the HumanDecision envelope atomically. The prior release deadlock is removed. [Hard-stop allowlist](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:133)
+
+- **HIGH D-06 — OPEN.** ART-05 replaces free-form `actor`, but ART-18’s critic carriers remain optional, omit act `event_seq`, and the authoritative reconciliation schema has no principal, binding, or model-provenance carriers. This cannot satisfy the required act-time provenance pin. [ART-18 report/reconciliation schemas](/Users/nicholasmino/Desktop/Research/Work/architecture/18-model-protocols/MODEL_PROTOCOLS.md:27) [I-MP-02](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:74)
+
+- **HIGH D-07 — OPEN.** The matrix still uses invalid status `ACTIVE` for ART-RBL, omits directly extended ART-06b, labels ART-04c as ITER4.1, and lacks the mandatory completion-report fields. [Iteration-4 matrix](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER4_IDENTITY_AUTHORITY.md:5) [status index](/Users/nicholasmino/Desktop/Research/Work/architecture/00-repair/ARTIFACT_STATUS.md:15) [integration requirements](/Users/nicholasmino/Desktop/Research/Work/architecture/00-repair/INTEGRATION_RULE.md:19)
+
+ITER4_INTEG_VERDICT: FAIL

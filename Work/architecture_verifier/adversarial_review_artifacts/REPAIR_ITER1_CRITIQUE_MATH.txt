@@ -1,0 +1,102 @@
+# Iteration-1 verdict: NO
+
+ART-07b does not yet suffice to prevent the five named failures. It introduces useful object categories, but several critical bindings remain optional, opaque, or unenforced. Iteration 1 is therefore not ready for Iteration 2.
+
+| Failure mode | Prevented? | Reason |
+|---|---:|---|
+| Wrong object stabilized | No | `object_stabilized` is untyped and not bound to the selected object/policy or complete pipeline. |
+| Certificate laundering | No | A promotion can cite a certificate unrelated to its claim, operator, assumptions, or mechanism. |
+| Forgotten assumptions | No | There is no transitive assumption-closure or discharge representation. |
+| Ambiguous claims | No | Structured claims are only “preferred”; segment-specific payloads are undefined. |
+| Inference without bridge typing | Partial only | Bridge fields exist, but inference claims are not required to reference a bridge. |
+
+## CRITICAL — must fix in Iteration 1
+
+### C1. The stabilized subject and research-chain stages lack canonical identity
+
+The scope requires the full chain at [CANONICAL_OBJECTS.md:16](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:16), but the catalog has no canonical score-construction, composition, selection-result, selected-object instance, policy, or inference-target object. A Claim provides only a coarse `selected_object_type`, an operator ID, and a parameter domain [CANONICAL_OBJECTS.md:111](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:111). It does not pin a `Mechanism`, score construction, composition inputs, or output object.
+
+More seriously, `StabilityCertificate.object_stabilized` is an unconstrained field with no schema/ref/digest pairing [CANONICAL_OBJECTS.md:165](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:165).
+
+A certificate for a score vector under operator O₁ can therefore be cited for a policy claim under operator O₂ without violating any Iteration-1 invariant.
+
+Iteration 1 must add either canonical objects or typed references for every chain stage, including exact subject schema/ref/digest, mechanism, operator, inputs, and output. Claim should be a tagged union keyed by `chain_segment`, not one flat record with loosely applicable fields.
+
+### C2. Certificate-to-claim-to-promotion binding is absent
+
+`StabilityCertificate.claim_id` is optional, while `PromotionIntent.certificate_id` is also optional [CANONICAL_OBJECTS.md:168](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:168), [CANONICAL_OBJECTS.md:291](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:291). No invariant requires equality or compatibility among:
+
+- Certified claim and promoted claim
+- Stabilized object and claimed selected object
+- Mechanism and selection operator
+- Parameter regimes and scopes
+- Assumption sets
+- Failure budgets and definition pins
+
+I-OBJ-07 checks only the promoted Claim digest; it says nothing about the cited certificate [CANONICAL_OBJECTS.md:402](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:402).
+
+Iteration 1 must make the certified subject binding exact and add cross-object well-formedness invariants. Compatibility mathematics can wait; the references and mandatory equality obligations cannot.
+
+### C3. Inference can bypass the BridgeTheorem object
+
+BridgeTheorem has promising typing hooks—source/target schemas, cert kinds, compatibility and transforms [CANONICAL_OBJECTS.md:196](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:196). But an inference Claim contains no bridge reference or typed inference input/output, and both `PromotionIntent.bridge_id` and `inference_target` are optional and untyped.
+
+I-OBJ-04 constrains a bridge only when one is “used”; it never requires bridge use [CANONICAL_OBJECTS.md:399](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:399). Thus an inference claim can omit a bridge entirely.
+
+Iteration 1 must require every inference-facing Claim and PromotionIntent to bind:
+
+- A BridgeTheorem
+- Exact source certificate/object
+- Exact source and target schemas
+- Typed inference target
+- A `BRIDGE` dependency edge consistent with those references
+
+Also, `BridgeTheorem.status=PROVED` cannot remain self-assertable while `proof_evidence_id` is optional.
+
+## HIGH — must fix in Iteration 1
+
+### H1. No assumption closure or discharge ledger
+
+Assumptions appear independently on Claim, Certificate, and PromotionIntent, but no invariant relates the sets. DependencyEdge carries no imported-assumption or discharge mapping [CANONICAL_OBJECTS.md:135](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:135). Consequently a conclusion may depend on a premise requiring assumption A while omitting A from its own assumptions and promotion snapshot.
+
+Iteration 1 must define canonical assumption-use/discharge records and require the promotion snapshot to equal the unresolved transitive closure across logical dependencies, certificates, compositions, and bridges.
+
+### H2. “Structured claim” is not enforceable
+
+The Claim says structured form is “preferred” and free text alone is forbidden [CANONICAL_OBJECTS.md:111](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:111), but there is no required AST, statement schema, typed signature, or criterion defining what counts as “not free text alone.” `quantified_objects[]` likewise has no declared object schema.
+
+Iteration 1 must require a typed statement representation or canonical structured declaration with bound variables, domains, conclusion type, and segment-specific payload.
+
+### H3. Immutable identity conflicts with mutable epistemic fields
+
+The content-addressing principle applies to immutable objects [CANONICAL_OBJECTS.md:31](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:31), yet:
+
+- Immutable BridgeTheorem embeds a changing `status`.
+- Counterexample embeds mutable archive state.
+- ProofEvidence has reviewer IDs “filled when certified.”
+
+Changing these fields either changes the digest behind a stable ID or silently rewrites historical evidence.
+
+Iteration 1 must separate immutable mathematical content from immutable status/review/archive events, or define explicit revision objects and bind promotions to exact revisions.
+
+## MEDIUM — must fix or explicitly prohibit use
+
+### M1. Equivalence is an undefined laundering channel
+
+`EquivalenceEdge` is relied upon for mathematical equivalence [CANONICAL_OBJECTS.md:47](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:47), but no such canonical object is defined. Before it can authorize any substitution, Iteration 1 must define endpoints, digests, pins, valid domain, evidence, and whether certificates, assumptions, counterexamples, or status may transfer. Otherwise equivalence must be explicitly non-authoritative.
+
+### M2. The continuous-candidate gate is not bound to claims
+
+The scope permits non-finite Λ with a `CONTINUOUS_LAMBDA` gate [CANONICAL_OBJECTS.md:18](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:18), but Claim has no gate-decision reference or invariant tying the decision to its exact digest and parameter domain. Add that binding in Iteration 1.
+
+## Valid Iteration-2 deferrals
+
+Iteration 2 may legitimately complete:
+
+- Closed, per-kind certificate schemas
+- Stability-composition algebra
+- Operator-compatibility semantics
+- Assumption, parameter, and failure-budget transform definitions
+- Domain-specific bridge theorems and transform validation
+
+It may not be asked to repair missing object identities, optional inference bridges, certificate-subject binding, or assumption-closure representation. Those are precisely Iteration 1’s stated responsibility to freeze “what exists” and “how it is identified.”

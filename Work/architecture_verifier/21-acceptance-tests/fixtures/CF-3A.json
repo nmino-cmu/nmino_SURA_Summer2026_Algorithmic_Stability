@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"CONTROL_DIAGNOSTIC_NOOP","payload":{}}],"expect":"SUCCESS","fixture_id":"CF-3A","initial_state":{"control":{"hard_stop":{"active":false}},"research":{}},"kind":"behavioral"}

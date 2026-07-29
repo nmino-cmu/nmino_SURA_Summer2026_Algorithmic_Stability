@@ -1,0 +1,7 @@
+No CRITICAL or HIGH findings within the Iter1.25 review scope.
+
+- `score_family_digest` is bound and propagated through score construction, perturbation, selection, stability, and composition.
+- Composition explicitly requires ≥1 certificate input; zero-input composition is invalid.
+- CX closure excludes `REVISION_OF` and `SUPERSEDES`; only validated `RENAMES` and `EQUIVALENT_TO` edges propagate closure.
+
+MATH_VERDICT: PASS

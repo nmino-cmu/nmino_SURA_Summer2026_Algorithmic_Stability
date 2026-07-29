@@ -1,0 +1,27 @@
+### CRITICAL — Principal and authority bootstrap remains forgeable
+
+`Principal` registration requires neither a trusted issuer signature nor proof of control, while role binding is protected only by “via `I.Commit`” ([ART-04c §1](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:18), [§3](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:55)). But `I.Commit` accepts an unsigned `Command` with no caller principal or authorization envelope ([ART-06b §3](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:74), [§4](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:107)).
+
+An attacker can register a key they control as an ACTIVE HUMAN, bind `HUMAN_GATE_OPERATOR`, and sign arbitrary `PROOF_CERTIFY` decisions. Thus the signature check rejects a literally empty signature but does not establish legitimate human authority.
+
+Additionally, `decision_digest = H(all normative fields)` includes `signature_material`, while that signature must verify over `decision_digest`, creating a circular signature construction ([ART-04c §5](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:98)).
+
+### HIGH — Independence is still role-label theater across multiple principals
+
+`IndependenceDomain` membership and its opaque `policy_digest` have no trusted issuer, canonical controller/model-family resolution, or authorized mutation rule ([ART-04c §4](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:77)). The check compares only supplied principal-member sets.
+
+One controller can generate two keys, register two Principals, assign singleton domains `{P1}` and `{P2}`, and pass disjointness. I-IND-02 prevents several agent IDs under one Principal, but not several Principals under one human, model, session, credential, or appointment authority.
+
+### HIGH — PROOF_CERTIFY lacks a canonical independent-certifier record and cannot fence model swaps
+
+`ProofEvidence` records only `proposer_principal_digest` and `certification_dec_digest`; it carries no certifier principal, certifier RoleBinding digest, review outcome, independence-domain snapshot, model provenance, or act-time epoch ([ART-04c §7](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:141), [ART-07b §9](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:454)).
+
+I-CERTIFY-01 therefore refers to a proposer “binding recorded on the proof” that is not actually recorded ([ART-04c §6](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:127)). The approving human needs only `HUMAN_GATE_OPERATOR`, not `PROOF_CERTIFIER`. A claim-targeted approval can consequently be applied without a bound independent mathematical review, and current or replacement model bindings can be substituted because certification credit is not pinned to either binding epoch or `model_prov_digest`.
+
+### HIGH — CERTIFY/RESULT effect separation is not enforceable
+
+ART-06b blocks commands applying any research-maturity or proof-floor transition ([ART-06b I-BOOL-02](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:148)), while ART-04c creates an exception allowing certification to change the derived proof floor ([ART-04c I-CERTIFY-01(4)](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:129)). ITER4 defines no typed certification command, payload, or exact effect whitelist.
+
+Consequently, implementations must either reject CERTIFY under I-BOOL-02 or invent an exception. Nothing normatively requires that invented exception produce only ProofEvidence/ProofAttachment effects and zero `ResearchMaturityRecord` effects, leaving `RESULT` smuggling dependent on implementation interpretation despite the prose stating RESULT remains deferred.
+
+ITER4_ADV_VERDICT: FAIL

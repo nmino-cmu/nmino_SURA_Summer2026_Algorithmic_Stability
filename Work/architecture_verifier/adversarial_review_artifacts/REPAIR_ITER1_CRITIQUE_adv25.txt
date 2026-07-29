@@ -1,0 +1,7 @@
+## CRITICAL
+
+- **C-01 — Bridge certificate remains disconnected from the selected object’s covering certificate.** `selected_object` derives its covering certificate from its generator, but the bridge source need only share its subject. Nothing requires `source_cert_claim_digest` to equal that covering certificate or match the selected object’s mechanism, domain, scope, and DefPins. An unrelated certificate for the same subject can therefore authorize inference and break the front-to-back chain. Require exact covering-certificate equality or an explicitly proved substitution relation. [Selected-object binding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:255), [bridge binding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:269)
+
+No separate HIGH findings. I-HD-01 was treated as intentional.
+
+ADV_VERDICT: FAIL

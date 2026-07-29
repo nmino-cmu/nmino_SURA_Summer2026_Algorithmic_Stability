@@ -1,0 +1,1263 @@
+Reading additional input from stdin...
+2026-07-24T13:24:29.823912Z ERROR codex_models_manager::cache: failed to load models cache: missing field `supports_reasoning_summaries` at line 88 column 5
+OpenAI Codex v0.144.1
+--------
+workdir: /Users/nicholasmino/Desktop/Research/Work/architecture
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019f944c-8339-71a1-984d-6f8edb670da0
+--------
+user
+FINAL PACKAGE GATE RE-REVIEW #3 for ARCH-0.3-REPAIR.
+
+Prior 2 CRITICAL residuals claimed fixed:
+1. effects_digest = H(research_control_design_effects) only; ir_receipt filled after event_digest (I-EFF-03); no cycle
+2. store_targets includes IRREVERSIBLE; I-LOG-01 EventLog allowed on CONTROL/IR commits; zero Research *object* upserts
+
+Package NON-RELEASE. Do NOT approve DESIGN_FINAL.
+
+Return EXACTLY:
+PACKAGE_ADV: PASS|FAIL
+PACKAGE_CORR: PASS|FAIL
+PACKAGE_MIN: PASS|FAIL
+PACKAGE_INTEG: PASS|FAIL
+At most 6 one-line findings if FAIL.
+If all PASS: PACKAGE_GATE: PASS and one sentence human-only next step.
+codex
+I’m re-checking the package artifacts and the two previously critical residuals against the gate criteria.
+exec
+/bin/zsh -lc "pwd && rg --files -g 'AGENTS.md' -g '"'!node_modules'"' -g '"'!vendor'"' | head -50 && rg -n \"ARCH-0\\.3-REPAIR|effects_digest|research_control_design_effects|ir_receipt|event_digest|store_targets|IRREVERSIBLE|I-EFF-03|I-LOG-01|DESIGN_FINAL\" . --glob '"'!node_modules/**'"' --glob '"'!vendor/**'"'" in /Users/nicholasmino/Desktop/Research/Work/architecture
+ succeeded in 0ms:
+/Users/nicholasmino/Desktop/Research/Work/architecture
+./13-proof-review/PROMOTION_INTENT.md:4:**Version:** `ARCH-0.3-REPAIR-ITER5.7`  
+./13-proof-review/PROMOTION_INTENT.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:4:**Version:** `ARCH-0.3-REPAIR-ITER2.7`  
+./07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:6:**Depends on:** `ART-07b` `ARCH-0.3-REPAIR-ITER1.26` (+ narrow SchemaRegistry / FP / I-BRIDGE updates in this package)  
+./00-repair/INTEGRATION_RULE.md:5:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./ARCHITECTURE_INFORMATION_FLOW.md:4:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE** (header formerly claimed `ARCH-0.3-ITER5` — **stale**)  
+./ARCHITECTURE_INFORMATION_FLOW.md:6:**Status note:** `IMPLEMENTATION_BLOCK` ACTIVE; `DESIGN_FINAL` revoked; not a blueprint.
+./ARCHITECTURE_INFORMATION_FLOW.md:44:    AudD --> HumanD[Human DESIGN_FINAL review]
+./ARCHITECTURE_INFORMATION_FLOW.md:71:  B -->|frozen contracts after DESIGN_FINAL| C
+./ARCHITECTURE_INFORMATION_FLOW.md:132:  Rev -->|DESIGN_FINAL gate| Freeze[OUT: frozen contracts]
+./ARCHITECTURE_INFORMATION_FLOW.md:140:| **WHO** | Grok proposes DesignState; critics/auditor do **not** draft canonical text; human alone sets `DESIGN_FINAL` |
+./ARCHITECTURE_INFORMATION_FLOW.md:260:  DesignState -->|bootstrap import manifest<br/>after DESIGN_FINAL| ResearchState
+./ARCHITECTURE_INFORMATION_FLOW.md:269:| **Authority** | Design acceptance / human DESIGN_FINAL | ART-05 lattice; EIO > Grok on integrity |
+./ARCHITECTURE_INFORMATION_FLOW.md:339:1. **Design:** Critics + auditor converge; human may set `DESIGN_FINAL` (not done yet).  
+./00-repair/BLOCKER_LEDGER.md:5:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./00-repair/BLOCKER_LEDGER.md:6:**Updated:** Iteration 14 complete — awaiting final Sol package gate; then HUMAN DESIGN_FINAL
+./07-schemas/CANONICAL_OBJECTS.md:4:**Version:** `ARCH-0.3-REPAIR-ITER1.26`  
+./07-schemas/CANONICAL_OBJECTS.md:436:  event_digest
+./00-repair/ARTIFACT_STATUS.md:5:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./00-repair/ARTIFACT_STATUS.md:14:| ART-04d OPERABLE_BINDING | ACTIVE_NORMATIVE | Iter13 complete (`ARCH-0.3-REPAIR-ITER13.2`); internal A–D PASS; Sol deferred |
+./00-repair/ARTIFACT_STATUS.md:16:| ART-04c IDENTITY_AUTHORITY | ACTIVE_NORMATIVE | Iter4 complete (`ARCH-0.3-REPAIR-ITER4.6`); Sol A–D PASS |
+./00-repair/ARTIFACT_STATUS.md:19:| ART-06b MUTATION_STATE | ACTIVE_NORMATIVE | Iter3 complete (`ARCH-0.3-REPAIR-ITER3.2`); Sol A–D PASS |
+./00-repair/ARTIFACT_STATUS.md:23:| ART-08d CYCLE_BINDING | ACTIVE_NORMATIVE | Iter9 complete (`ARCH-0.3-REPAIR-ITER9.10`); internal A–D PASS; Sol deferred to final package gate
+./00-repair/ARTIFACT_STATUS.md:26:| ART-10b LEAN_BINDING | ACTIVE_NORMATIVE | Iter8 complete (`ARCH-0.3-REPAIR-ITER8.9`); Sol A–D PASS
+./00-repair/ARTIFACT_STATUS.md:29:| ART-11b AUDIT_BINDING | ACTIVE_NORMATIVE | Iter6 complete (`ARCH-0.3-REPAIR-ITER6.20`); Sol A–D PASS |
+./00-repair/ARTIFACT_STATUS.md:30:| ART-11c PROVENANCE_BINDING | ACTIVE_NORMATIVE | Iter11 complete (`ARCH-0.3-REPAIR-ITER11.2`); internal A–D PASS; Sol deferred |
+./00-repair/ARTIFACT_STATUS.md:33:| ART-13b PROMOTION_INTENT | ACTIVE_NORMATIVE | Iter5 complete (`ARCH-0.3-REPAIR-ITER5.7` patch for ART-11c preimage); Sol A–D PASS prior; Sol deferred package gate |
+./00-repair/ARTIFACT_STATUS.md:36:| ART-16b DEMOTION_WAVES | ACTIVE_NORMATIVE | Iter7 complete (`ARCH-0.3-REPAIR-ITER7.9`); internal A–D PASS; Sol deferred to final package gate
+./00-repair/ARTIFACT_STATUS.md:37:| ART-17b CHECKPOINT_RESTORE | ACTIVE_NORMATIVE | Iter10 complete (`ARCH-0.3-REPAIR-ITER10.2`); internal A–D PASS; Sol deferred |
+./00-repair/ARTIFACT_STATUS.md:40:| ART-21b CONFORMANCE | ACTIVE_NORMATIVE | Iter12 complete (`ARCH-0.3-REPAIR-ITER12.1`); internal A–D PASS; Sol deferred |
+./00-repair/ARTIFACT_STATUS.md:44:| ART-25b RELEASE_IDENTITY | ACTIVE_NORMATIVE | Iter14 complete (`ARCH-0.3-REPAIR-ITER14.1`); internal A–D PASS; Sol package gate next |
+./07-schemas/SCHEMAS.md:4:**Version:** `ARCH-0.3-REPAIR`  
+./05-authority/AUTHORITY_MATRIX.md:52:| DESIGN_FINAL | No | No | No | No | No | **Only** |
+./25-audit-reports/FINAL_AUDIT.md:4:**Version:** `ARCH-0.3-REPAIR`  
+./25-audit-reports/FINAL_AUDIT.md:12:| `DESIGN_FINAL` readiness | **REVOKED** |
+./25-audit-reports/FINAL_AUDIT.md:23:art07b: ARCH-0.3-REPAIR-ITER1.26
+./25-audit-reports/FINAL_AUDIT.md:24:art07c: ARCH-0.3-REPAIR-ITER2.7 (ACTIVE_NORMATIVE — Iter2 complete)
+./25-audit-reports/FINAL_AUDIT.md:25:art06b: ARCH-0.3-REPAIR-ITER3.2 (ACTIVE)
+./25-audit-reports/FINAL_AUDIT.md:26:art04c: ARCH-0.3-REPAIR-ITER4.6 (ACTIVE_NORMATIVE — Iter4 complete)
+./25-audit-reports/FINAL_AUDIT.md:27:art13b: ARCH-0.3-REPAIR-ITER5.7 (ACTIVE_NORMATIVE — Iter5 + 11c preimage patch)
+./25-audit-reports/FINAL_AUDIT.md:28:art11b: ARCH-0.3-REPAIR-ITER6.20 (ACTIVE_NORMATIVE — Iter6 complete)
+./25-audit-reports/FINAL_AUDIT.md:29:art16b: ARCH-0.3-REPAIR-ITER7.9 (ACTIVE_NORMATIVE — Iter7 complete; Sol deferred)
+./25-audit-reports/FINAL_AUDIT.md:30:art10b: ARCH-0.3-REPAIR-ITER8.9 (ACTIVE_NORMATIVE — Iter8 complete)
+./25-audit-reports/FINAL_AUDIT.md:31:art08d: ARCH-0.3-REPAIR-ITER9.10 (ACTIVE_NORMATIVE — Iter9 complete; Sol deferred)
+./25-audit-reports/FINAL_AUDIT.md:32:art17b: ARCH-0.3-REPAIR-ITER10.2 (ACTIVE_NORMATIVE — Iter10 complete; Sol deferred)
+./25-audit-reports/FINAL_AUDIT.md:33:art11c: ARCH-0.3-REPAIR-ITER11.2 (ACTIVE_NORMATIVE — Iter11 complete; Sol deferred)
+./25-audit-reports/FINAL_AUDIT.md:34:art21b: ARCH-0.3-REPAIR-ITER12.1 (ACTIVE_NORMATIVE — Iter12 complete; Sol deferred)
+./25-audit-reports/FINAL_AUDIT.md:35:art04d: ARCH-0.3-REPAIR-ITER13.2 (ACTIVE_NORMATIVE — Iter13 complete; Sol deferred)
+./25-audit-reports/FINAL_AUDIT.md:36:art25b: ARCH-0.3-REPAIR-ITER14.1 (ACTIVE_NORMATIVE — Iter14 complete; awaiting Sol package gate)
+./25-audit-reports/FINAL_AUDIT.md:62:DESIGN_FINAL = pending_human_approval
+./25-audit-reports/RELEASE_IDENTITY.md:4:**Version:** `ARCH-0.3-REPAIR-ITER14.1`  
+./25-audit-reports/RELEASE_IDENTITY.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE** until ReleaseManifest sealed  
+./25-audit-reports/RELEASE_IDENTITY.md:14:`ponytail:` Sealing the manifest does not approve `DESIGN_FINAL`; that remains HUMAN. Envelope product PKI deferred; property = digest binding.
+./25-audit-reports/RELEASE_IDENTITY.md:22:  release_id                          # immutable label, e.g. ARCH-0.3-REPAIR-CANDIDATE
+./25-audit-reports/RELEASE_IDENTITY.md:78:**SEAL_RELEASE_MANIFEST** (IDENTITY_ADMIN or designated RELEASE_ADMIN): Commit upserts ReleaseManifest; computes digests under ART-21b. Package remains `NON_RELEASE` until HUMAN `DESIGN_FINAL` targets this `release_digest`.
+./25-audit-reports/RELEASE_IDENTITY.md:106:**I-REL-31:** `DESIGN_FINAL` HumanDecision `target_digest` MUST equal `release_digest`. Else gate fail.
+./25-audit-reports/RELEASE_IDENTITY.md:124:`RELEASE_DIGEST_MISMATCH | RELEASE_UNSEALED | FALSE_PASS_CITATION | DESIGN_FINAL_TARGET_MISMATCH`
+./25-audit-reports/RELEASE_IDENTITY.md:129:TRACE-14C  DESIGN_FINAL target ≠ release_digest → reject
+./15-human-gates/HUMAN_GATES.md:4:**Version:** `ARCH-0.3-REPAIR-ITER4.0`  
+./15-human-gates/HUMAN_GATES.md:25:This artifact **is** the gate ID registry (table below). Meta: amending the table requires `SCOPE_CHANGE` or `DESIGN_FINAL` amendment. Validity of rows = ART-04c.
+./15-human-gates/HUMAN_GATES.md:55:| `DESIGN_FINAL` | Freeze architecture; allow implementation planning |
+./15-human-gates/HUMAN_GATES.md:70:## DESIGN_FINAL status (this package)
+./15-human-gates/HUMAN_GATES.md:73:DESIGN_FINAL = pending_human_approval
+./adversarial_review_artifacts/a11ce32d-1b69-4601-9752-cc69d9beb601.jsonl:13:{"role":"assistant","message":{"content":[{"type":"text","text":"## ADV-FC-ITER9-3 Verdict\n\n**`material_new_critical_or_high`:** `false`  \n**Confidence:** `0.85`  \n**`DESIGN_FINAL`:** not approved (C12 = 0; needs R20 + ≥2 clean ADV)\n\n---\n\n### H-ADV9-2-01 closure (excluded)\n\n| Check | Live evidence |\n|-------|---------------|\n| ART-08 invalid transition | L126: blocks any promotion, frontier write (S14), or other `ResearchState` mutating commit while `hard_stop.active=true`; cites `I.HardStop` / ART-06/15/24 |\n| ART-08 invariant | L148: same freeze scope; resume only via `HARD_STOP_RELEASE` |\n| ART-08b frontier reject | L17 failure mode (S02/S14); L20 audit rule (reject `I.Frontier` scheduler commits); L23 `HARD_STOP_RELEASE` before resume |\n\nPrior exclusions verified closed: **H-POST8-01**, **H-R18-01..03**, **ADV-9-1** (P6 `I.HardStop` SYSTEM mandate).\n\n---\n\n### NEW CRITICAL/HIGH\n\n**None.**\n\n---\n\n### Adversarial pass (not elevated)\n\n| Probe | Result |\n|-------|--------|\n| Promotions-only drift | Gone — no “freezes promotions only” language in ART-08/08b |\n| S02 lock during freeze | ART-08b explicit; S02 `quarantine` write covered by “other ResearchState mutating commit” catch-all |\n| `I.Frontier` missing `hard_stop` in ART-24 | Enforcement delegated to global `I.HardStop` + commit gate (H-R18-01 pattern); not a new gap |\n| `S15 → S02` redirect under freeze | `I.Frontier` commit blocked; fail-closed |\n| `design_validation_only` bypass | ART-03/22 correctly scoped to SIMULATION, no `ResearchState` writes |\n| Global-guard row format (L126) | Non–From→To, but consistent with other global guards in the same table; invariant L148 duplicates |\n\n**Residual wording asymmetry:** ART-08 names “frontier write (S14)” while ART-08b names “S02/S14.” Implementable without bypass; does not reopen H-ADV9-2-01 or H-R18-01.\n\n---\n\n**C12:** This round is clean credit toward ≥2 **after** AUDIT-0.3-R20 PASS restores `audit_pass_id`.\n\n[REDACTED]"}]}}
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:4:**Version:** `ARCH-0.3-REPAIR-ITER10.2`  
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:33:  event_digest          # = MutationEvent.event_digest (computed WITHOUT hashing this receipt)
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:35:  receipt_digest = H("ART17b.IR.v1", event_seq, event_digest, kind)
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:64:1. Build `research_control_design_effects`; `effects_digest = H(research_control_design_effects)` (ART-06b).  
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:65:2. Compute `event_digest` from command + effects_digest + validation (ART-06b).  
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:66:3. Construct `IrreversibleReceipt` citing that `event_digest`; include as `Effects.ir_receipt`.  
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:101:| Candidate prefix length `N ≥ irreversible_head_seq` | `IRREVERSIBLE_PREFIX` |
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:102:| For every receipt with `event_seq ≤ irreversible_head_seq`: prefix event at that seq has `event.event_digest = receipt.event_digest` and maps to `receipt.kind` | `IRREVERSIBLE_PREFIX` |
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:150:`MERKLE_MISMATCH | IRREVERSIBLE_PREFIX | FORWARD_FIX_GAP | HARD_STOP_SNAPSHOT_MISMATCH | CHECKPOINT_UNKNOWN`
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:153:TRACE-10A  present prefix omitting later FULL CX Commit → IRREVERSIBLE_PREFIX
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:157:TRACE-10E  substitute event at irreversible seq (digest≠receipt) → IRREVERSIBLE_PREFIX
+./20-invariants/DESIGN_CONVERGENCE.md:5:**Owner:** Full-System Auditor (evaluates); Human (`DESIGN_FINAL`)
+./20-invariants/DESIGN_CONVERGENCE.md:9:Define when architecture design may be declared complete enough for human `DESIGN_FINAL` — never from agent agreement alone.
+./20-invariants/DESIGN_CONVERGENCE.md:22:| C8 | All human gates explicit; `DESIGN_FINAL` pending human |
+./20-invariants/DESIGN_CONVERGENCE.md:55:- Claiming DESIGN_FINAL without human
+./20-invariants/DESIGN_CONVERGENCE.md:59:Even if C1–C14 hold, only human sets `DESIGN_FINAL = approved`.
+./20-invariants/INVARIANTS.md:25:`OVERRIDE_EIO`; `HARD_STOP`; `DESIGN_FINAL` (does not lift these rules).
+./adversarial_review_artifacts/REPAIR_ITER5.0_REVIEW_corr.txt:9:- **HIGH — I-AP-08 does not define a deterministic validation preimage.** It gives an open-ended example rather than a closed canonical schema, while ART-06b hashes `validation_preimage` into `event_digest`, which in turn affects the research/state heads. Two otherwise conforming committers can therefore derive different event identities from the same command and pre-state. [I-AP-08](</Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:96>) [ART-06b MutationEvent](</Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:98>)
+./09-theorem-status/THEOREM_STATUS_FSM.md:4:**Version:** `ARCH-0.3-REPAIR`  
+./10-lean/LEAN_BINDING.md:4:**Version:** `ARCH-0.3-REPAIR-ITER8.9`  
+./10-lean/LEAN_BINDING.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_ITER3.0_REVIEW_state.txt:3:1. **HIGH — Hard-stop allowlist permits a research-write bypass.** `I-HS-01` exempts entire command kinds, even when they target or mutate ResearchState. Because multi-effect commits are permitted and no effect restrictions exist for `HARD_STOP_SET`, `HARD_STOP_CLEAR`, or `CONTROL_DIAGNOSTIC_NOOP`, an allowed-kind command can carry ResearchState effects during a stop. “ControlState commit” does not explicitly require `store_targets = {CONTROL}`. [ART-06b §1](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:30), [§5](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:128)
+./adversarial_review_artifacts/REPAIR_ITER3.0_REVIEW_state.txt:7:3. **HIGH — MutationEvent is not replay-sufficient authoritative state.** Heads are declared derivable from the event log and reducer, but `MutationEvent` stores only `effects_digest`, while `I.Reduce` requires the actual effects. Pending commands are explicitly non-authoritative and discardable, and neither the effects envelope nor the authoritative event log is allocated to one of the three stores. Therefore replay can depend on unspecified external material. [event schema/head rule](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:34), [PendingCommand](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:57), [I.Reduce](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:93)
+./24-interfaces/INTERFACE_CONTRACTS.md:4:**Version:** `ARCH-0.3-REPAIR-ITER3.2`  
+./adversarial_review_artifacts/SOL_PASS5_overengineering.md:3:**FAIL — do not approve `DESIGN_FINAL`.**
+./adversarial_review_artifacts/SOL_PASS5_overengineering.md:200:All software implementation is blocked until `DESIGN_FINAL`, yet the design’s operability cannot be established without at least a reference interpreter and negative conformance tests.
+./adversarial_review_artifacts/SOL_PASS5_overengineering.md:206:**Disposition:** permit a non-autonomous, non-research conformance harness before `DESIGN_FINAL`.
+./adversarial_review_artifacts/SOL_PASS5_overengineering.md:312:Before `DESIGN_FINAL`:
+./adversarial_review_artifacts/SOL_PASS5_overengineering.md:339:- **Human `DESIGN_FINAL`: NO**
+./04-agents/OPERABLE_BINDING.md:4:**Version:** `ARCH-0.3-REPAIR-ITER13.2`  
+./04-agents/OPERABLE_BINDING.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:4:**Version:** `ARCH-0.3-REPAIR-ITER4.6`  
+./04-agents/AGENT_ROLES.md:16:Human sets roster via charter/`DESIGN_FINAL`. Grok assigns instances within ART-04b ceiling. Full-System Auditor never drafts. No role self-authorizes promotion.
+./04-agents/AGENT_ROLES.md:45:## Research-time roles (post-`DESIGN_FINAL`)
+./adversarial_review_artifacts/REPAIR_ITER1_CRITIQUE_RECHECK2.txt:1:Remaining findings in `ARCH-0.3-REPAIR-ITER1.2`:
+./adversarial_review_artifacts/INDEPENDENT_BREAKER_AUDIT.md:93:- **Failure scenario:** A promotion validates before a hard stop, the stop commits, and the promotion commits afterward. During release, the system must append a `human_decisions` row even though active hard stop nominally forbids ResearchState mutation. At bootstrap, `DESIGN_FINAL` cannot be durably recorded without using ResearchState before research authority exists.
+./adversarial_review_artifacts/INDEPENDENT_BREAKER_AUDIT.md:208:- **Suggested architectural repair:** Create a non-autonomous reference interpreter and conformance harness before `DESIGN_FINAL`.
+./adversarial_review_artifacts/INDEPENDENT_BREAKER_AUDIT.md:611:- A human then evaluates `DESIGN_FINAL`; prior human approval would not cure the technical defects.
+./adversarial_review_artifacts/INDEPENDENT_BREAKER_AUDIT.md:644:30. Only after all preceding items pass should the human consider `DESIGN_FINAL` and authorize implementation planning.
+./iterations/ITER7_PLANNED.md:5:**Note:** C12 satisfied ≠ stop. Human may halt anytime. Do not approve `DESIGN_FINAL`.
+./adversarial_review_artifacts/SOL_PASS3_longterm_tabletop.md:119:Before `DESIGN_FINAL` approval for this operational scope:
+./adversarial_review_artifacts/SOL_PASS3_longterm_tabletop.md:134:- **`DESIGN_FINAL` readiness for the audited focus:** **FAIL / HOLD**
+./iterations/REPAIR_ITER9_CYCLE_BINDING.md:3:**ART-08d version:** `ARCH-0.3-REPAIR-ITER9.10`  
+./iterations/REPAIR_ITER9_CYCLE_BINDING.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/SOL_PASS1_math_lean.md:189:- **Failure scenario:** A human sees `AUDIT-0.3-R20`, C12=2, and no Critical/High issues, then approves DESIGN_FINAL. Yet R20’s own scope was a hard-stop patch and regression check, not an adversarial audit of theorem, Lean, certificate, CX, and scope guarantees. Acceptance tests T05/T10/T15 pass largely because corresponding text exists—even though ART-22 is contradictory.
+./iterations/REPAIR_ITER13_OPERABLE_MINIMAL.md:3:**ART-04d version:** `ARCH-0.3-REPAIR-ITER13.2`  
+./iterations/REPAIR_ITER13_OPERABLE_MINIMAL.md:5:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./00-README.md:4:> **ARCHITECTURE_BLUEPRINT_READY = no** · **IMPLEMENTATION_PLANNING_READY = no** · **RESEARCH_EXECUTION_READY = no** · **DESIGN_FINAL = revoked**  
+./00-README.md:8:**Design version:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./00-README.md:14:**Version pin:** Package banner `ARCH-0.3-REPAIR` is the repair draft identity — **not** a release digest. Historical `ARCH-0.3-ITER5` / `ARCH-0.2` stamps are non-authoritative. Final normalization = Iteration 14.
+./00-README.md:75:Do **not** approve `DESIGN_FINAL` or lift the block without an explicit human gate decision.
+./iterations/REPAIR_ITER1_CANONICAL_OBJECTS.md:4:**Frozen version:** `ARCH-0.3-REPAIR-ITER1.26`  
+./iterations/REPAIR_ITER1_CANONICAL_OBJECTS.md:176:Do **not** lift IMPLEMENTATION_BLOCK. Do **not** claim DESIGN_FINAL.
+./iterations/REPAIR_ITER10_CHECKPOINT_RESTORE.md:3:**ART-17b version:** `ARCH-0.3-REPAIR-ITER10.2`  
+./iterations/REPAIR_ITER10_CHECKPOINT_RESTORE.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/SOL_PASS2_state_authority.md:29:- **Concrete failure scenario:** `DESIGN_FINAL` cannot be durably recorded without writing ResearchState before research authority exists. Allowing an out-of-band Markdown edit solves the deadlock by creating a second authority and bypass channel.
+./adversarial_review_artifacts/SOL_PASS2_state_authority.md:166:- **`DESIGN_FINAL` approval readiness:** **FAIL**
+./iterations/ITER8_RECORD.md:26:`DESIGN_FINAL` not approved. IMPLEMENTATION_BLOCK ACTIVE.
+./iterations/ITER6_RECORD.md:12:- `DESIGN_FINAL` still `pending_human_approval`
+./iterations/ITER5_RECORD.md:56:audit_result: PASS  # review readiness only — NOT DESIGN_FINAL approval
+./adversarial_review_artifacts/7744f780-9cb3-42b6-ba6d-8f7c83307057.jsonl:1:{"role":"user","message":{"content":[{"type":"text","text":"<timestamp>Thursday, Jul 23, 2026, 10:38 AM (UTC-4)</timestamp>\n<user_query>\nADV-FC-ITER9-4: second consecutive adversarial false-convergence check under audit_pass_id AUDIT-0.3-R20 on /Users/nicholasmino/Desktop/Research/Work/architecture/ (after ADV-FC-ITER9-3 material_new=false).\n\nPrior clean verified H-ADV9-2-01 ART-08/08b hard_stop wiring closed. Do not re-raise closed H-POST8-01, H-R18-*, ADV-9-1, H-ADV9-2-01.\n\nReturn material_new_critical_or_high bool, NEW CRITICAL/HIGH only, confidence. Be adversarial. If clean say false honestly. Do not draft architecture. Do not approve DESIGN_FINAL.\n</user_query>"}]}}
+./adversarial_review_artifacts/7744f780-9cb3-42b6-ba6d-8f7c83307057.jsonl:16:{"role":"assistant","message":{"content":[{"type":"text","text":"[REDACTED]"},{"type":"tool_use","name":"UpdateCurrentStep","input":{"current_step":"Compiling ADV-9-4 verdict","final_summary":"**ADV-FC-ITER9-4:** `material_new_critical_or_high = false` (confidence **0.87**). Independent second clean pass under AUDIT-0.3-R20: H-ADV9-2-01 patch holds; no new CRITICAL/HIGH beyond excluded closed items. Probed release/restore paths, promotion/audit/cx surfaces, and OPERABLE_MINIMAL parity — residual ambiguities not elevated. C12 → 2 if recorded; `DESIGN_FINAL` not approved; IMPLEMENTATION_BLOCK ACTIVE.","completed_subtitle":"Second clean ADV verified"}}]}}
+./adversarial_review_artifacts/7744f780-9cb3-42b6-ba6d-8f7c83307057.jsonl:17:{"role":"assistant","message":{"content":[{"type":"text","text":"## ADV-FC-ITER9-4 Verdict\n\n**`material_new_critical_or_high`:** `false`  \n**Confidence:** `0.87`  \n**`DESIGN_FINAL`:** not approved (C12 → 2 pending ledger update; human gate still required)\n\n---\n\n### Excluded closed items (verified, not re-raised)\n\n| ID | Status |\n|----|--------|\n| **H-POST8-01** | `ResearchState.hard_stop` singleton authoritative (ART-06/15/17/24) |\n| **H-R18-01..03** | Full mutating-commit freeze scope; ART-20 #20; ART-16 BUDGET/SYSTEM enter-freeze |\n| **ADV-9-1** | ART-16 P6 mandates `I.HardStop` `{source=SYSTEM}` |\n| **H-ADV9-2-01** | ART-08 L126/L148 + ART-08b L17/L20/L23 aligned with ART-06/15/24 |\n\n---\n\n### NEW CRITICAL/HIGH\n\n**None.**\n\n---\n\n### Adversarial pass (ITER9-4 emphasis — not elevated)\n\n| Probe | Result |\n|-------|--------|\n| **H-ADV9-2-01 regression** | No \"promotions-only\" freeze language; ART-08/08b hard_stop wiring intact |\n| **HARD_STOP_RELEASE during active freeze** | `human_decisions` + `hard_stop` clear interpretable as exempt hard_stop-clear transaction (ART-06/15 carve-out); not a deadlock |\n| **Checkpoint restore vs active freeze** | `gate_status_snapshot` carries `hard_stop`; recovery carve-out intentional (ART-17) |\n| **FULL_REFUTE demotion stall under freeze** | Mutations blocked during freeze; ART-16 P2 startup validator fail-closed post-release |\n| **Human lattice bypass of freeze** | No promotion path while `hard_stop.active=true`; resume requires `HARD_STOP_RELEASE` |\n| **HEURISTIC UtilityCompat / S09→S10** | Triple-locked (ART-07/08/09); invalid transition at ART-08 L94 |\n| **ESCALATE_HUMAN ≠ gate** | Token discipline consistent (ART-11/14/15) |\n| **Q15 / `external_theorem`** | Cannot satisfy chain advancement alone (ART-01/11) |\n| **`I.Frontier` / `I.ProposeWrite` no inline hard_stop** | Enforcement delegated to global `I.HardStop` + commit gate (H-R18 pattern) |\n| **OPERABLE_MINIMAL omits `hard_stop` in registry list** | Singleton mandated by ART-06/20 #20; day-1 list illustrative, not exhaustive |\n| **Meta-doc drift** (ART-21 R17 header, IMPLEMENTATION_BLOCK ARCH-0.2) | Non-authoritative; ledger is ART-25 |\n\n---\n\n**C12:** This round is clean credit #2 under `AUDIT-0.3-R20` → `consecutive_clean_rounds = 2` when recorded. Does **not** approve `DESIGN_FINAL`.\n\n[REDACTED]"}]}}
+./adversarial_review_artifacts/REPAIR_ITER2.1_REVIEW_adv.txt:1:Reviewed `ARCH-0.3-REPAIR-ITER2.1`.
+./iterations/REPAIR_ITER11_PROVENANCE.md:3:**ART-11c version:** `ARCH-0.3-REPAIR-ITER11.2`  
+./iterations/REPAIR_ITER11_PROVENANCE.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/862084d7-07ee-4cd1-b29d-b89a6f4955c9.jsonl:1:{"role":"user","message":{"content":[{"type":"text","text":"<timestamp>Thursday, Jul 23, 2026, 10:36 AM (UTC-4)</timestamp>\n<user_query>\nYou are INDEPENDENT Full-System Auditor AUDIT-0.3-R20. Package: /Users/nicholasmino/Desktop/Research/Work/architecture/\n\nAfter H-ADV9-2-01 (ADV-FC-ITER9-2):\n- ART-08 invalid transition: any promotion / S14 frontier / mutating ResearchState commit while hard_stop.active=true\n- ART-08 invariants: hard_stop scope matches ART-06/15/24 (not promotions-only)\n- ART-08b: reject I.Frontier commits while hard_stop.active; HARD_STOP_RELEASE before resume\n\nPrior H-POST8-01 / H-R18 / P6 should still hold. C12=0; R19 superseded for C12.\n\nReturn remaining CRITICAL/HIGH only, PASS|FAIL for human DESIGN_FINAL *review* readiness, suggested audit_pass_id, confidence. IMPLEMENTATION_BLOCK ACTIVE. Do NOT approve DESIGN_FINAL. Inspect live files.\n</user_query>"}]}}
+./adversarial_review_artifacts/862084d7-07ee-4cd1-b29d-b89a6f4955c9.jsonl:3:{"role":"assistant","message":{"content":[{"type":"text","text":"[REDACTED]"},{"type":"tool_use","name":"Grep","input":{"pattern":"hard_stop|ART-08|HARD_STOP|H-ADV9|H-POST8|H-R18|C12|DESIGN_FINAL","path":"/Users/nicholasmino/Desktop/Research/Work/architecture","-i":true}},{"type":"tool_use","name":"Read","input":{"path":"/Users/nicholasmino/Desktop/Research/Work/architecture/IMPLEMENTATION_BLOCK.md"}},{"type":"tool_use","name":"Read","input":{"path":"/Users/nicholasmino/Desktop/Research/Work/architecture/25-audit-reports/FINAL_AUDIT.md"}}]}}
+./adversarial_review_artifacts/862084d7-07ee-4cd1-b29d-b89a6f4955c9.jsonl:14:{"role":"assistant","message":{"content":[{"type":"text","text":"[REDACTED]"},{"type":"tool_use","name":"UpdateCurrentStep","input":{"completed_subtitle":"Verified hard_stop wiring aligned","current_step":"Compiling R20 audit verdict","final_summary":"**AUDIT-0.3-R20: PASS** (review readiness). H-ADV9-2-01 closed — ART-08/08b `hard_stop` wiring matches ART-06/15/24; H-POST8-01, H-R18-*, P6 regressions hold. **No remaining CRITICAL/HIGH.** `audit_pass_id`: **AUDIT-0.3-R20**. C12=0 (R19 superseded); ADV-9-3 still needed for convergence credit. **IMPLEMENTATION_BLOCK ACTIVE** — `DESIGN_FINAL` not approved. Confidence **0.88**."}}]}}
+./adversarial_review_artifacts/862084d7-07ee-4cd1-b29d-b89a6f4955c9.jsonl:15:{"role":"assistant","message":{"content":[{"type":"text","text":"# AUDIT-0.3-R20 — Independent Full-System Audit\n\n**Package:** `architecture/` (`ARCH-0.3-ITER5` banner)  \n**Scope:** Post H-ADV9-2-01 (ADV-FC-ITER9-2); regression on H-POST8-01 / H-R18-* / P6  \n**IMPLEMENTATION_BLOCK:** **ACTIVE**  \n**DESIGN_FINAL:** **NOT approved** (human gate only)\n\n---\n\n## Patch verification — H-ADV9-2-01 **CLOSED**\n\n| Requirement | Live evidence | Status |\n|---|---|---|\n| ART-08 invalid transition: promotion / S14 / any mutating ResearchState commit while `hard_stop.active=true` | `RESEARCH_CYCLE_FSM.md` L126 | ✓ |\n| ART-08 invariant scope = ART-06/15/24 (not promotions-only) | `RESEARCH_CYCLE_FSM.md` L148 | ✓ |\n| ART-08b: reject `I.Frontier` commits while `hard_stop.active` | `QUESTION_SELECTION.md` L17–20 | ✓ |\n| ART-08b: `HARD_STOP_RELEASE` before resume | `QUESTION_SELECTION.md` L23 | ✓ |\n\nCross-artifact scope is aligned:\n\n- **ART-06** L55 — `hard_stop` singleton; promotions + frontier writes + other mutating commits fail-closed\n- **ART-15** L47–48, L74 — same scope; `HARD_STOP_RELEASE` clears `active` / sets `release_dec_id`\n- **ART-24** `I.HardStop` L36 — blocks promotions, frontier writes, and other mutating commits\n- **ART-20** rule 20 — `hard_stop.active` + `I.HardStop` enforcement path\n\n---\n\n## Prior regression — **HOLD**\n\n| ID | Check | Status |\n|---|---|---|\n| **H-POST8-01** | Authoritative `ResearchState.hard_stop`; `I.HardStop` HUMAN\\|BUDGET\\|SYSTEM; checkpoint snapshot | ✓ ART-06/17 |\n| **H-R18-01** | Freeze = mutating ResearchState commits fail-closed (not vague read-only) | ✓ ART-06/15/24/08 |\n| **H-R18-02** | Rule 20 → `hard_stop` + `I.HardStop` + `HARD_STOP_RELEASE` | ✓ ART-20 L49 |\n| **H-R18-03** | ART-16 Authority: BUDGET/SYSTEM enter-freeze; human alone for release | ✓ ART-16 L12 |\n| **P6 / ADV-9-1** | Orchestrator failure → `I.HardStop` `{source=SYSTEM}`; resume only after `HARD_STOP_RELEASE` | ✓ ART-16 L52 |\n\n---\n\n## Remaining CRITICAL / HIGH\n\n**None.**\n\nClosed and excluded from this list: H-POST8-01, H-R18-01..03, ADV-9-1 (P6), H-ADV9-2-01.\n\n---\n\n## Convergence posture (informational — not review blockers)\n\n| Item | Value |\n|---|---|\n| **C12** | `0` (`consecutive_clean_rounds`) |\n| **R19** | Superseded for C12 (ART-08 material change) |\n| **T16 / T17** | PENDING — restore on this R20 PASS |\n| **ADV-FC-ITER9-3** | In flight — needed for C12 credit (≥2 clean rounds post-pass) |\n\nStale meta-docs (`SUMMARIES.md` C12=2 under R17; `ACCEPTANCE_TESTS.md` header under R17) contradict ART-25 ledger — **not elevated** to CRITICAL/HIGH; ART-25 is authoritative.\n\n---\n\n## Verdict\n\n| Field | Value |\n|---|---|\n| **DESIGN_FINAL *review* readiness** | **PASS** |\n| **Suggested `audit_pass_id`** | **`AUDIT-0.3-R20`** |\n| **Confidence** | **0.88** |\n| **`DESIGN_FINAL` approval** | **NOT granted** |\n| **`IMPLEMENTATION_BLOCK`** | **ACTIVE** |\n\n**PASS** means the package has no unresolved CRITICAL/HIGH design defects and is fit for human `DESIGN_FINAL` **review**. It does **not** mean convergence complete (C12=0), adversarial clean credit earned, or any gate approved.\n\n---\n\n## Gate snapshot\n\n```text\naudit_pass_id:              AUDIT-0.3-R20          (suggested)\nconsecutive_clean_rounds:   0\nprior_AUDIT-0.3-R19:        superseded_for_C12\npatch_h_adv9_2_01:          applied / verified\nDESIGN_FINAL:               pending_human_approval\nIMPLEMENTATION_START:       blocked\nRESEARCH_EXECUTION_START:   blocked\nIMPLEMENTATION_BLOCK:       ACTIVE\n```\n\n[REDACTED]"}]}}
+./iterations/REPAIR_ITER4_IDENTITY_AUTHORITY.md:3:**ART-04c version:** `ARCH-0.3-REPAIR-ITER4.6`  
+./iterations/REPAIR_ITER4_IDENTITY_AUTHORITY.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./iterations/REPAIR_ITER4_IDENTITY_AUTHORITY.md:66:ART-04c `ARCH-0.3-REPAIR-ITER4.6` is `ACTIVE_NORMATIVE`. Sol reviews A–D PASS with no Critical/High.
+./adversarial_review_artifacts/REPAIR_ITER5.1_REVIEW_min.txt:3:- New zero-loss **HIGH:** [`ValidationPreimageAPPLY`](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:117) duplicates `intent_digest` and `policy_digest` already present in the full command stored by [`MutationEvent`](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:98). Removing both fields loses nothing: `command_digest` already binds them into `event_digest`.
+./iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md:3:**ART-07c version:** `ARCH-0.3-REPAIR-ITER2.7`  
+./iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md:5:**Depends on:** ART-07b `ARCH-0.3-REPAIR-ITER1.26`  
+./iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md:166:ART-07c `ARCH-0.3-REPAIR-ITER2.7` is `ACTIVE_NORMATIVE`. Independent Sol reviews A–D PASS with no remaining Critical/High.
+./iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md:172:Package remains **NON-RELEASE**; `IMPLEMENTATION_BLOCK` ACTIVE; `DESIGN_FINAL` revoked; blueprint / implementation planning still **no**.
+./IMPLEMENTATION_BLOCK.md:4:**Design version:** `ARCH-0.3-REPAIR`
+./IMPLEMENTATION_BLOCK.md:10:3. Any claim that the architecture is “final” without `DESIGN_FINAL = approved`  
+./IMPLEMENTATION_BLOCK.md:26:3. Set `DESIGN_FINAL = approved` in gate log (or request revisions)  
+./IMPLEMENTATION_BLOCK.md:33:DESIGN_FINAL = pending_human_approval
+./iterations/REPAIR_ITER8_LEAN_BINDING.md:3:**ART-10b version:** `ARCH-0.3-REPAIR-ITER8.9`  
+./iterations/REPAIR_ITER8_LEAN_BINDING.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./iterations/REPAIR_ITER3_MUTATION_STATE.md:3:**ART-06b version:** `ARCH-0.3-REPAIR-ITER3.2`  
+./iterations/REPAIR_ITER3_MUTATION_STATE.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./iterations/REPAIR_ITER3_MUTATION_STATE.md:133:ART-06b `ARCH-0.3-REPAIR-ITER3.2` is `ACTIVE_NORMATIVE`. Sol reviews A–D PASS with no Critical/High.
+./adversarial_review_artifacts/REPAIR_ITER3.0_REVIEW_adv.txt:3:HIGH-1 — Commit validates one object but applies a separately unbound effect set. `command_digest` covers command kind, targets, payload, and heads, while `effects_digest` is introduced separately; no normative function requires `effects = Derive(command, pre_state)`, and the validation record does not bind `effects_digest` ([ART-06b:40](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:40), [ART-06b:61](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:61), [ART-06b:84](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:84), [ART-06b:178](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:178)). A conforming implementation can validate a benign command, then reduce different Research/Control effects—bypassing boolean, promotion, store-separation, and stale-write validation while still producing an authoritative MutationEvent.
+./adversarial_review_artifacts/REPAIR_ITER3.0_REVIEW_adv.txt:5:HIGH-2 — Hard-stop exceptions are command-kind-wide, not effect-constrained. Cross-store effects are expressly permitted, while `HARD_STOP_SET`, `HARD_STOP_CLEAR`, and `CONTROL_DIAGNOSTIC_NOOP` are exempted from rejection even when targets include—or effects mutate—ResearchState ([ART-06b:30](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:30), [ART-06b:63](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:63), [ART-06b:128](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:128)). Calling HARD_STOP_* “ControlState commits” does not normatively require `store_targets={CONTROL}` or prohibit research effects ([ART-06b:131](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:131)). Thus an active fence can be crossed using an allowed command kind carrying an explicit Research effect.
+./03-context/SYSTEM_CONTEXT.md:26:`DESIGN_FINAL`, `IMPLEMENTATION_START`, `RESEARCH_EXECUTION_START`.
+./03-context/SYSTEM_CONTEXT.md:41:    HumanReview -->|DESIGN_FINAL_gate_only| DesignFreeze[Human_DESIGN_FINAL]
+./03-context/SYSTEM_CONTEXT.md:78:- Charter, scope pins, certificate-kind vocabulary, novelty status above “adaptation”, inference theorem claims, `DESIGN_FINAL`
+./adversarial_review_artifacts/REPAIR_ITER3.1_REVIEW_state.txt:3:1. **CLOSED — Hard-stop allowlist.** Enforcement now applies to derived effects, requires `store_targets={CONTROL}`, and forbids Research/Design mutations during a stop. [ART-06b §5](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:131)
+./iterations/ITER7_RECORD.md:5:**Status:** C12 satisfied under AUDIT-0.3-R17; loop continues (≠ DESIGN_FINAL)
+./iterations/ITER7_RECORD.md:36:| DESIGN_FINAL | pending_human_approval (not approved) |
+./iterations/ITER7_RECORD.md:51:- SUMMARIES/INDEX freshness; ART-03 mermaid non-automatic DESIGN_FINAL
+./iterations/ITER7_RECORD.md:53:Human may stop anytime. Do not approve DESIGN_FINAL or lift block.
+./21-acceptance-tests/fixtures/CF-10A.json:1:{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"I.CheckpointValidate","payload":{"prefix_max":3}}],"expect":"IRREVERSIBLE_PREFIX","fixture_id":"CF-10A","initial_state":{"checkpoint_event_seq_max":3,"irreversible_head_seq":5},"kind":"behavioral"}
+./adversarial_review_artifacts/INDEPENDENT_BREAKER_AUDIT_2026-07-23.md:5:**Package under review:** `/architecture` banner `ARCH-0.3-REPAIR`  
+./adversarial_review_artifacts/INDEPENDENT_BREAKER_AUDIT_2026-07-23.md:6:**Normative object island:** `ART-07b` `ARCH-0.3-REPAIR-ITER1.26`  
+./adversarial_review_artifacts/INDEPENDENT_BREAKER_AUDIT_2026-07-23.md:28:3. **Implementation block is ACTIVE** and `DESIGN_FINAL` remains revoked — correct fail-closed posture for *execution*, not evidence of blueprint readiness.  
+./adversarial_review_artifacts/INDEPENDENT_BREAKER_AUDIT_2026-07-23.md:121:**Evidence:** Version scan: `ARCH-0.1-ITER1` … `ARCH-0.3-REPAIR-ITER1.26`; info-flow doc still `ARCH-0.3-ITER5`.  
+./adversarial_review_artifacts/INDEPENDENT_BREAKER_AUDIT_2026-07-23.md:285:9. Human `DESIGN_FINAL` on that evidence — only then consider planning.
+./adversarial_review_artifacts/REPAIR_ITER5.6_REVIEW_integ.txt:4:- ART-13b pins uniformly reference `ARCH-0.3-REPAIR-ITER5.6` across [ART-13b](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:4), [ART-ASI](/Users/nicholasmino/Desktop/Research/Work/architecture/00-repair/ARTIFACT_STATUS.md:28), and [ART-25](/Users/nicholasmino/Desktop/Research/Work/architecture/25-audit-reports/FINAL_AUDIT.md:27).
+./iterations/REPAIR_ITER7_DEMOTION_WAVES.md:3:**ART-16b version:** `ARCH-0.3-REPAIR-ITER7.5`  
+./iterations/REPAIR_ITER7_DEMOTION_WAVES.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./iterations/REPAIR_ITER7_DEMOTION_WAVES.md:29:**YES — COMPLETE.** ART-16b `ARCH-0.3-REPAIR-ITER7.5` is `ACTIVE_NORMATIVE`.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:15:You are the FINAL PACKAGE GATE reviewer for ARCH-0.3-REPAIR under /Users/nicholasmino/Desktop/Research/Work/architecture.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:17:Process: Iterations 1–14 are internally frozen. This is the single Sol A–D package gate (not per-iteration). Package remains NON-RELEASE. IMPLEMENTATION_BLOCK ACTIVE. Do NOT approve DESIGN_FINAL (human only).
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:286:00-README.md:8:**Design version:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:287:00-README.md:14:**Version pin:** Package banner `ARCH-0.3-REPAIR` is the repair draft identity — **not** a release digest. Historical `ARCH-0.3-ITER5` / `ARCH-0.2` stamps are non-authoritative. Final normalization = Iteration 14.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:288:IMPLEMENTATION_BLOCK.md:4:**Design version:** `ARCH-0.3-REPAIR`
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:289:25-audit-reports/FINAL_AUDIT.md:4:**Version:** `ARCH-0.3-REPAIR`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:291:25-audit-reports/FINAL_AUDIT.md:23:art07b: ARCH-0.3-REPAIR-ITER1.26
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:292:25-audit-reports/FINAL_AUDIT.md:24:art07c: ARCH-0.3-REPAIR-ITER2.7 (ACTIVE_NORMATIVE — Iter2 complete)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:293:25-audit-reports/FINAL_AUDIT.md:25:art06b: ARCH-0.3-REPAIR-ITER3.2 (ACTIVE)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:294:25-audit-reports/FINAL_AUDIT.md:26:art04c: ARCH-0.3-REPAIR-ITER4.6 (ACTIVE_NORMATIVE — Iter4 complete)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:295:25-audit-reports/FINAL_AUDIT.md:27:art13b: ARCH-0.3-REPAIR-ITER5.7 (ACTIVE_NORMATIVE — Iter5 + 11c preimage patch)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:296:25-audit-reports/FINAL_AUDIT.md:28:art11b: ARCH-0.3-REPAIR-ITER6.20 (ACTIVE_NORMATIVE — Iter6 complete)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:297:25-audit-reports/FINAL_AUDIT.md:29:art16b: ARCH-0.3-REPAIR-ITER7.8 (ACTIVE_NORMATIVE — Iter7 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:298:25-audit-reports/FINAL_AUDIT.md:30:art10b: ARCH-0.3-REPAIR-ITER8.9 (ACTIVE_NORMATIVE — Iter8 complete)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:299:25-audit-reports/FINAL_AUDIT.md:31:art08d: ARCH-0.3-REPAIR-ITER9.10 (ACTIVE_NORMATIVE — Iter9 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:300:25-audit-reports/FINAL_AUDIT.md:32:art17b: ARCH-0.3-REPAIR-ITER10.2 (ACTIVE_NORMATIVE — Iter10 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:301:25-audit-reports/FINAL_AUDIT.md:33:art11c: ARCH-0.3-REPAIR-ITER11.2 (ACTIVE_NORMATIVE — Iter11 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:302:25-audit-reports/FINAL_AUDIT.md:34:art21b: ARCH-0.3-REPAIR-ITER12.1 (ACTIVE_NORMATIVE — Iter12 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:303:25-audit-reports/FINAL_AUDIT.md:35:art04d: ARCH-0.3-REPAIR-ITER13.2 (ACTIVE_NORMATIVE — Iter13 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:304:25-audit-reports/FINAL_AUDIT.md:36:art25b: ARCH-0.3-REPAIR-ITER14.1 (ACTIVE_NORMATIVE — Iter14 complete; awaiting Sol package gate)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:305:04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:4:**Version:** `ARCH-0.3-REPAIR-ITER4.6`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:307:11-integration-audit/PROVENANCE_BINDING.md:4:**Version:** `ARCH-0.3-REPAIR-ITER11.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:309:11-integration-audit/PROVENANCE_BINDING.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:311:04-agents/OPERABLE_BINDING.md:4:**Version:** `ARCH-0.3-REPAIR-ITER13.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:313:04-agents/OPERABLE_BINDING.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:315:25-audit-reports/RELEASE_IDENTITY.md:4:**Version:** `ARCH-0.3-REPAIR-ITER14.1`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:318:25-audit-reports/RELEASE_IDENTITY.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE** until ReleaseManifest sealed  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:319:25-audit-reports/RELEASE_IDENTITY.md:22:  release_id                          # immutable label, e.g. ARCH-0.3-REPAIR-CANDIDATE
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:323:21-acceptance-tests/CONFORMANCE.md:4:**Version:** `ARCH-0.3-REPAIR-ITER12.1`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:325:21-acceptance-tests/CONFORMANCE.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:327:11-integration-audit/AUDIT_BINDING.md:4:**Version:** `ARCH-0.3-REPAIR-ITER6.20`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:329:11-integration-audit/AUDIT_BINDING.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:330:17-indefinite-ops/CHECKPOINT_RESTORE.md:4:**Version:** `ARCH-0.3-REPAIR-ITER10.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:332:17-indefinite-ops/CHECKPOINT_RESTORE.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:334:16-failure-recovery/DEMOTION_WAVES.md:4:**Version:** `ARCH-0.3-REPAIR-ITER7.8`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:336:16-failure-recovery/DEMOTION_WAVES.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:337:iterations/REPAIR_ITER9_CYCLE_BINDING.md:3:**ART-08d version:** `ARCH-0.3-REPAIR-ITER9.10`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:339:iterations/REPAIR_ITER9_CYCLE_BINDING.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:340:iterations/REPAIR_ITER14_RELEASE_IDENTITY.md:3:**ART-25b version:** `ARCH-0.3-REPAIR-ITER14.1`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:342:iterations/REPAIR_ITER14_RELEASE_IDENTITY.md:5:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:343:iterations/REPAIR_ITER13_OPERABLE_MINIMAL.md:3:**ART-04d version:** `ARCH-0.3-REPAIR-ITER13.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:345:iterations/REPAIR_ITER13_OPERABLE_MINIMAL.md:5:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:346:iterations/REPAIR_ITER5_PROMOTION_INTENT.md:3:**ART-13b version:** `ARCH-0.3-REPAIR-ITER5.6`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:348:iterations/REPAIR_ITER5_PROMOTION_INTENT.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:350:iterations/REPAIR_ITER5_PROMOTION_INTENT.md:39:**YES — COMPLETE.** ART-13b `ARCH-0.3-REPAIR-ITER5.6` is `ACTIVE_NORMATIVE`.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:351:iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md:3:**ART-07c version:** `ARCH-0.3-REPAIR-ITER2.7`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:352:iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md:5:**Depends on:** ART-07b `ARCH-0.3-REPAIR-ITER1.26`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:353:iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:358:iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md:166:ART-07c `ARCH-0.3-REPAIR-ITER2.7` is `ACTIVE_NORMATIVE`. Independent Sol reviews A–D PASS with no remaining Critical/High.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:359:iterations/REPAIR_ITER10_CHECKPOINT_RESTORE.md:3:**ART-17b version:** `ARCH-0.3-REPAIR-ITER10.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:361:iterations/REPAIR_ITER10_CHECKPOINT_RESTORE.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:362:iterations/REPAIR_ITER8_LEAN_BINDING.md:3:**ART-10b version:** `ARCH-0.3-REPAIR-ITER8.9`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:364:iterations/REPAIR_ITER8_LEAN_BINDING.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:365:iterations/REPAIR_ITER3_MUTATION_STATE.md:3:**ART-06b version:** `ARCH-0.3-REPAIR-ITER3.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:366:iterations/REPAIR_ITER3_MUTATION_STATE.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:371:iterations/REPAIR_ITER3_MUTATION_STATE.md:133:ART-06b `ARCH-0.3-REPAIR-ITER3.2` is `ACTIVE_NORMATIVE`. Sol reviews A–D PASS with no Critical/High.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:372:iterations/REPAIR_ITER1_CANONICAL_OBJECTS.md:4:**Frozen version:** `ARCH-0.3-REPAIR-ITER1.26`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:373:iterations/REPAIR_ITER6_AUDIT_BINDING.md:3:**ART-11b version:** `ARCH-0.3-REPAIR-ITER6.20`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:375:iterations/REPAIR_ITER6_AUDIT_BINDING.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:377:iterations/REPAIR_ITER6_AUDIT_BINDING.md:36:**YES — COMPLETE.** ART-11b `ARCH-0.3-REPAIR-ITER6.20` is `ACTIVE_NORMATIVE`.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:378:iterations/REPAIR_ITER7_DEMOTION_WAVES.md:3:**ART-16b version:** `ARCH-0.3-REPAIR-ITER7.5`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:381:iterations/REPAIR_ITER7_DEMOTION_WAVES.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:382:iterations/REPAIR_ITER7_DEMOTION_WAVES.md:29:**YES — COMPLETE.** ART-16b `ARCH-0.3-REPAIR-ITER7.5` is `ACTIVE_NORMATIVE`.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:383:iterations/REPAIR_ITER11_PROVENANCE.md:3:**ART-11c version:** `ARCH-0.3-REPAIR-ITER11.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:385:iterations/REPAIR_ITER11_PROVENANCE.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:386:iterations/REPAIR_ITER4_IDENTITY_AUTHORITY.md:3:**ART-04c version:** `ARCH-0.3-REPAIR-ITER4.6`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:387:iterations/REPAIR_ITER4_IDENTITY_AUTHORITY.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:395:iterations/REPAIR_ITER4_IDENTITY_AUTHORITY.md:66:ART-04c `ARCH-0.3-REPAIR-ITER4.6` is `ACTIVE_NORMATIVE`. Sol reviews A–D PASS with no Critical/High.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:396:iterations/REPAIR_ITER12_CONFORMANCE.md:3:**ART-21b version:** `ARCH-0.3-REPAIR-ITER12.1`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:397:iterations/REPAIR_ITER12_CONFORMANCE.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:624:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:633:| ART-04d OPERABLE_BINDING | ACTIVE_NORMATIVE | Iter13 complete (`ARCH-0.3-REPAIR-ITER13.2`); internal A–D PASS; Sol deferred |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:635:| ART-04c IDENTITY_AUTHORITY | ACTIVE_NORMATIVE | Iter4 complete (`ARCH-0.3-REPAIR-ITER4.6`); Sol A–D PASS |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:638:| ART-06b MUTATION_STATE | ACTIVE_NORMATIVE | Iter3 complete (`ARCH-0.3-REPAIR-ITER3.2`); Sol A–D PASS |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:642:| ART-08d CYCLE_BINDING | ACTIVE_NORMATIVE | Iter9 complete (`ARCH-0.3-REPAIR-ITER9.10`); internal A–D PASS; Sol deferred to final package gate
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:645:| ART-10b LEAN_BINDING | ACTIVE_NORMATIVE | Iter8 complete (`ARCH-0.3-REPAIR-ITER8.9`); Sol A–D PASS
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:648:| ART-11b AUDIT_BINDING | ACTIVE_NORMATIVE | Iter6 complete (`ARCH-0.3-REPAIR-ITER6.20`); Sol A–D PASS |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:649:| ART-11c PROVENANCE_BINDING | ACTIVE_NORMATIVE | Iter11 complete (`ARCH-0.3-REPAIR-ITER11.2`); internal A–D PASS; Sol deferred |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:652:| ART-13b PROMOTION_INTENT | ACTIVE_NORMATIVE | Iter5 complete (`ARCH-0.3-REPAIR-ITER5.7` patch for ART-11c preimage); Sol A–D PASS prior; Sol deferred package gate |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:655:| ART-16b DEMOTION_WAVES | ACTIVE_NORMATIVE | Iter7 complete (`ARCH-0.3-REPAIR-ITER7.8`); internal A–D PASS; Sol deferred to final package gate
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:656:| ART-17b CHECKPOINT_RESTORE | ACTIVE_NORMATIVE | Iter10 complete (`ARCH-0.3-REPAIR-ITER10.2`); internal A–D PASS; Sol deferred |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:659:| ART-21b CONFORMANCE | ACTIVE_NORMATIVE | Iter12 complete (`ARCH-0.3-REPAIR-ITER12.1`); internal A–D PASS; Sol deferred |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:663:| ART-25b RELEASE_IDENTITY | ACTIVE_NORMATIVE | Iter14 complete (`ARCH-0.3-REPAIR-ITER14.1`); internal A–D PASS; Sol package gate next |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:675:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:676:**Updated:** Iteration 14 complete — awaiting final Sol package gate; then HUMAN DESIGN_FINAL
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:704:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:768:**Design version:** `ARCH-0.3-REPAIR`
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:774:3. Any claim that the architecture is “final” without `DESIGN_FINAL = approved`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:790:3. Set `DESIGN_FINAL = approved` in gate log (or request revisions)  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:797:DESIGN_FINAL = pending_human_approval
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:813:**Version:** `ARCH-0.3-REPAIR`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:821:| `DESIGN_FINAL` readiness | **REVOKED** |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:832:art07b: ARCH-0.3-REPAIR-ITER1.26
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:833:art07c: ARCH-0.3-REPAIR-ITER2.7 (ACTIVE_NORMATIVE — Iter2 complete)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:834:art06b: ARCH-0.3-REPAIR-ITER3.2 (ACTIVE)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:835:art04c: ARCH-0.3-REPAIR-ITER4.6 (ACTIVE_NORMATIVE — Iter4 complete)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:836:art13b: ARCH-0.3-REPAIR-ITER5.7 (ACTIVE_NORMATIVE — Iter5 + 11c preimage patch)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:837:art11b: ARCH-0.3-REPAIR-ITER6.20 (ACTIVE_NORMATIVE — Iter6 complete)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:838:art16b: ARCH-0.3-REPAIR-ITER7.8 (ACTIVE_NORMATIVE — Iter7 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:839:art10b: ARCH-0.3-REPAIR-ITER8.9 (ACTIVE_NORMATIVE — Iter8 complete)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:840:art08d: ARCH-0.3-REPAIR-ITER9.10 (ACTIVE_NORMATIVE — Iter9 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:841:art17b: ARCH-0.3-REPAIR-ITER10.2 (ACTIVE_NORMATIVE — Iter10 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:842:art11c: ARCH-0.3-REPAIR-ITER11.2 (ACTIVE_NORMATIVE — Iter11 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:843:art21b: ARCH-0.3-REPAIR-ITER12.1 (ACTIVE_NORMATIVE — Iter12 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:844:art04d: ARCH-0.3-REPAIR-ITER13.2 (ACTIVE_NORMATIVE — Iter13 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:845:art25b: ARCH-0.3-REPAIR-ITER14.1 (ACTIVE_NORMATIVE — Iter14 complete; awaiting Sol package gate)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:871:DESIGN_FINAL = pending_human_approval
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:890:     4	**Version:** `ARCH-0.3-REPAIR-ITER7.8`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:893:     7	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1030:     4	**Version:** `ARCH-0.3-REPAIR-ITER10.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1033:     7	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1059:    33	  event_digest          # = MutationEvent.event_digest at event_seq
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1061:    35	  receipt_digest = H("ART17b.IR.v1", event_seq, event_digest, kind)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1089:    63	At every `I.Commit` accept that matches exactly one `IrreversibleKind` above, append **exactly one** `IrreversibleReceipt` (`event_digest` = that Commit’s `MutationEvent.event_digest`) and advance `irreversible_head_seq` (never decrease). Priority if multiple fire in one Commit: `FULL_CX` > `CX_EXPAND` > `PIN_SUPERSESSION` > `LEAN_GAP` > `DEMOTION_START` > `HARD_STOP_*` > `EIO_VETO` (one receipt; kind = highest priority that fired).
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1122:    96	| Candidate prefix length `N ≥ irreversible_head_seq` | `IRREVERSIBLE_PREFIX` |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1123:    97	| For every receipt with `event_seq ≤ irreversible_head_seq`: prefix event at that seq has `event.event_digest = receipt.event_digest` and maps to `receipt.kind` | `IRREVERSIBLE_PREFIX` |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1171:   145	`MERKLE_MISMATCH | IRREVERSIBLE_PREFIX | FORWARD_FIX_GAP | HARD_STOP_SNAPSHOT_MISMATCH | CHECKPOINT_UNKNOWN`
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1174:   148	TRACE-10A  present prefix omitting later FULL CX Commit → IRREVERSIBLE_PREFIX
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1178:   152	TRACE-10E  substitute event at irreversible seq (digest≠receipt) → IRREVERSIBLE_PREFIX
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1184:     4	**Version:** `ARCH-0.3-REPAIR-ITER11.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1187:     7	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1325:     4	**Version:** `ARCH-0.3-REPAIR-ITER12.1`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1328:     7	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1335:    14	`ponytail:` Full Q02–Q17 prompt evaluators and migration replay suites remain optional expansions. Release-bound digests = ART-25b. This artifact’s PASS ≠ `DESIGN_FINAL`.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1388:    67	**I-CF-04:** Catalog PASS ⇒ `CONFORMANCE_CATALOG_PASS` for that manifest only — **not** `DESIGN_FINAL` / blueprint / release.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1416:    95	| CF-10A | IRREVERSIBLE_PREFIX |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1450:   129	TRACE-12D  catalog PASS ⇏ DESIGN_FINAL
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1455:     4	**Version:** `ARCH-0.3-REPAIR-ITER13.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1458:     7	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1598:     4	**Version:** `ARCH-0.3-REPAIR-ITER14.1`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1601:     7	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE** until ReleaseManifest sealed  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1608:    14	`ponytail:` Sealing the manifest does not approve `DESIGN_FINAL`; that remains HUMAN. Envelope product PKI deferred; property = digest binding.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1616:    22	  release_id                          # immutable label, e.g. ARCH-0.3-REPAIR-CANDIDATE
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1644:    50	**SEAL_RELEASE_MANIFEST** (IDENTITY_ADMIN or designated RELEASE_ADMIN): Commit upserts ReleaseManifest; computes digests under ART-21b. Package remains `NON_RELEASE` until HUMAN `DESIGN_FINAL` targets this `release_digest`.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1672:    78	**I-REL-31:** `DESIGN_FINAL` HumanDecision `target_digest` MUST equal `release_digest`. Else gate fail.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1690:    96	`RELEASE_DIGEST_MISMATCH | RELEASE_UNSEALED | FALSE_PASS_CITATION | DESIGN_FINAL_TARGET_MISMATCH`
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1695:   101	TRACE-14C  DESIGN_FINAL target ≠ release_digest → reject
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1850:   436	  event_digest
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1958:     4	**Version:** `ARCH-0.3-REPAIR-ITER3.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1980:    26	| **DesignState** | Architecture package artifacts / critique ledger | `I.Commit` (`store_targets` includes DESIGN) |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1999:    45	**I-STATE-SEP-02:** A single commit may list multiple `store_targets`, but effects for each store are typed and validated; no silent dual-write from agent scratch.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2017:    63	  H(ordered MutationEvent.event_digest for seq=1..event_seq))
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2033:    79	  store_targets[]                     # nonempty subset of {CONTROL, RESEARCH, DESIGN}
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2045:    91	  effects_digest = H(Effects)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2057:   103	  event_digest = H(event_seq, command_digest, effects_digest,
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2068:   114	**Out:** `ACCEPTED{event_seq, event_digest, new_state_head_digest} | REJECTED{reason_codes[]}`.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2092:   138	with `store_targets = {CONTROL}` and **zero** ResearchState and **zero** DesignState mutations  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2416:     4	**Version:** `ARCH-0.3-REPAIR-ITER11.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2419:     7	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2557:     4	**Version:** `ARCH-0.3-REPAIR-ITER6.20`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2560:     7	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2694:     4	**Version:** `ARCH-0.3-REPAIR-ITER9.10`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2697:     7	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2858:     4	**Version:** `ARCH-0.3-REPAIR-ITER8.9`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2861:     7	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3196:     4	**Version:** `ARCH-0.3-REPAIR-ITER2.7`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3198:     6	**Depends on:** `ART-07b` `ARCH-0.3-REPAIR-ITER1.26` (+ narrow SchemaRegistry / FP / I-BRIDGE updates in this package)  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3381:     4	**Version:** `ARCH-0.3-REPAIR-ITER4.6`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3601:CF-10A.json commands 1 expect IRREVERSIBLE_PREFIX golden MISSING
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3649:14:| ART-04d OPERABLE_BINDING | ACTIVE_NORMATIVE | Iter13 complete (`ARCH-0.3-REPAIR-ITER13.2`); internal A–D PASS; Sol deferred |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3650:16:| ART-04c IDENTITY_AUTHORITY | ACTIVE_NORMATIVE | Iter4 complete (`ARCH-0.3-REPAIR-ITER4.6`); Sol A–D PASS |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3651:19:| ART-06b MUTATION_STATE | ACTIVE_NORMATIVE | Iter3 complete (`ARCH-0.3-REPAIR-ITER3.2`); Sol A–D PASS |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3654:23:| ART-08d CYCLE_BINDING | ACTIVE_NORMATIVE | Iter9 complete (`ARCH-0.3-REPAIR-ITER9.10`); internal A–D PASS; Sol deferred to final package gate
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3655:26:| ART-10b LEAN_BINDING | ACTIVE_NORMATIVE | Iter8 complete (`ARCH-0.3-REPAIR-ITER8.9`); Sol A–D PASS
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3656:29:| ART-11b AUDIT_BINDING | ACTIVE_NORMATIVE | Iter6 complete (`ARCH-0.3-REPAIR-ITER6.20`); Sol A–D PASS |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3657:30:| ART-11c PROVENANCE_BINDING | ACTIVE_NORMATIVE | Iter11 complete (`ARCH-0.3-REPAIR-ITER11.2`); internal A–D PASS; Sol deferred |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3658:33:| ART-13b PROMOTION_INTENT | ACTIVE_NORMATIVE | Iter5 complete (`ARCH-0.3-REPAIR-ITER5.7` patch for ART-11c preimage); Sol A–D PASS prior; Sol deferred package gate |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3659:36:| ART-16b DEMOTION_WAVES | ACTIVE_NORMATIVE | Iter7 complete (`ARCH-0.3-REPAIR-ITER7.8`); internal A–D PASS; Sol deferred to final package gate
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3660:37:| ART-17b CHECKPOINT_RESTORE | ACTIVE_NORMATIVE | Iter10 complete (`ARCH-0.3-REPAIR-ITER10.2`); internal A–D PASS; Sol deferred |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3661:40:| ART-21b CONFORMANCE | ACTIVE_NORMATIVE | Iter12 complete (`ARCH-0.3-REPAIR-ITER12.1`); internal A–D PASS; Sol deferred |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3662:44:| ART-25b RELEASE_IDENTITY | ACTIVE_NORMATIVE | Iter14 complete (`ARCH-0.3-REPAIR-ITER14.1`); internal A–D PASS; Sol package gate next |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3678:./25-audit-reports/FINAL_AUDIT.md:27:art13b: ARCH-0.3-REPAIR-ITER5.7 (ACTIVE_NORMATIVE — Iter5 + 11c preimage patch)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3679:./25-audit-reports/FINAL_AUDIT.md:29:art16b: ARCH-0.3-REPAIR-ITER7.8 (ACTIVE_NORMATIVE — Iter7 complete; Sol deferred)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3681:./13-proof-review/PROMOTION_INTENT.md:4:**Version:** `ARCH-0.3-REPAIR-ITER5.7`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3682:./iterations/REPAIR_ITER5_PROMOTION_INTENT.md:3:**ART-13b version:** `ARCH-0.3-REPAIR-ITER5.6`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3689:./iterations/REPAIR_ITER5_PROMOTION_INTENT.md:39:**YES — COMPLETE.** ART-13b `ARCH-0.3-REPAIR-ITER5.6` is `ACTIVE_NORMATIVE`.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3690:./16-failure-recovery/DEMOTION_WAVES.md:4:**Version:** `ARCH-0.3-REPAIR-ITER7.8`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3691:./adversarial_review_artifacts/REPAIR_ITER5.6_REVIEW_integ.txt:4:- ART-13b pins uniformly reference `ARCH-0.3-REPAIR-ITER5.6` across [ART-13b](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:4), [ART-ASI](/Users/nicholasmino/Desktop/Research/Work/architecture/00-repair/ARTIFACT_STATUS.md:28), and [ART-25](/Users/nicholasmino/Desktop/Research/Work/architecture/25-audit-reports/FINAL_AUDIT.md:27).
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3695:./00-repair/ARTIFACT_STATUS.md:33:| ART-13b PROMOTION_INTENT | ACTIVE_NORMATIVE | Iter5 complete (`ARCH-0.3-REPAIR-ITER5.7` patch for ART-11c preimage); Sol A–D PASS prior; Sol deferred package gate |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3696:./00-repair/ARTIFACT_STATUS.md:36:| ART-16b DEMOTION_WAVES | ACTIVE_NORMATIVE | Iter7 complete (`ARCH-0.3-REPAIR-ITER7.8`); internal A–D PASS; Sol deferred to final package gate
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3697:./iterations/REPAIR_ITER7_DEMOTION_WAVES.md:3:**ART-16b version:** `ARCH-0.3-REPAIR-ITER7.5`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3699:./iterations/REPAIR_ITER7_DEMOTION_WAVES.md:29:**YES — COMPLETE.** ART-16b `ARCH-0.3-REPAIR-ITER7.5` is `ACTIVE_NORMATIVE`.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3731:**FAIL — do not approve `DESIGN_FINAL`.**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3928:All software implementation is blocked until `DESIGN_FINAL`, yet the design’s operability cannot be established without at least a reference interpreter and negative conformance tests.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3934:**Disposition:** permit a non-autonomous, non-research conformance harness before `DESIGN_FINAL`.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:3971:**Verdict: NOT READY for integrity sign-off, `DESIGN_FINAL` review, or engineering handoff.**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4187:**Readiness:** **NOT READY** for integrity acceptance, `DESIGN_FINAL` review, or implementation handoff. The existing `IMPLEMENTATION_BLOCK` should remain active.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4199:     4	> **ARCHITECTURE_BLUEPRINT_READY = no** · **IMPLEMENTATION_PLANNING_READY = no** · **RESEARCH_EXECUTION_READY = no** · **DESIGN_FINAL = revoked**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4203:     8	**Design version:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4209:    14	**Version pin:** Package banner `ARCH-0.3-REPAIR` is the repair draft identity — **not** a release digest. Historical `ARCH-0.3-ITER5` / `ARCH-0.2` stamps are non-authoritative. Final normalization = Iteration 14.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4270:    75	Do **not** approve `DESIGN_FINAL` or lift the block without an explicit human gate decision.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4274:     4	**Version:** `ARCH-0.3-REPAIR-ITER4.0`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4295:    25	This artifact **is** the gate ID registry (table below). Meta: amending the table requires `SCOPE_CHANGE` or `DESIGN_FINAL` amendment. Validity of rows = ART-04c.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4325:    55	| `DESIGN_FINAL` | Freeze architecture; allow implementation planning |
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4340:    70	## DESIGN_FINAL status (this package)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4343:    73	DESIGN_FINAL = pending_human_approval
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4353:     3	**ART-21b version:** `ARCH-0.3-REPAIR-ITER12.1`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4356:     6	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4360:    10	SHA-256 + ART21b.CANON.v1; golden vectors; minimal fixture catalog; I.ConformanceRun. Closes ART-07b §1.2. PASS ≠ DESIGN_FINAL.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4369:     3	**ART-04d version:** `ARCH-0.3-REPAIR-ITER13.2`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4371:     5	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4379:     3	**ART-25b version:** `ARCH-0.3-REPAIR-ITER14.1`  
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4381:     5	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4383:     7	ReleaseManifest + false-pass ban + DESIGN_FINAL target = release_digest. Internal A–D then Sol package gate; HUMAN DESIGN_FINAL after Sol.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4386:    10	ITER14.1 internal A–D **PASS** (`FREEZE_OK`). Next: Sol package gate; then HUMAN DESIGN_FINAL.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4392:{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"I.CheckpointValidate","payload":{"prefix_max":3}}],"expect":"IRREVERSIBLE_PREFIX","fixture_id":"CF-10A","initial_state":{"checkpoint_event_seq_max":3,"irreversible_head_seq":5},"kind":"behavioral"}
+./adversarial_review_artifacts/REPAIR_ITER1_CRITIQUE_RECHECK11.txt:1:Version confirmed: `ARCH-0.3-REPAIR-ITER1.11`. No CRITICAL defects found.
+./iterations/REPAIR_ITER6_AUDIT_BINDING.md:3:**ART-11b version:** `ARCH-0.3-REPAIR-ITER6.20`  
+./iterations/REPAIR_ITER6_AUDIT_BINDING.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./iterations/REPAIR_ITER6_AUDIT_BINDING.md:36:**YES — COMPLETE.** ART-11b `ARCH-0.3-REPAIR-ITER6.20` is `ACTIVE_NORMATIVE`.
+./adversarial_review_artifacts/BREAKER_2026-07-23_passC.txt:9:   `ARCH-0.3-REPAIR` is only a prose banner; individual files remain labeled `ARCH-0.2`, `ARCH-0.3`, `ARCH-0.3-ITER5`, and `ARCH-0.3-REPAIR-ITER1.26`. The README’s declaration that its banner overrides file headers does not identify exact package bytes. [README version pin](/Users/nicholasmino/Desktop/Research/Work/architecture/00-README.md:11)
+./adversarial_review_artifacts/bf868f3f-1478-4bdc-9f7e-b3a06f5e290e.jsonl:1:{"role":"user","message":{"content":[{"type":"text","text":"<timestamp>Thursday, Jul 23, 2026, 10:34 AM (UTC-4)</timestamp>\n<user_query>\nADV-FC-ITER9-2: first post-PASS adversarial false-convergence check under audit_pass_id AUDIT-0.3-R19 on /Users/nicholasmino/Desktop/Research/Work/architecture/\n\nR19 closed: H-POST8-01 hard_stop singleton; H-R18-01..03 freeze scope / rule-20 / ART-16 authority; ADV-9-1 P6 I.HardStop SYSTEM mandate.\n\nReturn material_new_critical_or_high bool, NEW CRITICAL/HIGH only (exclude closed H-POST8-01, H-R18-*, ADV-9-1 if closed), confidence. Be adversarial. If clean say false honestly. Do not draft architecture. Do not approve DESIGN_FINAL.\n</user_query>"}]}}
+./adversarial_review_artifacts/bf868f3f-1478-4bdc-9f7e-b3a06f5e290e.jsonl:2:{"role":"assistant","message":{"content":[{"type":"text","text":"I'll run the post-PASS adversarial false-convergence check on the architecture audit artifacts and trace what R19 closed versus what might still be open.\n\n[REDACTED]"},{"type":"tool_use","name":"UpdateCurrentStep","input":{"current_step":"Auditing post-PASS convergence"}},{"type":"tool_use","name":"Read","input":{"path":"/Users/nicholasmino/Desktop/Research/Work/architecture/00-README.md"}},{"type":"tool_use","name":"Glob","input":{"glob_pattern":"**/*","target_directory":"/Users/nicholasmino/Desktop/Research/Work/architecture"}},{"type":"tool_use","name":"Grep","input":{"pattern":"AUDIT-0\\.3-R19|H-POST8-01|H-R18-|ADV-9-1|false.?convergence|DESIGN_FINAL|hard_stop","path":"/Users/nicholasmino/Desktop/Research/Work/architecture","-i":true}}]}}
+./adversarial_review_artifacts/bf868f3f-1478-4bdc-9f7e-b3a06f5e290e.jsonl:15:{"role":"assistant","message":{"content":[{"type":"text","text":"Cross-artifact freeze-scope alignment is the main thing left to verify before I lock the verdict.\n\n[REDACTED]"},{"type":"tool_use","name":"UpdateCurrentStep","input":{"current_step":"Compiling ADV-9-2 verdict","final_summary":"**ADV-FC-ITER9-2:** `material_new_critical_or_high = true` (confidence **0.78**). One NEW HIGH: **H-ADV9-2-01** — ART-08 still says interrupt \\\"freezes promotions\\\" only and has zero `hard_stop`/`I.HardStop` wiring in the operational FSM (incl. ART-08b), contradicting H-R18-01/R19 closure in ART-06/15/24; S14 frontier commits could proceed under a literal ART-08 read. Closed items (H-POST8-01, H-R18-*, ADV-9-1) verified. C12 stays 0. Do not approve `DESIGN_FINAL`.","completed_subtitle":"Found one new HIGH drift"}}]}}
+./adversarial_review_artifacts/bf868f3f-1478-4bdc-9f7e-b3a06f5e290e.jsonl:16:{"role":"assistant","message":{"content":[{"type":"text","text":"## ADV-FC-ITER9-2 Verdict\n\n**`material_new_critical_or_high`:** `true`  \n**Confidence:** `0.78`  \n**`DESIGN_FINAL`:** not approved (C12 = 0; needs ≥2 clean ADV after R19)\n\n---\n\n### Closed (verified — excluded)\n\n| ID | Status |\n|----|--------|\n| **H-POST8-01** | `ResearchState.hard_stop` singleton authoritative in ART-06; `I.HardStop` HUMAN\\|BUDGET\\|SYSTEM in ART-24; checkpoint snapshot in ART-17 |\n| **H-R18-01** | Freeze scope = promotions + frontier writes + other mutating ResearchState commits fail-closed (ART-06/15/24 aligned) |\n| **H-R18-02** | ART-20 rule 20 → `hard_stop.active` + `I.HardStop` + `HARD_STOP_RELEASE` |\n| **H-R18-03** | ART-16 Authority: BUDGET/SYSTEM enter-freeze; human alone for `OVERRIDE_EIO` / `HARD_STOP_RELEASE` |\n| **ADV-9-1** | ART-16 P6 orchestrator branch mandates `I.HardStop` `{source=SYSTEM}` |\n\n---\n\n### NEW HIGH\n\n**H-ADV9-2-01 — ART-08 operational FSM still understates / omits `hard_stop` enforcement**\n\n- **Where:** `08-research-cycle/RESEARCH_CYCLE_FSM.md` L147; entire ART-08/08b subtree has **zero** `hard_stop` / `I.HardStop` references\n- **Drift:** L147 says *\"Human interrupt freezes **promotions**\"* — narrower than H-R18-01 closure in ART-06/15/24 (*promotions + frontier writes + other mutating commits* fail-closed while `hard_stop.active`)\n- **Risk:** Implementer wiring the cycle FSM from ART-08 can allow **S14 frontier commits**, **S13 state appends**, and **quarantine writes** during an active `hard_stop` — undermining the singleton freeze R19 declared closed\n- **Why material:** False-convergence signal — R19 PASS treated H-R18-01 as closed, but the primary operational cycle artifact was not brought into alignment; ART-08 is on the ART-20b C12-reset list\n\n---\n\n### Not elevated (adversarial pass)\n\n- **P6 auditor branch** (no `I.HardStop`, fail-closed on PASS only) — intentional lighter playbook vs orchestrator SYSTEM freeze\n- **SUMMARIES.md / ACCEPTANCE_TESTS stale R17/C12=2 headers** — meta-doc drift; authoritative ledger is ART-25 (C12=0, R19)\n- **No new CRITICAL** design defects found beyond the ART-08 operational gap above\n\n---\n\n**C12:** remains `0`; this round is **not** clean credit toward ≥2.\n\n[REDACTED]"}]}}
+./iterations/REPAIR_ITER12_CONFORMANCE.md:3:**ART-21b version:** `ARCH-0.3-REPAIR-ITER12.1`  
+./iterations/REPAIR_ITER12_CONFORMANCE.md:6:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./iterations/REPAIR_ITER12_CONFORMANCE.md:10:SHA-256 + ART21b.CANON.v1; golden vectors; minimal fixture catalog; I.ConformanceRun. Closes ART-07b §1.2. PASS ≠ DESIGN_FINAL.
+./adversarial_review_artifacts/SOL_PASS4_package_trace.md:3:**Verdict: NOT READY for integrity sign-off, `DESIGN_FINAL` review, or engineering handoff.**
+./adversarial_review_artifacts/SOL_PASS4_package_trace.md:219:**Readiness:** **NOT READY** for integrity acceptance, `DESIGN_FINAL` review, or implementation handoff. The existing `IMPLEMENTATION_BLOCK` should remain active.
+./iterations/REPAIR_ITER5_PROMOTION_INTENT.md:3:**ART-13b version:** `ARCH-0.3-REPAIR-ITER5.6`  
+./iterations/REPAIR_ITER5_PROMOTION_INTENT.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./iterations/REPAIR_ITER5_PROMOTION_INTENT.md:39:**YES — COMPLETE.** ART-13b `ARCH-0.3-REPAIR-ITER5.6` is `ACTIVE_NORMATIVE`.
+./08-research-cycle/RESEARCH_CYCLE_FSM.md:4:**Owner:** Grok Research Orchestrator (post-`DESIGN_FINAL`); Design Orchestrator until then  
+./18-model-protocols/MODEL_PROTOCOLS.md:22:Iteration record lists every CRITICAL disposition; unanswered CRITICAL → block `DESIGN_FINAL` readiness claims.
+./18-model-protocols/MODEL_PROTOCOLS.md:25:Unresolved CRITICAL after reconciliation → human; `DESIGN_FINAL` only human.
+./iterations/ITER4_RECORD.md:17:  audit_pass_meaning: "Package ready for human DESIGN_FINAL review; DESIGN_FINAL not approved; IMPLEMENTATION_BLOCK ACTIVE"
+./iterations/ITER4_RECORD.md:42:## DESIGN_FINAL
+./iterations/ITER4_RECORD.md:44:**Still pending human approval.** C12 satisfaction ≠ human DESIGN_FINAL.
+./iterations/REPAIR_ITER14_RELEASE_IDENTITY.md:3:**ART-25b version:** `ARCH-0.3-REPAIR-ITER14.1`  
+./iterations/REPAIR_ITER14_RELEASE_IDENTITY.md:5:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**
+./iterations/REPAIR_ITER14_RELEASE_IDENTITY.md:7:ReleaseManifest + false-pass ban + DESIGN_FINAL target = release_digest. Internal A–D then Sol package gate; HUMAN DESIGN_FINAL after Sol.
+./iterations/REPAIR_ITER14_RELEASE_IDENTITY.md:10:ITER14.1 internal A–D **PASS** (`FREEZE_OK`). Next: Sol package gate; then HUMAN DESIGN_FINAL.
+./iterations/ITER9_RECORD.md:3:**Status:** C12 = 2 under AUDIT-0.3-R20; loop continues (≠ DESIGN_FINAL)  
+./iterations/ITER9_RECORD.md:28:| DESIGN_FINAL | pending_human_approval |
+./iterations/ITER9_RECORD.md:32:Human may stop anytime. Do not approve DESIGN_FINAL or lift block without human gates.
+./21-acceptance-tests/CONFORMANCE.md:4:**Version:** `ARCH-0.3-REPAIR-ITER12.1`  
+./21-acceptance-tests/CONFORMANCE.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./21-acceptance-tests/CONFORMANCE.md:14:`ponytail:` Full Q02–Q17 prompt evaluators and migration replay suites remain optional expansions. Release-bound digests = ART-25b. This artifact’s PASS ≠ `DESIGN_FINAL`.
+./21-acceptance-tests/CONFORMANCE.md:67:**I-CF-04:** Catalog PASS ⇒ `CONFORMANCE_CATALOG_PASS` for that manifest only — **not** `DESIGN_FINAL` / blueprint / release.
+./21-acceptance-tests/CONFORMANCE.md:96:| CF-10A | IRREVERSIBLE_PREFIX |
+./21-acceptance-tests/CONFORMANCE.md:130:TRACE-12D  catalog PASS ⇏ DESIGN_FINAL
+./23-limitations/LIMITATIONS.md:12:7. Design package is implementation-neutral; build plan is a separate phase after `DESIGN_FINAL`.
+./08-research-cycle/CYCLE_BINDING.md:4:**Version:** `ARCH-0.3-REPAIR-ITER9.10`  
+./08-research-cycle/CYCLE_BINDING.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:4:**Version:** `ARCH-0.3-REPAIR-ITER3.2`  
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:26:| **DesignState** | Architecture package artifacts / critique ledger | `I.Commit` (`store_targets` includes DESIGN) |
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:46:**I-STATE-SEP-02:** A single commit may list multiple `store_targets`, but effects for each store are typed and validated; no silent dual-write from agent scratch.
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:64:  H(ordered MutationEvent.event_digest for seq=1..event_seq))
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:80:  store_targets[]                     # nonempty subset of {CONTROL, RESEARCH, DESIGN}
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:92:  effects_digest = H(Effects)
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:102:  effects                             # full Effects envelope (may include ir_receipt?)
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:104:  event_digest = H(event_seq, command_digest, effects_digest,
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:108:**I-LOG-01:** EventLog append is allowed on CONTROL-only / IRREVERSIBLE commits. “Zero ResearchState mutations” means zero Research **object** upserts — not a ban on EventLog.
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:117:**Out:** `ACCEPTED{event_seq, event_digest, new_state_head_digest} | REJECTED{reason_codes[]}`.
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:140:- IrreversibleSafetyLog receipt append when command_kind ∈ {`HARD_STOP_SET`,`HARD_STOP_CLEAR`} (ART-17b I-IR-01; receipt bytes excluded from event_digest preimage)  
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:142:with `store_targets ⊆ {CONTROL, IRREVERSIBLE}` and **zero Research object upserts** and **zero** DesignState mutations (EventLog + IR receipt append allowed per I-LOG-01 / I-EFF-03)
+./01-charter/CHARTER.md:7:**Authority:** Immutable except by human gate `SCOPE_CHANGE` or `DESIGN_FINAL` amendment
+./01-charter/CHARTER.md:47:- (Post-`DESIGN_FINAL`) research cycles producing typed claims and audits
+./01-charter/CHARTER.md:125:- Implementation and research execution blocked until `DESIGN_FINAL`
+./01-charter/CHARTER.md:139:`SCOPE_CHANGE`, `DESIGN_FINAL`, `NOVELTY_CLAIM`, `INFERENCE_THEOREM_CLAIM`
+./11-integration-audit/PROVENANCE_BINDING.md:4:**Version:** `ARCH-0.3-REPAIR-ITER11.2`  
+./11-integration-audit/PROVENANCE_BINDING.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./critiques/SUMMARIES.md:63:**Loop status:** C12 = 2 under AUDIT-0.3-R17. IMPLEMENTATION_BLOCK ACTIVE. `DESIGN_FINAL` pending human. Design loop continues until human halt — do **not** treat this file as closure.
+./11-integration-audit/AUDIT_BINDING.md:4:**Version:** `ARCH-0.3-REPAIR-ITER6.20`  
+./11-integration-audit/AUDIT_BINDING.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./16-failure-recovery/DEMOTION_WAVES.md:4:**Version:** `ARCH-0.3-REPAIR-ITER7.9`  
+./16-failure-recovery/DEMOTION_WAVES.md:7:**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+./critiques/ADVERSARIAL_ROUND.md:17:`consecutive_clean_rounds = 2` under `AUDIT-0.3-R20`. C12 ≠ `DESIGN_FINAL`.
+./21-acceptance-tests/ACCEPTANCE_TESTS.md:24:| T11 | Human gates include DESIGN_FINAL + HARD_STOP | ART-15 |
+./21-acceptance-tests/ACCEPTANCE_TESTS.md:60:| T11 | PASS — ART-15 includes DESIGN_FINAL, HARD_STOP, HARD_STOP_RELEASE |
+./21-acceptance-tests/ACCEPTANCE_TESTS.md:72:See [25-audit-reports/FINAL_AUDIT.md](../25-audit-reports/FINAL_AUDIT.md). Historical T-suite ≠ `DESIGN_FINAL`.
+./21-acceptance-tests/ACCEPTANCE_TESTS.md:76:| Class | Artifacts | DESIGN_FINAL gating? |
+
+exec
+/bin/zsh -lc "find .. -name AGENTS.md -print; git status --short; ls -lt adversarial_review_artifacts | head -30; rg -n \"PACKAGE_ADV|PACKAGE_CORR|PACKAGE_MIN|PACKAGE_INTEG|PACKAGE_GATE|effects_digest = H\\(|I-EFF-03|store_targets.*IRREVERSIBLE|I-LOG-01\" adversarial_review_artifacts 06-state 07-schemas 17-indefinite-ops 21-acceptance-tests 24-interfaces 25-audit-reports 00-repair --glob '*.txt' --glob '*.md' --glob '*.json'" in /Users/nicholasmino/Desktop/Research/Work/architecture
+ succeeded in 0ms:
+fatal: not a git repository (or any of the parent directories): .git
+total 2728
+-rw-r--r--@ 1 nicholasmino  staff  302422 Jul 24 09:16 REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt
+-rw-r--r--@ 1 nicholasmino  staff       0 Jul 24 01:52 REPAIR_ITER9.10_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    2894 Jul 24 01:34 REPAIR_ITER9.4_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    2547 Jul 24 01:26 REPAIR_ITER9.2_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    1136 Jul 24 01:11 REPAIR_ITER8.9_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    3205 Jul 24 01:06 REPAIR_ITER8.7_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    3822 Jul 24 00:34 REPAIR_ITER8.2_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    2724 Jul 24 00:22 REPAIR_ITER7.5_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    2083 Jul 24 00:11 REPAIR_ITER7.3_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    3209 Jul 24 00:07 REPAIR_ITER7.2_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff     347 Jul 23 23:57 REPAIR_ITER6.20_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    1683 Jul 23 23:54 REPAIR_ITER6.19_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    1055 Jul 23 23:43 REPAIR_ITER6.15_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    1051 Jul 23 23:39 REPAIR_ITER6.14_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    2618 Jul 23 23:36 REPAIR_ITER6.13_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    2546 Jul 23 23:07 REPAIR_ITER6.9_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    3085 Jul 23 22:55 REPAIR_ITER6.6_REVIEW_combined.txt
+-rw-r--r--@ 1 nicholasmino  staff    2477 Jul 23 22:35 REPAIR_ITER6.1_REVIEW_integ.txt
+-rw-r--r--@ 1 nicholasmino  staff    1653 Jul 23 22:35 REPAIR_ITER6.1_REVIEW_min.txt
+-rw-r--r--@ 1 nicholasmino  staff    3189 Jul 23 22:35 REPAIR_ITER6.1_REVIEW_corr.txt
+-rw-r--r--@ 1 nicholasmino  staff    2046 Jul 23 22:35 REPAIR_ITER6.1_REVIEW_adv.txt
+-rw-r--r--@ 1 nicholasmino  staff    4021 Jul 23 22:31 REPAIR_ITER6.0_REVIEW_integ.txt
+-rw-r--r--@ 1 nicholasmino  staff    1206 Jul 23 22:31 REPAIR_ITER6.0_REVIEW_min.txt
+-rw-r--r--@ 1 nicholasmino  staff    4260 Jul 23 22:31 REPAIR_ITER6.0_REVIEW_corr.txt
+-rw-r--r--@ 1 nicholasmino  staff    1728 Jul 23 22:31 REPAIR_ITER6.0_REVIEW_adv.txt
+-rw-r--r--@ 1 nicholasmino  staff     741 Jul 23 22:26 REPAIR_ITER5.6_REVIEW_integ.txt
+-rw-r--r--@ 1 nicholasmino  staff     575 Jul 23 22:26 REPAIR_ITER5.6_REVIEW_min.txt
+-rw-r--r--@ 1 nicholasmino  staff    1122 Jul 23 22:26 REPAIR_ITER5.6_REVIEW_corr.txt
+-rw-r--r--@ 1 nicholasmino  staff     311 Jul 23 22:26 REPAIR_ITER5.6_REVIEW_adv.txt
+17-indefinite-ops/CHECKPOINT_RESTORE.md:64:1. Build `research_control_design_effects`; `effects_digest = H(research_control_design_effects)` (ART-06b).  
+06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:92:  effects_digest = H(Effects)
+06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:108:**I-LOG-01:** EventLog append is allowed on CONTROL-only / IRREVERSIBLE commits. “Zero ResearchState mutations” means zero Research **object** upserts — not a ban on EventLog.
+06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:142:with `store_targets ⊆ {CONTROL, IRREVERSIBLE}` and **zero Research object upserts** and **zero** DesignState mutations (EventLog + IR receipt append allowed per I-LOG-01 / I-EFF-03)
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:30:PACKAGE_ADV: PASS|FAIL
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:31:PACKAGE_CORR: PASS|FAIL
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:32:PACKAGE_MIN: PASS|FAIL
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:33:PACKAGE_INTEG: PASS|FAIL
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:35:If all PASS: PACKAGE_GATE: PASS and one sentence residual human-only next step.
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2045:    91	  effects_digest = H(Effects)
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4483:PACKAGE_ADV: FAIL
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4484:PACKAGE_CORR: FAIL
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4485:PACKAGE_MIN: FAIL
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4486:PACKAGE_INTEG: FAIL
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4497:PACKAGE_ADV: FAIL
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4498:PACKAGE_CORR: FAIL
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4499:PACKAGE_MIN: FAIL
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4500:PACKAGE_INTEG: FAIL
+
+exec
+/bin/zsh -lc "nl -ba adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt | sed -n '4440,4525p'; nl -ba 06-state/MUTATION_AND_AUTHORITATIVE_STATE.md | sed -n '1,180p'; nl -ba 17-indefinite-ops/CHECKPOINT_RESTORE.md | sed -n '1,180p'" in /Users/nicholasmino/Desktop/Research/Work/architecture
+ succeeded in 0ms:
+  4440	07-schemas/CANONICAL_OBJECTS.md:56:**I-REL-01:** `EQUIVALENT_TO` valid iff evidence Claim has `assertion_schema_id ∈ equivalence_schemas[]`, payload binds both digests exactly, and `DerivedProofFloor(evidence) = CERTIFIED_INFORMAL` (I-PF-04). INFORMAL alone is insufficient.
+  4441	07-schemas/CANONICAL_OBJECTS.md:144:`InheritedRequired(C) = ⋃_{d ∈ C.dependencies} NetRequired(premise(d))`  
+  4442	07-schemas/CANONICAL_OBJECTS.md:149:`NetRequired(C) = GrossRequired(C) \ { r.assumption_digest | r applicable to C }`  
+  4443	07-schemas/CANONICAL_OBJECTS.md:150:`NetRequiredDigest(C) = H(sorted unique digests in NetRequired(C))`  
+  4444	07-schemas/CANONICAL_OBJECTS.md:153:**I-ASM-02:** Discharge valid iff AssumptionUse role=DISCHARGED; statement=conclusion digests match; discharger ≠ target; `DerivedProofFloor(discharger)=CERTIFIED_INFORMAL`; discharger is LOGICAL/DEFINITIONAL premise; no circular discharge.
+  4445	07-schemas/CANONICAL_OBJECTS.md:203:  NetRequiredDigest(C),
+  4446	07-schemas/CANONICAL_OBJECTS.md:265:**I-CHAIN-01:** Missing prior-segment dependency or failed digest-equality projection ⇒ invalid.
+  4447	07-schemas/CANONICAL_OBJECTS.md:323:**I-CERT-02c COMPOSITION_INPUT:** DERIVED from ordered LOGICAL deps of composition Claim; slot_id = dependency index; subjects need not match across inputs.
+  4448	07-schemas/CANONICAL_OBJECTS.md:392:**I-CX-04:** FULL requires nonempty construct; witness Claim in `refutation_schemas[]`; witness binds construct + targets; `DerivedProofFloor(witness)=CERTIFIED_INFORMAL`. Else draft only.  
+  4449	07-schemas/CANONICAL_OBJECTS.md:402:  research_maturity                   # OPEN | CONJECTURE | PARTIAL_RESULT | RESULT | SUPERSEDED
+  4450	07-schemas/CANONICAL_OBJECTS.md:485:| proof_status | = DerivedProofFloor |
+  4451	07-schemas/CANONICAL_OBJECTS.md:490:**I-PF-04 (DerivedProofFloor):** At most one ProofAttachment per claim_digest (extras invalid).
+  4452	07-schemas/CANONICAL_OBJECTS.md:493:DerivedProofFloor(C) at state S =
+  4453	07-schemas/CANONICAL_OBJECTS.md:494:  if ResearchMaturityRecord[C]=SUPERSEDED → UNPROVED   # ART-16b I-DW-23
+  4454	07-schemas/CANONICAL_OBJECTS.md:507:**I-AX-01:** If FULL CX closure hits C ⇒ ResearchMaturityRecord.research_maturity ∈ {SUPERSEDED, OPEN} and floor ≠ CERTIFIED_INFORMAL.
+  4455	07-schemas/CANONICAL_OBJECTS.md:509:**I-STATUS-COUPLE (ART-07c / ART-13b):** `research_maturity = RESULT` requires `DerivedProofFloor = CERTIFIED_INFORMAL`. Enforced at APPLY_PROMOTION Commit time (ART-13b I-AP-04).
+  4456	07-schemas/CANONICAL_OBJECTS.md:527:                                      #    lemma_claim_digests, proposer_principal_digest?)
+  4457	07-schemas/CANONICAL_OBJECTS.md:533:  lemma_claim_digests[]
+  4458	07-schemas/CANONICAL_OBJECTS.md:537:**I-PF-01..03:** lemmas=LOGICAL premises; proofs outside claim_digest; kinds closed enum.  
+  4459	07-schemas/CANONICAL_OBJECTS.md:538:**I-PF-04:** `DerivedProofFloor` CERTIFIED_INFORMAL only via ART-04c I-CERTIFY-01 (CertificationRecord).  
+  4460	07-schemas/CANONICAL_OBJECTS.md:586:| I-ASM-01..03 | NetRequired / CERTIFIED discharge |
+  4461	07-schemas/CANONICAL_OBJECTS.md:587:| I-FP-01 | Fingerprint includes NetRequiredDigest |
+  4462	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:109:  NetRequiredDigest
+  4463	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:120:**I-CERT-PROOF-01:** Usable certificate status ≤ `DerivedProofFloor(claim)`.
+  4464	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:148:  NetRequiredDigest
+  4465	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:164:`NetRequiredDigest` / `DefPinMultisetDigest` / `failure_budget_digest` = Claim-level digests,  
+  4466	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:184:  ASSUMPTION_MAP              # out NetRequired ⊇ in (weakening); structural; no proof claim
+  4467	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:199:- `ASSUMPTION_MAP` → `NetRequiredDigest` (and dependent fingerprint projections of it)
+  4468	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:206:and `DerivedProofFloor(P)` meeting use_class floor.
+  4469	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:209:Let `NetRequiredSet(X)` be the assumption-digest set whose hash is `NetRequiredDigest(X)` (ART-07b).  
+  4470	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:211:- `NetRequiredSet(P) ⊆ NetRequiredSet(E_out)` (for InferenceEndpoint, NetRequiredSet from its NetRequiredDigest carrier)  
+  4471	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:264:   and post-map `data_domain`, `parameter_domain`, `NetRequired`, `DefPins`,  
+  4472	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:299:2. C has a `BRIDGE` dependency on B.claim_digest.  
+  4473	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:302:5. Context inheritance: `NetRequiredSet(B) ⊆ NetRequiredSet(C)`, `DefPinSet(B) ⊆ DefPinSet(C)`,  
+  4474	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:323:**I-UTIL-02:** `CONSTRAINT_INPUT` = Claim dependency `kind=UTILITY_CONSTRAINT` citing utility Claim U.  
+  4475	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:333:- `DerivedProofFloor(U)` ≥ floor for evaluator `use_class`  
+  4476	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:355:`REFUTED` / `SUPERSEDED` are ClaimRelation / research_maturity states — **not** applicability outputs.
+  4477	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:374:**I-STATUS-COUPLE-01:** `research_maturity=RESULT` ⇒ `DerivedProofFloor=CERTIFIED_INFORMAL` (enforced by ART-13b APPLY_PROMOTION).  
+  4478	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:393:Exact source match; typed transforms + closed structural write sets; ENDPOINT_CONSTRUCTION; proof conclusion + LOGICAL dep + NetRequired/pin/scope closure; inference/transfer consumers bound to target + APPLICABLE; composition endpoint-complete; no CompatibilityPolicy; no empirical→theorem; fingerprint §12; legacy IDs quarantined.
+  4479	07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:405:UNKNOWN_SCHEMA | INCOMPLETE_NORMATIVE | DIGEST_MISMATCH | RELATION_MISMATCH | NOTION_MISMATCH | OBJECT_MISMATCH | OPERATOR_MISMATCH | PARAMETER_DOMAIN_MISMATCH | ASSUMPTION_MISMATCH | DEFINITION_PIN_MISMATCH | QUANTIFIER_MISMATCH | FAILURE_BUDGET_MISMATCH | COHERENCE_TRIPLE_INVALID | INFERENCE_TUPLE_INVALID | PROOF_FLOOR_INSUFFICIENT | TRANSFORM_PROOF_MISMATCH | STALE_* | SUPERSEDED_* | REFUTED_CLAIM | INVALID_COMPOSITION | UNTYPED_LEGACY_OBJECT | EMPIRICAL_IN_THEOREM_SLOT | DD_BLOCKED | STATUS_COUPLE_VIOLATION | HETEROGENEOUS_MAP_UNBOUND | UTILITY_CONSTRAINT_INCOMPLETE | ENDPOINT_CONSTRUCTION_MISSING | INFERENCE_TARGET_MISMATCH | APPLICABILITY_NOT_APPLICABLE
+  4480	
+  4481	2026-07-24T13:15:29.877438Z ERROR codex_models_manager::manager: failed to renew cache TTL: missing field `supports_reasoning_summaries` at line 88 column 5
+  4482	codex
+  4483	PACKAGE_ADV: FAIL
+  4484	PACKAGE_CORR: FAIL
+  4485	PACKAGE_MIN: FAIL
+  4486	PACKAGE_INTEG: FAIL
+  4487	CRITICAL ART-16b/ART-04c — I-DW-25 permits replaying the pre-wave certification after clearance, restoring a dependent’s proof floor without repaired evidence.
+  4488	CRITICAL ART-21b — Every CF fixture lacks the I-CF-10-required expected_digest_hex, and several fixtures use payloads forbidden by the normative command schemas.
+  4489	CRITICAL ART-17b/ART-06b — IrreversibleSafetyLog append is outside ART-06b’s exact three-store atomic Commit, leaving a crash window between an irreversible event and its receipt.
+  4490	HIGH ART-11c/ART-13b — I-EV-01 fences promotion evidence_refs[], but neither PromotionIntent nor APPLY_PROMOTION defines that carrier.
+  4491	HIGH ART-06b/ART-11c — Hard-stop permits three provenance commands while simultaneously requiring CONTROL-only effects, although each command normatively mutates ResearchState.
+  4492	HIGH ART-04d/ART-04c — COUNTEREXAMPLE_ATTACKER is mandatory and present, disabling I-OM-03 fallback, but has no RECORD_COUNTEREXAMPLE authorization.
+  4493	HIGH ART-25b/ART-21b/ART-ASI — The active artifact path set and several ReleaseManifest component-digest preimages are not deterministically specified.
+  4494	HIGH ART-RBL/ART-25/IMPLEMENTATION_BLOCK — Gate state is non-single-valued: Sol-deferred blockers are CLOSED while repair_phase is both ITERATION_4_IDENTITY_AUTHORITY and PACKAGE_SOL_GATE.
+  4495	tokens used
+  4496	143,051
+  4497	PACKAGE_ADV: FAIL
+  4498	PACKAGE_CORR: FAIL
+  4499	PACKAGE_MIN: FAIL
+  4500	PACKAGE_INTEG: FAIL
+  4501	CRITICAL ART-16b/ART-04c — I-DW-25 permits replaying the pre-wave certification after clearance, restoring a dependent’s proof floor without repaired evidence.
+  4502	CRITICAL ART-21b — Every CF fixture lacks the I-CF-10-required expected_digest_hex, and several fixtures use payloads forbidden by the normative command schemas.
+  4503	CRITICAL ART-17b/ART-06b — IrreversibleSafetyLog append is outside ART-06b’s exact three-store atomic Commit, leaving a crash window between an irreversible event and its receipt.
+  4504	HIGH ART-11c/ART-13b — I-EV-01 fences promotion evidence_refs[], but neither PromotionIntent nor APPLY_PROMOTION defines that carrier.
+  4505	HIGH ART-06b/ART-11c — Hard-stop permits three provenance commands while simultaneously requiring CONTROL-only effects, although each command normatively mutates ResearchState.
+  4506	HIGH ART-04d/ART-04c — COUNTEREXAMPLE_ATTACKER is mandatory and present, disabling I-OM-03 fallback, but has no RECORD_COUNTEREXAMPLE authorization.
+  4507	HIGH ART-25b/ART-21b/ART-ASI — The active artifact path set and several ReleaseManifest component-digest preimages are not deterministically specified.
+  4508	HIGH ART-RBL/ART-25/IMPLEMENTATION_BLOCK — Gate state is non-single-valued: Sol-deferred blockers are CLOSED while repair_phase is both ITERATION_4_IDENTITY_AUTHORITY and PACKAGE_SOL_GATE.
+     1	# 06b — Authoritative State and Mutation Semantics (Normative)
+     2	
+     3	**Artifact ID:** `ART-06b`  
+     4	**Version:** `ARCH-0.3-REPAIR-ITER3.2`  
+     5	**Normative status:** `ACTIVE_NORMATIVE` (Iteration 3 complete; Sol reviews A–D PASS on ITER3.2)  
+     6	**Depends on:** `ART-07b` ITER1.26 · `ART-07c` ITER2.7  
+     7	**Supersedes for mutation/commit authority:** ART-06 event/registry poke prose; ART-24 direct `I.HardStop` / ProposeWrite-alone  
+     8	**Authority:** Design material. Changes reset Iteration-3 readiness.
+     9	
+    10	## Purpose
+    11	
+    12	One logically serialized authoritative mutation boundary. No caller-trusted booleans. ControlState fenced from ResearchState. Hard-stop is a commit-linearized fence. Stale writes fail closed. Event log is replay-sufficient.
+    13	
+    14	## Scope lock
+    15	
+    16	Architecture properties only — not a DB/queue/consensus product. Serialization = total order of accepted commits for Control+Research+Design+IrreversibleSafetyLog.
+    17	
+    18	---
+    19	
+    20	## 1. State stores (four)
+    21	
+    22	| Store | Contents | Mutated only via |
+    23	|-------|----------|------------------|
+    24	| **ControlState** | Exact record below | `I.Commit` |
+    25	| **ResearchState** | ART-07b/07c objects + side tables + **append-only MutationEvent log** | `I.Commit` |
+    26	| **DesignState** | Architecture package artifacts / critique ledger | `I.Commit` (`store_targets` includes DESIGN) |
+    27	| **IrreversibleSafetyLog** | ART-17b receipts / head (not restorable via ResearchState snapshot alone) | `I.Commit` — same atomic accept; if I-IR-01 fires and receipt append fails ⇒ reject whole Commit |
+    28	
+    29	```text
+    30	ControlState                          # exact field set — no ellipsis
+    31	  event_seq                           # u64; last accepted commit seq (0 if none)
+    32	  hard_stop                           # HardStopRecord
+    33	  role_ceiling_profile_digest         # digest of active OPERABLE_MINIMAL / expanded profile
+    34	```
+    35	
+    36	```text
+    37	HardStopRecord
+    38	  active                              # bool
+    39	  source                              # HUMAN | BUDGET | SYSTEM | ⊥ if !active
+    40	  set_at_event_seq                    # 0 if !active
+    41	  signal_ref_digest                   # ⊥ if !active
+    42	  release_dec_digest                  # ⊥ if active or never cleared; set only on CLEAR
+    43	```
+    44	
+    45	**I-STATE-SEP-01:** Research object identity and promotion/audit effects live only in ResearchState (plus the MutationEvent log stored there). ControlState never stores Claims/certs/bridges as research authority.  
+    46	**I-STATE-SEP-02:** A single commit may list multiple `store_targets`, but effects for each store are typed and validated; no silent dual-write from agent scratch.
+    47	
+    48	---
+    49	
+    50	## 2. Heads (closed digests)
+    51	
+    52	```text
+    53	control_head_digest = H(
+    54	  event_seq,
+    55	  hard_stop.active, hard_stop.source, hard_stop.set_at_event_seq,
+    56	  hard_stop.signal_ref_digest, hard_stop.release_dec_digest,
+    57	  role_ceiling_profile_digest
+    58	)
+    59	
+    60	research_snapshot_digest = H(canonical serialization of all ResearchState
+    61	  objects/side-tables EXCLUDING the MutationEvent log)
+    62	
+    63	research_head_digest = H(event_seq, research_snapshot_digest,
+    64	  H(ordered MutationEvent.event_digest for seq=1..event_seq))
+    65	
+    66	design_head_digest = H(event_seq, DesignState snapshot digest)
+    67	
+    68	state_head_digest = H(event_seq, control_head_digest, research_head_digest, design_head_digest)
+    69	```
+    70	
+    71	**I-HEAD-01:** Heads are DERIVED only. Agent-supplied head values are never authoritative.
+    72	
+    73	---
+    74	
+    75	## 3. Command and effects (bound)
+    76	
+    77	```text
+    78	Command                               # sole preimage; digest computed inside I.Commit
+    79	  command_kind
+    80	  store_targets[]                     # nonempty subset of {CONTROL, RESEARCH, DESIGN}
+    81	  payload                             # typed per command_kind
+    82	  expected_state_head_digest          # = H(event_seq, control, research, design heads)
+    83	  caller_principal_digest             # ART-04c — required when ART-04c ACTIVE
+    84	  caller_binding_digest
+    85	  # caller_signature_material NOT in command_digest preimage for unsigned hash;
+    86	  # signature verifies over H(Command without signature field)
+    87	
+    88	command_digest = H(Command without caller_signature_material)
+    89	
+    90	Effects                               # DERIVED — never caller-authoritative
+    91	  effects = DeriveEffects(Command, pre_ControlState, pre_ResearchState, pre_DesignState)
+    92	  effects_digest = H(Effects)
+    93	```
+    94	
+    95	**I-EFF-01:** `I.Commit` MUST set `effects = DeriveEffects(...)`. Validator validates **Command** and the derived **Effects**. No alternate effect set may be appended.  
+    96	**I-EFF-02:** `MutationEvent` stores the full `Effects` envelope (not only its digest) so the log is replay-sufficient.
+    97	
+    98	```text
+    99	MutationEvent                         # append-only EventLog (shared; not a Research object table)
+   100	  event_seq
+   101	  command                             # full Command preimage
+   102	  effects                             # full Effects envelope (may include ir_receipt?)
+   103	  validation_preimage                 # derived predicates, reason_codes, art07c_results[]
+   104	  event_digest = H(event_seq, command_digest, effects_digest,
+   105	                   H(validation_preimage), pre_state_head_digest)
+   106	```
+   107	
+   108	**I-LOG-01:** EventLog append is allowed on CONTROL-only / IRREVERSIBLE commits. “Zero ResearchState mutations” means zero Research **object** upserts — not a ban on EventLog.
+   109	
+   110	---
+   111	
+   112	## 4. Mutation boundary (exclusive)
+   113	
+   114	### I.Commit  (**sole mutator**; sole public write interface)
+   115	
+   116	**In:** `Command` (inline).  
+   117	**Out:** `ACCEPTED{event_seq, event_digest, new_state_head_digest} | REJECTED{reason_codes[]}`.
+   118	
+   119	**Pipeline (one indivisible transition; logical single-committer exclusivity — no `commit_busy` state bit):**
+   120	1. Recompute `state_head_digest`; if ≠ `Command.expected_state_head_digest` → `STALE_WRITE`.  
+   121	2. **ART-04c I-CMD-AUTH-01** (when ART-04c ACTIVE): authenticate caller + authorize command_kind.  
+   122	3. Hard-stop fence (§5) on **derived effects**.  
+   123	4. Caller-boolean ban (§6) on Command.payload.  
+   124	5. `effects = DeriveEffects(...)`; validate Command+Effects (ART-07b/07c/04c as applicable).  
+   125	6. **Tentative** post-state = Reduce(pre, effects). If reduce would fail → `REDUCE_ABORT` (**no** event appended).  
+   126	7. Else atomically: append MutationEvent; install post-state; `event_seq+=1`; recompute heads; ACCEPTED.
+   127	
+   128	**I-MUT-01:** No normative write outside `I.Commit`.  
+   129	**I-MUT-02:** Rejected commits append nothing and leave heads unchanged (ART-24).  
+   130	**I-MUT-03:** Direct registry poke / scratch-as-authority → invalid.
+   131	
+   132	`DeriveEffects` / `Reduce` are **internal pure functions** of Commit — not separate public interfaces.
+   133	
+   134	---
+   135	
+   136	## 5. Hard-stop fencing
+   137	
+   138	**I-HS-01:** While `hard_stop.active=true`, Commit REJECTS unless **all** derived effects are in the allowlist:
+   139	- ControlState-only updates to `HardStopRecord` / `role_ceiling_profile_digest` / ControlState decision-log append for `HARD_STOP_RELEASE` only  
+   140	- IrreversibleSafetyLog receipt append when command_kind ∈ {`HARD_STOP_SET`,`HARD_STOP_CLEAR`} (ART-17b I-IR-01; receipt bytes excluded from event_digest preimage)  
+   141	- command kinds `HARD_STOP_SET`, `HARD_STOP_CLEAR`, `CONTROL_DIAGNOSTIC_NOOP`, and `RECORD_HUMAN_DECISION` **only when** `gate_id=HARD_STOP_RELEASE`  
+   142	with `store_targets ⊆ {CONTROL, IRREVERSIBLE}` and **zero Research object upserts** and **zero** DesignState mutations (EventLog + IR receipt append allowed per I-LOG-01 / I-EFF-03)
+   143	
+   144	Provenance / ResearchState writers are **not** allowlisted during hard-stop.
+   145	
+   146	`HARD_STOP_CLEAR` payload MAY embed the HumanDecision envelope (preferred during stop) so release need not be a prior ResearchState write.
+   147	
+   148	**I-HS-02:** `HARD_STOP_SET` / `HARD_STOP_CLEAR` transitions:
+   149	
+   150	| Kind | Requires | Post HardStopRecord |
+   151	|------|----------|---------------------|
+   152	| SET | `payload.source ∈ {HUMAN,BUDGET,SYSTEM}`, `signal_ref_digest` | `active=true`, source/signal/set_at_event_seq set, **`release_dec_digest=⊥`** |
+   153	| CLEAR | `payload.release_dec_digest ≠ ⊥` | `active=false`; `release_dec_digest=payload.release_dec_digest`; source/signal/set_at = ⊥ / 0 |
+   154	
+   155	**I-HS-03:** Fence check uses ControlState fixed after stale-write head agreement and before accept — linearizable in the commit total order.  
+   156	**I-HS-04:** `HARD_STOP_CLEAR` requires `release_dec_digest` → ART-04c-valid HumanDecision `HARD_STOP_RELEASE` whose `target_digest` binds this freeze (`H(set_at_event_seq, signal_ref_digest)`), when ART-04c is ACTIVE.  
+   157	**I-HS-05:** Legacy `ResearchState.hard_stop` / direct `I.HardStop` are non-authoritative.
+   158	
+   159	---
+   160	
+   161	## 6. Caller-boolean ban
+   162	
+   163	Forbidden as authoritative payload fields (reject `CALLER_BOOLEAN_FORBIDDEN`):
+   164	
+   165	```text
+   166	dep_closure_ok | contradiction_clear | eio_pass | lit_closure_ok
+   167	hop_chain_ok | lean_manifest_ok | audit_pass | bridge_ok | cert_ok
+   168	math_stable | roles_ok | floor_ok | applicable | any authorizing *_ok
+   169	```
+   170	
+   171	**I-BOOL-01:** Derived predicates appear only inside `validation_preimage`.  
+   172	**I-BOOL-02:** Commands that would **apply** research-maturity / inference-applicability **axis** transitions → `AXIS_WRITE_FORBIDDEN`, except `APPLY_PROMOTION` under ART-13b; `ADVANCE_DEMOTION_WAVE`; and DeriveEffects seed-`SUPERSEDED` writes of `RECORD_COUNTEREXAMPLE` (FULL) / `START_DEMOTION_WAVE` / I-DW-33 under ART-16b. Legacy codeword `PROMOTION_DEFERRED_ITER5` is an alias of `AXIS_WRITE_FORBIDDEN` for other non-APPLY commands until consumers migrate.  
+   173	Exception (ART-04c): `ATTACH_CERTIFICATION` may add CertificationRecord / proof-attachment links that make `DerivedProofFloor` evaluate to CERTIFIED_INFORMAL; it MUST NOT write ResearchMaturityRecord or inference axis fields.  
+   174	**ART-16b DeriveEffects:** I-DW-30/31/32/33/START mint waves + I-DW-26 `DemotionFloorBreak` upserts are Commit-derived (not caller booleans).
+   175	
+   176	---
+   177	
+   178	## 7. ResearchState keys
+   179	
+   180	Authoritative keys = ART-07b/07c digests (`claim_digest`, `cx_digest`, …).  
+     1	# 17b — Checkpoint / Restore Binding (Normative)
+     2	
+     3	**Artifact ID:** `ART-17b`  
+     4	**Version:** `ARCH-0.3-REPAIR-ITER10.2`  
+     5	**Normative status:** `ACTIVE_NORMATIVE`  
+     6	**Depends on:** ART-06b · ART-07b · ART-16b · ART-04c · ART-13b · ART-01  
+     7	**Package:** `ARCH-0.3-REPAIR` · **NON-RELEASE**  
+     8	**Self-contained:** Sole normative text for durable checkpoint/restore. Closes `B-RECOVERY-PREFIX-01` and `B-HARDSTOP-FENCE-01` restore leg. Supersedes ART-17 / ART-16 P2–P6 restore prose.
+     9	
+    10	## Purpose
+    11	
+    12	Restore cannot accept a self-presented event prefix that omits or substitutes later irreversible commits. Validate binds an independent irreversible receipt chain. Hard-stop after restore is ControlState only. Mid-wave crash resume = last CP + forward-fix of durable events through irreversible head (open waves OK; APPLY still fenced).
+    13	
+    14	`ponytail:` Anchor is a property (append-only monotonic head), not a product store choice. Envelope signing / migration versioning → Iter14. Executable fixtures → Iter12.
+    15	
+    16	---
+    17	
+    18	## 1. Objects
+    19	
+    20	```text
+    21	IrreversibleKind                      # exactly one per irreversible Commit
+    22	  FULL_CX                             # RECORD_COUNTEREXAMPLE FULL (+ I-DW-30 in same Commit)
+    23	  PIN_SUPERSESSION                    # SET_ACTIVE_DEFINITION_HEAD that mints I-DW-31
+    24	  LEAN_GAP                            # Commit that mints I-DW-32
+    25	  CX_EXPAND                           # Commit that mints I-DW-33
+    26	  DEMOTION_START                      # START_DEMOTION_WAVE that inserts a new wave
+    27	  HARD_STOP_SET
+    28	  HARD_STOP_CLEAR
+    29	  EIO_VETO                            # SET_EIO_VETO
+    30	
+    31	IrreversibleReceipt
+    32	  event_seq
+    33	  event_digest          # = MutationEvent.event_digest (computed WITHOUT hashing this receipt)
+    34	  kind                  # IrreversibleKind
+    35	  receipt_digest = H("ART17b.IR.v1", event_seq, event_digest, kind)
+    36	
+    37	IrreversibleSafetyLog                 # property, not a restorable table
+    38	  receipts[]                          # append-only, ordered by event_seq
+    39	  irreversible_head_seq               # max event_seq; monotonic
+    40	  head_receipt_digest                 # receipt_digest of head
+    41	
+    42	CheckpointRecord
+    43	  checkpoint_id                       # immutable
+    44	  event_seq_max                       # inclusive merkle-covered end
+    45	  merkle_root
+    46	  pin_table_hash
+    47	  open_contradiction_ids[]
+    48	  gate_status_snapshot                # verify-only; hard_stop = ControlState.HardStopRecord names
+    49	  lean_manifest_ids[]
+    50	  audit_ledger_tail_id
+    51	  irreversible_head_seq_at_create
+    52	  irreversible_head_digest_at_create  # head_receipt_digest at create
+    53	  release_digest_at_create?           # ART-25b optional at seal-bound ops
+    54	  created_at
+    55	```
+    56	
+    57	**I-CP-01:** Checkpoint identity immutable. `gate_status_snapshot.hard_stop` uses ART-06b names: `active`, `source`, `set_at_event_seq`, `signal_ref_digest`, `release_dec_digest` — derived verify field only; **not** restore authority.
+    58	
+    59	---
+    60	
+    61	## 2. Irreversible append (I-IR-01)
+    62	
+    63	**I-IR-01:** At every `I.Commit` accept that matches exactly one `IrreversibleKind` above:
+    64	1. Build `research_control_design_effects`; `effects_digest = H(research_control_design_effects)` (ART-06b).  
+    65	2. Compute `event_digest` from command + effects_digest + validation (ART-06b).  
+    66	3. Construct `IrreversibleReceipt` citing that `event_digest`; include as `Effects.ir_receipt`.  
+    67	4. Atomically append receipt to IrreversibleSafetyLog + EventLog MutationEvent.  
+    68	Priority if multiple fire: `FULL_CX` > `CX_EXPAND` > `PIN_SUPERSESSION` > `LEAN_GAP` > `DEMOTION_START` > `HARD_STOP_*` > `EIO_VETO`. Missing receipt ⇒ Commit REJECT.
+    69	
+    70	`ponytail:` Broader human-denial set deferred; upgrade = extend IrreversibleKind only.
+    71	
+    72	**I-IR-02:** Anchor lives outside the restorable ResearchState store. A candidate event prefix alone is not an authority for the irreversible floor.
+    73	
+    74	---
+    75	
+    76	## 3. Merkle (I-CP-10)
+    77	
+    78	1. Canonicalize each committed `MutationEvent` 0..`event_seq_max` as UTF-8 JSON with sorted keys.  
+    79	2. `leaf_i = H(canonical_event_i)`.  
+    80	3. Merkle tree pairwise `H(left||right)`; odd promote.  
+    81	4. Stored `merkle_root` MUST equal recomputed root over **only** `0..event_seq_max`.
+    82	
+    83	Legacy ART-17 “`event_seq_max ≥ max_seq(FULL_REFUTE)` from prefix alone” is **non-authoritative**.
+    84	
+    85	---
+    86	
+    87	## 4. `I.CheckpointValidate` (I-CP-20)
+    88	
+    89	**Inputs:** `checkpoint_id`, candidate committed-event prefix covering `0..N` where `N ≥ irreversible_head_seq` and `N ≥ CheckpointRecord.event_seq_max`, full `IrreversibleSafetyLog` receipt chain through current head.
+    90	
+    91	### Create-time checks (when verifying a just-minted CheckpointRecord)
+    92	- `irreversible_head_seq_at_create` = live `irreversible_head_seq`
+    93	- `irreversible_head_digest_at_create` = live `head_receipt_digest`
+    94	- Merkle over `0..event_seq_max` matches
+    95	
+    96	### Restore / startup checks (all required; fail-closed)
+    97	
+    98	| Check | Fail code |
+    99	|-------|-----------|
+   100	| Recompute merkle over `0..event_seq_max` = stored `merkle_root` | `MERKLE_MISMATCH` |
+   101	| Candidate prefix length `N ≥ irreversible_head_seq` | `IRREVERSIBLE_PREFIX` |
+   102	| For every receipt with `event_seq ≤ irreversible_head_seq`: prefix event at that seq has `event.event_digest = receipt.event_digest` and maps to `receipt.kind` | `IRREVERSIBLE_PREFIX` |
+   103	| Events `event_seq_max+1..N` (if any) are present and contiguous (forward-fix segment) | `FORWARD_FIX_GAP` |
+   104	| After replay of `0..N`: `ControlState.hard_stop` equals snapshot hard_stop fields **only if** `N = event_seq_max`; if `N > event_seq_max`, hard_stop MUST equal ControlState derived from full replay (snapshot is tip-at-create verify only) | `HARD_STOP_SNAPSHOT_MISMATCH` |
+   105	
+   106	**I-CP-22:** Incomplete DemotionWave does **not** fail validate. Mid-wave Create is allowed. APPLY remains fenced by I-DW-20 / I-AP-13.
+   107	
+   108	Any fail ⇒ route **S15**; **no** `APPLY_PROMOTION` until a later validate PASS.
+   109	
+   110	**I-CP-21:** Prefer forward-fix (replay CP merkle tip, then events through irreversible head) over backward rollback.
+   111	
+   112	---
+   113	
+   114	## 5. Restore (I-CP-30)
+   115	
+   116	1. Select `CheckpointRecord`; supply durable events `0..N` with `N ≥ max(event_seq_max, irreversible_head_seq)`; run `I.CheckpointValidate`.  
+   117	2. On PASS: replay `0..N` under ART-06b; rebuild derived indexes from replayed commits only.  
+   118	3. Discard scratch / uncommitted drafts.  
+   119	4. If post-restore `ControlState.hard_stop.active=true`: ART-06b I-HS-01 — promotions blocked until `HARD_STOP_CLEAR` + ART-04c `HARD_STOP_RELEASE`. Snapshot cannot clear the stop.  
+   120	5. Open waves may be present; ADVANCE continues; APPLY blocked until COMPLETE.
+   121	
+   122	**I-CP-31:** ART-16 P2/P6 and ART-17 interrupt prose that write `ResearchState.hard_stop` via `I.HardStop` are shadow/non-authoritative. Authoritative path = `HARD_STOP_SET` / `HARD_STOP_CLEAR` → ControlState.
+   123	
+   124	---
+   125	
+   126	## 6. Commands
+   127	
+   128	- `I.CheckpointCreate` — system: mint `CheckpointRecord` at current committed tip (open waves allowed) with live irreversible head seq/digest; merkle over `0..event_seq_max`.  
+   129	- `I.CheckpointValidate` — system read-only per I-CP-20.
+   130	
+   131	No maturity / floor / inference writes.
+   132	
+   133	---
+   134	
+   135	## 7. Consumer deltas
+   136	
+   137	| Artifact | Delta |
+   138	|----------|-------|
+   139	| ART-07b | CheckpointRecord; IrreversibleReceipt stubs |
+   140	| ART-06b | I-IR-01 one receipt per irreversible Commit |
+   141	| ART-16b | open-wave restore + Create allowed; APPLY fence unchanged |
+   142	| ART-16 / 17 | restore + merkle watermark prose → 17b; hard-stop → ART-06b |
+   143	| ART-24 | I.CheckpointValidate trust anchor = this artifact |
+   144	| ART-RBL | close B-RECOVERY-PREFIX-01; close B-HARDSTOP-FENCE-01 on freeze |
+   145	
+   146	---
+   147	
+   148	## 8. Failures / traces
+   149	
+   150	`MERKLE_MISMATCH | IRREVERSIBLE_PREFIX | FORWARD_FIX_GAP | HARD_STOP_SNAPSHOT_MISMATCH | CHECKPOINT_UNKNOWN`
+   151	
+   152	```text
+   153	TRACE-10A  present prefix omitting later FULL CX Commit → IRREVERSIBLE_PREFIX
+   154	TRACE-10B  restore while hard_stop.active → promote blocked until HARD_STOP_CLEAR
+   155	TRACE-10C  crash mid-wave → last CP + forward-fix through demotion mint → PASS; APPLY still DEMOTION_WAVE_OPEN
+   156	TRACE-10D  merkle tamper → MERKLE_MISMATCH → S15
+   157	TRACE-10E  substitute event at irreversible seq (digest≠receipt) → IRREVERSIBLE_PREFIX
+   158	TRACE-10F  CheckpointCreate mid-wave → allowed
+   159	```
+
+codex
+The claimed fixes are present in ART-17b and the hard-stop prose, but the authoritative ART-06b schemas still appear inconsistent. I’m checking every normative reference before assigning the four gate results.
+exec
+/bin/zsh -lc "rg -n -i \"re-review|rereview|Prior 2 CRITICAL|I-EFF-03|research_control_design_effects|Effects\\.ir_receipt|may include ir_receipt|subset of \\{CONTROL|IrreversibleSafetyLog|effects_digest\" . --glob '*.md' --glob '*.txt' --glob '*.json' --glob '*.jsonl' | head -400; stat -f '%Sm %N' -t '%Y-%m-%d %H:%M:%S' 06-state/MUTATION_AND_AUTHORITATIVE_STATE.md 17-indefinite-ops/CHECKPOINT_RESTORE.md adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt" in /Users/nicholasmino/Desktop/Research/Work/architecture
+ succeeded in 0ms:
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:37:IrreversibleSafetyLog                 # property, not a restorable table
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:64:1. Build `research_control_design_effects`; `effects_digest = H(research_control_design_effects)` (ART-06b).  
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:65:2. Compute `event_digest` from command + effects_digest + validation (ART-06b).  
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:66:3. Construct `IrreversibleReceipt` citing that `event_digest`; include as `Effects.ir_receipt`.  
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:67:4. Atomically append receipt to IrreversibleSafetyLog + EventLog MutationEvent.  
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:89:**Inputs:** `checkpoint_id`, candidate committed-event prefix covering `0..N` where `N ≥ irreversible_head_seq` and `N ≥ CheckpointRecord.event_seq_max`, full `IrreversibleSafetyLog` receipt chain through current head.
+./iterations/REPAIR_ITER10_CHECKPOINT_RESTORE.md:10:Independent IrreversibleSafetyLog floor; `I.CheckpointValidate` rejects self-presented prefixes; restore binds ControlState hard-stop + incomplete DemotionWave fail-closed.
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:16:Architecture properties only — not a DB/queue/consensus product. Serialization = total order of accepted commits for Control+Research+Design+IrreversibleSafetyLog.
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:27:| **IrreversibleSafetyLog** | ART-17b receipts / head (not restorable via ResearchState snapshot alone) | `I.Commit` — same atomic accept; if I-IR-01 fires and receipt append fails ⇒ reject whole Commit |
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:80:  store_targets[]                     # nonempty subset of {CONTROL, RESEARCH, DESIGN}
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:92:  effects_digest = H(Effects)
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:102:  effects                             # full Effects envelope (may include ir_receipt?)
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:104:  event_digest = H(event_seq, command_digest, effects_digest,
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:140:- IrreversibleSafetyLog receipt append when command_kind ∈ {`HARD_STOP_SET`,`HARD_STOP_CLEAR`} (ART-17b I-IR-01; receipt bytes excluded from event_digest preimage)  
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:142:with `store_targets ⊆ {CONTROL, IRREVERSIBLE}` and **zero Research object upserts** and **zero** DesignState mutations (EventLog + IR receipt append allowed per I-LOG-01 / I-EFF-03)
+./adversarial_review_artifacts/REPAIR_ITER3.0_REVIEW_state.txt:7:3. **HIGH — MutationEvent is not replay-sufficient authoritative state.** Heads are declared derivable from the event log and reducer, but `MutationEvent` stores only `effects_digest`, while `I.Reduce` requires the actual effects. Pending commands are explicitly non-authoritative and discardable, and neither the effects envelope nor the authoritative event log is allocated to one of the three stores. Therefore replay can depend on unspecified external material. [event schema/head rule](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:34), [PendingCommand](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:57), [I.Reduce](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:93)
+./adversarial_review_artifacts/REPAIR_ITER3.0_REVIEW_adv.txt:3:HIGH-1 — Commit validates one object but applies a separately unbound effect set. `command_digest` covers command kind, targets, payload, and heads, while `effects_digest` is introduced separately; no normative function requires `effects = Derive(command, pre_state)`, and the validation record does not bind `effects_digest` ([ART-06b:40](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:40), [ART-06b:61](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:61), [ART-06b:84](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:84), [ART-06b:178](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:178)). A conforming implementation can validate a benign command, then reduce different Research/Control effects—bypassing boolean, promotion, store-separation, and stale-write validation while still producing an authoritative MutationEvent.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1063:    37	IrreversibleSafetyLog                 # property, not a restorable table
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:1110:    84	**Inputs:** `checkpoint_id`, candidate committed-event prefix covering `0..N` where `N ≥ irreversible_head_seq` and `N ≥ CheckpointRecord.event_seq_max`, full `IrreversibleSafetyLog` receipt chain through current head.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2033:    79	  store_targets[]                     # nonempty subset of {CONTROL, RESEARCH, DESIGN}
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2045:    91	  effects_digest = H(Effects)
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:2057:   103	  event_digest = H(event_seq, command_digest, effects_digest,
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4489:CRITICAL ART-17b/ART-06b — IrreversibleSafetyLog append is outside ART-06b’s exact three-store atomic Commit, leaving a crash window between an irreversible event and its receipt.
+./adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt:4503:CRITICAL ART-17b/ART-06b — IrreversibleSafetyLog append is outside ART-06b’s exact three-store atomic Commit, leaving a crash window between an irreversible event and its receipt.
+2026-07-24 09:24:26 06-state/MUTATION_AND_AUTHORITATIVE_STATE.md
+2026-07-24 09:24:29 17-indefinite-ops/CHECKPOINT_RESTORE.md
+2026-07-24 09:16:17 adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt
+
+exec
+/bin/zsh -lc 'for f in adversarial_review_artifacts/REPAIR_ITER10* adversarial_review_artifacts/REPAIR_ITER11* adversarial_review_artifacts/REPAIR_ITER12* adversarial_review_artifacts/REPAIR_ITER13* adversarial_review_artifacts/REPAIR_ITER14*; do [ -f "$f" ] && { echo "$f"; sed -n '"'1,120p' \""'$f"; }; done' in /Users/nicholasmino/Desktop/Research/Work/architecture
+ exited 1 in 0ms:
+zsh:1: no matches found: adversarial_review_artifacts/REPAIR_ITER10*
+
+exec
+/bin/zsh -lc 'rg --files adversarial_review_artifacts | sort | tail -80' in /Users/nicholasmino/Desktop/Research/Work/architecture
+ succeeded in 0ms:
+adversarial_review_artifacts/REPAIR_ITER4.2_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER4.2_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER4.2_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER4.2_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER4.3_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER4.3_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER4.3_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER4.3_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER4.4_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER4.4_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER4.4_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER4.4_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER4.5_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER4.5_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER4.5_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER4.5_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER4.6_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER4.6_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER4.6_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER4.6_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER5.0_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER5.0_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER5.0_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER5.0_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER5.1_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER5.1_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER5.1_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER5.1_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER5.2_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER5.2_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER5.2_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER5.2_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER5.3_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER5.3_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER5.3_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER5.3_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER5.4_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER5.4_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER5.4_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER5.4_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER5.5_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER5.5_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER5.5_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER5.5_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER5.6_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER5.6_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER5.6_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER5.6_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER6.0_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER6.0_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER6.0_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER6.0_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER6.13_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER6.14_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER6.15_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER6.19_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER6.1_REVIEW_adv.txt
+adversarial_review_artifacts/REPAIR_ITER6.1_REVIEW_corr.txt
+adversarial_review_artifacts/REPAIR_ITER6.1_REVIEW_integ.txt
+adversarial_review_artifacts/REPAIR_ITER6.1_REVIEW_min.txt
+adversarial_review_artifacts/REPAIR_ITER6.20_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER6.6_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER6.9_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER7.2_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER7.3_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER7.5_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER8.2_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER8.7_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER8.9_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER9.10_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER9.2_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_ITER9.4_REVIEW_combined.txt
+adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt
+adversarial_review_artifacts/SOL_PASS1_math_lean.md
+adversarial_review_artifacts/SOL_PASS2_state_authority.md
+adversarial_review_artifacts/SOL_PASS3_longterm_tabletop.md
+adversarial_review_artifacts/SOL_PASS4_package_trace.md
+adversarial_review_artifacts/SOL_PASS5_overengineering.md
+adversarial_review_artifacts/a11ce32d-1b69-4601-9752-cc69d9beb601.jsonl
+adversarial_review_artifacts/bf868f3f-1478-4bdc-9f7e-b3a06f5e290e.jsonl
+
+exec
+/bin/zsh -lc "find . -type f -newermt '2026-07-24 09:16:18' -maxdepth 4 -print | sort | xargs -I{} stat -f '%Sm %N' -t '%H:%M:%S' '{}'; rg -n \"I-EFF-03\" . --glob '"'!adversarial_review_artifacts/REPAIR_PACKAGE_SOL_GATE_2026-07-24.txt'"'" in /Users/nicholasmino/Desktop/Research/Work/architecture
+ succeeded in 0ms:
+09:22:02 ./00-repair/ARTIFACT_STATUS.md
+09:22:02 ./00-repair/BLOCKER_LEDGER.md
+09:17:43 ./04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md
+09:17:51 ./04-agents/OPERABLE_BINDING.md
+09:24:26 ./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md
+09:17:41 ./11-integration-audit/PROVENANCE_BINDING.md
+09:18:10 ./16-failure-recovery/DEMOTION_WAVES.md
+09:24:29 ./17-indefinite-ops/CHECKPOINT_RESTORE.md
+09:21:58 ./21-acceptance-tests/CONFORMANCE.md
+09:22:02 ./25-audit-reports/FINAL_AUDIT.md
+09:18:10 ./25-audit-reports/RELEASE_IDENTITY.md
+09:17:55 ./IMPLEMENTATION_BLOCK.md
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:142:with `store_targets ⊆ {CONTROL, IRREVERSIBLE}` and **zero Research object upserts** and **zero** DesignState mutations (EventLog + IR receipt append allowed per I-LOG-01 / I-EFF-03)
+
+exec
+/bin/zsh -lc "sed -n '1,120p' adversarial_review_artifacts/REPAIR_ITER5.6_REVIEW_adv.txt; sed -n '1,120p' adversarial_review_artifacts/REPAIR_ITER5.6_REVIEW_corr.txt; sed -n '1,120p' adversarial_review_artifacts/REPAIR_ITER5.6_REVIEW_min.txt; sed -n '1,120p' adversarial_review_artifacts/REPAIR_ITER5.6_REVIEW_integ.txt; sed -n '1,160p' adversarial_review_artifacts/REPAIR_ITER9.4_REVIEW_combined.txt" in /Users/nicholasmino/Desktop/Research/Work/architecture
+ succeeded in 0ms:
+No CRITICAL/HIGH findings.
+
+Removing HD digests is safe: `EffectiveDecision` deterministically selects the latest matching decision from the replay-sufficient, pre-state-head-bound log. Later deny/hold decisions defeat older approvals, while EIO overrides remain veto-generation-bound.
+
+ITER5_ADV_VERDICT: PASS
+No CRITICAL/HIGH correctness findings.
+
+- `APPLY_PROMOTION` now carries only the bound intent; decision-digest mirrors are fully removed. [ART-13b](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:86)
+- Commit derives effects from the bound pre-state, whose digest is preserved in the event. [ART-06b](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:89)
+- `EffectiveDecision` deterministically selects the latest committed matching decision; later deny/hold records defeat older approvals. [EffectiveDecision](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:140)
+- Both generation-bound EIO overrides and all required gates consume that pre-state-derived decision. [I-AP-09](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:142) · [I-AP-10b](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:168)
+- No stale payload-mirror fields or checks remain in the operative artifacts.
+
+ITER5_CORR_VERDICT: PASS
+- Prior HIGH — **CLOSED.** `APPLY_PROMOTION` now carries only `promotion_intent`; both redundant digest fields are absent. Gate and EIO-override decisions are deterministically selected by `EffectiveDecision` from the pre-state event log. [ART-13b payload and decision rules](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:86) [Replay-sufficient MutationEvent](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:94)
+
+- New zero-loss HIGH: **None found.**
+
+ITER5_MIN_VERDICT: PASS
+No CRITICAL/HIGH integration findings.
+
+- APPLY payload trim is consistent; removed decision-digest mirrors appear only in historical review artifacts.
+- ART-13b pins uniformly reference `ARCH-0.3-REPAIR-ITER5.6` across [ART-13b](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:4), [ART-ASI](/Users/nicholasmino/Desktop/Research/Work/architecture/00-repair/ARTIFACT_STATUS.md:28), and [ART-25](/Users/nicholasmino/Desktop/Research/Work/architecture/25-audit-reports/FINAL_AUDIT.md:27).
+- The [migration matrix](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER5_PROMOTION_INTENT.md:17) remains consistent with artifact statuses and consumers.
+
+ITER5_INTEG_VERDICT: PASS
+Freeze gate fails. `DRAFT_REPAIR` status was not treated as a failure.
+
+Closure check:
+
+- **Schema repair — NOT CLOSED.** Cards now have digest preimages, but their opaque payloads are not constrained to the required card schemas. `DerivedHopChainOk` checks only `quarantine_digest`, not `chain_link_intent`, `chain_segment`, question, claim, or witness bindings. More critically, `DerivedS09Ok` accepts any nonempty list of unrelated live counterexamples plus any subset of allowed class IDs; it requires neither complete mandatory-class coverage nor a class↔counterexample↔witness mapping. An unrelated existing CX can therefore satisfy S09 and authorize a major promotion. [Card/log schemas](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:29>) · [Derived predicates](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:70>) · [required hop contract](</Users/nicholasmino/Desktop/Research/Work/architecture/01-charter/CHARTER.md:86>)  
+  **Severity: CRITICAL — ADV/CORR/INTEG.**
+
+- **Immutable `cycle_digest` — CLOSED.** Card/log bindings are outside the `CR.v3` identity, and I-CY-03 forbids recomputation. [CycleRecord](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:47>)
+
+- **I-CY-10 and I-DW-21 — CLOSED.** Legal edges are inlined, and `DerivedMathStable` explicitly includes the full-CX discharge requirement. [I-CY-10](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:94>) · [DerivedMathStable](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:78>)
+
+- **HIGH — frozen-card lifecycle remains unenforced.** `BIND_CYCLE_CARD` may replace either binding at any phase, including after S04/S03, after audit, or after closure. No write-once, phase, or `closed=false` guard implements the charter’s frozen-card rule. [BIND command](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:88>) · [freeze requirement](</Users/nicholasmino/Desktop/Research/Work/architecture/01-charter/CHARTER.md:86>)  
+  **Severity: HIGH — ADV/CORR/INTEG.**
+
+- **HIGH — the “self-contained” command contract is incomplete.** `RECORD_CYCLE_AUDIT` and `RECORD_CYCLE_LEAN` defer payload and validation semantics to an unavailable “ITER9.1”; ART-06b merely enumerates those commands. Replay-safe `DeriveEffects` therefore remains underspecified. [Self-contained declaration](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:8>) · [undefined command reference](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:92>)  
+  **Severity: HIGH — CORR/INTEG.**
+
+ITER9_ADV_VERDICT: FAIL
+ITER9_CORR_VERDICT: FAIL
+ITER9_MIN_VERDICT: PASS
+ITER9_INTEG_VERDICT: FAIL
+
+exec
+/bin/zsh -lc 'rg -n "MIN_VERDICT: FAIL|MIN.*FAIL" adversarial_review_artifacts/REPAIR_ITER*_REVIEW* | head -40; for f in $(rg -l "MIN_VERDICT: FAIL" adversarial_review_artifacts/REPAIR_ITER*_REVIEW* | head -5); do echo "$f"; sed -n '"'1,140p' \""'$f"; done' in /Users/nicholasmino/Desktop/Research/Work/architecture
+ succeeded in 0ms:
+adversarial_review_artifacts/REPAIR_ITER2.2_REVIEW_min.txt:11:ITER2_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER2.5_REVIEW_min.txt:7:ITER2_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER2.1_REVIEW_min.txt:19:ITER2_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER4.1_REVIEW_min.txt:15:ITER4_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER2.3_REVIEW_min.txt:12:ITER2_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER3.1_REVIEW_min.txt:10:ITER3_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER4.4_REVIEW_min.txt:10:ITER4_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER4.0_REVIEW_min.txt:11:ITER4_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER4.3_REVIEW_min.txt:14:ITER4_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER5.0_REVIEW_min.txt:5:ITER5_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER3.0_REVIEW_min.txt:13:ITER3_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER8.2_REVIEW_combined.txt:15:ITER8_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER5.3_REVIEW_min.txt:5:ITER5_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER4.2_REVIEW_min.txt:7:ITER4_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER5.4_REVIEW_min.txt:5:ITER5_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER5.1_REVIEW_min.txt:5:ITER5_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER5.2_REVIEW_min.txt:5:ITER5_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER6.1_REVIEW_min.txt:12:ITER6_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER6.0_REVIEW_min.txt:9:ITER6_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER4.5_REVIEW_min.txt:11:ITER4_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER5.5_REVIEW_min.txt:5:ITER5_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER6.6_REVIEW_combined.txt:15:ITER6_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER9.2_REVIEW_combined.txt:11:ITER9_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER8.7_REVIEW_combined.txt:13:ITER8_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER2.1_REVIEW_min.txt
+No CRITICAL minimality findings.
+
+### HIGH
+
+1. **Remove `CertificateEpistemicClass` and the separate `StabilityCertificateInstance` carrier.** A theorem certificate is already an ART-07b certificate-segment `Claim`. Its identity, proof attachment, proof floor, maturity, supersession, and endpoint are existing or derived data. Keep certificate validation as a predicate over that Claim; derive empirical/conjecture exclusion from evidence type and `ResearchMaturityRecord`. This also removes unused `SCHEMA` and `INSTANCE_BINDING` variants. [ART-07c §1](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:20) [certificate instance](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:130) [ART-07b status/proof floor](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:397)
+
+2. **Merge `StabilityCertificateSchema` into `SchemaRegistryEntry`.** Both carry assertion-schema identity, applicable certificate segments, and the same structural opaque-string check. Add notion/relation acceptance metadata to the existing registry entry and use its `schema_digest`; the parallel certificate-schema object adds no invariant. [certificate schema](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:119) [SchemaRegistryEntry](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:467)
+
+3. **Merge the specialized transform objects into ART-07b `TransformRecord`.** `AssumptionTransform`, `ParameterTransform`, and `FailureBudgetTransform` repeat the generic input/output/rule tuple, while ART-07c says `TransformRecord` remains embedded. Extend its closed kind set with `QUANTIFIER_MAP`, derive each transform digest from the embedded tuple, and retain the existing weakening/restriction checks. This removes three object types and their lookup layer without weakening no-drop or composition. [ART-07c transforms](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:187) [ART-07b TransformRecord](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:287) [alignment statement](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:454)
+
+4. **Remove `CompatibilityPolicy` as a second theorem-translation mechanism.** Direct certificate compatibility can be exact endpoint equality. Every weaker projection policy is already required to be a proved theorem and can therefore be represented as an ordinary Bridge Theorem, composed through `I-BRIDGE-COMPOSE-01`. Remove `CompatibilityPolicy`, `CertificateCompatibilityDecision`, and the policy-specific evaluator; retain exact comparison and bridge applicability. Anti-laundering becomes strictly simpler: all non-exact compatibility has one representation—an explicit bridge. [CompatibilityPolicy](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:258) [compatibility decision](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:277) [bridge composition](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:302)
+
+5. **Remove `BridgeLifecycle` as a normative axis.** It is explicitly derived from `DerivedProofFloor`, empirical evidence, CX closure, staleness, and supersession. Apply those source predicates directly in bridge applicability and merge `I-BRIDGE-PROOF-01`, `I-BRIDGE-INFERENCE-01`, and `I-STATUS-COUPLE-02` into one inference-use predicate. `PROPOSED` and `UNDER_DERIVATION` are already indistinguishable under the published mapping. [BridgeLifecycle](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:165) [proof-floor coupling](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:325)
+
+6. **Merge all derived result records into evaluator outputs.** `CertificateCompatibilityDecision`, `BridgeApplicabilityDecision`, and `BridgeComposition` are deterministic products of the interfaces immediately below them. They need no independent object lifecycle. Retain ordered bridge inputs, cumulative values, reason codes, and all rejection predicates as evaluator results; remove the three standalone record schemas. [derived decisions](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:277) [BridgeComposition](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:302) [interfaces](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:370)
+
+The first-class relation, notion, failure-budget, endpoint, explicit bridge, composition checks, proof-floor gate, and legacy quarantine remain necessary.
+
+ITER2_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER2.2_REVIEW_min.txt
+## HIGH
+
+1. **Remove `bridge_class`.** It is completely determined by whether `target_endpoint_digest` resolves to a `CertificateEndpoint` or `InferenceEndpoint`. Dispatching class-specific validation on that endpoint type preserves covering, transform, floor, and composition rules while eliminating a conflicting duplicate discriminator. [Bridge class and target](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:212)
+
+2. **Remove `TransformRule` as a separate object.** Built-in weakening/restriction maps can be checked directly from `TransformRecord`; proof-bound maps can reference the theorem Claim directly and derive its proof floor. The theorem Claim already carries schema, payload, pins, identity, and proof evidence, so the intervening rule object adds no invariant. [TransformRule and TransformRecord](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:283)
+
+3. **Remove duplicated bridge payload bindings.** `bridge_schema_digest`, `source_endpoint_digest`, `source_subject_digest`, `covering_anchor_digest`, and `definition_pins[]` are derivable respectively from the bridge Claim schema, source certificate Claim, target inference endpoint/selected object, and bridge Claim pins. Recomputing them from those authorities preserves exact matching and covering while eliminating inconsistent mirrors. [Bridge payload](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:225)
+
+4. **Collapse the utility side model into ordinary Claims.** Require `UtilityStatement` to be a Claim, not “Claim or typed side object.” Represent `CONSTRAINT_INPUT` through a typed dependency/assumption slot, `EXCLUDED` through endpoint exclusions, and `INDEPENDENT_AXIS` through absence of such a dependency. This removes `UtilityCompatibilityReference` without losing subject/domain/pin validation or proof-floor behavior. [Utility objects](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:129)
+
+ITER2_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER2.3_REVIEW_min.txt
+FAIL — no CRITICAL findings; one HIGH remains.
+
+Verified landed:
+
+- `bridge_class` is derived only; stored discriminator forbidden.
+- `TransformRule` is folded into `TransformRecord`.
+- Bridge payload now contains only source Claim and transforms.
+- Utility is Claim-only; `UtilityCompatibilityReference` is removed.
+
+HIGH — The utility Claim payload still duplicates Claim-authoritative data: `utility_digest`, `subject_digest`, `parameter_domain_digest`, and `definition_pins[]`. These derive respectively from the Claim conclusion, `subject_ref`, `parameter_domain`, and Claim pins. Removing them loses no invariant because consumers cite the utility Claim and compatibility already checks its canonical fields. [Utility payload](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:279) [Claim encoding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:161)
+
+ITER2_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER2.5_REVIEW_min.txt
+No CRITICAL findings. Two new HIGH minimality findings:
+
+1. **Remove `inference_target_digest` and `quantifier_digest` as stored fields.** ITER2.5 added their complete schema/payload preimages, making both digests deterministic projections. Computing them preserves typing, tuple coherence, and endpoint identity without duplicate mirrors. [InferenceEndpoint](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:133)
+
+2. **Remove `rule_proof_claim_digest` from `TransformRecord`.** `I-XFORM-PROOF-02` now requires the same proof Claim as a `LOGICAL` bridge premise. The authorizing premise can be identified by matching its `ConclusionDigest` to `TransformApplicationDigest`; Claim dependencies already preserve provenance and context closure. The embedded pointer is now redundant. [Proof binding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:200)
+
+ITER2_MIN_VERDICT: FAIL
+adversarial_review_artifacts/REPAIR_ITER3.0_REVIEW_min.txt
+No CRITICAL findings.
+
+### HIGH
+
+1. Remove `I.ProposeCommand` and `PendingCommand`. They are explicitly non-authoritative and discardable; `I.Commit` already accepts an inline command. Retain one canonical `Command` preimage and compute its digest inside `I.Commit`. This removes an interface and carrier without affecting any invariant. [ART-06b §3](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:57)
+
+2. Merge the four stale-write inputs into one global expected-state token. Replace `expected_event_seq` plus three expected heads with `expected_state_head_digest = H(event_seq, control_head, research_head, design_head)`. Because every mutation is globally serialized and advances `event_seq`, this is equivalent to the existing conjunctive check while preserving exact-state binding. [PendingCommand](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:59) [I-STALE-01](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:139)
+
+3. Merge `CommitEvaluationRecord` into the validator output hashed by `MutationEvent.validation_digest`. It has no independent lifecycle and is stored only through that digest. Retain its canonical preimage—derived predicates, reason codes, and ART-07c result digests—inside `I.Commit`; the caller-boolean ban remains unchanged. [ART-06b §8](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:175)
+
+4. Demote `I.Reduce` from a public interface to an internal pure step of `I.Commit`. Its deterministic, atomic reduction semantics remain mandatory, but a separately named externally visible interface adds no authority because it is usable only inside Commit. [I.Reduce](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:93) [ART-24 contract](/Users/nicholasmino/Desktop/Research/Work/architecture/24-interfaces/INTERFACE_CONTRACTS.md:31)
+
+ITER3_MIN_VERDICT: FAIL
+
+exec
+/bin/zsh -lc "rg -n \"store_targets|research_control_design_effects|ir_receipt|receipt bytes excluded|effects_digest = H\\(Effects\\)|I-EFF-0[123]\" . --glob '*.md' --glob '"'!adversarial_review_artifacts/**'"' --glob '"'!iterations/**'"' | sort" in /Users/nicholasmino/Desktop/Research/Work/architecture
+ succeeded in 0ms:
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:102:  effects                             # full Effects envelope (may include ir_receipt?)
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:140:- IrreversibleSafetyLog receipt append when command_kind ∈ {`HARD_STOP_SET`,`HARD_STOP_CLEAR`} (ART-17b I-IR-01; receipt bytes excluded from event_digest preimage)  
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:142:with `store_targets ⊆ {CONTROL, IRREVERSIBLE}` and **zero Research object upserts** and **zero** DesignState mutations (EventLog + IR receipt append allowed per I-LOG-01 / I-EFF-03)
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:206:TRACE-3A sole write path · 3B caller boolean · 3C hard-stop (CONTROL-only effects) · 3D stale `state_head` · 3E promotion deferred · 3F unbound legacy id · 3G HARD_STOP_* with Research effect → HARD_STOP_ACTIVE · 3H validate≠effects attempt impossible under I-EFF-01.
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:26:| **DesignState** | Architecture package artifacts / critique ledger | `I.Commit` (`store_targets` includes DESIGN) |
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:46:**I-STATE-SEP-02:** A single commit may list multiple `store_targets`, but effects for each store are typed and validated; no silent dual-write from agent scratch.
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:80:  store_targets[]                     # nonempty subset of {CONTROL, RESEARCH, DESIGN}
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:92:  effects_digest = H(Effects)
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:95:**I-EFF-01:** `I.Commit` MUST set `effects = DeriveEffects(...)`. Validator validates **Command** and the derived **Effects**. No alternate effect set may be appended.  
+./06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:96:**I-EFF-02:** `MutationEvent` stores the full `Effects` envelope (not only its digest) so the log is replay-sufficient.
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:64:1. Build `research_control_design_effects`; `effects_digest = H(research_control_design_effects)` (ART-06b).  
+./17-indefinite-ops/CHECKPOINT_RESTORE.md:66:3. Construct `IrreversibleReceipt` citing that `event_digest`; include as `Effects.ir_receipt`.  
+
+codex
+PACKAGE_ADV: FAIL
+PACKAGE_CORR: FAIL
+PACKAGE_MIN: PASS
+PACKAGE_INTEG: FAIL
+CRITICAL ART-06b/ART-17b — ART-06b still defines effects_digest = H(Effects), Effects may include ir_receipt, and I-EFF-03 is undefined, so the event/receipt digest cycle remains normatively unresolved.
+CRITICAL ART-06b — Command.store_targets remains restricted to {CONTROL, RESEARCH, DESIGN}, so IRREVERSIBLE commits cannot be represented despite later prose claiming otherwise.
+tokens used
+59,973
+PACKAGE_ADV: FAIL
+PACKAGE_CORR: FAIL
+PACKAGE_MIN: PASS
+PACKAGE_INTEG: FAIL
+CRITICAL ART-06b/ART-17b — ART-06b still defines effects_digest = H(Effects), Effects may include ir_receipt, and I-EFF-03 is undefined, so the event/receipt digest cycle remains normatively unresolved.
+CRITICAL ART-06b — Command.store_targets remains restricted to {CONTROL, RESEARCH, DESIGN}, so IRREVERSIBLE commits cannot be represented despite later prose claiming otherwise.

@@ -1,0 +1,14 @@
+The prior 6.15 issue is CLOSED: §6 now normalizes CERT→ProofEvidence→claim/lemmas, PROOF, and DISCHARGE evidence to Claim digests before applying I-CX-01.
+
+No remaining Critical findings. Two High findings remain:
+
+- **HIGH — ADV/CORR/INTEG:** `EvidenceClosure` omits `BRIDGE`-classified Claims. Q09/Q10 permit—and Q11 requires—bridge evidence, but §6 includes only `CLAIM` and `UTILITY` kinds. A later counterexample against that bridge Claim therefore may not stale the audit. [Resolver/binding](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:79>) · [EvidenceClosure](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:117>) · [Bridge Claim identity](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:264>)
+
+- **HIGH — ADV/CORR/INTEG:** CX freshness is not closed under later `ClaimRelation` additions. I-CX-01 expands closure through `RENAMES` and `EQUIVALENT_TO`, while freshness watches later Counterexample effects but not relation additions. A pre-audit FULL counterexample can become connected to audited evidence after PASS without staling the audit. [Freshness](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:115>) · [ClaimRelation](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:41>) · [I-CX-01](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:386>)
+
+No remaining Critical/High minimality finding.
+
+ITER6_ADV_VERDICT: FAIL
+ITER6_CORR_VERDICT: FAIL
+ITER6_MIN_VERDICT: PASS
+ITER6_INTEG_VERDICT: FAIL

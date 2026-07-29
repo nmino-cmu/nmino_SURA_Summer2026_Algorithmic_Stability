@@ -1,0 +1,8 @@
+No remaining CRITICAL/HIGH findings.
+
+- CLOSED — Inference Claims now require exact bridge-target equality and an `APPLICABLE` inference-facing evaluation. [ART-07c §8.5](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:267), [ART-07b binding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:275)
+- CLOSED — Certificate→inference conversion now uses exactly one proof-bound `ENDPOINT_CONSTRUCTION`, with mandatory carryovers and deterministic target recomputation. [Transform kind](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:175), [recomputation](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:227)
+- CLOSED — Proof-bound maps require the proof Claim’s conclusion digest to equal the exact transform-application digest; unrelated theorems fail. [I-XFORM-PROOF-01](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:190)
+- CLOSED — `SchemaRegistryEntry` now includes `allowed_triples` and `allowed_inference_tuples`, enforced by the coherence invariants. [SchemaRegistryEntry](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:465), [coherence rules](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:118)
+
+ITER2_ADV_VERDICT: PASS

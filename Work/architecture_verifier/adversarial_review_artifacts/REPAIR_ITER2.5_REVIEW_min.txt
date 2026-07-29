@@ -1,0 +1,7 @@
+No CRITICAL findings. Two new HIGH minimality findings:
+
+1. **Remove `inference_target_digest` and `quantifier_digest` as stored fields.** ITER2.5 added their complete schema/payload preimages, making both digests deterministic projections. Computing them preserves typing, tuple coherence, and endpoint identity without duplicate mirrors. [InferenceEndpoint](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:133)
+
+2. **Remove `rule_proof_claim_digest` from `TransformRecord`.** `I-XFORM-PROOF-02` now requires the same proof Claim as a `LOGICAL` bridge premise. The authorizing premise can be identified by matching its `ConclusionDigest` to `TransformApplicationDigest`; Claim dependencies already preserve provenance and context closure. The embedded pointer is now redundant. [Proof binding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:200)
+
+ITER2_MIN_VERDICT: FAIL

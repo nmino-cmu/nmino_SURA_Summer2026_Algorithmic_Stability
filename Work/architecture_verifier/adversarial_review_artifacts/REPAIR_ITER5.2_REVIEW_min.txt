@@ -1,0 +1,5 @@
+- Prior HIGH — **CLOSED.** `ValidationPreimageAPPLY.v2` omits `intent_digest` and `policy_digest`; both remain bound through the full stored command and `command_digest`. [ART-13b](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:118) [MutationEvent](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:98)
+
+- New zero-loss **HIGH:** `EioVetoRecord.set_at_event_seq` is an unused lifecycle mirror. No EIO rule consumes it; current enforcement needs only `active`, while the replay-sufficient event log already identifies the latest `SET_EIO_VETO` event and its sequence. Remove the field and its upsert requirement without losing state, provenance, or replayability. [EioVetoRecord](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:406) [EIO lifecycle](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:102)
+
+ITER5_MIN_VERDICT: FAIL

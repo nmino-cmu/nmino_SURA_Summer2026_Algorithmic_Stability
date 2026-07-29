@@ -1,0 +1,5 @@
+The five prior CRITICAL/HIGH findings are CLOSED.
+
+- **HIGH — Mandatory human gates remain bypassable.** `I-AP-10` does not recompute ART-15 triggers; callers can select an ungated genesis policy even when a gate is mandatory. For example, `RM_CONJ_PARTIAL` permits promotion past CONJECTURE without the required `PLAUSIBLE_NOVELTY_LABEL` approval. No rule forces selection of a gated alternative. [ART-13b I-AP-10](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:130) [ART-15 mandatory trigger](/Users/nicholasmino/Desktop/Research/Work/architecture/15-human-gates/HUMAN_GATES.md:40)
+
+ITER5_CORR_VERDICT: FAIL

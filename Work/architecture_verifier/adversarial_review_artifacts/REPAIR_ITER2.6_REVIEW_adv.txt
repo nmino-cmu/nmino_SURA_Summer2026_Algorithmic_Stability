@@ -1,0 +1,11 @@
+## CRITICAL
+
+- **Proof-context laundering: CLOSED.** Proof assumptions, pins, scope, and domain are bound to transform outputs; transfer consumers require a BRIDGE dependency, exact target equality, applicability, and inherited context. [ART-07c §7](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:208) [ART-07c §8.5](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:297)
+
+## HIGH
+
+- **Composition relabel: CLOSED.** Composition cannot change notion, relation, or quantifier, and one-input composition is endpoint identity only. [ART-07c §10b](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:360)
+
+- **`UTILITY_CONSTRAINT` underbinding: OPEN.** Utility-signature equality is conditional on the consumer declaring utility slots. A consumer may omit those slots and cite any utility Claim sharing subject, domain, scope, and pins, without binding the required loss kind, comparator, threshold, or quantifier. Require every `UTILITY_CONSTRAINT` consumer to declare a complete required utility signature and match it exactly. [I-UTIL-02](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:323)
+
+ITER2_ADV_VERDICT: FAIL

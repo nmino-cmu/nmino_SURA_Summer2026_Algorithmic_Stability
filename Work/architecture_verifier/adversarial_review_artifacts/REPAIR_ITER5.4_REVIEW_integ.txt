@@ -1,0 +1,9 @@
+No remaining CRITICAL. Prior self-containment and mandatory-gate findings are CLOSED.
+
+Remaining HIGH:
+
+- **EIO integration remains inconsistent.** ART-13b requires intent-bound EIO `ALLOW` for **every** APPLY, but active-partial ART-24 still states only that a `major_milestone` requires ALLOW. The migration matrix incorrectly records ART-24 as migrated with no conflict, leaving non-milestone promotion ambiguous/fail-open. [ART-13b I-AP-12](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:172), [ART-24](/Users/nicholasmino/Desktop/Research/Work/architecture/24-interfaces/INTERFACE_CONTRACTS.md:56), [matrix](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER5_PROMOTION_INTENT.md:47).
+
+- **Migration-matrix closure remains incomplete.** `ART-20` is `PENDING_MIGRATION` but still has no named later iteration, contrary to ART-RIR. Additionally, the matrix schedules ART-22 for Iteration 9 while ART-22 itself assigns Iteration 14. [ART-RIR](/Users/nicholasmino/Desktop/Research/Work/architecture/00-repair/INTEGRATION_RULE.md:11), [matrix rows](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER5_PROMOTION_INTENT.md:45), [ART-22 status](/Users/nicholasmino/Desktop/Research/Work/architecture/22-example-trace/E2E_TRACE.md:6).
+
+ITER5_INTEG_VERDICT: FAIL

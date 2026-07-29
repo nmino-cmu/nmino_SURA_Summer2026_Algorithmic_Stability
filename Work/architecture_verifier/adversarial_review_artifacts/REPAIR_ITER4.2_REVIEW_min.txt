@@ -1,0 +1,7 @@
+- `decision_digest = decision_payload_digest`: **CLOSED**. Signature remains detached. [ART-04c §6](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:134>)
+- Certification decision removed from identity: **OPEN transitively**. Although removed directly from `CertificationRecordUnsigned`, its `proof_evidence_digest` hashes `ProofEvidence.certification_dec_digest`, whose HumanDecision targets `certification_digest`. The digest cycle therefore remains. [CertificationRecord](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:152>) [ProofEvidence](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:444>)
+- `recorded_at_event_seq` mirror: **CLOSED**. Attachment time now derives from the replay-sufficient event log.
+
+New zero-loss **HIGH**: `proposer_act_event_seq` is another lifecycle mirror—despite the record’s “NO event_seq” declaration. Derive it from the MutationEvent that installed the referenced `ProofAttachment`; the log stores full commands/effects and the attachment is digest-addressed. [field](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:152>) [event log](</Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:94>) [attachment identity](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:220>)
+
+ITER4_MIN_VERDICT: FAIL

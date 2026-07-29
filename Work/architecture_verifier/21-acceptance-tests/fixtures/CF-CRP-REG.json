@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","fixture_id":"CF-CRP-REG","kind":"behavioral","commands":[{"command_kind":"ASSERT_OBJECT_REGISTRY","payload":{"object_classes":["CANDIDATE_RESEARCH_PACKAGE","INTAKE_RECEIPT","PROOF_OBLIGATION"]}}],"expect":"SUCCESS","initial_state":{},"notes":"ART-07b §10A/10B registration present"}

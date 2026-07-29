@@ -1,0 +1,9 @@
+No CRITICAL findings. Two HIGH findings remain:
+
+- **HIGH — I-IND-05 atom extension is non-constructible.** Because membership is hashed into `atom_digest`, adding a member necessarily changes the digest. The requirement that an extension retain the “same `atom_digest` after recomputation” cannot hold. No atomic replace/retire operation defines how the old live atom is removed, so strict enforcement blocks later principals sharing a controller. Define an atomic `EXTEND_ATOM(old_digest, new_atom)` transition that retires the old atom. [ART-04c §5](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:105)
+
+- **HIGH — mandatory `act_event_seq` does not prevent author substitution.** A command caller can introduce a report carrying another principal’s author/binding/model-provenance values and the correct event sequence. Neither I-MP-02 nor ART-18 requires those carriers to equal the introducing `MutationEvent.command` caller provenance. Require exact caller principal/binding/model equality—or a detached author signature—and binding liveness at `act_event_seq`. [I-MP-02](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:75), [ART-18 schemas](/Users/nicholasmino/Desktop/Research/Work/architecture/18-model-protocols/MODEL_PROTOCOLS.md:27)
+
+The stripped `CertificationRecord` mirrors introduce no CRITICAL/HIGH issue; proposer provenance and attachment identity remain deterministically recoverable from the replay-sufficient first-introduction event.
+
+ITER4_ADV_VERDICT: FAIL

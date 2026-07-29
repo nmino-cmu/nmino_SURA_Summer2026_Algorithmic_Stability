@@ -1,0 +1,7 @@
+- **CRITICAL — Assumption closure/discharge remains non-computable.** “REQUIRED closure” is never defined across claim dependencies or assumption prerequisites, and `conclusion_digest correct` has no equality/recomputation rule. A dependent claim can omit a premise’s assumptions, or an unrelated informal claim can discharge one. [ART-07b §3](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:138), [§7](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:276)
+
+- **HIGH — EvidenceUse still permits certificate mismatch.** Equality omits `subject_schema_id`, `object_class`, definition pins, and typed guarantee fields such as failure budget and neighbor relation. The purported closed compatibility table is neither specified nor represented by `SchemaRegistryEntry`. [I-CERT-02](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:219), [SchemaRegistry](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:342)
+
+- **HIGH — Continuous-Λ authorization is not enforceably bound.** No invariant requires `continuous_lambda_dec_id` to resolve to an approving `CONTINUOUS_LAMBDA` decision targeting the exact Claim/domain; the stub’s target digest is optional. [Scope lock](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:18), [HumanDecision stub](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:311)
+
+Iteration-1 ready for Iter2? NO

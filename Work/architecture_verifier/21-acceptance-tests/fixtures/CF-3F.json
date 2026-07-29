@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"APPLY_PROMOTION","payload":{"target_legacy_id":"claim-1"}}],"expect":"REJECT","fixture_id":"CF-3F","initial_state":{},"kind":"behavioral"}

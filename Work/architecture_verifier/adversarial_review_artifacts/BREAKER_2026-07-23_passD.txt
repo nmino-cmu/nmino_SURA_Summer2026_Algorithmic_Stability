@@ -1,0 +1,105 @@
+No. Iter1.26 is ready for Iteration 2, but not for implementation as a correctness-preserving blueprint. Its canonical object model closes several important laundering attacks, yet proof promotion, bridge proof status, certificate semantics, audit binding, data provenance, and imported-theorem identity remain incomplete.
+
+## Breaker results
+
+| Attack | Result after Iter1.26 |
+|---|---|
+| Unsupported theorem promotion | **Still possible architecturally** |
+| Certificate-type mixing | **Not yet deterministically preventable** |
+| Omit inference bridge | **Syntactically blocked; epistemically bypassable** |
+| Silent data-dependent \(\psi\) | **Still possible** |
+| Conjecture/theorem confusion | **Still possible** |
+
+Operational research is currently blocked, so none of these attacks can legitimately execute today. The issue is that an implementation built from the present specification would not have sufficient rules to reject them.
+
+## CRITICAL
+
+### D-C01 — `RESULT` is not bound to proof
+
+A Claim without valid proof evidence correctly derives `UNPROVED`, but `research_maturity` is a separate mutable record permitting `RESULT`. There is no invariant requiring:
+
+```text
+research_maturity = RESULT
+⇒ DerivedProofFloor ≥ CERTIFIED_INFORMAL
+⇒ essential dependency closure proved
+⇒ integration audit bound and current
+```
+
+The only present maturity constraint concerns FULL counterexamples. Promotion transitions are explicitly deferred to Iteration 5. An unproved Claim can therefore be represented as a result under the Iter1 object model. See [ART-07b status axes](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:397), [DerivedProofFloor](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:413), and [deferred promotion rules](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:530).
+
+### D-C02 — Required inference bridge need not be proved
+
+Iter1.26 successfully requires an inference Claim to have exactly one BRIDGE dependency and anchors its source certificate to the selected object’s own covering certificate. That closes literal bridge omission and same-subject substitution. See [chain and covering-anchor rules](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:244).
+
+But `I-BRIDGE-01` does not require:
+
+```text
+DerivedProofFloor(bridge_claim) = CERTIFIED_INFORMAL
+```
+
+A structurally valid but unproved bridge can therefore occupy the mandatory bridge slot. ART-11 asks for `BRIDGE_PROVED`, but does not canonically define that status as the bridge Claim’s proof floor. The older bridge-status sketch is explicitly non-normative. Thus the bridge cannot be omitted syntactically, but its inferential work can still be unsupported.
+
+### D-C03 — Audit PASS is replayable and policy-controllable
+
+The audit is not bound to an exact canonical promotion snapshot. It carries `claim_ids`, `cert_id`, and `bridge_ids`, rather than the exact Claim, proof attachment, bridge, dependency-closure, promotion-target, and policy digests. See [audit schema](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/INTEGRATION_AUDIT.md:25).
+
+Additional direct bypasses remain:
+
+- The schema requires 16 answers, but the table defines 18 questions once Q11b and Q11c are counted.
+- `blocker_if_no` is stored on each answer rather than derived from immutable policy.
+- The applicability bitmap is prose-required but absent from the audit record schema.
+- No promotion target or audit-policy version is bound.
+
+A stale or selectively weakened PASS could therefore authorize an unsupported result or unproved bridge.
+
+### D-C04 — Certificate typing is not integrated with canonical Claims
+
+ART-07b provides good abstract controls—certificate segments, accepted evidence schemas, protected bridge fields, and exact covering anchors. But the concrete certificate and bridge schema catalogue is explicitly deferred to Iteration 2.
+
+Meanwhile, the charter and ART-11 reason using `cert_kind`, while canonical Claims have no normative `cert_kind` projection. ART-07’s enumerated certificate records and bridge status are subordinate/non-normative for promotion. See [ART-07 relationship to ART-07b](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/SCHEMAS.md:3) and [SchemaRegistry certificate controls](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:467).
+
+Consequently, the blueprint cannot yet deterministically decide whether, for example, DP, TV, oracle stability, selective likelihood, and inference coverage are compatible. `OTHER_TYPED` also lacks a canonical new-certificate gate at this layer.
+
+## HIGH
+
+### D-H01 — Data-dependent \(\psi\) remains bypassable
+
+The derived `DataDependenceRecord` is a real improvement: the FIXED/adaptive class is no longer a writer-supplied label, and its digest is incorporated into the parameter domain.
+
+Two holes remain:
+
+- ART-07b does not require a non-FIXED derivation to bind an explicit calibration submechanism and authoritative `DATA_DEP_PSI` decision, despite the mathematical scope requiring both.
+- A declared FIXED derivation can omit a transitive dataset read; factual provenance is explicitly deferred until Iteration 11.
+
+Thus explicit data dependence can lack its gate, and hidden data dependence can still be omitted from the declared derivation graph. See [scope default and gate](/Users/nicholasmino/Desktop/Research/Work/architecture/02-scope/MATH_SCOPE.md:67), [ART-07 mechanism fields](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/SCHEMAS.md:25), and [ART-07b DD rules](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:327).
+
+### D-H02 — Imported theorem identity is not canonical
+
+The charter requires exact registration on first use and every changed assumption map, formalization mapping, or chain role. But a literature record contains only a `lit_id`, locator, excerpt, and potentially `UNKNOWN` formalization mapping; it does not bind:
+
+- Exact imported Claim digest
+- Source-statement digest
+- Complete assumption map
+- Definition pins and operator
+- Dependency role
+- Corresponding registration-decision digest
+
+See [external-theorem predicate](/Users/nicholasmino/Desktop/Research/Work/architecture/01-charter/CHARTER.md:52) and [literature Claim schema](/Users/nicholasmino/Desktop/Research/Work/architecture/14-literature/LITERATURE_BOUNDARY.md:38).
+
+An external theorem can therefore be reframed or strengthened without a machine-computable determination that it ceased to be the registered import. Q15’s rule that an external theorem cannot advance the chain alone does not protect downstream Claims that use a mistranslated import as a premise.
+
+## What Iter1.26 did close
+
+- Claims, subjects, mechanisms, operators, definitions, and transforms are content-addressed.
+- Chain segments have explicit predecessor and digest-projection requirements.
+- Composition requires at least one certificate input and rule-derived output.
+- Inference cannot directly skip `selected_object`.
+- The bridge source certificate must equal the selected object’s generator certificate.
+- Bridge transformations are limited to weakening assumptions, narrowing domains, and weakening failure budgets.
+- Data-dependence classification is derived rather than self-attested.
+
+These are substantial object-model advances, but they are foundations, not a complete theorem-safety architecture.
+
+Required next closure is: concrete certificate schemas; proof-carrying bridge rules; digest-bound promotion intent and audits; derived audit applicability; `RESULT ⇒ proved closure` transitions; exact imported-result objects; enforced data lineage and gates; and executable adversarial conformance fixtures.
+
+PASS_D_VERDICT: BLUEPRINT_READY? NO maturity 4/10

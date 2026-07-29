@@ -1,0 +1,6 @@
+- **HIGH — ADV/CORR/INTEG:** CX freshness is not fully closed. `EvidenceClosure` adds ProofEvidence/CertificationRecord digests, but I-CX-01 operates on Claim digests. A CertificationRecord points to ProofEvidence, whose `claim_digest` requires another dereference; the stated one-hop closure can therefore miss a FULL Counterexample against the underlying evidence Claim. Explicitly include the associated `ProofEvidence.claim_digest` for proof/certification evidence. [Freshness rule](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:115>) · [I-CX-01](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:386>) · [CertificationRecord](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:163>) · [ProofEvidence claim binding](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:465>)
+
+ITER6_ADV_VERDICT: FAIL
+ITER6_CORR_VERDICT: FAIL
+ITER6_MIN_VERDICT: PASS
+ITER6_INTEG_VERDICT: FAIL

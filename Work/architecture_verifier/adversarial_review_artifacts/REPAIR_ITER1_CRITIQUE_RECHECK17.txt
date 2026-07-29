@@ -1,0 +1,5 @@
+- **HIGH — Circular gate identity.** A Claim hashes `historical_scope_dec_digest`, while that HumanDecision hashes `target_digest = claim_digest`. This circular dependency makes `historical_scoped=true` Claims practically non-constructible and non-recomputable. The claim-target option for continuous-Λ decisions has the same defect. [CANONICAL_OBJECTS.md:102](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:102)
+
+- **HIGH — Subject-map mediation is not digest-bound.** `I-CERT-02b` permits cross-subject evidence after applying “registered subject maps,” but the bridge contains no subject-transform digest, rule identifier, or immutable endpoint binding. Bridge validity can therefore depend on unspecified ambient registry state, enabling certificate laundering between subjects. [CANONICAL_OBJECTS.md:278](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:278)
+
+Iteration-1 ready for Iter2? NO

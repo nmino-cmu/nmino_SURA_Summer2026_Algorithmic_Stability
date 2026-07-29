@@ -1,0 +1,15 @@
+# Iteration 2 independent reviews — BLOCKED
+
+**Timestamp:** 2026-07-23  
+**Attempt:** Four parallel `codex exec -m gpt-5.6-sol` reviews (adv/math/min/integ)  
+**Result:** All four failed before producing findings.
+
+```text
+ERROR: You've hit your usage limit. Upgrade to Pro ... or try again at Jul 29th, 2026 9:58 PM.
+```
+
+Per workspace rule `openai-models-via-codex-cli`: do **not** silently spend Cursor OpenAI/Sol credits as fallback when the chat model is not already GPT/OpenAI.
+
+**Consequence:** Iteration 2 cannot be marked complete. ART-07c stays `DRAFT_REPAIR`. Iteration 3 authorization remains **DENIED**.
+
+**Resume:** Re-run Reviews A–D from `iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md` when Codex capacity returns.

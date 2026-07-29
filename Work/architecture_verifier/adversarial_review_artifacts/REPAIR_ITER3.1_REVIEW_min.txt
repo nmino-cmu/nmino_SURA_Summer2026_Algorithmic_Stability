@@ -1,0 +1,10 @@
+Prior 3.0 HIGH cuts: **CLOSED**.
+
+- Propose/Pending removed; `Command` is inline.
+- Four expected heads merged into `expected_state_head_digest`.
+- Evaluation record folded into `MutationEvent.validation_preimage`.
+- `Reduce` demoted to an internal pure function.
+
+New HIGH — remove authoritative `commit_busy`, its head inclusion, and `COMMIT_BUSY`. Serialization already provides mutual exclusion, so this is zero-loss. Worse, Commit sets `commit_busy=true` before recomputing the head, guaranteeing a mismatch with the caller’s pre-lock expected head. See [ART-06b](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:29), [head definition](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:53), and [pipeline](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:114).
+
+ITER3_MIN_VERDICT: FAIL

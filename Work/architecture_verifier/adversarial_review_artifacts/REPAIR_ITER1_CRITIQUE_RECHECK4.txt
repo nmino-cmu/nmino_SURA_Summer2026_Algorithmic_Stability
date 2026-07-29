@@ -1,0 +1,9 @@
+- **CRITICAL — Circular/free discharge remains possible.** `DISCHARGED` does not require a unique `DischargeRecord` matching the use’s `assumption_digest`. Checking the discharger’s closure “without this discharge” still permits mutually supporting discharge records. Require exact target/use equality and compute closure with all candidate discharges disabled, or enforce an acyclic discharge graph. [ART-07b §3](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:121)
+
+- **CRITICAL — Proof evidence remains unverifiable.** I-PF-00 fixes attachment/evidence claim equality, but `kind` is unbounded and `body_digest` has no typed, resolvable proof-body object or validation/recomputation rule. An arbitrary digest can still masquerade as proof evidence. [ART-07b §10](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:323)
+
+- **HIGH — EvidenceUse equality is self-asserted.** `equal_fields[]` merely lists field names; no invariant requires the referenced claims’ values actually to be equal. `chain_segment compatibility` is undefined, and guarantee-context fields are not required. [ART-07b §4.3](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:208)
+
+- **HIGH — DefPin still permits cross-family version substitution.** Identifier occurrences are now qualified, but no invariant requires the referenced `DefinitionVersion.def_id` to equal `DefPin.def_id`. A version from another family with overlapping symbols can satisfy I-DEF-01. [ART-07b §2.3](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:89)
+
+Iteration-1 ready for Iter2? NO

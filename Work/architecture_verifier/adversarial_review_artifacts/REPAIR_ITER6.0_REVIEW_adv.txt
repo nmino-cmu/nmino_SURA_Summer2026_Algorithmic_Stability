@@ -1,0 +1,9 @@
+Two HIGH findings; no CRITICAL.
+
+- **HIGH — PASS is not bound to an audited state snapshot.** `audit_digest` omits the audited state head/event sequence, while APPLY requires only that evidence digests remain “resolvable.” After PASS, evidence can be superseded, revoked, or contradicted while the old digests remain resolvable, allowing the stale PASS to authorize promotion. [AUDIT_BINDING.md:63](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:63), [AUDIT_BINDING.md:99](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:99)
+
+- **HIGH — blocker evaluation is not canonically executable.** The self-contained normative artifact does not enumerate the promised question digests, structured answer domains, conditional applicability rules, or exact inference/stability policy lists; it instead references unspecified seed constants and a migrated legacy blocker table. Consequently independent implementations cannot deterministically recompute policies or guarantee that every blocker `NO/UNKNOWN` prevents PASS. [AUDIT_BINDING.md:28](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:28), [AUDIT_BINDING.md:46](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:46), [AUDIT_BINDING.md:56](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:56)
+
+Unbound legacy PASS, wrong `intent_digest`, and auditor=proof-proposer are otherwise explicitly rejected. Direct evidence-list replacement changes `audit_digest`, but the stale-state path above still defeats the intended protection.
+
+ITER6_ADV_VERDICT: FAIL

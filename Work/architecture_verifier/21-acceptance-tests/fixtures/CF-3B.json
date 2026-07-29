@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"APPLY_PROMOTION","payload":{"basis_ok":true,"caller_boolean":true}}],"expect":"CALLER_BOOLEAN_FORBIDDEN","fixture_id":"CF-3B","initial_state":{"research":{"maturity":{"CLAIM_A":"CONJECTURE"}}},"kind":"behavioral"}

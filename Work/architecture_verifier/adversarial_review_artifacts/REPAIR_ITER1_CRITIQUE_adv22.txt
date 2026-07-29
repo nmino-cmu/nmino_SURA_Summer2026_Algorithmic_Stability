@@ -1,0 +1,23 @@
+CRITICAL
+
+- **C-01 — Consecutive chain segments are not digest-bound.** I-CHAIN-01 requires only a dependency on the prior segment; it does not require equality of subject, operator, mechanism, domain, scope, score family, or relevant DefPins across that edge. I-CERT-01 checks the stability claim internally, not against its `selection_application` premise. Unrelated claims can therefore be spliced into a nominally valid front-to-back chain. [CANONICAL_OBJECTS.md:228](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:228)
+
+- **C-02 — Composition does not validate the composed result.** The rules require inputs, a registered composition rule, and EvidenceUses, but never require the output guarantee, failure budget, domain, assumptions, or subject to equal the rule applied to those inputs. I-CERT-01 does not cover `composition`, while COMPOSITION_INPUT deliberately permits differing subjects. An arbitrary output certificate can therefore cite one valid input and an unrelated registered rule. [CANONICAL_OBJECTS.md:238](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:238)
+
+- **C-03 — Bridge transforms are not bound to their actual endpoints.** Nothing requires each TransformObject’s `input_digest` and `output_digest` to equal the source certificate and consumer inference’s actual assumptions, domain, or failure budget. Nor is the inference consumer’s selected subject explicitly equated to the source certificate’s subject. Valid transforms over unrelated objects can therefore be attached to manufacture a structurally valid bridge/inference. [CANONICAL_OBJECTS.md:263](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:263)
+
+HIGH
+
+- **H-01 — Data-dependence records are orphaned.** `DataDependenceRecord` has no target digest, and Claim, SubjectRef, and MechanismInstance contain no reference to one. Consequently the FIXED/adaptive derivation discipline can be omitted entirely from claims; preventing self-attested labels does not make the derived classification effective. [CANONICAL_OBJECTS.md:303](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:303)
+
+- **H-02 — GrossRequired and NetRequired are not normatively defined.** “As before” supplies no local or identified normative definition. Premise-assumption inheritance, prerequisite expansion, slot cardinality, duplicate/conflicting AssumptionUses, and the circular-discharge algorithm remain unspecified. This makes discharge, assumption transforms, fingerprints, and CX closure non-deterministic. [CANONICAL_OBJECTS.md:142](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:142)
+
+- **H-03 — The math fingerprint omits definition pins.** Assertion and subject payloads can contain `{def_id, symbol}` nodes whose meanings come from separate DefPins, but those pins are absent from the fingerprint. Claims using different definition versions can therefore compare equal, validating `RENAMES` and propagating CX closure across mathematically different claims. [CANONICAL_OBJECTS.md:179](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:179)
+
+- **H-04 — DerivedProofFloor is ambiguous with multiple attachments.** ProofAttachment has no uniqueness rule, but I-PF-04 branches on a singular `kind` after establishing only that some valid attachment exists. Mixed INFORMAL_STRUCTURED, CERTIFIED_STRUCTURED, and LEAN_REF attachments can yield different floors depending on which attachment is selected. [CANONICAL_OBJECTS.md:374](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:374)
+
+- **H-05 — `research_maturity` is declared stored but is not modeled.** It appears neither in Claim nor in a defined side-table object, and its complete enum is absent. I-AX-01 therefore has no canonical state location on which to operate. [CANONICAL_OBJECTS.md:366](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:366)
+
+I-HD-01’s deferred authority and INFORMAL’s non-authority for discharge/CX were not counted as defects; unsigned HumanDecision records do not raise the proof floor as written.
+
+ADV_VERDICT: FAIL

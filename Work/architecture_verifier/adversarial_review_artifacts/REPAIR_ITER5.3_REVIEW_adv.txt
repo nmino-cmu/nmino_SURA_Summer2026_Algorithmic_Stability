@@ -1,0 +1,11 @@
+No CRITICAL findings. One HIGH:
+
+- **HIGH — `OVERRIDE_EIO` still permits same-generation HD cherry-picking.** The effective-latest rule applies only to gates in `RequiredGates`; `OVERRIDE_EIO` is validated separately and is not included there. Attack: SET veto generation S → approve override D1 → later deny/hold D2 for the same target → APPLY supplies D1. D1 remains an unexpired ART-04c-valid approval, so the newer denial is ignored and the veto is overridden. Extend effective-latest evaluation to `OVERRIDE_EIO`. [I-AP-09](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:73) [RequiredGates](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:77) [effective-latest scope](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:97)
+
+Prior status:
+
+- `NOVELTY_TRACK_ACK` bypass: **CLOSED**
+- Required-gate HD cherry-pick: **CLOSED**, but remains open for `OVERRIDE_EIO`
+- Override replay across veto generations: **CLOSED**
+
+ITER5_ADV_VERDICT: FAIL

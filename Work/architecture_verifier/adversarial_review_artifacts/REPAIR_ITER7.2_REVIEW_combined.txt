@@ -1,0 +1,16 @@
+Freeze gate fails. The requested consumer wiring is present, but four in-scope safety defects remain:
+
+- **CRITICAL — ADV/CORR/INTEG: archived FULL CX bypasses demotion and promotion blocking.** ART-16b excludes archived counterexamples from both START and `I-DW-21`, contradicting ART-07b’s explicit `I-CX-02: Archive ≠ ignore`. Archive a FULL CX before a complete wave and its target can regain certification and promotion authority. [ART-16b START](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:57) · [I-DW-21](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:81) · [I-CX-02](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:391)
+
+- **CRITICAL — ADV/CORR/INTEG: overlapping waves can undo `SUPERSEDED`.** An `OPEN_CLAIM(C)` captured as another wave’s dependent can execute after a FULL-CX wave supersedes C. Both waves then become COMPLETE, C is OPEN, its old certification again yields `CERTIFIED_INFORMAL`, and the historical COMPLETE row satisfies `I-DW-21`. This violates `I-AX-01` and permits re-promotion against a live FULL CX. `OPEN_CLAIM` must not overwrite `SUPERSEDED`, and CX discharge must verify the current demotion postcondition. [Expansion](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:41) · [unguarded effects](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:62) · [historical discharge test](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:81) · [I-AX-01](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:456)
+
+- **HIGH — CORR/INTEG: trigger creation is not durably coupled to START.** A crash after FULL-CX registration but before the separate START leaves no cursor-bearing wave; definition supersession has the same gap. Moreover, `PIN_SUPERSESSION` refers to an undefined “ActiveDefinitionHead digest being superseded” without binding START atomically to a head-change command. Trigger acceptance must create the cursor-0 wave or a durable pending obligation in the same Commit. [START contract](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:51) · [ActiveDefinitionHead schema](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:79)
+
+- **HIGH — CORR/INTEG: cursor monotonicity is not closed.** `I-DW-01` says waves are append-only, but START says to upsert the same deterministic wave digest with `cursor=0`; duplicate START behavior is unspecified and can reset a partial or COMPLETE wave. Require duplicate START to preserve the existing cursor or reject it, and state `cursor_new ≥ cursor_old`. [I-DW-01](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:37) · [cursor-zero upsert](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:60)
+
+No CRITICAL/HIGH minimality defect found.
+
+ITER7_ADV_VERDICT: FAIL
+ITER7_CORR_VERDICT: FAIL
+ITER7_MIN_VERDICT: PASS
+ITER7_INTEG_VERDICT: FAIL

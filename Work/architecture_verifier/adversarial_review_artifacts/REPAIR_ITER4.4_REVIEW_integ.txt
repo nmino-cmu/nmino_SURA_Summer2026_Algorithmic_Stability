@@ -1,0 +1,5 @@
+- **HIGH — ART-04c version activation remains inconsistent.** ART-04c and the iteration record declare ITER4.4, but the authoritative status index still pins ART-04c to ITER4.3. This leaves consumers pointed at the pre-fix contract and contradicts the matrix’s claim that the repair plane has no remaining conflict. Update the ART-ASI pin to ITER4.4. [ART-04c](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:4), [iteration record](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER4_IDENTITY_AUTHORITY.md:3), [stale ART-ASI pin](/Users/nicholasmino/Desktop/Research/Work/architecture/00-repair/ARTIFACT_STATUS.md:15)
+
+The two prior defects are otherwise structurally corrected: both ART-18 records require `act_event_seq`, I-MP-02 binds it to the introducing MutationEvent and denies unpinned credit, and the matrix now includes dialect, compatibility, prohibition, scheduling, blocker, and compatibility-evidence coverage.
+
+ITER4_INTEG_VERDICT: FAIL

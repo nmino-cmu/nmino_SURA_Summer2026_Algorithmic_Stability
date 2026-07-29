@@ -1,0 +1,16 @@
+Remaining CRITICAL/HIGH findings:
+
+- **CRITICAL — CORR/INTEG:** `RECORD_AUDIT` cannot resolve the audited intent. `AuditRecord` stores only `intent_digest`, while PASS validation requires the target claim and `DerivedBasisProposers(intent,S)`. The full `PromotionIntent` is supplied only later with `APPLY_PROMOTION`; no registration or `RECORD_AUDIT` payload supplies it. Deterministic PASS construction is therefore impossible. [AuditRecord and commands](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:66>) · [PASS validation](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:113>) · [PromotionIntent/APPLY](</Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:67>)
+
+- **CRITICAL — ADV/CORR/INTEG:** Every PASS requires `I-DL-02`, but ART-11b never defines that invariant. Fail-closed implementations must reject every PASS; permissive implementations can silently waive disconfirmation independence. [Undefined reference](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:103>) · [Mandatory PASS condition](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:113>)
+
+- **HIGH — ADV/CORR:** Most questions bind only an evidence kind, not the asserted fact. For Q02–Q04, Q07–Q10, Q14, Q16 and Q17, citing the target Claim satisfies the allowlist without evaluating the question prompt; Q15 accepts any utility Claim without checking comparator compatibility. Fabricated `YES` answers can therefore produce PASS. [Question semantics](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:34>) · [Type-only binding](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:93>)
+
+- **HIGH — CORR/INTEG:** Audit freshness contradicts promotion idempotency. A successful major APPLY writes target maturity, making its own audit stale; an immediate retry must therefore fail I-BIND-01 despite ART-13b requiring same-intent retries to be accepted as no-ops. [Freshness rule](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:126>) · [Idempotent APPLY](</Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:110>)
+
+No remaining CRITICAL/HIGH minimality finding.
+
+ITER6_ADV_VERDICT: FAIL
+ITER6_CORR_VERDICT: FAIL
+ITER6_MIN_VERDICT: PASS
+ITER6_INTEG_VERDICT: FAIL

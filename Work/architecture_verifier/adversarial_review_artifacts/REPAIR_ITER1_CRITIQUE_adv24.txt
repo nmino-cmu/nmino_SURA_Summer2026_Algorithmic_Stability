@@ -1,0 +1,5 @@
+No CRITICAL or HIGH findings in `CANONICAL_OBJECTS.md` Iter1.24.
+
+I-HD-01 and INFORMAL non-authority were treated as intentional.
+
+ADV_VERDICT: PASS

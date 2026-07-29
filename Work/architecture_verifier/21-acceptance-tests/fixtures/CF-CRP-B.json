@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","fixture_id":"CF-CRP-B","kind":"behavioral","commands":[{"command_kind":"SUBMIT_CANDIDATE_PACKAGE","payload":{"profile":"PHASE_B_STABILIZATION","mechanism_proposals":[],"claims":[{"chain_segment":"selection_stability","kind":"stability"}]}}],"expect":"MECHANISM_REQUIRED","initial_state":{"control":{"hard_stop":false},"research":{}}}

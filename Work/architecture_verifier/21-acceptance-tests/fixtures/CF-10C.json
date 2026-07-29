@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"I.CheckpointValidate","payload":{"forward_fix":true}},{"command_kind":"APPLY_PROMOTION","payload":{}}],"expect_sequence":["SUCCESS","DEMOTION_WAVE_OPEN"],"fixture_id":"CF-10C","initial_state":{"checkpoint_at_mint":true,"wave":{"cursor":0,"len":2}},"kind":"behavioral"}

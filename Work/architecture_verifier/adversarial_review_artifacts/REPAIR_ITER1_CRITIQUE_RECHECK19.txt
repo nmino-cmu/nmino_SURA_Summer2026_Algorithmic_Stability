@@ -1,0 +1,5 @@
+- **HIGH — Data-dependence laundering:** I-DD-01..03 never require a Claim’s `DataDependenceRecord` to include or conservatively join its essential dependencies and `DATA` assumptions. A consumer can use private/adaptive evidence while attaching a valid `FIXED` record, allowing a data-independence floor to pass.
+
+- **HIGH — Counterexample laundering:** CX closure depends entirely on optional `ClaimRelation` edges. The same assertion can receive a new digest by changing normative dependencies/provenance and be reissued without a relation, escaping an existing FULL counterexample.
+
+Iteration-1 ready for Iter2? NO

@@ -1,0 +1,15 @@
+Two HIGH findings remain; no CRITICAL findings.
+
+- **HIGH — Inference tuple coherence remains incomplete.** `allowed_inference_tuples` couples guarantee kind, conclusion schema, and budget kind, but omits `inference_target_digest` and `quantifier_digest`. Conclusion equality binds only the Claim conclusion. A coverage tuple can therefore still carry a generalization target or incompatible quantifier. [ART-07c §6](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:130>)
+
+- **HIGH — Constraint-bearing utility remains non-computable.** `CONSTRAINT_INPUT` exists only in prose: ART-07b dependency kinds are limited to `LOGICAL | DEFINITIONAL | BRIDGE`, while assumption roles are only `REQUIRED | DISCHARGED`. Additionally, Claims have no defined `use_class`, so “utility Claim floor ≥ consumer use_class floor” cannot be evaluated. The Claim-only carrier and domain fields improve typing but do not close the invariant. [ART-07c §9](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:279>) [ART-07b Claim encoding](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:161>)
+
+ITER2.2 disposition:
+
+- `ENDPOINT_CONSTRUCTION` missing — **CLOSED**
+- Inference Claim ≠ bridge target — **CLOSED**
+- Inference tuple coherence — **OPEN (HIGH)**
+- Map proof ≠ application — **CLOSED**
+- Utility under-typed — **OPEN (HIGH)**
+
+ITER2_MATH_VERDICT: FAIL

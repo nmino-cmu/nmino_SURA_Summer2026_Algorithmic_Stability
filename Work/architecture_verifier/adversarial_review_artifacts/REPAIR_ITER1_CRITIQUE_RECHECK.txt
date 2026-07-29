@@ -1,0 +1,17 @@
+Six prior findings remain at CRITICAL/HIGH.
+
+- **HIGH — Free-text authority remains possible.** A registered schema may wrap an opaque textual statement in a nominally typed object; no invariant requires a semantic AST or prohibits authoritative string leaves. `DefinitionVersion.body` also explicitly permits normative text. [Encoding and definitions](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:67)
+
+- **CRITICAL — Definition pins remain vacuous.** `symbols_covered` is self-declared. Nothing requires those symbols to exist in the referenced `DefinitionVersion.symbol_table`, resolve uniquely, or carry the pinned meaning. Pin completeness also is not imposed on Assumption or MechanismInstance payloads. [DefPin invariants](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:87)
+
+- **CRITICAL — Essentiality remains author-controlled.** The author can label a mathematically necessary premise `EMPIRICAL_SUPPORT`, thereby excluding it from promotion floors and assumption closure. Removing an `essential` boolean merely moves the choice into `kind`; no schema-derived or independently verified classification exists. [Dependency essentiality](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:182)
+
+- **CRITICAL — Certificate-to-claim binding is incomplete.** `certificate_claim_digest` is only payload content, with no required dependency edge or invariant equating mechanism, parameter domain, selection operator, and guarantee type. I-OBJ-07 checks only matching subject digests, so a certificate for the same subject under a different mechanism/domain can authorize promotion. [Certificate bindings](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:162)
+
+- **CRITICAL — Assumption closure is not computable or soundly dischargeable.** Neither assertion schemas nor Assumptions expose normative prerequisite-assumption edges, so the base and “transitive” closure are undefined. “Valid” discharge has no predicate binding the discharging claim’s conclusion to the assumption, and `WEAKENED` has no replacement semantics. [I-ASM-01](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:231)
+
+- **CRITICAL — The global digest cycle remains.** A bridge Claim hashes `proof_evidence_digest`, while that `ProofEvidence` hashes the Claim’s digest: `C = H(...E...)`, `E = H(C,...)`. I-OBJ-03 covers only Claim dependency edges, not this reverse evidence edge or `discharged_by_claim_digest` cycles. [ProofEvidence binding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:279)
+
+Closed at CRITICAL/HIGH: missing `ClaimRelation`, structurally optional inference bridge, and the status-axis vocabulary split.
+
+Iteration-1 ready for Iter2? NO.

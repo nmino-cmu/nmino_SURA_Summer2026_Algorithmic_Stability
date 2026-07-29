@@ -1,0 +1,5 @@
+- Prior HIGH — axis/from/to mirrors: **CLOSED.** `PromotionIntent` retains only target, policy, and basis references; transition fields derive from `PromotionPolicy`.
+- Prior HIGH — duplicate couple check: **CLOSED.** `I-AP-04`, `couple_ok`, the separate failure branch, and duplicate trace 5G are gone. Trace 5B now tests the single floor predicate.
+- New zero-loss **HIGH:** [`ValidationPreimageAPPLY`](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:117) duplicates `intent_digest` and `policy_digest` already present in the full command stored by [`MutationEvent`](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:98). Removing both fields loses nothing: `command_digest` already binds them into `event_digest`.
+
+ITER5_MIN_VERDICT: FAIL

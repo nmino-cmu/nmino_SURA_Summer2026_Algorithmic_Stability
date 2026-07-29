@@ -1,0 +1,7 @@
+- **CRITICAL — Independence attestation: OPEN.** `I-IND-04` verifies each atom’s attestation and requires its listed members to share a `controller_key_digest`, but does not require all atoms with the same controller key to merge. Two principals controlled by the same human/model family can occupy separate non-overlapping atoms with the same key; `I-IND-02` will not merge them, so `I-IND-03` falsely reports independence. [ART-04c §5](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:102)
+
+- **Certify cycle via ProofEvidence: CLOSED.** `ProofEvidence` no longer includes `certification_dec_digest`; construction is acyclic: evidence → attachment → certification → HumanDecision. [ProofEvidence](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:440)
+
+- **Proposer act binding: CLOSED.** The proposer event is derived from the first event introducing the exact evidence, and its authenticated principal, binding, and model provenance must match the certification record. [I-CERTIFY-01](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:177)
+
+ITER4_CORR_VERDICT: FAIL

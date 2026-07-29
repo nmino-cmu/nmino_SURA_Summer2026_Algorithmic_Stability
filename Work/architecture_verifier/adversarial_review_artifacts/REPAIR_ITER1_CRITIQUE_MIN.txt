@@ -1,0 +1,77 @@
+## Verdict
+
+**Ready for Iteration 2: NO.**
+
+No CRITICAL findings. Four HIGH issues still break the stated Iteration-1 goals.
+
+## HIGH findings
+
+1. **The axis split is not canonical package-wide.**
+
+ART-07b defines seven axes, several with open-ended enums ([CANONICAL_OBJECTS.md:316](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:316)). ART-09 defines a different six-axis record plus unary labels ([THEOREM_STATUS_FSM.md:24](/Users/nicholasmino/Desktop/Research/Work/architecture/09-theorem-status/THEOREM_STATUS_FSM.md:24)), while ART-06 still accepts unary `from_status`/`to_status` ([STATE_MODEL.md:69](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/STATE_MODEL.md:69)).
+
+Minimum repair: choose one closed Iteration-1 axis vocabulary, make ART-09 reference it, and replace ART-06’s unary pair with `axis_transitions[]`. No transition engine is required yet.
+
+2. **Relatedness is named but not defined.**
+
+`EquivalenceEdge` is required for equivalence and rename semantics ([CANONICAL_OBJECTS.md:42](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:42)), but no such object schema exists. Claim instead mixes embedded `supersedes`, `revises`, and unexplained edge references ([CANONICAL_OBJECTS.md:123](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:123)).
+
+Add one minimal external `ClaimRelation`:
+
+```text
+relation_digest
+relation_kind       # REVISION_OF | SUPERSEDES | EQUIVALENT_TO | RENAMES
+source_claim_digest
+target_claim_digest
+definition_pins[]
+evidence_claim_digest?   # required for equivalence
+```
+
+State direction and symmetry explicitly. Remove the three relation fields from Claim.
+
+3. **Claim dependency identity is not well-founded.**
+
+Claim identity hashes `dependency_edge_id[]`, while each edge points back through `from_claim_id` ([CANONICAL_OBJECTS.md:104](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:104)). Because the identity rule permits IDs to equal digests ([CANONICAL_OBJECTS.md:31](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:31)), the allowed content-addressed configuration creates a hash cycle. If edges are mutable instead, Claim meaning can change behind an immutable digest.
+
+Merge `DependencyEdge` into Claim:
+
+```text
+dependencies[] = {
+  premise_claim_digest,
+  kind,
+  essential
+}
+```
+
+This hashes only backward references and naturally supports the DAG.
+
+4. **Claim is not the sole immutable assertion carrier.**
+
+Claim permits an assertion whose structured representation is merely “preferred” ([CANONICAL_OBJECTS.md:104](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:104)). Meanwhile certificates carry authoritative `guarantee_statement` with optional `claim_id`, utilities carry independent statements, and BridgeTheorem is simultaneously a separate object and “bridge-as-claim” ([CANONICAL_OBJECTS.md:162](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:162), [CANONICAL_OBJECTS.md:181](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:181), [CANONICAL_OBJECTS.md:193](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:193)).
+
+Require a typed Claim payload:
+
+```text
+assertion_schema_id
+assertion_payload
+```
+
+Certificate guarantees, utility assertions, assumptions, and bridges should be Claim kinds or require a Claim unconditionally. Descriptive subject objects may remain separate.
+
+## Safe YAGNI reductions
+
+Without weakening Iteration 1:
+
+- Merge `Definition` and `DefinitionVersion`; `def_version_id` and `body_digest` currently duplicate identity while the actual body is split across objects.
+- Merge `BridgeTheorem` into a typed Claim. Remove its unary `status`; use Claim axes.
+- Remove `LeanEvidence.status`; retain evidence/build result and let the Claim axis hold status.
+- Move `intended_status_axes` to `PromotionIntent`, where it already appears.
+- Move `historical_scoped` to promotion/gate context.
+- Move `narrative_summary` and `author_notes` to annotations keyed by Claim digest.
+- Collapse `selected_object_type`, `certificate_type`, operator, and parameter fields into the discriminated assertion payload.
+- Defer `ActiveDefinitionHead`, `Experiment`, `Audit`, `PromotionIntent`, `PromotionDecision`, `LeanEvidence`, `HumanDecision`, and `ModelProvenanceRecord` from the Iteration-1 normative kernel. They belong to later mutation, audit, Lean, or authority work.
+- Move or defer `release_status`; it is operational publication state, not necessary for the stated Iteration-1 axis goal.
+
+A sufficient Iteration-1 kernel is: immutable-object envelope, merged `DefinitionVersion`, typed immutable `Claim`, external `ClaimRelation`, and one closed `ClaimStatusAxes` record.
+
+**Iteration 2 should start only after those four HIGH issues are repaired.** Full mutation-boundary behavior is not a readiness condition here.

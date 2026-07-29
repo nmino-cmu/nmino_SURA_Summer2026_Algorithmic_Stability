@@ -1,0 +1,5 @@
+- Prior HIGH — **CLOSED.** `APPLY_PROMOTION` now carries only `promotion_intent`; both redundant digest fields are absent. Gate and EIO-override decisions are deterministically selected by `EffectiveDecision` from the pre-state event log. [ART-13b payload and decision rules](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:86) [Replay-sufficient MutationEvent](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:94)
+
+- New zero-loss HIGH: **None found.**
+
+ITER5_MIN_VERDICT: PASS

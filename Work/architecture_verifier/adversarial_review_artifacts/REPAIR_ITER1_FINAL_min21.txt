@@ -1,0 +1,13 @@
+No CRITICAL over-engineering found. Four HIGH reductions remain; each preserves Iter1’s anti-laundering, identity, inference, and counterexample guarantees.
+
+### HIGH
+
+1. **Evidence relationships are represented three times.** An inference bridge appears in the assertion payload, as a `BRIDGE` dependency, and again in `EvidenceUse` ([Claim encoding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:175), [bridge binding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:255), [EvidenceUse](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:286)). Make the typed dependency the sole citation record, deriving the bridge and source certificate from it. Remove `EvidenceUse`, `evidence_use_digest`, and duplicate bridge references while retaining all DIRECT/BRIDGE_TRANSFORM validation predicates.
+
+2. **`TransformObject` need not be an independent registry object.** Every bridge owns exactly three transform digests, each requiring another content-addressed object and lookup ([lines 260–284](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:260)). Inline the three typed transform records into the immutable bridge Claim payload. The bridge digest then binds the same endpoints, kinds, and compatibility rules without a separate object lifecycle. Cross-bridge transform reuse is not an Iter1 guarantee.
+
+3. **Most status axes are stored views of derived or future state.** `proof_status` duplicates `DerivedProofFloor`; `counterexample_status` is derivable from CX closure; integration, inference-applicability, and Lean lifecycle are deferred ([lines 383–425](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:383)). Retain only `research_maturity` as stored state. Rewrite I-AX-01 directly against FULL-CX closure and `DerivedProofFloor`. Remove the other stored axes and `LEAN_REF`, which explicitly has no Iter1 authority.
+
+4. **Counterexamples persist a fingerprint set that must equal a derivation.** `target_math_fingerprints[]` is completely determined by immutable `target_claim_digests[]`, with I-CX-06 existing solely to enforce that equality ([lines 348–373](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:348)). Compute the set during closure instead; remove the field, I-CX-06, and its repetition in FULL witnesses. Reissue detection remains unchanged. The separate `Counterexample.fingerprint` is also unused and removable.
+
+MIN_VERDICT: FAIL

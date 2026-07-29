@@ -1,0 +1,9 @@
+CRITICAL: None.
+
+HIGH:
+
+1. **Collapse the speculative policy matrix.** `AUD_MAJOR` already requires all Q1–Q16; inference and stability milestones are subsets of `major_milestone`, so their additive policies cannot add checks. `ANY_APPLY` is unreachable because non-major APPLY explicitly needs no audit. `ALL_REQUIRED_YES` is unused, and `authorized_role_ids` mirrors ART-04c’s command authorization. Delete those branches/mirrors and retain one major-audit policy. [ART-11b policy matrix](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:33) [milestone subsets](/Users/nicholasmino/Desktop/Research/Work/architecture/01-charter/CHARTER.md:114) [ART-04c authorization](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:194)
+
+2. **Remove `answers_digest`.** It is a deterministic digest mirror of the stored `answers[]` and has no independent consumer. Hash the canonical sorted answer pairs directly into `audit_digest`; binding and immutability remain unchanged. [AuditRecord schema](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:61)
+
+ITER6_MIN_VERDICT: FAIL

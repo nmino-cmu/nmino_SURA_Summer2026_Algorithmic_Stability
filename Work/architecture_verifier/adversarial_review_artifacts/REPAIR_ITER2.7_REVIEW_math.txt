@@ -1,0 +1,6 @@
+No CRITICAL or HIGH findings.
+
+- I-UTIL-02 now mandates a complete utility signature, exact equality, and invalidation on omission.
+- No regression across the prior PASS surface.
+
+ITER2_MATH_VERDICT: PASS

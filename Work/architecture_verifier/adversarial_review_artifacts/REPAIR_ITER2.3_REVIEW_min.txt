@@ -1,0 +1,12 @@
+FAIL — no CRITICAL findings; one HIGH remains.
+
+Verified landed:
+
+- `bridge_class` is derived only; stored discriminator forbidden.
+- `TransformRule` is folded into `TransformRecord`.
+- Bridge payload now contains only source Claim and transforms.
+- Utility is Claim-only; `UtilityCompatibilityReference` is removed.
+
+HIGH — The utility Claim payload still duplicates Claim-authoritative data: `utility_digest`, `subject_digest`, `parameter_domain_digest`, and `definition_pins[]`. These derive respectively from the Claim conclusion, `subject_ref`, `parameter_domain`, and Claim pins. Removing them loses no invariant because consumers cite the utility Claim and compatibility already checks its canonical fields. [Utility payload](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:279) [Claim encoding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:161)
+
+ITER2_MIN_VERDICT: FAIL

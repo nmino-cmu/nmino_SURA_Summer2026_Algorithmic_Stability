@@ -1,0 +1,5 @@
+No CRITICAL or HIGH findings in Iter1.26.
+
+The covering-anchor repair now requires the bridge source certificate to equal the selected object’s generator certificate, closing the Iter1.25 substitution attack. I-HD-01 was treated as intentional.
+
+ADV_VERDICT: PASS

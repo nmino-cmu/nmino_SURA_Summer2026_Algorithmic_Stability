@@ -1,0 +1,7 @@
+No CRITICAL findings. One HIGH remains.
+
+- **Prior atom-extension HIGH — CLOSED.** `EXTEND_ATOM(old_atom_digest, new_atom)` now atomically retires the old live atom, installs a recomputed replacement with the same policy/controller key, and preserves all existing members. [ART-04c §5](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:126>)
+
+- **Prior ART-18 author-substitution HIGH — not fully closed.** Principal and binding equality are now enforced, but I-MP-02 also compares model provenance against `Command.caller_model_prov_digest`, a field absent from both Command schemas. Strict validators therefore cannot credit MODEL_RUNTIME reports. Compare instead with the model provenance derived from `caller_binding_digest`, or add the missing signed Command field. [I-MP-02](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:75>) [ART-04c Command](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:28>) [ART-06b Command](</Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:74>)
+
+ITER4_ADV_VERDICT: FAIL

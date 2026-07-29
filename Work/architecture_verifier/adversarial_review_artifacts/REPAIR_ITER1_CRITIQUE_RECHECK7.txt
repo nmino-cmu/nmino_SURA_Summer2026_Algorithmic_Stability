@@ -1,0 +1,9 @@
+Gate: FAIL.
+
+- **CRITICAL — Discharged Claim identities are cyclic.** `claim_digest` hashes `assumptions_used[].discharge_digest`, while `discharge_digest` hashes `target_claim_digest`. This creates `C = H(...D...)`, `D = H(C,...)`, preventing deterministic content addressing. Excluding the record itself does not remove the digest reference. [Claim encoding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:152), [DischargeRecord](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:121)
+
+- **CRITICAL — Assumption closure remains non-computable.** `Prereq*`, `GrossRequired`, and `NetRequired` are merely defined “as before”; no formulas exist in the normative artifact, and §7 points back to those missing formulas. Additionally, `proof_status ≥ INFORMAL` uses an undefined ordering. Implementations cannot deterministically validate closure or discharge. [I-ASM-01/02](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:137), [§7](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:277)
+
+- **HIGH — Conclusion equality is not schema-stable.** `StmtDigest` hashes `statement_schema_id`, whereas `ConclusionDigest` hashes the enclosing Claim’s `assertion_schema_id`. “Same type family” does not make those identifiers equal, so the same proposition represented through distinct statement/assertion schemas cannot discharge—or requires unspecified coercion. [Digest definitions](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:138)
+
+Iteration-1 ready for Iter2? NO.

@@ -1,0 +1,12 @@
+No CRITICAL or HIGH.
+
+Confirmed:
+
+- Composition inputs are ordered `LOGICAL` dependencies.
+- Data-dependence hashing is acyclic via `parameter_domain_core_digest`.
+- Bridge-protected fields require equality.
+- `TransformRule` exists and is content-addressed.
+- `ConclusionDigest` has a canonical extraction/recomputation definition.
+- Iter3/4/5/8/11 concerns are explicitly deferred or blocked by I-HD-01.
+
+Iteration-1 ready for Iter2? **YES**

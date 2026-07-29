@@ -1,0 +1,95 @@
+## Pass B findings — CRITICAL/HIGH only
+
+| Tabletop attack | Result | Mechanism assessment |
+|---|---|---|
+| CX destroys promoted theorem | FAIL | Strong invariant, non-executable demotion |
+| Definition changes | FAIL | Pin guard exists; invalidation wave is prose |
+| Lean rejects theorem | FAIL | Manifest partially derived; cross-axis demotion absent |
+| Checkpoint omits refutation | FAIL | Self-referential validation permits rollback |
+| Hard stop mid-promotion | FAIL | Boolean guard without transaction fencing |
+
+### CRITICAL — PB-01: Counterexample destruction is neither reachable nor crash-safe
+
+ART-07b provides useful fingerprint closure and requires a FULL counterexample to invalidate maturity and proof status. However:
+
+- ART-12 uses `cx_id`, `FULL_REFUTE`, `target_claim_ids[]`, and `demotion_triggered[]`; normative ART-07b instead uses `cx_digest`, `FULL`, and `target_claim_digests[]`. No authoritative translation exists. [ART-12 schema](/Users/nicholasmino/Desktop/Research/Work/architecture/12-counterexample/COUNTEREXAMPLE_PROTOCOL.md:58), [ART-07b schema](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:369)
+- Normative FULL acceptance requires a `CERTIFIED_INFORMAL` witness, but ART-07b explicitly makes that proof floor unattainable until Iteration 4. A current FULL refutation therefore cannot become authoritative. [I-CX-04](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:385), [I-HD-01](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:431)
+- The demotion wave has no durable status, affected-set snapshot, cursor, completion proof, retry/idempotency rule, or atomic commit. A crash can demote the target while leaving dependents promoted. [ART-16 wave](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/FAILURE_RECOVERY.md:59)
+- ART-07b explicitly defers demotion waves to Iteration 7. [Deferred work](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:530)
+
+**Assessment:** CX closure is a good declarative invariant; destruction and propagation are prose.
+
+### CRITICAL — PB-02: Definition change permits stale theorem survival and promotion races
+
+ART-07b correctly introduces immutable versions, active heads, digest-bound pins, and an active-head promotion requirement. [Definition contracts](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:64)
+
+But the active-head mutation boundary is deferred, while ART-16 describes dependent invalidation only as an ordered sentence. There is no atomic operation that:
+
+1. changes the active definition head,
+2. invalidates affected audits,
+3. computes and records the complete dependent closure,
+4. demotes every affected theorem and Lean manifest, and
+5. prevents concurrent promotion against the old head.
+
+ART-08’s “terminate and start a new pin cycle” rule prevents a cooperative mid-cycle edit but does not serialize head changes against an already validated promotion. [ART-08 invalid transition](/Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/RESEARCH_CYCLE_FSM.md:102)
+
+**Attack outcome:** promotion validates against `def.v1`; `def.v2` becomes active; promotion commits afterward, or existing `def.v1` dependents remain RESULT following an interrupted wave.
+
+**Assessment:** object-level pin validation is specified; lifecycle invalidation is prose.
+
+### HIGH — PB-03: Lean rejection does not authoritatively invalidate the theorem
+
+The manifest model is incomplete for a derived status:
+
+- It binds `claim_id`, not the normative `claim_digest`.
+- It lacks a source-tree/proof-body digest and imported-proof closure digest.
+- `LEAN_CORE` does not explicitly require `build_ok` or matching pins.
+- `LEAN_STALE` covers only pin/toolchain changes, not proof-source changes, imported theorem refutation, or dependency-status changes. [Lean predicates](/Users/nicholasmino/Desktop/Research/Work/architecture/10-lean/LEAN_FSM.md:28)
+
+ART-16 P4 says to demote the Lean status, but supplies no mutation transaction connecting that rejection to research maturity or dependent claims. [Lean recovery](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/FAILURE_RECOVERY.md:42)
+
+Most decisively, ART-07b declares Lean authority deferred and treats `LEAN_REF` as UNPROVED until Iteration 8. [Proof-floor rule](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:397)
+
+**Assessment:** independent rebuild intent is credible; authoritative status and cross-axis invalidation are not yet specified.
+
+### CRITICAL — PB-04: A checkpoint immediately before a refutation can validate
+
+The checkpoint carries a Merkle root for only the presented event prefix. Validation compares `event_seq_max` with the latest FULL_REFUTE visible in the available event history. [Merkle validation](/Users/nicholasmino/Desktop/Research/Work/architecture/17-indefinite-ops/INDEFINITE_OPS.md:38)
+
+There is no external monotonic log-head or independently anchored irreversible-event watermark. Therefore:
+
+1. Present the valid prefix ending immediately before the refutation.
+2. Its Merkle root recomputes correctly.
+3. That prefix contains no later FULL_REFUTE.
+4. `event_seq_max ≥ max_seq(FULL_REFUTE events)` passes locally.
+5. Recovery can resurrect the theorem.
+
+The root also does not authenticate the checkpoint metadata itself—pin-table hash, gate snapshot, manifests, and audit tail—and the restore floor ignores denials, hard stops, contradictions, and incomplete demotion waves.
+
+**Assessment:** corruption detection for a supplied prefix exists; rollback prevention does not.
+
+### CRITICAL — PB-05: Hard stop has no fencing semantics
+
+ART-08 correctly forbids mutations while `hard_stop.active=true`. [Hard-stop guard](/Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/RESEARCH_CYCLE_FSM.md:126)
+
+It does not define a linearization point, expected-head compare-and-swap, stop epoch, commit fence, isolation level, or cancellation protocol. Promotion transactions can therefore execute:
+
+```text
+promotion validates hard_stop=false
+hard stop commits active=true
+previously validated promotion commits
+```
+
+ART-07b explicitly defers authenticated mutation boundaries and promotion transitions to Iterations 3 and 5. [Deferred authority](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:530)
+
+**Assessment:** the freeze predicate is enforceable only after an atomic commit protocol exists; “immediate” is currently prose.
+
+### HIGH — PB-06: ART-22 validates none of the breaker paths
+
+ART-22 is expressly a non-state-writing simulation, claims no Lean verification, and exercises neither theorem destruction nor recovery. [Trace limitations](/Users/nicholasmino/Desktop/Research/Work/architecture/22-example-trace/E2E_TRACE.md:28)
+
+It contains no injected definition supersession, FULL refutation, failed Lean rebuild, truncated checkpoint, interrupted demotion wave, or promotion/stop race. It therefore provides happy-path documentation, not end-to-end evidence for long-run safety.
+
+The package’s current normative artifact also explicitly defers mutation authority, promotion FSMs, demotion waves, Lean binding, and executable conformance. The system has strong typed-object foundations, but the operational safety core is unfinished.
+
+PASS_B_VERDICT: BLUEPRINT_READY? NO — maturity 3/10

@@ -1,0 +1,10 @@
+No CRITICAL or HIGH minimality findings.
+
+MEDIUM — acceptable Iter13 cleanup:
+
+- Derive `source_subject_digest` and `selected_object.covering_cert` from their uniquely bound certificate/dependency instead of carrying them explicitly.
+- Collapse inert Iter4/8 authority stubs and residual derived carriers such as `ProofAttachment`, `COMPOSITION_INPUT` EvidenceUse, cached DD fields, and fingerprints.
+
+The Iter1 safeguards added in 1.26 are necessary and not safely removable.
+
+MIN_VERDICT: PASS

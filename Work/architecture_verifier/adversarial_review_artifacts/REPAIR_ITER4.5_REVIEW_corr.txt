@@ -1,0 +1,7 @@
+No Critical findings. One High remains.
+
+- **HIGH — I-MP-02 references unauthenticated/nonexistent caller model provenance.** The rule compares report provenance with `caller_model_prov_digest`, but neither Command schema defines that field. If rejected as unknown, MODEL_RUNTIME acts cannot receive credit; if accepted implicitly, I-CMD-AUTH does not require it to equal the model provenance bound into `caller_binding_digest`, permitting model-provenance substitution. Compare `author_model_prov_digest` directly with the dereferenced caller RoleBinding’s `model_prov_digest`—and require `⊥` for non-model callers. Apply the same derivation to I-CERTIFY-01’s caller-model check. [I-MP-02](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:75>) [Iter4 Command extension](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:28>) [Canonical Command](</Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:74>)
+
+`EXTEND_ATOM` retire+install is now atomic, monotone, and constructible. The minimal `CertificationRecord` remains acyclic and derivationally sound.
+
+ITER4_CORR_VERDICT: FAIL

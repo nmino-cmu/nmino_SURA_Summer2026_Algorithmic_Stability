@@ -1,0 +1,9 @@
+Version confirmed: `ARCH-0.3-REPAIR-ITER1.11`. No CRITICAL defects found.
+
+1. **HIGH — I-DEF-03:** Normative `mathematical_scope` and `parameter_domain` lack schema typing, permitting free-text authoritative mathematical meaning.
+2. **HIGH — I-DEF-02:** A Claim binds only `historical_scope_dec_id`; the referenced `HumanDecision` is neither immutable nor content-addressed, allowing approval or target substitution under the same ID.
+3. **HIGH — I-SUB-01/02:** Composition requires an operator but never binds it to the operator derived from `subject_ref`, leaving composition operators forgeable.
+4. **HIGH — I-XFORM-01:** Requiring output failure budget ≤ source budget permits deriving a stronger guarantee from a weaker certificate without proof.
+5. **HIGH — I-CERT-02 / I-XFORM-01:** Exact endpoint equality applies to bridge citations, forcing source certificate, bridge, and inference endpoint fields to match and thereby making parameter/failure-budget transforms identity-only.
+
+Iteration-1 ready for Iter2? NO

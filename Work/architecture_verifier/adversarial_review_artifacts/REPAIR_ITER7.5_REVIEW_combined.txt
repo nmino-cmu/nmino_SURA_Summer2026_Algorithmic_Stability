@@ -1,0 +1,18 @@
+Freeze gate fails. The three Sol 7.3 findings are closed:
+
+- FULL-CX seeds are atomically `SUPERSEDED`, with aligned I-BOOL-02 exceptions.
+- I-AP-06 requires both current `SUPERSEDED` and a COMPLETE wave.
+- PIN derivation uses `ActiveDefinitionHead.active_def_version_digest`.
+
+Remaining CRITICAL/HIGH findings:
+
+- **CRITICAL — dependent proof authority survives demotion.** `ADVANCE_DEMOTION_WAVE` changes dependents to `OPEN`, but `DerivedProofFloor` remains `CERTIFIED_INFORMAL` for certified claims unless they are `SUPERSEDED`. Consequently, affected dependents remain usable as certificates, dischargers, transform proofs, and FULL-CX witnesses both before and after ADVANCE. The incomplete-wave fence protects only APPLY_PROMOTION. This does not close the crash-time authority hole. [OPEN effect](</Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:64>) · [proof-floor derivation](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:446>) · [certificate consumer](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:120>)
+
+- **HIGH — later I-CX-01 closure growth has no atomic demotion path.** FULL-CX seeds are snapshotted only at mint, although current closure can later expand through `RENAMES`, `EQUIVALENT_TO`, or fingerprint changes—a case ART-11b explicitly recognizes. No corresponding relation/fingerprint mutation hook expands the existing wave or supersedes newly hit claims. Strict global validation therefore rejects such legitimate evolution with no repair path; weaker validation violates I-AX-01. [seed snapshot](</Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:43>) · [limited trigger wiring](</Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:191>) · [dynamic-closure recognition](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:115>)
+
+- **HIGH — START recovery is not an executable typed contract.** `START_DEMOTION_WAVE` defines no payload selecting a trigger and specifies recovery behavior only for FULL_CX, not PIN_SUPERSESSION. With multiple legacy gaps, ART-06b’s pure `DeriveEffects(Command, pre-state)` cannot deterministically select the wave to recover. [START contract](</Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:62>) · [command/effects contract](</Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:77>)
+
+ITER7_ADV_VERDICT: FAIL
+ITER7_CORR_VERDICT: FAIL
+ITER7_MIN_VERDICT: PASS
+ITER7_INTEG_VERDICT: FAIL

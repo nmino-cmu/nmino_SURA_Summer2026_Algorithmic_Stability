@@ -1,0 +1,9 @@
+No CRITICAL findings. Three HIGH findings:
+
+- **HIGH — `NOVELTY_TRACK_ACK` remains bypassable.** `RequiredGates` includes `PLAUSIBLE_NOVELTY_LABEL` but omits the separately mandatory `NOVELTY_TRACK_ACK`. A plausible-novelty claim can therefore promote past `CONJECTURE` with only the first approval. [RequiredGates](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:137) [mandatory trigger](/Users/nicholasmino/Desktop/Research/Work/architecture/15-human-gates/HUMAN_GATES.md:40) [both gates required](/Users/nicholasmino/Desktop/Research/Work/architecture/14-literature/LITERATURE_BOUNDARY.md:55)
+
+- **HIGH — multi-HD validation permits stale-approval cherry-picking.** APPLY validates only caller-supplied approval digests. Because `deny` and `hold` decisions are also valid committed HumanDecisions, a caller can omit a later deny/hold and submit an older unexpired approval for the same gate and intent. No effective-decision, supersession, or conflict-resolution check exists. [supplied-digest validation](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:146) [decision outcomes](/Users/nicholasmino/Desktop/Research/Work/architecture/15-human-gates/HUMAN_GATES.md:13)
+
+- **HIGH — EIO overrides replay across veto generations.** SET records `set_at_event_seq`, but `OVERRIDE_EIO` targets only `intent_digest`. An override can be minted before a veto or reused after CLEAR followed by a new SET for a different integrity concern. Thus the new veto cannot require fresh human review. Bind the override to the active veto generation, e.g. `H(intent_digest, claim_digest, set_at_event_seq)`. [SET/CLEAR lifecycle](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:95) [override check](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:133)
+
+ITER5_ADV_VERDICT: FAIL

@@ -1,0 +1,9 @@
+No CRITICAL/HIGH correctness findings.
+
+- `APPLY_PROMOTION` now carries only the bound intent; decision-digest mirrors are fully removed. [ART-13b](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:86)
+- Commit derives effects from the bound pre-state, whose digest is preserved in the event. [ART-06b](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:89)
+- `EffectiveDecision` deterministically selects the latest committed matching decision; later deny/hold records defeat older approvals. [EffectiveDecision](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:140)
+- Both generation-bound EIO overrides and all required gates consume that pre-state-derived decision. [I-AP-09](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:142) · [I-AP-10b](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:168)
+- No stale payload-mirror fields or checks remain in the operative artifacts.
+
+ITER5_CORR_VERDICT: PASS

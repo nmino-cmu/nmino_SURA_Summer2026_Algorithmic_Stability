@@ -1,0 +1,14 @@
+Prior Iter4.2 findings: **CLOSED**.
+
+- `certification_dec_digest` is absent from `ProofEvidence`; it exists only in the attachment command/event, eliminating the transitive digest cycle. [ProofEvidence](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:443>)
+- `proposer_act_event_seq` is no longer stored or hashed. It derives from the replay-sufficient first-introduction event, with exact proposer provenance matching. [Certification rule](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:172>) [MutationEvent](</Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:95>)
+
+New zero-loss **HIGH**: `CertificationRecordUnsigned` still duplicates deterministic data:
+
+- `proof_attachment_digest = H(claim_digest, proof_evidence_digest)`.
+- `proposer_principal_digest` is already hashed into `ProofEvidence`.
+- `proposer_binding_digest` and `proposer_model_prov_digest` derive from the same first-introduction event now used to derive proposer act time.
+
+Remove these mirrors and derive them during `I-CERTIFY-01`; no invariant or provenance is lost. [CertificationRecord](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:157>) [ProofAttachment](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:220>)
+
+ITER4_MIN_VERDICT: FAIL

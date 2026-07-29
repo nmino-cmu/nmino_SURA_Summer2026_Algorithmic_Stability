@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"EVAL_CERT_USE","payload":{}}],"expect":"PROOF_FLOOR_INSUFFICIENT","fixture_id":"CF-F2-09","initial_state":{"floor":"UNPROVED","use_class":"INFERENCE_FACING"},"kind":"behavioral"}

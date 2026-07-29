@@ -1,0 +1,11 @@
+## HIGH
+
+1. **Remove `bridge_class`.** It is completely determined by whether `target_endpoint_digest` resolves to a `CertificateEndpoint` or `InferenceEndpoint`. Dispatching class-specific validation on that endpoint type preserves covering, transform, floor, and composition rules while eliminating a conflicting duplicate discriminator. [Bridge class and target](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:212)
+
+2. **Remove `TransformRule` as a separate object.** Built-in weakening/restriction maps can be checked directly from `TransformRecord`; proof-bound maps can reference the theorem Claim directly and derive its proof floor. The theorem Claim already carries schema, payload, pins, identity, and proof evidence, so the intervening rule object adds no invariant. [TransformRule and TransformRecord](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:283)
+
+3. **Remove duplicated bridge payload bindings.** `bridge_schema_digest`, `source_endpoint_digest`, `source_subject_digest`, `covering_anchor_digest`, and `definition_pins[]` are derivable respectively from the bridge Claim schema, source certificate Claim, target inference endpoint/selected object, and bridge Claim pins. Recomputing them from those authorities preserves exact matching and covering while eliminating inconsistent mirrors. [Bridge payload](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:225)
+
+4. **Collapse the utility side model into ordinary Claims.** Require `UtilityStatement` to be a Claim, not “Claim or typed side object.” Represent `CONSTRAINT_INPUT` through a typed dependency/assumption slot, `EXCLUDED` through endpoint exclusions, and `INDEPENDENT_AXIS` through absence of such a dependency. This removes `UtilityCompatibilityReference` without losing subject/domain/pin validation or proof-floor behavior. [Utility objects](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:129)
+
+ITER2_MIN_VERDICT: FAIL

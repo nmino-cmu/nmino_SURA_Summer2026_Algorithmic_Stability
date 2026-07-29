@@ -1,0 +1,6 @@
+No CRITICAL/HIGH correctness findings.
+
+- `intent_digest` already binds `target_claim_digest`, policy, and bases.
+- `H(intent_digest, veto_intro_event_seq)` preserves claim binding and veto-generation freshness.
+
+ITER5_CORR_VERDICT: PASS

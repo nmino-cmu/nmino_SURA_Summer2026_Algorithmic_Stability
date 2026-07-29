@@ -1,0 +1,14 @@
+Freeze gate fails. Remaining CRITICAL/HIGH findings:
+
+- **CRITICAL — FULL-CX trigger creates an invalid/unsafe intermediate state.** `RECORD_COUNTEREXAMPLE` inserts only a cursor-0 wave; it does not demote the target. A previously `RESULT`/certified claim therefore still violates `I-AX-01` immediately after the Commit. Either the trigger Commit must be rejected, or the refuted claim retains inference authority until ADVANCE. The incomplete-wave fence blocks promotion only, not existing proof-floor uses. [Wave mint](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:51) · [I-AX-01](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:456) · [proof-floor consumers](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:120)
+
+- **HIGH — current-`SUPERSEDED` discharge was not propagated into ART-13b.** ART-16b correctly requires both a COMPLETE wave and current `SUPERSEDED`, but the self-contained promotion validator still checks only for a COMPLETE wave. The overlapping-wave repair is therefore locally closed but not consumer-closed. [I-DW-21](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:74) · [stale I-AP-06](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:128)
+
+- **HIGH — PIN same-Commit derivation remains schema-invalid.** `I-DW-31` reads `prior_head.def_version_digest`, while canonical `ActiveDefinitionHead` contains `active_def_version_digest`. The atomic coupling is stated, but `DeriveEffects` is not defined over the canonical field set. [I-DW-31](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:53) · [canonical head](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:81)
+
+Archive handling and duplicate-mint/cursor monotonicity are closed in ART-16b.
+
+ITER7_ADV_VERDICT: FAIL
+ITER7_CORR_VERDICT: FAIL
+ITER7_MIN_VERDICT: PASS
+ITER7_INTEG_VERDICT: FAIL

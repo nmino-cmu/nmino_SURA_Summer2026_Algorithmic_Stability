@@ -1,0 +1,10 @@
+Two of three prior HIGHs are closed: later non-PASS audits supersede PASS, and the matrix now covers ART-03/16/17.
+
+- **HIGH — ADV/CORR/INTEG:** Evidence invalidation remains incomplete. Freshness references undefined `CxRecord`/`target set`; the canonical object is `Counterexample` with `target_claim_digests[]`. Even interpreted charitably, exact intersection misses claims hit through canonical I-CX-01 equivalence/fingerprint closure and claims underlying cited proof/certification objects. Refuted evidence can therefore remain audit-fresh. [ART-11b freshness](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:115>) · [Canonical Counterexample](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:373>) · [CX closure](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:386>)
+
+No remaining CRITICAL/HIGH minimality finding.
+
+ITER6_ADV_VERDICT: FAIL
+ITER6_CORR_VERDICT: FAIL
+ITER6_MIN_VERDICT: PASS
+ITER6_INTEG_VERDICT: FAIL

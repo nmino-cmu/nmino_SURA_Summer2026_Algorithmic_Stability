@@ -1,0 +1,9 @@
+No CRITICAL findings.
+
+- **HIGH — Failure-budget strengthening can be laundered.** I-XFORM-01 constrains `output ≥ source` but never explicitly binds `input_digest` to the source certificate’s failure budget or `output_digest` to the inference Claim’s asserted failure budget. A benign transform can therefore accompany a stronger inference guarantee. [CANONICAL_OBJECTS.md](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:239>)
+
+- **HIGH — HumanDecision approvals are forgeable.** Content addressing prevents mutation but proves no authority. `actor_id` is self-asserted, no authorization/attestation binding is required, and `expires_at` is not checked. Fabricated approvals can satisfy the historical-scope and continuous-Λ gates. [CANONICAL_OBJECTS.md](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:385>)
+
+- **HIGH — Normative `proof_status` remains self-attested.** StatusAxes has no content-addressed or derived status record and no invariant connects `proof_status` to `ProofEvidence.kind` or authoritative review. Yet `INFORMAL` authorizes assumption discharge and admission of FULL counterexamples, allowing both to be self-certified despite the typed attachment. [CANONICAL_OBJECTS.md](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:152>) [CANONICAL_OBJECTS.md](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:345>) [CANONICAL_OBJECTS.md](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:356>)
+
+Iteration-1 ready for Iter2? NO

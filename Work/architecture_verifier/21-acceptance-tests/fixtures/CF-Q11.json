@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"RECORD_AUDIT","payload":{"Q11":{"response":"YES"}}}],"expect":"SUCCESS","fixture_id":"CF-Q11","initial_state":{"bridge_eval":"APPLICABLE","inference_facing":true},"kind":"behavioral"}

@@ -1,0 +1,12 @@
+Freeze gate passes. All Sol 8.7 CRITICAL/HIGH design defects are closed:
+
+- `LEAN_REF` precedes certification in [DerivedProofFloor](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:456), and [I-CERTIFY-01](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:171) accepts only `CERTIFIED_STRUCTURED`.
+- Axiom approval uses [EffectiveDecision](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:147); [RECORD_LEAN_MANIFEST](/Users/nicholasmino/Desktop/Research/Work/architecture/10-lean/LEAN_BINDING.md:79) carries no decision digest.
+- The [DemotionWave schema note](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:29) and [I-DW-32](/Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/DEMOTION_WAVES.md:68) consistently specify the composite generation-safe trigger.
+
+The expected DRAFT_REPAIR/OPEN process state does not affect the verdict.
+
+ITER8_ADV_VERDICT: PASS
+ITER8_CORR_VERDICT: PASS
+ITER8_MIN_VERDICT: PASS
+ITER8_INTEG_VERDICT: PASS

@@ -1,0 +1,11 @@
+- Prior HIGH — **CLOSED**. `claim_digest`, certifier principal/model provenance, and `review_outcome` are no longer stored; they derive from `ProofEvidence`, `RoleBinding`, and `ATTACH_CERTIFICATION=ACCEPT`. [CertificationRecord](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:159)
+
+- New zero-loss **HIGH** — the four atom digests are deterministic mirrors:
+  - `proposer_human_atom_digest`
+  - `certifier_human_atom_digest`
+  - `proposer_model_atom_digest?`
+  - `certifier_model_atom_digest?`
+
+  The proposer and certifier principals derive from the evidence-introduction event and certifier binding. At the attachment sequence, I-IND-01 guarantees exactly one live atom membership for each applicable fixed certification policy. The replay-sufficient MutationEvent log therefore uniquely reconstructs all four values and the I-IND-03 result. Remove them from `CertificationRecordUnsigned` and derive the applicable atoms during `I-CERTIFY-01`; no identity, independence, or audit information is lost. [Atom uniqueness and policies](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:122) [Replay invariant](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:94)
+
+ITER4_MIN_VERDICT: FAIL

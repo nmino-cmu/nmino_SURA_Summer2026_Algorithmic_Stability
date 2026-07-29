@@ -1,0 +1,13 @@
+No CRITICAL issues found.
+
+1. **CLOSED — Hard-stop allowlist.** Enforcement now applies to derived effects, requires `store_targets={CONTROL}`, and forbids Research/Design mutations during a stop. [ART-06b §5](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:131)
+
+2. **CLOSED — Append/reduce atomicity.** Reduction is tentative; failure appends nothing. Event append, post-state installation, sequence increment, and unlock are one atomic acceptance transition. [ART-06b pipeline](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:114)
+
+3. **CLOSED — Replay-insufficient events.** The authoritative log is allocated to ResearchState, and each event stores the full Command, Effects envelope, and validation preimage. [event schema](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:95)
+
+4. **OPEN — HIGH: Head/CAS semantics remain non-executable and non-deterministic.**
+   - `commit_busy` is hashed into `control_head_digest`, but Commit sets it `true` before recomputing the head for the stale-write comparison. Sequentially applied, every valid caller head becomes stale; treating the lock as transaction-local requires an unstated exception to the hash definition. [head definition](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:50), [pipeline](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:114)
+   - `HARD_STOP_SET` does not specify whether an existing `release_dec_digest` is cleared or preserved, so conforming reducers can produce different hashed post-records. [HardStopRecord](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:36), [transition table](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:139)
+
+ITER3_STATE_VERDICT: FAIL

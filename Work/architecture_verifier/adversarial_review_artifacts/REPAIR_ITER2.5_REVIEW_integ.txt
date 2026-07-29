@@ -1,0 +1,5 @@
+- **HIGH — Silent dual-use remains for inference targets and context.** ART-07b requires Claim-level `inference_target`, parameter domain, scope, assumptions, pins, and budget ([ART-07b](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:264)). ART-07c independently repeats these in `InferenceEndpoint`, but only explicitly binds the Claim’s conclusion; `I-INF-CLAIM-01` merely equates the endpoint digest with the bridge output ([ART-07c](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:130), [consumer binding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:284)). Consequently, a bridge can be APPLICABLE for endpoint B while the canonical Claim carries target/domain/scope A. Require a total, exact projection from ART-07b Claim fields to every overlapping `InferenceEndpoint` field.
+
+- The ITER2.5 pin is consistent across ART-07c, the migration matrix, status index, and ART-25. No additional CRITICAL/HIGH legacy dual-use finding was found.
+
+ITER2_INTEG_VERDICT: FAIL

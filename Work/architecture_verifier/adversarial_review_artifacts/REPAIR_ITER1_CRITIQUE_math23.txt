@@ -1,0 +1,24 @@
+FAIL — CRITICAL/HIGH findings only.
+
+1. **CRITICAL — composition can mint an unsupported certificate.**  
+   Composition validates only the output subject, mechanism, and domain. It does not derive or constrain the output guarantee, failure budget, mathematical scope, or definition pins. `I-CERT-01` excludes composition, yet composition is certificate-eligible. A rule can therefore output an arbitrarily stronger certificate. [Lines 248–259](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:248)
+
+2. **CRITICAL — `NetRequired` assumptions can be laundered through composition and `selected_object`.**  
+   Assumptions propagate only through `Claim.dependencies`. Composition inputs are merely payload digests plus `EvidenceUse`; no matching dependency is required. Likewise, a `selected_object` need not depend on its generator. Consequently, input/generator assumptions can disappear from `NetRequired`, its fingerprint, and the bridge assumption endpoint. [Line 146](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:146), [lines 248–249](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:248), [line 312](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:312)
+
+3. **HIGH — `selected_object` is not a complete chain projection and its inference rule contradicts the segment table.**  
+   It copies only `subject_ref`, not mechanism, domain, scope, DefPins, or assumptions. Additionally, the table requires inference to depend on `selected_object`, while `I-OBJ-SEL-01` permits direct dependency on stability/composition. Implementations can produce opposite validity decisions. [Lines 249–261](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:249)
+
+4. **HIGH — bridge endpoints are under-typed and incomplete.**  
+   The bridge does not bind scope, guarantee kind/relation, or endpoint DefPins. `input_schema_id`/`output_schema_id` are not required to equal the schemas of the actual endpoint objects, and inference is not required to expose a canonical `failure_budget_digest`. Numeric monotonicity alone can therefore relate semantically incomparable bounds. [Lines 263–292](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:263)
+
+5. **HIGH — fingerprint equality is not a fully specified equivalence relation.**  
+   `ConclusionDigest`, `parameter_domain_digest`, and `mathematical_scope digest` lack normative extraction formulas. The fingerprint also omits `chain_segment`, although a schema may apply to multiple segments. Thus `RENAMES` and counterexample closure can vary by implementation or cross distinct mathematical roles. [Lines 186–202](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:186), [line 461](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:461)
+
+6. **HIGH — DefPin compatibility is not closed across the audited chain.**  
+   “Shared DefPins agree” covers stability/perturbation only. No invariant reconciles input, rule, output, generator, or transform pins for composition, `selected_object`, and bridges. Claims using incompatible definition versions can therefore be combined or translated. [Lines 255–275](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:255)
+
+7. **HIGH — several earlier chain projections are not computable predicates.**  
+   “Scores projected,” domain “compatible,” and “selected object under that operator” have no projection function, equality target, or registered compatibility relation. `I-CHAIN-01` requires digest-equality projections without defining those digests. [Lines 243–253](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:243)
+
+MATH_VERDICT: FAIL

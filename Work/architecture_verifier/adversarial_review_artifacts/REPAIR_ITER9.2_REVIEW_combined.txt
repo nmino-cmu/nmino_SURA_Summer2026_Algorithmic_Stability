@@ -1,0 +1,12 @@
+Freeze gate fails. All five requested bindings are textually present, and DRAFT/OPEN status was not counted against the gate. Remaining defects:
+
+- **CRITICAL — cycle evidence is not canonically constructible (ADV/CORR/INTEG).** `DerivedHopChainOk` and `DerivedS09Ok` depend on ExampleCard, FalsifierCard, mandatory classes, and attack-log references, but ART-08d defines none of their schemas or digest preimages. The commands accept bare digests, while ART-07b registers only CycleRecord and QuarantineLock stubs. Commit therefore cannot deterministically resolve or replay these authorization predicates; permissive implementations could bind arbitrary logs or reuse unrelated/pre-existing attacks. [Predicates](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:49>) · [writers](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:69>) · [ART-07b stubs](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:422>)
+
+- **HIGH — CycleRecord has a mutable content-addressed identity (CORR/MIN/INTEG).** `cycle_digest` hashes the optional card digests, yet LOCK creates the record before those cards exist and BIND later changes them. The specification provides no rekey/revision semantics, while every subsequent writer addresses the record using `cycle_digest`. Remove mutable card bindings from the identity or define an immutable revision model. [Digest](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:29>) · [LOCK/BIND lifecycle](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:71>)
+
+- **HIGH — DerivedMathStable silently loses mandatory stability conditions (ADV/CORR/INTEG).** The authoritative replacement checks only hop binding, definition heads, incomplete waves, and optional Lean staleness. It omits the existing two attack-and-audit-pass-or-human-ack requirement, contradiction closure, and mechanism/literature condition. Consequently one S09/S10 pass can authorize a major APPLY while the claim is not mathematically stable under the migrated FSM contract. [New predicate and milestone](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:57>) · [unmigrated stability requirements](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/RESEARCH_CYCLE_FSM.md:83>)
+
+ITER9_ADV_VERDICT: FAIL
+ITER9_CORR_VERDICT: FAIL
+ITER9_MIN_VERDICT: FAIL
+ITER9_INTEG_VERDICT: FAIL

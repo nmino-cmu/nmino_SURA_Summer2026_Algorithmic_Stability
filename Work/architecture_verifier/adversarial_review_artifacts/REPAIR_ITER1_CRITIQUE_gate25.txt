@@ -1,0 +1,3 @@
+- **CRITICAL — Bridge evidence is not anchored to the selected object’s covering certificate.** `source_cert_claim_digest` need only share the selected object’s subject; it need not equal `selected_object.covering_cert`. A same-subject certificate from a different mechanism or context can therefore authorize inference. Require `source_cert_claim_digest = selected_object.covering_cert`. [ART-07b lines 255–274](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:255)
+
+Iteration-1 ready for Iter2? **NO**

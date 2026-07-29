@@ -1,0 +1,11 @@
+- **CRITICAL — Data-dependence laundering:** A `parameter_domain` may reference any valid `DataDependenceRecord`; the record does not bind its derivation to the domain, subject, mechanism, or Claim. An unrelated `FIXED` record can therefore be replayed. I-DD-02 also omits `subject_ref`, allowing data-selected subjects to carry a nominally fixed class. The effective class remains self-attestable by omission/substitution.
+
+- **HIGH — Human gates are self-approvable:** `HumanDecision.actor_id` has no authenticated identity, authority, role, or signer binding. A Claim author can mint their own approving decision satisfying `CONTINUOUS_LAMBDA` or `HISTORICAL_SCOPE_ACK`.
+
+- **HIGH — Bridge subject laundering:** I-CERT-02b permits “registered subject maps,” but no map identifier, digest, endpoints, or TransformObject is bound into the bridge or EvidenceUse. Evidence can cross subjects through an ambient, uncommitted rule.
+
+- **HIGH — Assumptions can be self-discharged:** I-ASM-02 trusts `proof_status`, while StatusAxes has no derived or authority-bound status record. ProofEvidence validity checks only structure and digest binding. An author can create a matching-conclusion Claim, attach schema-valid content, self-mark it `INFORMAL`, and remove an assumption from `NetRequired`.
+
+- **HIGH — FULL counterexamples are self-attested:** `refutation_type=FULL` requires only a nonempty, schema-valid construct. No verified refutation predicate or ProofAttachment binds that construct to the targeted Claims, yet it enters invalidation closure as authoritative.
+
+Iteration-1 ready for Iter2? NO

@@ -1,0 +1,17 @@
+## CRITICAL
+
+- **C-01 — Data-dependence digest cycle.** Every parameter domain must contain `data_dependence_digest`, while that record hashes `bound_domain_digest`, which must equal the citing parameter-domain digest. Because normative fields are hashed, constructing either digest requires the other—a cryptographic fixed point. Consequently ordinary finite-Λ Claims cannot validate. [Digest rule](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:31), [DD binding](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:317)
+
+- **C-02 — Composition still permits certificate strengthening.** Rule validation computes only output subject, mechanism, and domain. It does not compute or constrain failure budget, guarantee kind/relation, scope, DefPins, or required assumptions. Composition inputs also need EvidenceUses but need not be Claim dependencies, so `InheritedRequired` can omit their assumptions. An arbitrary stronger composition certificate can therefore pass. [Composition](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:248), [assumption inheritance](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:145)
+
+- **C-03 — Chain continuity remains incomplete.** Adjacent projections bind selected subject and mechanism, but not mathematical scope or premise DefPins; `selection_application` also need not bind its domain to the perturbation law/mechanism domain. A stability certificate can therefore terminate a chain operating under materially different scope or definition semantics. [Chain bindings](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:243)
+
+- **C-04 — Bridge mediation omits protected endpoints.** The bridge maps assumptions, parameter domain, and failure budget, but neither equates nor transforms mechanism, mathematical scope, or DefPins. DIRECT evidence requires equality on those fields, so BRIDGE_TRANSFORM provides a bypass allowing a certificate for one mechanism/scope to support inference under another. [Bridge endpoints](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:263), [EvidenceUse rules](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:308)
+
+## HIGH
+
+- **H-01 — `TransformRule` is unresolved.** `compatibility_rule_id` must equal `TransformRule.rule_digest`, but no `TransformRule` object is defined, and `SchemaRegistryEntry` exposes `schema_digest`, not `rule_digest`. Bridge validity is therefore either impossible or validator-dependent. [TransformObject](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:278), [SchemaRegistry](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:452)
+
+`I-HD-01` and INFORMAL non-authority were not counted as defects.
+
+ADV_VERDICT: FAIL

@@ -1,0 +1,9 @@
+Gate: FAIL.
+
+- **CRITICAL — Bridge transforms remain unverifiable.** The three transform digests reference a “registered transform/object,” but ART-07b defines neither a typed transform object nor registry rules binding transform kind, inputs, outputs, and endpoint compatibility. Arbitrary registered digests can therefore authorize inference laundering. [I-BRIDGE-01](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:223>) [SchemaRegistry](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:360>)
+
+- **CRITICAL — Subject/operator identity remains conditionally forgeable.** `selection_operator_id` is derived only “when present,” but stability segments do not require an operator-bearing subject schema. A subject without that projection can be paired with an ungrounded operator and matching MechanismInstance. Require a nonempty schema-derived operator for applicable segments. [SubjectRef](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:198>) [I-CERT-01](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:221>)
+
+- **HIGH — Historical-scope rejection still satisfies the gate.** `I-DEF-02` checks gate type and target but not `decision=approve`; the decision field exists, and the continuous-Λ invariant demonstrates the required explicit approval pattern. A rejected acknowledgement can therefore bypass active-definition matching. [I-DEF-02](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:102>) [HumanDecision](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:327>)
+
+Iteration-1 ready for Iter2? NO.

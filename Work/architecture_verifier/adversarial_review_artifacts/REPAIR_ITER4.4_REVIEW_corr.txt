@@ -1,0 +1,7 @@
+No CRITICAL/HIGH findings.
+
+- I-IND-05 closes the prior false positive: atoms sharing a controller key under one policy are forcibly merged for independence checks, regardless of separate membership sets. [ART-04c §5](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:118)
+- Certification mirrors are removed: attachment and proposer provenance are derived from the first-introduction MutationEvent; no proposer act sequence is stored. [ART-04c §7](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:157)
+- ART-18 now requires `act_event_seq` on reports and reconciliations, binds it to the introducing MutationEvent, and denies credit when missing or mismatched. [ART-18](/Users/nicholasmino/Desktop/Research/Work/architecture/18-model-protocols/MODEL_PROTOCOLS.md:27)
+
+ITER4_CORR_VERDICT: PASS

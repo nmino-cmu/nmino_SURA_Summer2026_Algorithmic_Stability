@@ -1,0 +1,9 @@
+No CRITICAL findings. One HIGH remains.
+
+**HIGH — stale certification-basis substitution.** RESULT policies only require `CERTIFICATION_RECORD` to be an allowed `basis_kind`; they do not require the intent to contain a certification-record digest. Furthermore, `I-AP-05` invokes existential `I-CERTIFY-01` for the target rather than proving that the specific basis record is the live certification witness. An intent or gate approval bound to stale certification A can therefore pass using replacement certification B. See [PROMOTION_INTENT.md:44](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:44), [PROMOTION_INTENT.md:93](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:93), and [IDENTITY_AUTHORITY_INDEPENDENCE.md:171](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:171).
+
+Require every RESULT intent to bind the exact committed `CertificationRecord` witnessing its Commit-time floor, and validate that specific record—not merely any certification for the claim.
+
+The other attacks are blocked: no-certification and INFORMAL-floor RESULT by `I-AP-03/04`; `*_ok` by `I-PI-02`/`I-BOOL`; stale `from_value` by `I-AP-01`; non-APPLY writes by `I-BOOL-02`.
+
+ITER5_ADV_VERDICT: FAIL

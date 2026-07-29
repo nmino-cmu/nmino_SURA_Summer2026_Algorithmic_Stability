@@ -1,0 +1,5 @@
+- Prior HIGH — **CLOSED.** `EioVetoRecord.set_at_event_seq` is removed; veto generation derives from the latest successful SET event. [ART-13b](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:45)
+
+- New zero-loss **HIGH:** `EioAssessmentRecord.at_event_seq` is the same lifecycle mirror. The record is an upsert, and the replay-sufficient `MutationEvent` log already provides its exact sequence and ordering. Remove the field from both schemas without losing enforcement or provenance. [ART-13b](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:51) [Canonical schema](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:411) [MutationEvent](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:94)
+
+ITER5_MIN_VERDICT: FAIL

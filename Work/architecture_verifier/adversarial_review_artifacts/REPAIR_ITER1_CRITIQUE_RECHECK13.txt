@@ -1,0 +1,13 @@
+- **HIGH — Gate approvals are forgeable.** `HumanDecision` has no authorized-actor rule, signature, attestation, or trusted issuance binding. Anyone able to create an object can mint `approve` and satisfy `CONTINUOUS_LAMBDA` or `HISTORICAL_SCOPE_ACK`.
+
+- **HIGH — Proof-backed assumption discharge is self-certified.** `StatusAxes` lacks provenance, while `ProofEvidence.kind` is author-supplied and structural validation is sufficient. I-ASM-02 accepts `INFORMAL`/`CERTIFIED_INFORMAL` plus any valid attachment without verifier authority or proof-kind/status coherence, enabling fabricated dischargers to erase required assumptions.
+
+- **HIGH — Counterexample closure can be poisoned.** `RENAMES`, `REVISION_OF`, and `SUPERSEDES` relations require no endpoint-bound evidence or authority; `EQUIVALENT_TO` merely names an evidence Claim without proving the stated endpoints. I-CX-01 then propagates counterexamples through these relations. Moreover, `FULL` requires only a nonempty, schema-valid construct—not a verified refutation of each target.
+
+- **HIGH — Operator identity is an unpinned authority string.** `selection_operator_id` has no immutable operator-definition digest. Equality of this ID authorizes subject–mechanism compatibility, while DefPin agreement covers only shared `def_id`s and permits none, allowing distinct operator meanings to be laundered under one ID.
+
+- **HIGH — Registry-mediated authority is not content-bound.** `compatibility_rule_id`, the “registered subject maps” referenced by I-CERT-02b, and authoritative SchemaRegistry metadata are not pinned to immutable rule/entry digests; subject maps are not modeled at all. Registry reinterpretation can therefore change validity of existing Claims and transforms without changing their digests.
+
+- **HIGH — Data dependence is self-classified.** Declaring `parameter_domain.data_dependence.class=FIXED` removes the evidence requirement, but nothing binds that classification to a derivation or provenance object. Adaptive or data-derived domains can therefore be laundered as fixed.
+
+Iteration-1 ready for Iter2? NO

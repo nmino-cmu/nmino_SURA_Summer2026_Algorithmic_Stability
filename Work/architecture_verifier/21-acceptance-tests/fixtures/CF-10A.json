@@ -1,0 +1,1 @@
+{"canonicalization_version":"ART21b.CANON.v1","commands":[{"command_kind":"I.CheckpointValidate","payload":{"prefix_max":3}}],"expect":"IRREVERSIBLE_PREFIX","fixture_id":"CF-10A","initial_state":{"checkpoint_event_seq_max":3,"irreversible_head_seq":5},"kind":"behavioral"}

@@ -1,0 +1,7 @@
+Prior HIGH — **CLOSED**.
+
+RESULT intents must include a `CERTIFICATION_RECORD` basis ([PROMOTION_INTENT.md:48](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:48), [PROMOTION_INTENT.md:81](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:81)). The basis digests are hashed into the intent, and `I-AP-05` validates the specifically cited record against the target at pre-state—not an existential replacement certification ([PROMOTION_INTENT.md:71](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:71), [PROMOTION_INTENT.md:108](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:108)).
+
+No CRITICAL/HIGH findings in adversarial ITER5.1 scope.
+
+ITER5_ADV_VERDICT: PASS

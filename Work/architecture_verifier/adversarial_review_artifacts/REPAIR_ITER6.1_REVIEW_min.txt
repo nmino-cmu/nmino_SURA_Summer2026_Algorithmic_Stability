@@ -1,0 +1,12 @@
+Prior HIGHs: **CLOSED**.
+
+- Speculative policy matrix collapsed to sole `AUD_MAJOR`. [ART-11b §3](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:59)
+- `answers_digest` removed; `audit_digest` directly hashes sorted answer pairs. [AuditRecord](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:90)
+
+New zero-loss **HIGH**:
+
+- `audited_state_head_digest` and `auditor_binding_digest` exactly mirror the accepted `RECORD_AUDIT` command’s expected head and caller binding. `producer_principal_digest` similarly mirrors `RECORD_DISCONFIRM`’s caller. The replay-sufficient `MutationEvent` already stores the full command, so all three fields can be derived without losing freshness, provenance, or independence enforcement. [ART-11b commands](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:118) [MutationEvent](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:74)
+
+- `AuditRecord.policy_digest` is a fixed constant because only `AUD_MAJOR` is valid, while top-level `evidence_digests[]` is a redundant second evidence channel beside each answer’s evidence. Remove the constant policy field/check and require the disconfirm log through the answer evidence union; no authorization or evidence binding is lost. [Single policy](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:59) [Evidence duplication](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:90)
+
+ITER6_MIN_VERDICT: FAIL

@@ -1,0 +1,50 @@
+## Pass E result
+
+| Question | Answer |
+|---|---|
+| Can model replacement invalidate audits? | **Yes—and the blueprint will not detect or invalidate them.** |
+| Are agent IDs treated as independence? | **Yes, effectively. ID inequality is the primary separation test.** |
+| Are human gates restart-safe? | **No.** Authentication, replay, expiry, revision binding, and atomic release are incomplete. |
+| Are role conflicts enforceable? | **No.** Most rules are declarative and lack canonical runtime enforcement. |
+
+### CRITICAL E-01 — Model substitution silently invalidates audit assurance
+
+ART-04 assigns roles to moving labels such as “Grok (newest)” and “Composer 2.5,” while ART-18 audit/report records contain no model build, prompt, context, tool-policy, or deployment identity ([ART-04](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/AGENT_ROLES.md:24), [ART-18](/Users/nicholasmino/Desktop/Research/Work/architecture/18-model-protocols/MODEL_PROTOCOLS.md:24)). Model/role changes also fall outside the explicit C12 reset list ([ART-20b](/Users/nicholasmino/Desktop/Research/Work/architecture/20-invariants/DESIGN_CONVERGENCE.md:48)).
+
+A different model can inherit the same role or agent ID while old audit credit remains valid. Not every upgrade necessarily changes a correct finding, but the system cannot distinguish benign from material replacement.
+
+Required: content-addressed model/deployment attestations, audit-envelope provenance, replacement admission tests, and automatic invalidation/re-audit of affected evidence.
+
+### CRITICAL E-02 — Agent IDs are a forgeable proxy for independence
+
+The controls require “Certifier ≠ Proposer” and prohibit only the same agent ID from being sole proposer/prover/auditor ([ART-04](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/AGENT_ROLES.md:18), [ART-04](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/AGENT_ROLES.md:71)). ART-07b explicitly defers actor identity, role, and independence to Iteration 4 ([ART-07b](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:530)).
+
+One underlying model, operator, session, memory store, or credential domain can assume several IDs and satisfy every inequality. `I.RoleCeiling` restricts role names, not shared principals ([ART-04b](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/OPERABLE_MINIMAL_PROFILE.md:62)).
+
+Required: authenticated principals plus independence domains covering operator, model lineage, session/context, memory, credentials, and appointment authority.
+
+### CRITICAL E-03 — Human decisions are neither authoritative nor replay-safe
+
+ART-15’s decision row lacks authenticated actor, issuance sequence, expiry, revocation, target revision/digest, and signature. Its gate check requires only matching `gate_id + target_ref`, not explicitly `decision=approve` ([ART-15](/Users/nicholasmino/Desktop/Research/Work/architecture/15-human-gates/HUMAN_GATES.md:9), [ART-15](/Users/nicholasmino/Desktop/Research/Work/architecture/15-human-gates/HUMAN_GATES.md:18)).
+
+This conflicts with ART-05’s requirement for scoped, typed decisions “with expiry” ([ART-05](/Users/nicholasmino/Desktop/Research/Work/architecture/05-authority/AUTHORITY_MATRIX.md:24)). ART-07b has a different, narrow gate schema and makes all `HumanDecision` records non-authoritative until Iteration 4 ([I-HD-01](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:431)).
+
+After restart or target revision, a stale—or textually even denied—row may match a mutable `target_ref`; alternatively, strict I-HD-01 leaves required gates impossible. Both outcomes preclude blueprint readiness.
+
+### HIGH E-04 — Hard-stop release lacks atomic restart semantics
+
+`hard_stop.active` is authoritative, but the design does not define a commit fence for in-flight writes or an atomic transaction that both persists `HARD_STOP_RELEASE` and clears the stop ([ART-06](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/STATE_MODEL.md:55), [ART-15](/Users/nicholasmino/Desktop/Research/Work/architecture/15-human-gates/HUMAN_GATES.md:72), [ART-24](/Users/nicholasmino/Desktop/Research/Work/architecture/24-interfaces/INTERFACE_CONTRACTS.md:36)).
+
+A crash can leave ambiguous release state; a concurrent pre-stop mutation can commit after the nominal stop.
+
+Required: event-sequence fencing, cancellation epochs, compare-and-set preconditions, and one idempotent release event containing the authenticated decision.
+
+### CRITICAL E-05 — Role-conflict resolution is not enforceable
+
+ART-05 calls its lattice total, but it orders evidence categories rather than role decisions and supplies only an informal resolution-record shape. No canonical resolver, transition predicate, or commit interface enforces it ([ART-05](/Users/nicholasmino/Desktop/Research/Work/architecture/05-authority/AUTHORITY_MATRIX.md:24), [ART-24](/Users/nicholasmino/Desktop/Research/Work/architecture/24-interfaces/INTERFACE_CONTRACTS.md:24)).
+
+There is also a direct authority contradiction: ART-15 says humans alone decide gates, yet defines `N/A_UTILITY_ACK` as an Integration Auditor acknowledgment ([ART-15](/Users/nicholasmino/Desktop/Research/Work/architecture/15-human-gates/HUMAN_GATES.md:12), [ART-15](/Users/nicholasmino/Desktop/Research/Work/architecture/15-human-gates/HUMAN_GATES.md:44)).
+
+Maturity is **3/10**: useful policy intent and fail-closed deferral exist, but the identity, provenance, replay, and enforcement substrate is deliberately unfinished. This agrees with the active readiness revocation ([IMPLEMENTATION_BLOCK](/Users/nicholasmino/Desktop/Research/Work/architecture/IMPLEMENTATION_BLOCK.md:13)).
+
+PASS_E_VERDICT: BLUEPRINT_READY? NO maturity 3/10

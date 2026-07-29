@@ -1,0 +1,21 @@
+Freeze gate fails. `DRAFT_REPAIR` status was not treated as a failure.
+
+Closure check:
+
+- **Schema repair — NOT CLOSED.** Cards now have digest preimages, but their opaque payloads are not constrained to the required card schemas. `DerivedHopChainOk` checks only `quarantine_digest`, not `chain_link_intent`, `chain_segment`, question, claim, or witness bindings. More critically, `DerivedS09Ok` accepts any nonempty list of unrelated live counterexamples plus any subset of allowed class IDs; it requires neither complete mandatory-class coverage nor a class↔counterexample↔witness mapping. An unrelated existing CX can therefore satisfy S09 and authorize a major promotion. [Card/log schemas](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:29>) · [Derived predicates](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:70>) · [required hop contract](</Users/nicholasmino/Desktop/Research/Work/architecture/01-charter/CHARTER.md:86>)  
+  **Severity: CRITICAL — ADV/CORR/INTEG.**
+
+- **Immutable `cycle_digest` — CLOSED.** Card/log bindings are outside the `CR.v3` identity, and I-CY-03 forbids recomputation. [CycleRecord](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:47>)
+
+- **I-CY-10 and I-DW-21 — CLOSED.** Legal edges are inlined, and `DerivedMathStable` explicitly includes the full-CX discharge requirement. [I-CY-10](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:94>) · [DerivedMathStable](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:78>)
+
+- **HIGH — frozen-card lifecycle remains unenforced.** `BIND_CYCLE_CARD` may replace either binding at any phase, including after S04/S03, after audit, or after closure. No write-once, phase, or `closed=false` guard implements the charter’s frozen-card rule. [BIND command](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:88>) · [freeze requirement](</Users/nicholasmino/Desktop/Research/Work/architecture/01-charter/CHARTER.md:86>)  
+  **Severity: HIGH — ADV/CORR/INTEG.**
+
+- **HIGH — the “self-contained” command contract is incomplete.** `RECORD_CYCLE_AUDIT` and `RECORD_CYCLE_LEAN` defer payload and validation semantics to an unavailable “ITER9.1”; ART-06b merely enumerates those commands. Replay-safe `DeriveEffects` therefore remains underspecified. [Self-contained declaration](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:8>) · [undefined command reference](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/CYCLE_BINDING.md:92>)  
+  **Severity: HIGH — CORR/INTEG.**
+
+ITER9_ADV_VERDICT: FAIL
+ITER9_CORR_VERDICT: FAIL
+ITER9_MIN_VERDICT: PASS
+ITER9_INTEG_VERDICT: FAIL

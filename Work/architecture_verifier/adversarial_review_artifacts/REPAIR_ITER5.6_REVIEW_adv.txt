@@ -1,0 +1,5 @@
+No CRITICAL/HIGH findings.
+
+Removing HD digests is safe: `EffectiveDecision` deterministically selects the latest matching decision from the replay-sufficient, pre-state-head-bound log. Later deny/hold decisions defeat older approvals, while EIO overrides remain veto-generation-bound.
+
+ITER5_ADV_VERDICT: PASS

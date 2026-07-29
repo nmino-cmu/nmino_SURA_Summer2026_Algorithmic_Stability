@@ -1,0 +1,15 @@
+- **CRITICAL — HumanDecision approvals are forgeable.** The stub has only free-form `actor_id`; no authorized-actor binding, signature, or creation authority is required. Expiration is never checked, and domain-targeted approvals can be replayed across claims.
+
+- **HIGH — HumanDecision claim targeting is hash-circular.** `claim_digest` includes the decision digest while the decision’s `target_digest` must sometimes equal `claim_digest`. Historical-scope approvals are therefore not normally constructible.
+
+- **HIGH — EvidenceUse conflicts with bridge mediation.** The mandatory inference→bridge citation cannot use `BRIDGE_TRANSFORM` because that mode requires `evidence_claim_digest` to equal the bridge’s source certificate; `DIRECT` restores the equality constraints the bridge exists to mediate. The bridge→source-certificate citation conversely has a bridge consumer where the rule expects inference endpoints.
+
+- **HIGH — Subject transformation is unbound authority.** I-CERT-02b permits “registered subject maps,” but no subject-map digest appears in `TransformObject`, the bridge Claim, or `EvidenceUse`. Subjects—and therefore operators—can be laundered outside the content-addressed transform chain.
+
+- **HIGH — Operators remain forgeable.** `MechanismInstance.selection_operator_id` is author-supplied and lacks a digest-bound operator object or derived projection. Composition validates only the output subject/operator and does not bind input subjects’ operators to the composition operator.
+
+- **HIGH — Transform-strength rules are not content-bound.** `compatibility_rule_id` is hashed, but no rule digest/version or proved relation is bound. Reclassification or misregistration can turn a strengthening into a nominal “weakening” without changing the transform digest.
+
+- **HIGH — Authoritative scope/refutation fields remain untyped.** `Counterexample.parameter_region` is untyped, while any nonempty unresolved `construct_digest` can accompany `refutation_type=FULL` and enter closure. `MechanismInstance.parameter_domain` also lacks the explicit typed schema/payload representation required on Claims.
+
+Iteration-1 ready for Iter2? NO

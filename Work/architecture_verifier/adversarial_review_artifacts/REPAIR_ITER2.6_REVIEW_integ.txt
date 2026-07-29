@@ -1,0 +1,5 @@
+No open CRITICAL/HIGH findings.
+
+The prior 2.5 HIGH is closed. `I-INF-CLAIM-PROJECTION-01` now requires exact equality for the Claim’s target, subject, parameter domain, mathematical scope, assumptions, definition pins, failure budget, and conclusion. Thus an applicable bridge endpoint cannot disagree with the canonical inference Claim on the previously unbound fields. Version `ITER2.6` is consistently pinned across ART-07c, the migration record, status index, and ART-25.
+
+ITER2_INTEG_VERDICT: PASS

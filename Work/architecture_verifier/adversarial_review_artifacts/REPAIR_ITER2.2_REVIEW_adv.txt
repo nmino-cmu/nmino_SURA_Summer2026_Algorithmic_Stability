@@ -1,0 +1,46 @@
+FAIL — 1 CRITICAL and 3 HIGH findings.
+
+Prior ITER2.1 disposition:
+
+- CompatibilityPolicy laundering: CLOSED in ART-07c; matching is exact-only and no policy object is permitted.
+- Incomplete transforms: STILL OPEN — Finding 2.
+- Unproved source certificate in inference: STILL OPEN end-to-end — Finding 1.
+- Applicability unbound to use class/floor: locally improved, but STILL OPEN at the consuming Claim — Finding 1.
+- Legacy silent authority: CLOSED by ART-06/07/11 banners and fail-closed precedence.
+- RESULT above floor: CLOSED at rule level; RESULT remains unreachable until Iter4 certification authority exists.
+
+## CRITICAL
+
+1. Inference Claims are not bound to an APPLICABLE bridge result.
+
+ART-07b requires an inference Claim to have a BRIDGE dependency, selected object, covering anchor, and subject equality, but never requires its inference endpoint to equal the bridge’s `target_endpoint_digest`, nor requires `I.BridgeApplicabilityEvaluate(..., use_class=INFERENCE_FACING)` to return APPLICABLE. The evaluator hashes floors and use class, but its result is not a prerequisite of inference-Claim validity.
+
+Attack: construct bridge `B: C → T1`, then cite `B` in inference Claim `I` asserting endpoint `T2`, while preserving the covering certificate and subject equalities. The listed ART-07b checks pass even though applicability for `T2` would fail. The same missing use-site edge permits research-floor bridge/source objects to be cited without enforcing the inference-facing floor.
+
+Evidence: [ART-07b inference bindings](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:247), [I-BRIDGE-01](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:270), [ART-07c covering invariant](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:242), [floor table](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:253), [applicability interface](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:280).
+
+## HIGH
+
+2. The transform algebra cannot deterministically account for all certificate-to-inference fields.
+
+`CertificateEndpoint` and `InferenceEndpoint` are different shapes. Source-only fields include notion, relation, operator, mechanism, score family, and candidate domain; target-only fields include inference guarantee, inference target, conclusion, subject, and covering certificate. The transform enum has no typed operation for several of these fields or for exclusions, yet `I-BRIDGE-TRANSFORM-01` claims the entire target is deterministically obtained from the source.
+
+This leaves permissive implementations able to inject target conclusions or silently discard source restrictions, while strict implementations must reject all such inference bridges.
+
+Evidence: [CertificateEndpoint fields](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:95), [InferenceEndpoint fields](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:155), [transform enum](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:181), [bridge payload and recomputation rule](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:225).
+
+3. “Proof-bound” transforms accept an unrelated theorem Claim.
+
+`rule_proof_claim_digest` is only required to resolve to a theorem Claim with a sufficient floor. No invariant requires that Claim’s assertion schema or conclusion bind the transform’s `rule_digest`, kind, input, output, formula, pins, or domains.
+
+An unrelated certified theorem can therefore satisfy the structural check for a NOTION_MAP, RELATION_MAP, QUANTIFIER_MAP, or heterogeneous budget map.
+
+Evidence: [ART-07c I-XFORM-HETERO-01](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:206), [ART-07b TransformRule schema](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:283), [ART-07b transform invariant](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:304).
+
+4. The coherence-triple safeguard references fields absent from the authoritative SchemaRegistry schema.
+
+ART-07c says `accepted_notion_kinds`, `accepted_relation_kinds`, and `allowed_triples` live on ART-07b `SchemaRegistryEntry`. ART-07b defines none of those fields. Consequently the rule preventing arbitrary notion/relation/budget Cartesian products is not represented in the canonical registry object or its digest.
+
+Evidence: [ART-07c coherence requirement](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:119), [ART-07c claimed field ownership](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:127), [actual ART-07b SchemaRegistryEntry](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:468).
+
+ITER2_ADV_VERDICT: FAIL

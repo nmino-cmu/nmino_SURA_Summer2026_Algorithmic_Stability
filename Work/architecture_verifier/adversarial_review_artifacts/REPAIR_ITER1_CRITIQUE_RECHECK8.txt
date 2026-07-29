@@ -1,0 +1,11 @@
+Gate: FAIL.
+
+- **CRITICAL — Circular discharge remains valid.** Claims `B ⇒ A` and `A ⇒ B` can discharge each other: each discharger does not gross-require the particular assumption it discharges, so both records satisfy I-ASM-02 and both claims obtain empty `NetRequired`. Discharge edges are outside the Claim dependency DAG. [I-ASM-01/02](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:144>)
+
+- **CRITICAL — Discharge proof status is ungrounded.** I-ASM-02 accepts `INFORMAL` or `CERTIFIED_INFORMAL`, but no invariant requires those statuses to have a valid `ProofAttachment`. A matching typed assertion plus self-reported status can therefore discharge an assumption without proof evidence. [I-ASM-02](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:152>) [proof binding](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:337>)
+
+- **CRITICAL — Mechanism/subject mismatch remains possible.** I-CERT-01 compares the guarantee block with Claim-level fields but never requires the referenced `MechanismInstance`’s operator, parameter domain, or pins to match them. A mechanism for operator O₁ can support a stability Claim asserting operator O₂. `SubjectRef` also lacks a resolution/recomputation invariant. [I-CERT-01](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:220>) [MechanismInstance](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:253>)
+
+- **CRITICAL — Bridge typing does not bind inference endpoints.** An inference Claim must name a bridge and BRIDGE dependency, but no invariant equates that dependency with `bridge_claim_digest` or binds the bridge’s source/target to the source certificate and `inference_target`. EvidenceUse checks shared context, not endpoint/transform correctness. [segment rules](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:210>) [EvidenceUse](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:222>)
+
+Iteration-1 ready for Iter2? NO

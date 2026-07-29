@@ -1,0 +1,13 @@
+## CRITICAL
+
+- **Assumption laundering remains non-computable.** `GrossRequired` and `NetRequired` are defined only “as before,” with no normative dependency-closure formula. Claims can omit inherited assumptions, making fingerprints and transform checks unreliable. [I-ASM-01](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:142)
+
+- **Wrong-object chain laundering remains possible.** Adjacent segments require dependencies but lack digest-equality/projection rules binding predecessor outputs to successor inputs. A stability Claim can cite an unrelated `selection_application` while asserting a different subject, mechanism, or domain. [Chain segments](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:228)
+
+## HIGH
+
+- **Bridge transforms are not bound to their endpoints.** Nothing equates transform inputs with the source certificate’s assumptions/domain/failure budget or outputs with the inference target’s corresponding values. Unrelated identity transforms can accompany a strengthened inference. [I-BRIDGE/I-XFORM](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:263)
+
+- **Data-dependence records are replayable or omittable.** Neither `Claim` nor `DataDependenceRecord` binds a derivation to the relevant domain, subject, mechanism, or declared dependency closure. This is a structural self-attestation hole independent of Iteration-11 factual-provenance completeness. [Data dependence](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:303)
+
+Iteration-1 ready for Iter2? NO

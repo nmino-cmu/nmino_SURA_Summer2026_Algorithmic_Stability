@@ -1,0 +1,16 @@
+Remaining CRITICAL/HIGH findings:
+
+- **CRITICAL — Correctness/Integration:** `EvidenceKindResolver` resolves `CLAIM` before `BRIDGE` and `UTILITY`. ART-07c defines bridges and utilities as Claims, so bridge/utility digests never reach the kinds exclusively required by Q11/Q15. Inference- and utility-bearing PASS audits—and therefore their major APPLYs under I-AP-11—are unconstructible. [ART-11b resolver](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:80), [bridge identity](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:269), [utility Claims](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:307).
+
+- **HIGH — Adversarial/Correctness:** Q01 accepts any `HUMAN_DECISION` evidence without requiring an ART-04c-valid approval, applicable gate, or matching target. An unrelated or denying decision can authorize `object_class=OTHER`. [CommitTypedBind](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:97), [ART-04c decision requirements](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:143).
+
+- **HIGH — Adversarial/Correctness:** `RECORD_DISCONFIRM` requires only nonempty attempts; channel values, result digests, and references need not be typed or resolve. Moreover, PASS may contain multiple target logs while I-DL-02 refers to an unselected singular `disconfirm`. This permits nominal evidence and nondeterministic independence evaluation. [DisconfirmLog](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:63), [PASS and independence](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:95).
+
+- **HIGH — Integration/Minimality:** `UTILITY_COMPAT` has no authoritative ART-07b/07c object, and `DEFINITION_PIN` has no standalone digest—DefPins are embedded Claim fields. These phantom resolver and freshness classes cannot be implemented fail-closed against ART-07b side tables. [Resolver/freshness](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:82), [DefPin schema](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:85), [authoritative side tables](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:398).
+
+- **HIGH — Minimality:** `question_digest` has no consumer, while five deferred `NEVER` questions remain mandatory and identity-bearing despite having no Iteration-6 PASS effect. They create needless AuditRecord variants and latest-PASS churn. [Question digest and deferred questions](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:34), [mandatory cardinality](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:115).
+
+ITER6_ADV_VERDICT: FAIL
+ITER6_CORR_VERDICT: FAIL
+ITER6_MIN_VERDICT: FAIL
+ITER6_INTEG_VERDICT: FAIL

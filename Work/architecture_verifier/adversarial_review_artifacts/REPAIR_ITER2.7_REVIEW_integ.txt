@@ -1,0 +1,6 @@
+No CRITICAL/HIGH findings.
+
+- ITER2.7 pins are consistent across ART-07c, migration record, status index, and ART-25.
+- No silent cert/bridge dual-use path found.
+
+ITER2_INTEG_VERDICT: PASS

@@ -1,0 +1,13 @@
+No CRITICAL findings.
+
+### HIGH
+
+1. Remove `I.ProposeCommand` and `PendingCommand`. They are explicitly non-authoritative and discardable; `I.Commit` already accepts an inline command. Retain one canonical `Command` preimage and compute its digest inside `I.Commit`. This removes an interface and carrier without affecting any invariant. [ART-06b §3](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:57)
+
+2. Merge the four stale-write inputs into one global expected-state token. Replace `expected_event_seq` plus three expected heads with `expected_state_head_digest = H(event_seq, control_head, research_head, design_head)`. Because every mutation is globally serialized and advances `event_seq`, this is equivalent to the existing conjunctive check while preserving exact-state binding. [PendingCommand](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:59) [I-STALE-01](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:139)
+
+3. Merge `CommitEvaluationRecord` into the validator output hashed by `MutationEvent.validation_digest`. It has no independent lifecycle and is stored only through that digest. Retain its canonical preimage—derived predicates, reason codes, and ART-07c result digests—inside `I.Commit`; the caller-boolean ban remains unchanged. [ART-06b §8](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:175)
+
+4. Demote `I.Reduce` from a public interface to an internal pure step of `I.Commit`. Its deterministic, atomic reduction semantics remain mandatory, but a separately named externally visible interface adds no authority because it is usable only inside Commit. [I.Reduce](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:93) [ART-24 contract](/Users/nicholasmino/Desktop/Research/Work/architecture/24-interfaces/INTERFACE_CONTRACTS.md:31)
+
+ITER3_MIN_VERDICT: FAIL

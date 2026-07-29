@@ -1,0 +1,6 @@
+No CRITICAL/HIGH issues found.
+
+- **CLOSED — Head CAS:** `commit_busy` is removed from ControlState and all head digests; serialization is transaction-local.
+- **CLOSED — HARD_STOP_SET:** the transition explicitly sets `release_dec_digest=⊥`, producing a deterministic post-state.
+
+ITER3_STATE_VERDICT: PASS

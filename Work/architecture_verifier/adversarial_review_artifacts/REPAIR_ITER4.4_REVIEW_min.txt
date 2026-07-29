@@ -1,0 +1,10 @@
+- Prior HIGH — **CLOSED**. Attachment and proposer provenance are now derived from claim/evidence and the replay-sufficient first-introduction event. [Certification rule](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:158>)
+
+- New zero-loss **HIGH**:
+  - `claim_digest` duplicates the claim committed by `proof_evidence_digest`.
+  - `certifier_principal_digest` and `certifier_model_prov_digest` are projections of `certifier_binding_digest`.
+  - `review_outcome` is fixed to `ACCEPT`, so it carries no information.
+
+  Remove these mirrors and derive them during `I-CERTIFY-01`. [ProofEvidence](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:443>) [CertificationRecord](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:158>)
+
+ITER4_MIN_VERDICT: FAIL

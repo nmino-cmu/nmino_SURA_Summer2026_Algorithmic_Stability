@@ -1,0 +1,7 @@
+- **CRITICAL — ITER5.3 is not self-contained.** The policy registry and core `I-AP` rules merely reference unavailable ITER5.2 definitions. No concrete policy rows/digests are shipped, leaving `APPLY_PROMOTION` underdetermined. [Policy reference](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:25), [rule reference](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:57)
+
+- **HIGH — `policy_facing` remains fail-open.** It tests `chain_segment=stability`, but canonical ART-07b defines the applicable segment as `selection_stability`; `stability` is not a canonical Claim segment. A valid POLICY stability claim therefore evaluates false and can omit `SELECTED_OBJECT_CHANGE`. [Predicate](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:93), [canonical segment](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:260)
+
+`NOVELTY_TRACK_ACK` is closed: it is included with `PLAUSIBLE_NOVELTY_LABEL`, and effective approval is required. [RequiredGates](/Users/nicholasmino/Desktop/Research/Work/architecture/13-proof-review/PROMOTION_INTENT.md:77)
+
+ITER5_CORR_VERDICT: FAIL

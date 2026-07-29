@@ -1,0 +1,76 @@
+# Independent Breaker Audit — Pass A
+
+The Iter1 repair establishes strong object identity, but the operational security model is not yet defined. The active implementation block is necessary and correct; it is containment, not blueprint readiness.
+
+## CRITICAL-01 — No authoritative mutation boundary exists
+
+ART-07b requires all normative mutations to pass through an authoritative boundary, but explicitly defers that boundary and authenticated transitions to Iter3. The repair record likewise defers command/event APIs and says no authoritative write exists yet. ART-24 defines proposal creation but no corresponding commit interface, owner, validation contract, or atomic side-table update protocol.
+
+Meanwhile, ART-06 already declares registries and committed events authoritative. Thus the package specifies authoritative state without specifying the exclusive mechanism that may create it.
+
+Attack consequence: a store writer could mint or modify claims, proof attachments, definition heads, maturity records, audits, or human decisions without a defined authorization and invariant-enforcement point.
+
+Evidence:
+
+- [CANONICAL_OBJECTS.md:513](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:513)
+- [CANONICAL_OBJECTS.md:530](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:530)
+- [REPAIR_ITER1_CANONICAL_OBJECTS.md:64](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER1_CANONICAL_OBJECTS.md:64)
+- [REPAIR_ITER1_CANONICAL_OBJECTS.md:75](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER1_CANONICAL_OBJECTS.md:75)
+- [INTERFACE_CONTRACTS.md:24](/Users/nicholasmino/Desktop/Research/Work/architecture/24-interfaces/INTERFACE_CONTRACTS.md:24)
+- [STATE_MODEL.md:31](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/STATE_MODEL.md:31)
+- [STATE_MODEL.md:57](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/STATE_MODEL.md:57)
+
+## CRITICAL-02 — Audit PASS can authorize an unbound or stale claim
+
+The audit record binds `claim_ids[]` and registry IDs—not canonical `claim_digest` values, an immutable evidence closure, state/event root, SchemaRegistry version, audit-policy digest, or promotion-intent digest. Only definition-pin supersession is expressly said to invalidate PASS.
+
+Nevertheless, PASS is ranked as authority in ART-05 and accepted as promotion evidence. This permits TOCTOU reuse after claim mappings, proof attachments, bridge state, evidence rows, counterexamples, or policy have changed. The record also tests `producer != auditor_id`, but `auditor_id` is absent from its schema.
+
+Attack consequence: audit object A can be created against state S₀, then presented at S₁ for a changed or substituted claim/evidence closure. The package contains no normative freshness/revalidation predicate preventing authorization.
+
+Evidence:
+
+- [INTEGRATION_AUDIT.md:25](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/INTEGRATION_AUDIT.md:25)
+- [INTEGRATION_AUDIT.md:48](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/INTEGRATION_AUDIT.md:48)
+- [INTEGRATION_AUDIT.md:80](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/INTEGRATION_AUDIT.md:80)
+- [INTEGRATION_AUDIT.md:100](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/INTEGRATION_AUDIT.md:100)
+- [INTEGRATION_AUDIT.md:102](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/INTEGRATION_AUDIT.md:102)
+- [AUTHORITY_MATRIX.md:24](/Users/nicholasmino/Desktop/Research/Work/architecture/05-authority/AUTHORITY_MATRIX.md:24)
+- [CANONICAL_OBJECTS.md:530](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:530)
+
+## HIGH-01 — Promotion lacks proof-carrying intent
+
+ART-06’s promotion transaction consists of mutable identifiers and predicate booleans. It has no content-addressed intent, canonical claim digest, expected state/event root, evidence-closure digest, transition-policy version, authorization proof, nonce, or replay/idempotency binding. `audit_id` is optional.
+
+ART-07b explicitly defers promotion intents to Iter5 and revokes ART-06’s `from_status/to_status` as normative promotion authority. ART-09 also declares its transition rules non-normative until Iter5.
+
+Answer: under strict Iter1 authority, no promotion is valid at all. If the operational ART-06 path is implemented, promotion can indeed be attempted without proof-carrying intent.
+
+Evidence:
+
+- [STATE_MODEL.md:69](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/STATE_MODEL.md:69)
+- [CANONICAL_OBJECTS.md:519](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:519)
+- [CANONICAL_OBJECTS.md:530](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:530)
+- [THEOREM_STATUS_FSM.md:1](/Users/nicholasmino/Desktop/Research/Work/architecture/09-theorem-status/THEOREM_STATUS_FSM.md:1)
+- [REPAIR_ITER1_CANONICAL_OBJECTS.md:64](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER1_CANONICAL_OBJECTS.md:64)
+
+## HIGH-02 — Authority is split-brain and unauthenticated
+
+ART-05 places Human Decision at the top of the authority lattice and permits humans to propose writes, override audit verdicts, and authorize implementation. ART-06 treats `human_decisions` as authoritative registry rows.
+
+ART-07b, however, defines only an opaque `actor_id` and makes HumanDecision non-authoritative until Iter4 authentication, roles, independence, and expiry enforcement exist. The two models are not reconciled by a package-wide fail-closed rule.
+
+Attack consequence: a legacy interpretation accepts an unauthenticated decision row as top authority; the canonical interpretation rejects every such decision. This makes override, gate, and implementation-start authority non-deterministic.
+
+Evidence:
+
+- [AUTHORITY_MATRIX.md:24](/Users/nicholasmino/Desktop/Research/Work/architecture/05-authority/AUTHORITY_MATRIX.md:24)
+- [AUTHORITY_MATRIX.md:38](/Users/nicholasmino/Desktop/Research/Work/architecture/05-authority/AUTHORITY_MATRIX.md:38)
+- [STATE_MODEL.md:51](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/STATE_MODEL.md:51)
+- [CANONICAL_OBJECTS.md:431](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:431)
+- [CANONICAL_OBJECTS.md:534](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:534)
+- [IMPLEMENTATION_BLOCK.md:22](/Users/nicholasmino/Desktop/Research/Work/architecture/IMPLEMENTATION_BLOCK.md:22)
+
+The package itself confirms readiness remains revoked, audit clearance reset, and implementation blocked: [FINAL_AUDIT.md:17](/Users/nicholasmino/Desktop/Research/Work/architecture/25-audit-reports/FINAL_AUDIT.md:17).
+
+PASS_A_VERDICT: BLUEPRINT_READY? NO — maturity 3/10

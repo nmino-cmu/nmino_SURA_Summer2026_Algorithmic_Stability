@@ -1,0 +1,15 @@
+Remaining findings in `ARCH-0.3-REPAIR-ITER1.2`:
+
+- **CRITICAL — DefPins remain vacuously satisfiable.** `symbol_inventory_rule_id` has no soundness or completeness requirement, so a rule may return an empty inventory despite semantic identifiers in the payload. Nor must `DefPin.def_id` equal the referenced `DefinitionVersion.def_id`. [Lines 89–104](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:89)
+
+- **CRITICAL — The empirical-essentiality bypass remains.** Although `EMPIRICAL_SUPPORT` was removed, empirical material is now relegated to metadata. No normative predicate distinguishes a citation from a necessary premise, so essential empirical support—and its assumptions—can still remain outside the dependency DAG, promotion floors, and closure. [Lines 207–212](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:207)
+
+- **CRITICAL — Certificate binding is not well-founded or computable.** Every `selection_stability` Claim must depend on another stability Claim, producing infinite regress under the required dependency DAG. Additionally, `parameter_domain` has no declared digest and “compatible” is undefined; subject schema, object class, and guarantee type are not matched. [Lines 187–197](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:187)
+
+- **CRITICAL — Assumption closure remains non-computable and unsoundly dischargeable.** Registry slots are schema/role IDs, while the closure operates on assumption digests, with no deterministic slot-to-instance resolution. Discharge equality references undeclared conclusion/statement digests, requires no proved discharger, and has no prohibition against circular self-discharge. [Lines 108–135](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:108)
+
+- **HIGH — Opaque authoritative text remains permitted.** I-DEF-03 prohibits opaque strings only when they are the schema’s sole normative leaf. A schema can add a dummy typed field while retaining an unconstrained string as the actual assertion or definition. [Lines 100–104](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:100)
+
+- **HIGH — The direct claim/proof digest cycle is removed, but proof binding is unauthenticated.** `ProofEvidence.claim_digest` affects claim-specific validation yet is excluded from `proof_evidence_digest`; `ProofAttachment` has no digest or invariant requiring its target to match that field. The same evidence digest can therefore be rebound or attached to another Claim without changing authenticated content. [Lines 298–310](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:298)
+
+Iteration-1 ready for Iter2? NO

@@ -1,0 +1,5 @@
+No CRITICAL/HIGH findings.
+
+Prior 2.3 HIGH is **CLOSED**. The duplicated `utility_digest`, `subject_digest`, `parameter_domain_digest`, and `definition_pins[]` fields were removed. The retained [utility payload](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:280) contains only proposition-specific data not derivable from the canonical [Claim carrier](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:165). Nothing further is removable with zero loss.
+
+ITER2_MIN_VERDICT: PASS

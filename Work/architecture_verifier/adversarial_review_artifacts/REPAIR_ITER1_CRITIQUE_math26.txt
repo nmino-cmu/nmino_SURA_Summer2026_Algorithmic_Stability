@@ -1,0 +1,3 @@
+No CRITICAL or HIGH mathematical findings in Iter1.26. The exact equality `source_cert_claim_digest = selected_object.covering_cert` closes the remaining certificate-laundering path.
+
+MATH_VERDICT: PASS

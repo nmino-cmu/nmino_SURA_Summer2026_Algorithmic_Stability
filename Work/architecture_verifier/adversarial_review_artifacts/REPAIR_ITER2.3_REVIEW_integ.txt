@@ -1,0 +1,9 @@
+Prior findings:
+
+- **CRITICAL — inference transform: CLOSED.** `ENDPOINT_CONSTRUCTION` now proof-binds the complete inference endpoint; covering-certificate equality and inference-claim target equality are enforced. [ART-07c](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:185)
+- **HIGH — fingerprint ambiguity: CLOSED.** Bridge fingerprints now deterministically hash both source and target endpoints. [ART-07b](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:211)
+- **HIGH — lifecycle dialect: OPEN.** ART-01 still directs consumers to an ART-07c “bridge lifecycle,” although ART-07c explicitly defines no lifecycle. The predicate body and ART-07b are corrected, but the active warning remains contradictory. [ART-01](/Users/nicholasmino/Desktop/Research/Work/architecture/01-charter/CHARTER.md:9), [ART-07c](/Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/TYPED_CERTIFICATES_AND_BRIDGES.md:12)
+- **HIGH — missing ART-02/03/04b/10/12 warnings: CLOSED.** Each document now carries an explicit incompatibility warning covering its legacy consumer.
+- **HIGH — migration classification: OPEN.** The mandatory integration rule requires every scheduled migration to name a later iteration, but ART-02 has `—` and ART-20 merely says `later`. Both remain `PENDING_MIGRATION`, so the inventory is not completion-compliant. [Migration matrix](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md:94), [ART-20 row](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER2_TYPED_CERTIFICATES_BRIDGES.md:109)
+
+ITER2_INTEG_VERDICT: FAIL

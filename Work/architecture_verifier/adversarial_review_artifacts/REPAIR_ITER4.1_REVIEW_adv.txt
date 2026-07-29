@@ -1,0 +1,15 @@
+### Closure status
+
+- **Forgeable bootstrap — OPEN (CRITICAL).** `TrustRoot.root_digest` hashes the genesis principal digests, while each genesis `Principal` hashes an `issuer_digest` that must resolve to that TrustRoot or another HUMAN principal. No well-founded genesis case exists; this creates a root/principal hash cycle. Initial role bindings are asserted but not included in the trust-root preimage. [TrustRoot](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:18) [Principal](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:42) [initial bindings](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:192)
+
+- **Circular HumanDecision digest — CLOSED.** The signature is detached and verifies over `decision_payload_digest`; the envelope digest is computed afterward. [HumanDecision](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:120)
+
+- **Independence theater — OPEN (HIGH).** `atom_digest` omits `member_principal_digests`, so stored atom digests do not bind the membership used for certification. More fundamentally, `controller_key_digest` has no attestation or canonical resolution rule; “multiple keys from one controller MUST share one atom” remains an unenforceable admin obligation. Split-controller atoms can still be registered by an authorized or compromised admin. [IndependenceAtom](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:101)
+
+- **Unbound certification — OPEN (CRITICAL/HIGH).**
+  - **CRITICAL:** `certification_digest` includes `certify_decision_digest`, while that decision’s `target_digest` must equal `certification_digest`. This recreates a hash/signature fixed-point cycle and makes the certification path non-constructible. [CertificationRecord](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:148)
+  - **HIGH:** Nothing requires the authenticated `ATTACH_CERTIFICATION` command caller/binding to equal the record’s claimed certifier principal/binding. The proposer binding is also not verified as a live `PROOF_PROPOSER` binding at a recorded proposal event, so proposer model/binding substitution remains possible. [certification predicates](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:167) [command authorization](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:181)
+
+- **CERTIFY vs I-BOOL-02 — CLOSED.** Both artifacts now permit only certification evidence/attachment effects and explicitly forbid maturity or inference-axis writes. [ART-04c](/Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/IDENTITY_AUTHORITY_INDEPENDENCE.md:177) [ART-06b](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:165)
+
+ITER4_ADV_VERDICT: FAIL

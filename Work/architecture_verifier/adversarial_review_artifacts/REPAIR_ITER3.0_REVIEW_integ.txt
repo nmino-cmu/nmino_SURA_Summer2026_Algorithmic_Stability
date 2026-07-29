@@ -1,0 +1,54 @@
+FAIL — 1 CRITICAL and 3 HIGH findings.
+
+### CRITICAL — D-01: Legacy hard-stop remains an operational shadow authority
+
+ART-06b requires `HardStopRecord` in ControlState and permits set/clear only through serialized `I.Commit` events ([ART-06b §5](</Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:117>)). ART-24 explicitly deprecates direct `I.HardStop` mutation ([ART-24](</Users/nicholasmino/Desktop/Research/Work/architecture/24-interfaces/INTERFACE_CONTRACTS.md:50>)).
+
+Conflicting operational definitions remain:
+
+- ART-15 declares `ResearchState.hard_stop` authoritative and directly clears it using `release_dec_id`, not ART-06b’s `release_dec_digest` ([ART-15](</Users/nicholasmino/Desktop/Research/Work/architecture/15-human-gates/HUMAN_GATES.md:56>), [interruptibility](</Users/nicholasmino/Desktop/Research/Work/architecture/15-human-gates/HUMAN_GATES.md:77>)).
+- ART-16 explicitly calls the ART-06/15 ResearchState flag “authoritative” and invokes direct `I.HardStop` ([ART-16](</Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/FAILURE_RECOVERY.md:35>)).
+- ART-17 repeats direct `I.HardStop → ResearchState.hard_stop.active` ([ART-17](</Users/nicholasmino/Desktop/Research/Work/architecture/17-indefinite-ops/INDEFINITE_OPS.md:73>)).
+- ART-08/08b still fence commits against `ResearchState.hard_stop.active` instead of the ControlState commit head ([ART-08b](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/QUESTION_SELECTION.md:17>), [ART-08](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/RESEARCH_CYCLE_FSM.md:128>)).
+- ART-15 allows “append recovery records” during a stop, while ART-06b permits no ResearchState writes outside its three-command hard-stop allowlist.
+
+These artifacts’ warnings address identity, demotion, or restore defects—not this Iteration 3 incompatibility. The package therefore exposes two authoritative fence locations and an out-of-band mutation path. `B-HARDSTOP-FENCE-01` cannot target closure.
+
+### HIGH — D-02: Caller promotion booleans remain operational
+
+ART-06b forbids `math_stable`, `hop_chain_ok`, `eio_pass`, `audit_pass`, and equivalent caller fields, and rejects every axis-raising command until Iteration 5 ([ART-06b §4](</Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:98>)).
+
+Legacy consumers still authorize behavior from those fields:
+
+- Active-partial ART-01 requires the “ART-06 promotion txn `hop_chain_ok`” without an Iteration 3 warning ([ART-01](</Users/nicholasmino/Desktop/Research/Work/architecture/01-charter/CHARTER.md:88>)).
+- ART-08 defines operational `math_stable` from several `_ok` predicates and applies it to promotion/transitions ([ART-08](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/RESEARCH_CYCLE_FSM.md:83>)).
+- The information-flow guide still defines promotion transactions containing caller-style dep-closure, EIO-pass, lit-closure, and `hop_chain_ok` fields ([information flow](</Users/nicholasmino/Desktop/Research/Work/architecture/ARCHITECTURE_INFORMATION_FLOW.md:271>)).
+- ART-03 still says promotion transactions are allowed when EIO/auditors pass, without the mandatory `PROMOTION_DEFERRED_ITER5` disposition ([ART-03](</Users/nicholasmino/Desktop/Research/Work/architecture/03-context/SYSTEM_CONTEXT.md:71>)).
+
+None of these references is migrated to Commit-derived `validation_digest` predicates or specifically quarantined. A consumer can still treat legacy truth values as promotion authority.
+
+### HIGH — D-03: Direct and ID-native registry paths remain live
+
+ART-06b prohibits direct registry insertion and requires digest-native effects through `I.Commit` ([ART-06b](</Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:89>), [registry rules](</Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:155>)).
+
+Unmigrated paths include:
+
+- ART-04b exposes operational day-one registries, including `q_id`-keyed quarantine and `human_decisions`, but its warning does not say Commit-only despite the matrix claiming it does ([ART-04b](</Users/nicholasmino/Desktop/Research/Work/architecture/04-agents/OPERABLE_MINIMAL_PROFILE.md:46>)).
+- ART-08b has no normative-status label or incompatibility banner and directs scheduler-owned atomic commits plus writes using the “full ART-06 schema” ([ART-08b](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/QUESTION_SELECTION.md:1>), [legacy write](</Users/nicholasmino/Desktop/Research/Work/architecture/08-research-cycle/QUESTION_SELECTION.md:89>)).
+- ART-12 outputs `cx_id` registry rows and lets Auditor/EIO “apply demotion effects,” rather than producing digest-native effects for Commit ([ART-12](</Users/nicholasmino/Desktop/Research/Work/architecture/12-counterexample/COUNTEREXAMPLE_PROTOCOL.md:13>)).
+- The information-flow guide assigns writes to roles, retains a ResearchState hard-stop singleton, and directs readers to legacy ART-06 for registries and promotion fields ([state diagram](</Users/nicholasmino/Desktop/Research/Work/architecture/ARCHITECTURE_INFORMATION_FLOW.md:240>), [legacy pointer](</Users/nicholasmino/Desktop/Research/Work/architecture/ARCHITECTURE_INFORMATION_FLOW.md:353>)).
+
+This is silent ART-06/ART-06b dual-use, not merely deferred schema cleanup.
+
+### HIGH — D-04: The migration matrix is incomplete and overstates warning coverage
+
+The matrix claims Commit-only warnings and lists “Undocumented assumptions: None intended” ([matrix](</Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER3_MUTATION_STATE.md:65>), [claim](</Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER3_MUTATION_STATE.md:82>)), but:
+
+- It omits affected ART-01, ART-12, ART-13, ART-18b, and ART-19.
+- ARTIFACT_STATUS calls ART-13/18/19 “unaffected,” although they define promotion validation, commit gating, committed-event authority, and legacy `dep_closure_ok` use ([status index](</Users/nicholasmino/Desktop/Research/Work/architecture/00-repair/ARTIFACT_STATUS.md:24>)).
+- Its claimed active warnings for ART-04b, ART-08*, ART-15, ART-16, ART-17, and information-flow do not warn about the actual Iteration 3 mutation/hard-stop conflict.
+- The README still places quarantined ART-06—not ART-06b—in the primary human-review reading order ([README](</Users/nicholasmino/Desktop/Research/Work/architecture/00-README.md:68>)).
+
+This violates ART-RIR’s exhaustive classification and active-warning requirement. `B-MUTATION-KERNEL-01` and `B-HARDSTOP-FENCE-01` must remain open, and Iteration 3 cannot complete.
+
+ITER3_INTEG_VERDICT: FAIL

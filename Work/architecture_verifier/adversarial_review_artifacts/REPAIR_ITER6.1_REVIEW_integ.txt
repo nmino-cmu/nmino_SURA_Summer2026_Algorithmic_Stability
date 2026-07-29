@@ -1,0 +1,16 @@
+FAIL. Two CRITICAL/HIGH defects remain.
+
+- **CRITICAL — audit freshness is unreachable.** `RECORD_AUDIT` stores the Commit pre-head, but every accepted Commit increments `event_seq` and recomputes the global state head. The subsequent `APPLY_PROMOTION` therefore cannot have that same pre-head, although I-BIND-01 requires equality. TRACE-6A is impossible and every major promotion fails closed. [ART-11b RECORD/APPLY rules](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:120) · [ART-06b commit transition](/Users/nicholasmino/Desktop/Research/Work/architecture/06-state/MUTATION_AND_AUTHORITATIVE_STATE.md:116)
+
+- **HIGH — the supposedly closed question registry remains contradictory.** The table defines 18 distinct IDs because Q11b and Q11c supplement Q1–Q16, while the policy and record require “sixteen.” Consequently the required set and `AUD_MAJOR.policy_digest` are not deterministic. [question table](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:34) · [policy cardinality](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:55) · [record validation](/Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:106)
+
+- **HIGH — ART-RIR migration closure remains incomplete.** ART-24 itself now delegates persistence correctly, but its matrix row still declares unresolved legacy IO without a responsible later iteration. More importantly, affected consumers are omitted—for example, active-partial ART-05 still assigns authority to legacy `ART-11` PASS. This contradicts the requirement to classify every consumer exactly once. [matrix](/Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER6_AUDIT_BINDING.md:19) · [ART-RIR](/Users/nicholasmino/Desktop/Research/Work/architecture/00-repair/INTEGRATION_RULE.md:11) · [ART-05 legacy authority](/Users/nicholasmino/Desktop/Research/Work/architecture/05-authority/AUTHORITY_MATRIX.md:27)
+
+Prior status:
+
+- Additive policy-cardinality defect: **CLOSED** by the single `AUD_MAJOR` policy.
+- Auditor provenance: **CLOSED** through the hashed binding, caller equality, and introducing event.
+- PASS constructibility/Q15/disconfirm additions: **present**, but the dialect is not closed because of the 16-versus-18 contradiction.
+- ART-24 contract: **CLOSED**; migration matrix: **OPEN**.
+
+ITER6_INTEG_VERDICT: FAIL

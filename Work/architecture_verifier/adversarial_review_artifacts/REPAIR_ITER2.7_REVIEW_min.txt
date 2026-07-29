@@ -1,0 +1,5 @@
+No new zero-loss HIGH removals.
+
+ITER2.7’s only material addition—the mandatory complete utility-signature declaration and exact match in `I-UTIL-02`—is necessary to close the prior underbinding HIGH and introduces no redundant authoritative carrier.
+
+ITER2_MIN_VERDICT: PASS

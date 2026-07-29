@@ -1,0 +1,14 @@
+Remaining CRITICAL/HIGH findings:
+
+- **HIGH — ADV/CORR/INTEG:** A later negative audit cannot supersede a PASS. `A*` selects the newest **PASS**, not the newest AuditRecord, and later AuditRecord writes do not trigger freshness. Thus `PASS A → FAIL F for the same intent → APPLY` still uses A and can promote despite F. This also leaves ART-16’s required “invalidate audits” operation without an effective path. [Audit selection and freshness](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:111>) · [Audit verdicts](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:62>) · [Invalidation requirement](</Users/nicholasmino/Desktop/Research/Work/architecture/16-failure-recovery/FAILURE_RECOVERY.md:62>)
+
+- **HIGH — ADV/CORR:** Freshness does not cover invalidation of answer evidence. For example, a later FULL Counterexample targeting a Q15 utility Claim—or a Claim supporting another answer—does not stale the audit unless the Counterexample also contains the promotion target. Revalidation merely resolves the evidence’s original kind, so refuted evidence can continue supporting PASS. [Type-only revalidation](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:77>) · [Target-centric freshness](</Users/nicholasmino/Desktop/Research/Work/architecture/11-integration-audit/AUDIT_BINDING.md:111>) · [Counterexample targeting](</Users/nicholasmino/Desktop/Research/Work/architecture/07-schemas/CANONICAL_OBJECTS.md:370>)
+
+- **HIGH — INTEG:** The migration matrix still violates ART-RIR’s exact-classification requirement. It omits affected operational consumers including ART-03’s auditor-gated promotion flow, ART-16’s audit invalidation, and ART-17’s `audit_ledger_tail_id` checkpoint field. Their ART-11b compatibility, prohibited uses, and responsible migrations are therefore undocumented despite the matrix claiming none remain. [ART-RIR requirement](</Users/nicholasmino/Desktop/Research/Work/architecture/00-repair/INTEGRATION_RULE.md:7>) · [Incomplete matrix](</Users/nicholasmino/Desktop/Research/Work/architecture/iterations/REPAIR_ITER6_AUDIT_BINDING.md:16>) · [ART-03 consumer](</Users/nicholasmino/Desktop/Research/Work/architecture/03-context/SYSTEM_CONTEXT.md:71>) · [ART-17 checkpoint](</Users/nicholasmino/Desktop/Research/Work/architecture/17-indefinite-ops/INDEFINITE_OPS.md:25>)
+
+No remaining CRITICAL/HIGH minimality finding.
+
+ITER6_ADV_VERDICT: FAIL
+ITER6_CORR_VERDICT: FAIL
+ITER6_MIN_VERDICT: PASS
+ITER6_INTEG_VERDICT: FAIL
