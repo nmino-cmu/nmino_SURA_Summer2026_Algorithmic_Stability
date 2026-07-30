@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\title{Quantile Index Preservation under Bounded Score Perturbations}
+\author{Research Architecture Runtime \\ \texttt{operator/quantile}}
+\date{2026-07-25}
+\begin{document}
+\maketitle
+\begin{abstract}
+We study $\tau$-quantile selection as the unique strict $k$-th order statistic on a
+finite real score vector. If every pairwise gap exceeds $2\varepsilon$, the selected
+index is invariant under $\|\delta\|_\infty\le\varepsilon$. Lean \texttt{LEAN\_FULL}
+on Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB}).
+\end{abstract}
+\section{Operator}
+\begin{definition}
+For $s\in\mathbb{R}^n$ ($n\ge 2$), index $i$ is the unique strict $k$-th smallest when
+exactly $k$ scores are strictly below $s_i$ and no other index shares $s_i$.
+A $\tau$-quantile uses $k=\lfloor\tau(n-1)\rfloor$.
+\end{definition}
+\section{Theorems}
+\begin{theorem}[Preservation]
+If $i$ is a unique strict $k$-th smallest and all pairwise gaps exceed $2\varepsilon$,
+then every $\|\delta\|_\infty\le\varepsilon$ perturbation preserves that status.
+\end{theorem}
+\begin{theorem}[Sharpness]
+If some rival $j\neq i$ has $|s_i-s_j|\le 2\varepsilon$, an admissible $\delta$
+destroys unique strict $k$-th-smallest status of $i$ (tie adversary).
+\end{theorem}
+\section{Proofs}
+Pairwise order vs $i$ is preserved under the gap hypothesis; \texttt{countLT} congruence
+and uniqueness follow. Sharpness forces a value-tie between $i$ and a close rival.
+\section{Comparison}
+Relative to Argmax margin: same $2\varepsilon$ gap cost, but ranking/count geometry
+rather than unique-max. Relative to Threshold: multi-cut ordering instead of a single cut.
+\section{Lean / certificate}
+\texttt{Research.Operators.Quantile.Preservation} reducing to
+\texttt{OrderStat.KthMargin}; certificate
+\texttt{lean/certificates/quantile/quantile-margin/} (\texttt{LEAN\_FULL}; Mathlib $\mathbb{R}$).
+\section{Limitations}
+Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB}); unique-value hypothesis; no privacy claims.
+\end{document}

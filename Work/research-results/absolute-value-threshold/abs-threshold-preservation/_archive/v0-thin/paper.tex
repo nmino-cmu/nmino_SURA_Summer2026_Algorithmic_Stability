@@ -1,0 +1,34 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\newtheorem{theorem}{Theorem}
+\title{Absolute-Value Threshold Preservation under Bounded Score Perturbations}
+\author{Research Architecture Runtime \\ \texttt{operator/absolute-value-threshold}}
+\date{2026-07-25}
+\begin{document}
+\maketitle
+\begin{abstract}
+We study \(A(x)=\mathbf{1}\{\lvert x\rvert\ge T\}\) for \(T\ge 0\) under
+\(\lvert x'-x\rvert\le\varepsilon\). Pass/fail buffers use
+\(\lvert x\rvert\ge T+\varepsilon\) and \(\lvert x\rvert+\varepsilon<T\).
+Lean \texttt{LEAN\_FULL} on Mathlib \(\mathbb{R}\) (\texttt{REAL\_MATHLIB}).
+\end{abstract}
+\section{Theorems}
+\begin{theorem}[Preservation]
+If \(\lvert x'-x\rvert\le\varepsilon\): (1) \(\lvert x\rvert\ge T+\varepsilon\Rightarrow A(x')=1\);
+(2) \(\lvert x\rvert+\varepsilon<T\Rightarrow A(x')=0\).
+\end{theorem}
+\begin{theorem}[Sharpness]
+If \(\varepsilon\le x\) and \(T\le x<T+\varepsilon\), then \(x'=x-\varepsilon\) fails \(A\).
+\end{theorem}
+\section{Comparison}
+Radial lift of Threshold; related to Sign via the origin cut. Fail side uses
+\(\lvert x\rvert+\varepsilon<T\) (strict form of the half-open band).
+\section{Lean / certificate}
+\texttt{Research.Operators.AbsThreshold.Preservation};
+\texttt{lean/certificates/absolute-value-threshold/abs-threshold-preservation/}.
+\section{Limitations}
+Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB}); \(T\ge 0\); sharpness stated on the
+nonnegative ray with \(\varepsilon\le x\).
+\end{document}

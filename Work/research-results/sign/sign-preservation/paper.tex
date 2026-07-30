@@ -1,0 +1,122 @@
+% operator-stability-v1 — publication template (writeup-aligned)
+% Slots filled by scripts/generate_operator_paper.py
+\documentclass[12pt]{article}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\Urlmuskip=0mu plus 1mu
+\urlstyle{tt}
+\emergencystretch=2em
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{1.2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Breakable monospace for Lean paths / identifiers (xurl \path)
+\newcommand{\leanpath}[1]{%
+  {\raggedright\urlstyle{tt}\path{#1}}}
+
+
+\definecolor{fundbox}{RGB}{245,245,248}
+\definecolor{fundrule}{RGB}{180,180,190}
+
+\title{Sign Selection Preservation under Bounded Score Perturbations}
+\author{Research Architecture Runtime\\[0.25em]
+{\normalsize\texttt{operator/sign}}}
+\date{2026-07-29}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For $\mathrm{sign}(x)\in\{+1,-1,0\}$, if $|x'-x|\le\varepsilon$ then $\varepsilon<x\Rightarrow\mathrm{sign}(x')=+1$, $x<-\varepsilon\Rightarrow\mathrm{sign}(x')=-1$, and $(\varepsilon,x)=(0,0)\Rightarrow\mathrm{sign}(x')=0$. Lean \texttt{LEAN\_FULL}.
+\end{abstract}
+
+\noindent
+\begin{center}
+\fcolorbox{fundrule}{fundbox}{%
+  \begin{minipage}{0.92\linewidth}
+  \centering
+  \textbf{This theorem is:} \texttt{Primitive}
+  \end{minipage}}
+\end{center}
+\vspace{0.6em}
+
+\section{Problem}
+{\raggedright\sloppy
+The sign operator returns $\mathrm{sign}(x)=+1$ if $x>0$, $-1$ if $x<0$, and $0$ if $x=0$.
+\par}
+
+\section{Stability notion}
+Perturbation: $|x'-x|\le\varepsilon$. Preservation uses \emph{strict} buffers $\varepsilon<x$ and $x<-\varepsilon$. Zero output is preserved only when $\varepsilon=0$ and $x=0$. Sharpness covers $(0,\varepsilon]$, $[-\varepsilon,0)$, and $x=0$ with $\varepsilon>0$.
+
+\section{Definitions}
+\begin{definition}[sign]
+$\mathrm{sign}(x)=1$ if $0<x$; $-1$ if $x<0$; else $0$.
+\end{definition}
+
+\section{Theorem}
+\begin{theorem}[Sign preservation]\label{thm:inv}
+If $|x'-x|\le\varepsilon$, then: (i) $\varepsilon<x\Rightarrow\mathrm{sign}(x')=1$; (ii) $x<-\varepsilon\Rightarrow\mathrm{sign}(x')=-1$; (iii) $\varepsilon=0\land x=0\Rightarrow\mathrm{sign}(x')=0$.
+\end{theorem}
+\begin{theorem}[Sharpness]\label{thm:sharp}
+If $0<x\le\varepsilon$ then some $|x'-x|\le\varepsilon$ has $\mathrm{sign}(x')\neq 1$; symmetrically for $-\varepsilon\le x<0$; if $x=0$ and $\varepsilon>0$ then some $|x'-x|\le\varepsilon$ has $\mathrm{sign}(x')\neq 0$.
+\end{theorem}
+
+\section{Intuition}
+A strict buffer larger than $\varepsilon$ keeps the perturbed point away from $0$. On the closed band the push $x\mapsto x-\varepsilon$ can leave the positive ray.
+
+\section{Examples}
+\begin{example}
+$x=2$, $\varepsilon=0.5$: $\varepsilon<x$, so the sign stays $+1$. $x=0.4$, $\varepsilon=0.5$: $x'=x-\varepsilon=-0.1$ has sign $-1$.
+\end{example}
+
+\section{Proof}
+From $|x'-x|\le\varepsilon$, $x-\varepsilon\le x'\le x+\varepsilon$. If $\varepsilon<x$ then $x'>0$, so $\mathrm{sign}(x')=1$. If $x<-\varepsilon$ then $x'<0$, so $\mathrm{sign}(x')=-1$. If $\varepsilon=0$ and $x=0$ then $x'=0$. This is Theorem~\ref{thm:inv}.
+
+Sharpness: if $0<x\le\varepsilon$, take $x'=x-\varepsilon\le 0$. If $-\varepsilon\le x<0$, take $x'=x+\varepsilon\ge 0$. If $x=0$ and $\varepsilon>0$, take $x'=\varepsilon$. This is Theorem~\ref{thm:sharp}.
+
+\section{Formal statement}
+{\raggedright\sloppy
+\begin{description}[style=nextline,leftmargin=1.1em,font=\normalfont\bfseries]
+\item[Lean module] \leanpath{Research.Operators.Sign.Preservation}
+\item[Source file] \leanpath{lean/Research/Operators/Sign/Preservation.lean}
+\item[Theorems]\leavevmode\par\vspace{0.15em}\begin{itemize}[leftmargin=1.2em]
+  \item \leanpath{sign\_preservation}
+  \item \leanpath{sign\_sharpness}
+\end{itemize}
+\item[Certificate] \leanpath{lean/certificates/sign/sign-preservation}
+\item[Status] \texttt{LEAN\_FULL} on Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB})
+\end{description}
+\par}
+
+\section{Proof dependencies}
+{\raggedright\sloppy
+\begin{itemize}\item Absolute-value ball arithmetic on $\mathbb{R}$.\item No other operator theorems.\end{itemize}
+\par}
+
+\section{Consequences}
+{\raggedright\sloppy
+Primitive trichotomy gate; abs-threshold and interval membership use analogous 1D buffers.
+\par}
+
+\end{document}

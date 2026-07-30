@@ -1,0 +1,123 @@
+{
+  "operator": "bucket-assignment",
+  "title": "Bucket assignment Ranking Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/bucket-assignment",
+  "crp_identifiers": {
+    "operator": "bucket-assignment",
+    "theorem_id": "bucket-assignment-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "24231fc1bfcb35763e4ab6e9a38bbc69d16fb3dd47104d35fce083ec3e30cfae"
+  ],
+  "lean_manifest_digest": "24231fc1bfcb35763e4ab6e9a38bbc69d16fb3dd47104d35fce083ec3e30cfae",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.BucketAssignment.Preservation",
+  "lean_certificate_dir": "lean/certificates/bucket-assignment/bucket-assignment-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "bucket-assignment",
+    "theorem": "bucket-assignment-margin",
+    "assumptions": [
+      "n≥2",
+      "pairwise gaps"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "OrderStat.Ranking reduction",
+    "limitations": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ],
+    "references": [
+      "research-results/bucket-assignment/bucket-assignment-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "bucket_assignment_margin_invariance",
+      "bucket_assignment_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "e1fcfefa8495cd9644c4f5dad99225c6790826ee85bf96824805973a72b815ac",
+    "proof_digest": "397b2c030eec139c029c087460b3ae0a6e1d5da0d8da7a274adde39b64880a03",
+    "certificate_path": "lean/certificates/bucket-assignment/bucket-assignment-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "24231fc1bfcb35763e4ab6e9a38bbc69d16fb3dd47104d35fce083ec3e30cfae",
+      "claim_digest": "7a823e060a251ed8f4f022a6f12b841dabed579f54c5f451a63395e556b02a83",
+      "entry_module_id": "Research.Operators.BucketAssignment.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "ordering",
+    "selected_object": "pairwise_ranking",
+    "instability_mechanism": "pairwise_gap_collapse",
+    "structural_stability_quantity": "min_pairwise_gap",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "all pairwise gaps > 2ε",
+    "unstable_region": "some pairwise gap ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_order_stat_ranking"
+    ],
+    "related_operators": [
+      "top-k",
+      "sorting",
+      "rank"
+    ],
+    "assumptions": [
+      "Finite n≥2"
+    ],
+    "limitations": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "top-k",
+      "sorting",
+      "rank"
+    ],
+    "dependencies": [
+      "Research.Operators.OrderStat.Ranking",
+      "ranking_invariance"
+    ],
+    "reduces_to": "order-stat-ranking",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "24231fc1bfcb35763e4ab6e9a38bbc69d16fb3dd47104d35fce083ec3e30cfae",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

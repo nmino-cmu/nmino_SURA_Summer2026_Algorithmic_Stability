@@ -1,0 +1,125 @@
+{
+  "operator": "priority-queue-maximum",
+  "title": "Priority queue maximum Margin Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/priority-queue-maximum",
+  "crp_identifiers": {
+    "operator": "priority-queue-maximum",
+    "theorem_id": "priority-queue-maximum-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "8a80c92dfb1a47515219b59a5cf4f37a258e991c7d0b4d15704cc750950c9e97"
+  ],
+  "lean_manifest_digest": "8a80c92dfb1a47515219b59a5cf4f37a258e991c7d0b4d15704cc750950c9e97",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.PriorityQueueMaximum.Margin",
+  "lean_certificate_dir": "lean/certificates/priority-queue-maximum/priority-queue-maximum-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "priority-queue-maximum",
+    "theorem": "priority-queue-maximum-margin",
+    "assumptions": [
+      "m≥2",
+      "unique maximizer",
+      "ℓ∞ ball"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Definitional reduction to Argmax.Margin",
+    "limitations": [
+      "Argmax reduction"
+    ],
+    "references": [
+      "research-results/priority-queue-maximum/priority-queue-maximum-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "priority_queue_maximum_margin_invariance",
+      "priority_queue_maximum_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "b5c1362528e2f7d8d62b5bbb25961284af2c24fc185adeebec3cee83aaf57ffb",
+    "proof_digest": "91bd608948a75a6edd1312a4db0e5e302b42436e271c9dfe7398ca0931c3d789",
+    "certificate_path": "lean/certificates/priority-queue-maximum/priority-queue-maximum-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "8a80c92dfb1a47515219b59a5cf4f37a258e991c7d0b4d15704cc750950c9e97",
+      "claim_digest": "bfb9abec4ae30e39cbaae104e1e35ef0172ec6a978f43873ec079afb3458e417",
+      "entry_module_id": "Research.Operators.PriorityQueueMaximum.Margin",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "primitive_search",
+    "selected_object": "unique_maximizer_index",
+    "instability_mechanism": "margin_collapse",
+    "structural_stability_quantity": "argmax_margin_gamma",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "gamma > 2ε",
+    "unstable_region": "gamma ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_argmax_margin"
+    ],
+    "related_operators": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "assumptions": [
+      "Finite m≥2",
+      "Unique maximizer"
+    ],
+    "limitations": [
+      "Argmax reduction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "8a80c92dfb1a47515219b59a5cf4f37a258e991c7d0b4d15704cc750950c9e97",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

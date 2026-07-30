@@ -1,0 +1,28 @@
+{
+  "fundamentality": "primitive",
+  "title": "Absolute-Value Threshold Preservation under Bounded Score Perturbations",
+  "abstract": "\\leanpath{absolute-value-threshold} is a scalar region indicator preserved outside an $\\varepsilon$-buffer under $|x'-x|\\le\\varepsilon$. Lean \\texttt{LEAN\\_FULL}.",
+  "problem": "The \\leanpath{absolute-value-threshold} operator maps a scalar score to a discrete region label/bit.",
+  "stability": "Additive $|x'-x|\\le\\varepsilon$; outputs agree when $x$ is at least $\\varepsilon$ inside its region.",
+  "definitions": "Region boundaries are thresholds (sign at $0$, abs-threshold at $T\\ge 0$, interval $[L,U]$). Assumptions follow the Lean module.",
+  "theorem": "\\begin{theorem}\\label{thm:inv}\nUnder the module's buffer hypotheses, $|x'-x|\\le\\varepsilon$ preserves the operator output; sharpness pushes across a boundary when the buffer fails.\n\\end{theorem}",
+  "intuition": "Same one-dimensional buffer logic as thresholding, applied to the operator's cut set.",
+  "examples": "\\begin{example}\nFor sign: $x=2$, $\\varepsilon=0.5$ stays positive. For abs-threshold $T=3$, $x=5$, $\\varepsilon=0.2$ stays pass.\n\\end{example}",
+  "proof": "Write $|x'-x|\\le\\varepsilon$. On the pass side of each cut, $x$ is at least $\\varepsilon$ beyond the cut, so $x'$ cannot cross it; on the fail side, $x'$ cannot reach the cut. Sharpness uses a $\\pm\\varepsilon$ push from a point within $\\varepsilon$ of the boundary (Theorem~\\ref{thm:inv}), matching the Lean cases.",
+  "formal": "\\begin{description}[style=nextline,leftmargin=1.1em,font=\\normalfont\\bfseries]\n\\item[Lean module] \\leanpath{Research.Operators.AbsThreshold.Preservation}\n\\item[Source file] \\leanpath{lean/Research/Operators/AbsThreshold/Preservation.lean}\n\\item[Theorems]\\leavevmode\\par\\vspace{0.15em}\\begin{itemize}[leftmargin=1.2em]\n  \\item \\leanpath{abs_threshold_preservation}\n  \\item \\leanpath{abs_threshold_sharpness}\n\\end{itemize}\n\\item[Certificate] \\leanpath{lean/certificates/absolute-value-threshold/abs-threshold-preservation}\n\\item[Status] \\texttt{LEAN\\_FULL} on Mathlib $\\mathbb{R}$ (\\texttt{REAL\\_MATHLIB})\n\\end{description}",
+  "dependencies": "\\begin{itemize}\\item Interval arithmetic on $\\mathbb{R}$.\\item Threshold-style buffers.\\end{itemize}",
+  "consequences": "Scalar building block; related: thresholding, sign, multi-threshold.",
+  "paper_card": {
+    "difficulty": "elementary",
+    "applications": [
+      "thresholding",
+      "sign",
+      "multi-threshold"
+    ],
+    "dependencies": [
+      "Research.Operators.AbsThreshold.Preservation"
+    ],
+    "reduces_to": null,
+    "reduced_by": []
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "operator": "projection-box",
+  "title": "Projection onto box constraints: Real Stability",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/projection-box",
+  "crp_identifiers": {
+    "operator": "projection-box",
+    "theorem_id": "projection-box-clamp-stability"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "ba5a8d9591b16da9d823fa84a43fd0f8e06dbd57a49c2338084befea17d9c975"
+  ],
+  "lean_manifest_digest": "ba5a8d9591b16da9d823fa84a43fd0f8e06dbd57a49c2338084befea17d9c975",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.ProjectionBox.Preservation",
+  "lean_certificate_dir": "lean/certificates/projection-box/projection-box-clamp-stability",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "projection-box",
+    "theorem": "projection-box-clamp-stability",
+    "assumptions": [
+      "kind=clamp"
+    ],
+    "perturbation_model": "abs ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Projection core (clamp)",
+    "limitations": [
+      "clamp"
+    ],
+    "references": [
+      "research-results/projection-box/projection-box-clamp-stability/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "projection_box_clamp_stability",
+      "projection_box_clamp_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "a7b2ab12309c79bce14b64e8a023592070ae01051ed3039d40c8659977134735",
+    "proof_digest": "847e9aa44d813d1f32a18331968f84c08cbadc9bfd52e4069f1f020986c156d3",
+    "certificate_path": "lean/certificates/projection-box/projection-box-clamp-stability",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "ba5a8d9591b16da9d823fa84a43fd0f8e06dbd57a49c2338084befea17d9c975",
+      "claim_digest": "cddd1ff82bb88c5629e10858e228f7d0895e488a4d06e82588b5aad8dcfe6c04",
+      "entry_module_id": "Research.Operators.ProjectionBox.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "projection",
+    "selected_object": "clamp",
+    "instability_mechanism": "boundary_crossing",
+    "structural_stability_quantity": "clamp",
+    "perturbation_class": "bounded_additive_abs",
+    "guarantee_kind": "deterministic",
+    "stable_region": "core-dependent",
+    "unstable_region": "near boundary",
+    "sharpness": true,
+    "compositional_properties": [
+      "projection_clamp"
+    ],
+    "related_operators": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "assumptions": [
+      "Feasible-ball / indicator identity on ℝ; not full Euclidean projection nonexpansiveness"
+    ],
+    "limitations": [
+      "clamp"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "dependencies": [
+      "Research.Operators.Projection.Clamp"
+    ],
+    "reduces_to": "projection-clamp",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "ba5a8d9591b16da9d823fa84a43fd0f8e06dbd57a49c2338084befea17d9c975",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

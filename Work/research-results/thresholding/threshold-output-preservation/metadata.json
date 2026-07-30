@@ -1,0 +1,129 @@
+{
+  "operator": "thresholding",
+  "title": "Threshold Output Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "43baa42e2f12065e23e66ca1f2ced10499f82fd1",
+  "branch": "feature/lean-gated-operator-papers",
+  "crp_identifiers": {
+    "operator": "thresholding",
+    "theorem_id": "threshold-output-preservation"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "5d0b6bd5d1532ce2c7b4718051469e2640e716ea11d118bde160cde171eca089"
+  ],
+  "lean_manifest_digest": "5d0b6bd5d1532ce2c7b4718051469e2640e716ea11d118bde160cde171eca089",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.Threshold.Preservation",
+  "lean_certificate_dir": "lean/certificates/thresholding/threshold-output-preservation",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL certificate required before publication"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "2.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "thresholding",
+    "theorem": "threshold-output-preservation",
+    "assumptions": [
+      "Finite scalar score x and fixed threshold T",
+      "Equality-passes convention: A_T(x)=1 iff x ≥ T",
+      "Admissible neighbors satisfy |x' − x| ≤ ε with ε ≥ 0"
+    ],
+    "perturbation_model": "Bounded additive score perturbation |x' − x| ≤ ε",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Rewrite |x'−x|≤ε as a two-sided Int bound; omega closes pass (x ≥ T+ε ⇒ x' ≥ T) and fail (x < T−ε ⇒ x' < T) sides separately under the equality-passes convention.",
+    "limitations": [
+      "Abstract score x; data-dependent maps x(D) deferred",
+      "No Sparse Vector / DP privacy accounting"
+    ],
+    "references": [
+      "research-results/thresholding/threshold-output-preservation/paper.tex",
+      "implementation/docs/operators/thresholding.md",
+      "lean/Research/Operators/Threshold/Preservation.lean"
+    ],
+    "lean_theorem_names": [
+      "threshold_preservation"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "c29e65dc9bd4d49aab57f5dd69e869997a9851b097d947a2fc71df2444b40f43",
+    "proof_digest": "1e42960392610191aae1b11737438a6bd13153dd5e012f948aee0fbd3306379a",
+    "certificate_path": "lean/certificates/thresholding/threshold-output-preservation",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "5d0b6bd5d1532ce2c7b4718051469e2640e716ea11d118bde160cde171eca089",
+      "claim_digest": "308de9ed5e5b40456cc9bbfc006256dad1aa0aa307b77f55f2320d059188333e",
+      "entry_module_id": "Research.Operators.Threshold.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "scalar_selection",
+    "selected_object": "binary_threshold_indicator",
+    "instability_mechanism": "discontinuity_at_decision_boundary_x_eq_T",
+    "structural_stability_quantity": "signed_margin_m_eq_x_minus_T",
+    "perturbation_class": "bounded_additive_score",
+    "guarantee_kind": "deterministic",
+    "stable_region": "pass: x ≥ T+ε; fail: x < T−ε",
+    "unstable_region": "half-open band [T−ε, T+ε)",
+    "sharpness": true,
+    "compositional_properties": [
+      "sequential_first_crossing_candidate_not_privacy_theorem",
+      "asymmetric_because_equality_passes"
+    ],
+    "related_operators": [
+      "argmax",
+      "multi-threshold",
+      "absolute-value-threshold"
+    ],
+    "assumptions": [
+      "Finite scalar scores",
+      "Fixed threshold T",
+      "Equality passes"
+    ],
+    "limitations": [
+      "Scalar finite scores only",
+      "No DP/SVT accounting"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "primitive",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "multi-threshold",
+      "absolute-value-threshold"
+    ],
+    "dependencies": [
+      "Research.Operators.Threshold.Preservation"
+    ],
+    "reduces_to": null,
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "5d0b6bd5d1532ce2c7b4718051469e2640e716ea11d118bde160cde171eca089",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

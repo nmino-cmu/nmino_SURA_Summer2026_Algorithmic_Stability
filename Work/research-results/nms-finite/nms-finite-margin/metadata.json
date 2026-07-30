@@ -1,0 +1,125 @@
+{
+  "operator": "nms-finite",
+  "title": "Non-maximum suppression (finite) Margin Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/nms-finite",
+  "crp_identifiers": {
+    "operator": "nms-finite",
+    "theorem_id": "nms-finite-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "a4713a7c32bd1ca183a668b0624e87c9980b3fb0289c35fa3887aa4a6d640560"
+  ],
+  "lean_manifest_digest": "a4713a7c32bd1ca183a668b0624e87c9980b3fb0289c35fa3887aa4a6d640560",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.NmsFinite.Margin",
+  "lean_certificate_dir": "lean/certificates/nms-finite/nms-finite-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "nms-finite",
+    "theorem": "nms-finite-margin",
+    "assumptions": [
+      "m≥2",
+      "unique maximizer",
+      "ℓ∞ ball"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Definitional reduction to Argmax.Margin",
+    "limitations": [
+      "Argmax reduction"
+    ],
+    "references": [
+      "research-results/nms-finite/nms-finite-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "nms_finite_margin_invariance",
+      "nms_finite_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "4dcd842e99e9c4cc0116d962ffb8226cc59e88975d6989b8c04633b9a7e3b453",
+    "proof_digest": "9c99cbe7920329a5e44c1f73349d053fef88ef4f1a098529ab46be583d586a20",
+    "certificate_path": "lean/certificates/nms-finite/nms-finite-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "a4713a7c32bd1ca183a668b0624e87c9980b3fb0289c35fa3887aa4a6d640560",
+      "claim_digest": "e1482847ed9dca73da09b8ff0620b3e9726c0ca2d99540d061ae1aec3d2e05ca",
+      "entry_module_id": "Research.Operators.NmsFinite.Margin",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "primitive_search",
+    "selected_object": "unique_maximizer_index",
+    "instability_mechanism": "margin_collapse",
+    "structural_stability_quantity": "argmax_margin_gamma",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "gamma > 2ε",
+    "unstable_region": "gamma ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_argmax_margin"
+    ],
+    "related_operators": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "assumptions": [
+      "Finite m≥2",
+      "Unique maximizer"
+    ],
+    "limitations": [
+      "Argmax reduction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "a4713a7c32bd1ca183a668b0624e87c9980b3fb0289c35fa3887aa4a6d640560",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

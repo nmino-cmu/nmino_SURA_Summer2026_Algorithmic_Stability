@@ -1,0 +1,123 @@
+{
+  "operator": "rank",
+  "title": "Rank Ranking Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/rank",
+  "crp_identifiers": {
+    "operator": "rank",
+    "theorem_id": "rank-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "205392bb28a02efd20508be164f4b2df25a64390e3b50385fdc7d6ff76d58621"
+  ],
+  "lean_manifest_digest": "205392bb28a02efd20508be164f4b2df25a64390e3b50385fdc7d6ff76d58621",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.Rank.Preservation",
+  "lean_certificate_dir": "lean/certificates/rank/rank-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "rank",
+    "theorem": "rank-margin",
+    "assumptions": [
+      "n≥2",
+      "pairwise gaps"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "OrderStat.Ranking reduction",
+    "limitations": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ],
+    "references": [
+      "research-results/rank/rank-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "rank_margin_invariance",
+      "rank_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "1f1092fb8cad4739271ba01b6b340f5cd7476f1f1e4da8b418a9e2fcd8e1d858",
+    "proof_digest": "747e3abcd61c47e821c205c965c17d7d8af0c05e5f0483d89b334c1101f0db2c",
+    "certificate_path": "lean/certificates/rank/rank-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "205392bb28a02efd20508be164f4b2df25a64390e3b50385fdc7d6ff76d58621",
+      "claim_digest": "1a781ad2d0423d0ccc3f520ee40fdb83dd4c652e4357aa3a9ac48af84552fcc4",
+      "entry_module_id": "Research.Operators.Rank.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "ordering",
+    "selected_object": "pairwise_ranking",
+    "instability_mechanism": "pairwise_gap_collapse",
+    "structural_stability_quantity": "min_pairwise_gap",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "all pairwise gaps > 2ε",
+    "unstable_region": "some pairwise gap ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_order_stat_ranking"
+    ],
+    "related_operators": [
+      "top-k",
+      "sorting",
+      "rank"
+    ],
+    "assumptions": [
+      "Finite n≥2"
+    ],
+    "limitations": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "top-k",
+      "sorting",
+      "rank"
+    ],
+    "dependencies": [
+      "Research.Operators.OrderStat.Ranking",
+      "ranking_invariance"
+    ],
+    "reduces_to": "order-stat-ranking",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "205392bb28a02efd20508be164f4b2df25a64390e3b50385fdc7d6ff76d58621",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

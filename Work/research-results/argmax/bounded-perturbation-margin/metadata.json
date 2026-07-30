@@ -1,0 +1,49 @@
+{
+  "operator": "argmax",
+  "title": "Bounded Perturbation Invariance for Deterministic Argmax",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending-real",
+  "branch": "feature/lean-gated-operator-papers",
+  "crp_identifiers": {
+    "operator": "argmax",
+    "theorem_id": "bounded-perturbation-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "d363f7aa3fc22d4accc08a62b1ce7256683a9f2e8b048de546afece0ad93e344"
+  ],
+  "lean_manifest_digest": "d363f7aa3fc22d4accc08a62b1ce7256683a9f2e8b048de546afece0ad93e344",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.Argmax.Margin",
+  "lean_certificate_dir": "lean/certificates/argmax/bounded-perturbation-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL certificate required before publication"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "2.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "d363f7aa3fc22d4accc08a62b1ce7256683a9f2e8b048de546afece0ad93e344",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

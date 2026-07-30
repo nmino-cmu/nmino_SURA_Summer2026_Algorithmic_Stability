@@ -1,0 +1,86 @@
+% operator-stability-v1 — sparse skeleton; no shared proof paragraphs
+% Slots filled by scripts/generate_operator_paper.py
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\title{Phase B selection_stability packaging for argmax under ℓ∞ score ball}
+\author{Research Architecture Runtime \\ \texttt{operator/argmax}}
+\date{2026-07-29}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\texttt{argmax} selects a unique maximizer. Margin $\gamma(s)>2\varepsilon$ is necessary and sufficient for unique-max invariance under $\|\delta\|_\infty\le\varepsilon$. Lean \texttt{LEAN\_FULL} (reduction to \texttt{Argmax.Margin}).
+\end{abstract}
+
+\noindent\textbf{This theorem is:} \texttt{Reduction}.
+
+\section{Problem}
+The \texttt{argmax} operator returns the unique maximizer index $i^\star$ of scores $s\in\mathbb{R}^m$ ($m\ge 2$), up to the operator's definitional presentation (heap top, tournament winner, masked max, etc.).
+
+\section{Stability notion}
+Perturbations: $\|\delta\|_\infty\le\varepsilon$. Let $\gamma(s)=s_{i^\star}-\max_{j\neq i^\star}s_j$. Stability: $\gamma(s)>2\varepsilon$ implies $i^\star$ remains the unique maximizer of $s+\delta$. Sharpness: $\gamma(s)\le 2\varepsilon$ admits an adversary destroying unique maximality.
+
+\section{Definitions}
+\begin{definition}[Unique maximizer]
+$i^\star$ uniquely maximizes $s$ if $s_j\le s_{i^\star}$ for all $j$ and $s_j=s_{i^\star}\Rightarrow j=i^\star$.
+\end{definition}
+\begin{definition}[Margin]
+$\gamma(s)=s_{i^\star}-\max_{j\neq i^\star}s_j$.\end{definition}
+
+\section{Theorem}
+\begin{theorem}[Margin invariance]\label{thm:inv}
+If $i^\star$ uniquely maximizes $s$ and $s_{i^\star}-s_j>2\varepsilon$ for all $j\neq i^\star$, then for every $\|\delta\|_\infty\le\varepsilon$, $i^\star$ uniquely maximizes $s+\delta$.
+\end{theorem}
+\begin{theorem}[Sharpness]\label{thm:sharp}
+If some $j\neq i^\star$ has $s_{i^\star}-s_j\le 2\varepsilon$, an admissible $\delta$ destroys unique maximality.
+\end{theorem}
+
+\section{Intuition}
+Depressing the winner by $\varepsilon$ and elevating a rival by $\varepsilon$ consumes $2\varepsilon$ of margin. Strict margin above $2\varepsilon$ leaves the winner unique; otherwise a two-point adversary forces a tie or loss.
+
+\section{Examples}
+\begin{example}
+Scores $(7,5,4)$, $i^\star=0$, $\gamma=2$. For $\varepsilon=0.8$, $2\varepsilon=1.6<2$, so the winner is stable. For $\varepsilon=1$, $2\varepsilon=2\ge\gamma$; $\delta=(-1,+1,0)$ yields a tie between the first two scores.
+\end{example}
+
+\section{Proof}
+Let $s'=s+\delta$ with $\|\delta\|_\infty\le\varepsilon$. For $j\neq i^\star$,
+\[
+s'_{i^\star}-s'_j
+=(s_{i^\star}-s_j)+(\delta_{i^\star}-\delta_j)
+\ge (s_{i^\star}-s_j)-2\varepsilon
+>0,
+\]
+using $s_{i^\star}-s_j>2\varepsilon$. Thus $s'_j<s'_{i^\star}$ for all $j\neq i^\star$, so $i^\star$ uniquely maximizes $s'$ (Theorem~\ref{thm:inv}).
+
+For sharpness, pick $j$ with $s_{i^\star}-s_j\le 2\varepsilon$, set $\delta_{i^\star}=-\varepsilon$, $\delta_j=+\varepsilon$, and $0$ elsewhere. Then $\|\delta\|_\infty\le\varepsilon$ and $s'_{i^\star}-s'_j=\gamma_{ij}-2\varepsilon\le 0$, so unique maximality fails (Theorem~\ref{thm:sharp}).
+
+\section{Formal statement}
+Lean module: \texttt{Research.Operators.Argmax.Margin}.
+Source file: \texttt{lean/Research/Operators/Argmax/Margin.lean}.
+Theorems: .
+Definitional reduction of \texttt{Research.Operators.Argmax.Margin}.
+Certificate: \texttt{lean/certificates/argmax/bounded-perturbation-margin}.
+Status: \texttt{LEAN\_FULL} on Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB}).
+
+\section{Proof dependencies}
+\begin{itemize}
+\item \texttt{Research.Operators.Argmax.Margin} (\texttt{margin\_invariance}, \texttt{margin\_sharpness}).
+\item $\ell_\infty$ gap shrinkage by at most $2\varepsilon$.
+\item No other operator theorems required.
+\end{itemize}
+
+\section{Consequences}
+Any unique-max presentation of \texttt{argmax} inherits Argmax margin stability. Related: related unique-max operators.
+
+\end{document}

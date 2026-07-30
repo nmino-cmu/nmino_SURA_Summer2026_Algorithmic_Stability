@@ -1,0 +1,136 @@
+% operator-stability-v1 — publication template (writeup-aligned)
+% Slots filled by scripts/generate_operator_paper.py
+\documentclass[12pt]{article}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\Urlmuskip=0mu plus 1mu
+\urlstyle{tt}
+\emergencystretch=2em
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{1.2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Breakable monospace for Lean paths / identifiers (xurl \path)
+\newcommand{\leanpath}[1]{%
+  {\raggedright\urlstyle{tt}\path{#1}}}
+
+
+\definecolor{fundbox}{RGB}{245,245,248}
+\definecolor{fundrule}{RGB}{180,180,190}
+
+\title{Penalized score selection Margin Preservation under Bounded Score Perturbations}
+\author{Research Architecture Runtime\\[0.25em]
+{\normalsize\texttt{operator/penalized-score-selection}}}
+\date{2026-07-29}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\leanpath{penalized-score-selection} selects a unique maximizer. Margin $\gamma(s)>2\varepsilon$ is necessary and sufficient for unique-max invariance under $\|\delta\|_\infty\le\varepsilon$. Lean \texttt{LEAN\_FULL} (reduction to \texttt{Argmax.Margin}).
+\end{abstract}
+
+\noindent
+\begin{center}
+\fcolorbox{fundrule}{fundbox}{%
+  \begin{minipage}{0.92\linewidth}
+  \centering
+  \textbf{This theorem is:} \texttt{Reduction}
+  \end{minipage}}
+\end{center}
+\vspace{0.6em}
+
+\section{Problem}
+{\raggedright\sloppy
+The \leanpath{penalized-score-selection} operator returns the unique maximizer index $i^\star$ of scores $s\in\mathbb{R}^m$ ($m\ge 2$), up to the operator's definitional presentation (heap top, tournament winner, masked max, etc.).
+\par}
+
+\section{Stability notion}
+Perturbations: $\|\delta\|_\infty\le\varepsilon$. Let $\gamma(s)=s_{i^\star}-\max_{j\neq i^\star}s_j$. Stability: $\gamma(s)>2\varepsilon$ implies $i^\star$ remains the unique maximizer of $s+\delta$. Sharpness: $\gamma(s)\le 2\varepsilon$ admits an adversary destroying unique maximality.
+
+\section{Definitions}
+\begin{definition}[Unique maximizer]
+$i^\star$ uniquely maximizes $s$ if $s_j\le s_{i^\star}$ for all $j$ and $s_j=s_{i^\star}\Rightarrow j=i^\star$.
+\end{definition}
+\begin{definition}[Margin]
+$\gamma(s)=s_{i^\star}-\max_{j\neq i^\star}s_j$.\end{definition}
+
+\section{Theorem}
+\begin{theorem}[Margin invariance]\label{thm:inv}
+If $i^\star$ uniquely maximizes $s$ and $s_{i^\star}-s_j>2\varepsilon$ for all $j\neq i^\star$, then for every $\|\delta\|_\infty\le\varepsilon$, $i^\star$ uniquely maximizes $s+\delta$.
+\end{theorem}
+\begin{theorem}[Sharpness]\label{thm:sharp}
+If some $j\neq i^\star$ has $s_{i^\star}-s_j\le 2\varepsilon$, an admissible $\delta$ destroys unique maximality.
+\end{theorem}
+
+\section{Intuition}
+Depressing the winner by $\varepsilon$ and elevating a rival by $\varepsilon$ consumes $2\varepsilon$ of margin. Strict margin above $2\varepsilon$ leaves the winner unique; otherwise a two-point adversary forces a tie or loss.
+
+\section{Examples}
+\begin{example}
+Scores $(7,5,4)$, $i^\star=0$, $\gamma=2$. For $\varepsilon=0.8$, $2\varepsilon=1.6<2$, so the winner is stable. For $\varepsilon=1$, $2\varepsilon=2\ge\gamma$; $\delta=(-1,+1,0)$ yields a tie between the first two scores.
+\end{example}
+
+\section{Proof}
+Let $s'=s+\delta$ with $\|\delta\|_\infty\le\varepsilon$. For $j\neq i^\star$,
+\[
+s'_{i^\star}-s'_j
+=(s_{i^\star}-s_j)+(\delta_{i^\star}-\delta_j)
+\ge (s_{i^\star}-s_j)-2\varepsilon
+>0,
+\]
+using $s_{i^\star}-s_j>2\varepsilon$. Thus $s'_j<s'_{i^\star}$ for all $j\neq i^\star$, so $i^\star$ uniquely maximizes $s'$ (Theorem~\ref{thm:inv}).
+
+For sharpness, pick $j$ with $s_{i^\star}-s_j\le 2\varepsilon$, set $\delta_{i^\star}=-\varepsilon$, $\delta_j=+\varepsilon$, and $0$ elsewhere. Then $\|\delta\|_\infty\le\varepsilon$ and $s'_{i^\star}-s'_j=\gamma_{ij}-2\varepsilon\le 0$, so unique maximality fails (Theorem~\ref{thm:sharp}).
+
+\section{Formal statement}
+{\raggedright\sloppy
+\begin{description}[style=nextline,leftmargin=1.1em,font=\normalfont\bfseries]
+\item[Lean module] \leanpath{Research.Operators.PenalizedScoreSelection.Margin}
+\item[Source file] \leanpath{lean/Research/Operators/PenalizedScoreSelection/Margin.lean}
+\item[Theorems]\leavevmode\par\vspace{0.15em}\begin{itemize}[leftmargin=1.2em]
+  \item \leanpath{penalized\_score\_selection\_margin\_invariance}
+  \item \leanpath{penalized\_score\_selection\_margin\_sharpness}
+\end{itemize}
+\item[Note] Definitional reduction of Argmax.Margin.
+\item[Certificate] \leanpath{lean/certificates/penalized-score-selection/penalized-score-selection-margin}
+\item[Status] \texttt{LEAN\_FULL} on Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB})
+\end{description}
+\par}
+
+\section{Proof dependencies}
+{\raggedright\sloppy
+\begin{itemize}
+\item \leanpath{Research.Operators.Argmax.Margin} (\leanpath{margin\_invariance}, \leanpath{margin\_sharpness}).
+\item $\ell_\infty$ gap shrinkage by at most $2\varepsilon$.
+\item No other operator theorems required.
+\end{itemize}
+\par}
+
+\section{Consequences}
+{\raggedright\sloppy
+Any unique-max presentation of \leanpath{penalized-score-selection} inherits Argmax margin stability. Related: \leanpath{argmax}, \leanpath{tournament-winner}, \leanpath{greedy-maximum-selection}.
+\par}
+
+\end{document}

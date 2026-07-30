@@ -1,0 +1,119 @@
+{
+  "operator": "coordinate-clipping",
+  "title": "Coordinate clipping: Real Stability",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/coordinate-clipping",
+  "crp_identifiers": {
+    "operator": "coordinate-clipping",
+    "theorem_id": "coordinate-clipping-clamp-stability"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "3238729ecf19ed4def6ffe766d7e334596452e7b9a16fd1fd87b27f251ba9448"
+  ],
+  "lean_manifest_digest": "3238729ecf19ed4def6ffe766d7e334596452e7b9a16fd1fd87b27f251ba9448",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.CoordinateClipping.Preservation",
+  "lean_certificate_dir": "lean/certificates/coordinate-clipping/coordinate-clipping-clamp-stability",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "coordinate-clipping",
+    "theorem": "coordinate-clipping-clamp-stability",
+    "assumptions": [
+      "kind=clamp"
+    ],
+    "perturbation_model": "abs ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Projection core (clamp)",
+    "limitations": [
+      "clamp"
+    ],
+    "references": [
+      "research-results/coordinate-clipping/coordinate-clipping-clamp-stability/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "coordinate_clipping_clamp_stability",
+      "coordinate_clipping_clamp_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "005ac975bbcc02c2601f2cd5c0a7a73decae513131b545c92a7eb625364b241c",
+    "proof_digest": "b0c3b32e0e4f0f5eba4acb5400f0fcef56ab82767e7ee7c8f709b238713128f8",
+    "certificate_path": "lean/certificates/coordinate-clipping/coordinate-clipping-clamp-stability",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "3238729ecf19ed4def6ffe766d7e334596452e7b9a16fd1fd87b27f251ba9448",
+      "claim_digest": "b7d2b790e860d9e75760e9df96702b9c7b9882faacb50e73c9cb14f149d0b12a",
+      "entry_module_id": "Research.Operators.CoordinateClipping.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "projection",
+    "selected_object": "clamp",
+    "instability_mechanism": "boundary_crossing",
+    "structural_stability_quantity": "clamp",
+    "perturbation_class": "bounded_additive_abs",
+    "guarantee_kind": "deterministic",
+    "stable_region": "core-dependent",
+    "unstable_region": "near boundary",
+    "sharpness": true,
+    "compositional_properties": [
+      "projection_clamp"
+    ],
+    "related_operators": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "assumptions": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ],
+    "limitations": [
+      "clamp"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "dependencies": [
+      "Research.Operators.Projection.Clamp"
+    ],
+    "reduces_to": "projection-clamp",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "3238729ecf19ed4def6ffe766d7e334596452e7b9a16fd1fd87b27f251ba9448",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

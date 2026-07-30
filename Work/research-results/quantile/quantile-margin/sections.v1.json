@@ -1,0 +1,31 @@
+{
+  "fundamentality": "reduction",
+  "title": "Quantile Index Preservation under Bounded Score Perturbations",
+  "abstract": "The quantile operator selects a unique strict $k$-th order-statistic index. When every pairwise score gap exceeds $2\\varepsilon$, that index is invariant under $\\|\\delta\\|_\\infty\\le\\varepsilon$. Lean: \\texttt{LEAN\\_FULL} (reduction of \\texttt{OrderStat.KthMargin}).",
+  "problem": "The \\leanpath{quantile} operator on scores $s\\in\\mathbb{R}^n$ ($n\\ge 2$) returns the unique index $i$ that is the strict $k$-th smallest coordinate of $s$ (operator-specific choice of $k$). The selected object is this index under a unique strict-order presentation.",
+  "stability": "Perturbations are additive $\\delta$ with $\\|\\delta\\|_\\infty\\le\\varepsilon$. Stability: if $i$ is the unique strict $k$-th smallest and $\\mathrm{AllGapsExceed}(s,2\\varepsilon)$, then $i$ remains the unique strict $k$-th smallest of $s+\\delta$. Sharpness: a rival within distance $2\\varepsilon$ admits an admissible tying adversary.",
+  "definitions": "\\begin{definition}[Strict $k$-th smallest]\nIndex $i$ is strict $k$-th smallest if $\\#\\{j:s_j<s_i\\}=k$ and $s_j=s_i\\Rightarrow j=i$.\n\\end{definition}\n\\begin{definition}[All-gaps]\n$|s_p-s_q|>g$ for all $p\\neq q$.\n\\end{definition}\n\\noindent\\textbf{Assumptions.} $n\\ge 2$, $\\varepsilon\\ge 0$, unique strict $k$-th index, and (for invariance) all pairwise gaps $>2\\varepsilon$.",
+  "theorem": "\\begin{theorem}[Invariance]\\label{thm:inv}\nIf $i$ is strict $k$-th smallest and $\\mathrm{AllGapsExceed}(s,2\\varepsilon)$, then for every $\\|\\delta\\|_\\infty\\le\\varepsilon$, $i$ remains strict $k$-th smallest for $s+\\delta$.\n\\end{theorem}\n\\begin{theorem}[Sharpness]\\label{thm:sharp}\nIf some $j\\neq i$ has $|s_i-s_j|\\le 2\\varepsilon$, an admissible midpoint $\\delta$ destroys uniqueness.\n\\end{theorem}",
+  "intuition": "An $\\ell_\\infty$ adversary moves any two scores by at most $2\\varepsilon$ relative to each other. Gaps larger than $2\\varepsilon$ cannot reverse or tie; gaps of size at most $2\\varepsilon$ admit a midpoint collision.",
+  "examples": "\\begin{example}\nScores $(1,4,7)$, $k=1$, $\\varepsilon=1$: gaps $3,6,3$ all exceed $2$, so the middle index is stable. For $\\varepsilon=2$, the gap $3\\le 4$ admits a midpoint tie between the first two coordinates.\n\\end{example}",
+  "proof": "Let $s'=s+\\delta$ with $\\|\\delta\\|_\\infty\\le\\varepsilon$.\n\n\\paragraph{Pairwise orders.}\nIf $s_p<s_q$ and $s_q-s_p>2\\varepsilon$, then $s'_p-s'_q\\le -(s_q-s_p)+2\\varepsilon<0$, so $s'_p<s'_q$. The converse is symmetric. Hence $s_p<s_q\\Leftrightarrow s'_p<s'_q$ whenever $|s_p-s_q|>2\\varepsilon$; under all-gaps this holds for every distinct pair.\n\n\\paragraph{Count.}\nTaking $q=i$ yields $\\#\\{j:s_j<s_i\\}=\\#\\{j:s'_j<s'_i\\}$. If the left side equals $k$, so does the right.\n\n\\paragraph{Uniqueness.}\nIf $s'_j=s'_i$ and $j\\neq i$, all-gaps give $|s_j-s_i|>2\\varepsilon$, hence $s'_j\\neq s'_i$, contradiction. Thus $i$ remains the unique strict $k$-th index (Theorem~\\ref{thm:inv}).\n\n\\paragraph{Sharpness.}\nFor $j\\neq i$ with $|s_i-s_j|\\le 2\\varepsilon$, set $\\delta_i=-(s_i-s_j)/2$, $\\delta_j=(s_i-s_j)/2$, and $\\delta_t=0$ otherwise. Then $\\|\\delta\\|_\\infty\\le\\varepsilon$ and $s'_i=s'_j$, so uniqueness fails (Theorem~\\ref{thm:sharp}).",
+  "formal": "\\begin{description}[style=nextline,leftmargin=1.1em,font=\\normalfont\\bfseries]\n\\item[Lean module] \\leanpath{Research.Operators.Quantile.Preservation}\n\\item[Source file] \\leanpath{lean/Research/Operators/Quantile/Preservation.lean}\n\\item[Theorems]\\leavevmode\\par\\vspace{0.15em}\\begin{itemize}[leftmargin=1.2em]\n  \\item \\leanpath{quantile_margin_invariance}\n  \\item \\leanpath{quantile_margin_sharpness}\n\\end{itemize}\n\\item[Note] Definitional reduction of OrderStat.KthMargin.\n\\item[Certificate] \\leanpath{lean/certificates/quantile/quantile-margin}\n\\item[Status] \\texttt{LEAN\\_FULL} on Mathlib $\\mathbb{R}$ (\\texttt{REAL\\_MATHLIB})\n\\end{description}",
+  "dependencies": "\\begin{itemize}\n\\item Reduces to \\leanpath{Research.Operators.OrderStat.KthMargin}.\n\\item Uses the $\\ell_\\infty$ relative-gap bound $|\\delta_p-\\delta_q|\\le 2\\varepsilon$.\n\\item Midpoint collision adversary.\n\\item No other operator theorems required.\n\\end{itemize}",
+  "consequences": "Operators reducing to the same $k$-th core include \\leanpath{kth-order-statistic}, \\leanpath{median}, \\leanpath{percentile}, \\leanpath{argmax}. The \\leanpath{quantile} theorem is the stability certificate for unique strict order-statistic selection under bounded score noise.",
+  "paper_card": {
+    "difficulty": "elementary",
+    "applications": [
+      "kth-order-statistic",
+      "median",
+      "percentile",
+      "argmax"
+    ],
+    "dependencies": [
+      "Research.Operators.OrderStat.KthMargin",
+      "kth_margin_invariance",
+      "kth_margin_sharpness"
+    ],
+    "reduces_to": "order-stat-kth-margin",
+    "reduced_by": []
+  }
+}

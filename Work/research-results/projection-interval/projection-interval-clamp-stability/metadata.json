@@ -1,0 +1,119 @@
+{
+  "operator": "projection-interval",
+  "title": "Projection onto interval: Real Stability",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/projection-interval",
+  "crp_identifiers": {
+    "operator": "projection-interval",
+    "theorem_id": "projection-interval-clamp-stability"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "09a0d949e978c616a5a05c0d97159375a497f681c23a0e9af7fc705eafeaebf4"
+  ],
+  "lean_manifest_digest": "09a0d949e978c616a5a05c0d97159375a497f681c23a0e9af7fc705eafeaebf4",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.ProjectionInterval.Preservation",
+  "lean_certificate_dir": "lean/certificates/projection-interval/projection-interval-clamp-stability",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "projection-interval",
+    "theorem": "projection-interval-clamp-stability",
+    "assumptions": [
+      "kind=clamp"
+    ],
+    "perturbation_model": "abs ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Projection core (clamp)",
+    "limitations": [
+      "clamp"
+    ],
+    "references": [
+      "research-results/projection-interval/projection-interval-clamp-stability/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "projection_interval_clamp_stability",
+      "projection_interval_clamp_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "a42b57a2da37c890e627caaf598cd917744d833609167c7360b7e4e998683bd6",
+    "proof_digest": "77cc0bf4c570600615e20d926a34907df5af4514ab0157b5ac9fb70db8abf0fb",
+    "certificate_path": "lean/certificates/projection-interval/projection-interval-clamp-stability",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "09a0d949e978c616a5a05c0d97159375a497f681c23a0e9af7fc705eafeaebf4",
+      "claim_digest": "4d726315eb90eb6153b4dce26a886f17a5897acddae80c6f5184b6a66b2bdf72",
+      "entry_module_id": "Research.Operators.ProjectionInterval.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "projection",
+    "selected_object": "clamp",
+    "instability_mechanism": "boundary_crossing",
+    "structural_stability_quantity": "clamp",
+    "perturbation_class": "bounded_additive_abs",
+    "guarantee_kind": "deterministic",
+    "stable_region": "core-dependent",
+    "unstable_region": "near boundary",
+    "sharpness": true,
+    "compositional_properties": [
+      "projection_clamp"
+    ],
+    "related_operators": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "assumptions": [
+      "Feasible-ball / indicator identity on ℝ; not full Euclidean projection nonexpansiveness"
+    ],
+    "limitations": [
+      "clamp"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "dependencies": [
+      "Research.Operators.Projection.Clamp"
+    ],
+    "reduces_to": "projection-clamp",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "09a0d949e978c616a5a05c0d97159375a497f681c23a0e9af7fc705eafeaebf4",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

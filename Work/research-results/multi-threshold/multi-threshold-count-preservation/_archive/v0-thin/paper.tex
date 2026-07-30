@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Multi-Threshold Pass-Count Preservation under Bounded Score Perturbations}
+\author{Research Architecture Runtime \\ \texttt{operator/multi-threshold}}
+\date{2026-07-25}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study the multi-threshold pass-count
+\(C_{\mathbf{T}}(x)=\lvert\{i:x\ge T_i\}\rvert\) for a finite threshold list
+\(\mathbf{T}\) under \(\lvert x'-x\rvert\le\varepsilon\).
+The count is invariant whenever every coordinate is outside its half-open
+unstable band inherited from scalar thresholding.
+Sharpness follows by flipping any single unstable cut.
+Lean formalization is Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB})
+(\texttt{LEAN\_FULL}; \texttt{REAL\_MATHLIB}).
+\end{abstract}
+
+\section{Introduction}
+Multi-threshold selection aggregates many AboveThreshold bits into a Nat count.
+It is the natural finite extension of scalar thresholding and a reduction target
+for ordered cut-point / bucket operators.
+
+\section{Operator definition}
+\begin{definition}
+For finite \(x\in\mathbb{R}\) and \(\mathbf{T}=(T_0,\ldots,T_{n-1})\),
+\[
+C_{\mathbf{T}}(x)=\sum_{i=0}^{n-1}\mathbf{1}\{x\ge T_i\}.
+\]
+Equality passes on each coordinate.
+\end{definition}
+
+\section{Perturbation model}
+Admissible neighbors satisfy \(\lvert x'-x\rvert\le\varepsilon\) with \(\varepsilon\ge 0\).
+
+\section{Instability}
+Coordinate \(i\) is unstable when \(x\in[T_i-\varepsilon,T_i+\varepsilon)\).
+The multi-threshold count is unstable whenever any coordinate is.
+
+\section{Main theorems}
+\begin{theorem}[Multi-threshold preservation]\label{thm:main}
+If \(\lvert x'-x\rvert\le\varepsilon\) and for every \(i\) either
+\(x\ge T_i+\varepsilon\) or \(x<T_i-\varepsilon\), then
+\(C_{\mathbf{T}}(x')=C_{\mathbf{T}}(x)\).
+\end{theorem}
+
+\begin{theorem}[Sharpness]\label{thm:sharp}
+If some \(j\) satisfies \(x\in[T_j-\varepsilon,T_j+\varepsilon)\), then there exists
+admissible \(x'\) with \(C_{\mathbf{T}}(x')\ne C_{\mathbf{T}}(x)\)
+(equivalently: the singleton list \([T_j]\) flips).
+\end{theorem}
+
+\section{Proofs}
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Induct on the threshold list. The empty list has count \(0\).
+For \(T::\mathbf{T}'\), the head bit is preserved by scalar threshold preservation;
+the tail count is preserved by the inductive hypothesis on the remaining stable
+coordinates.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:sharp}]
+On the singleton \([T]\), push \(x\) by \(\pm\varepsilon\) toward the cut.
+If \(x\ge T\) then \(x'=x-\varepsilon\) fails; if \(x<T\) then \(x'=x+\varepsilon\) passes.
+\end{proof}
+
+\section{Comparison with prior operators}
+Relative to Threshold: same equality convention and half-open unstable band;
+new selected object is a Nat pass-count; proof pattern is coordinatewise reduction.
+Relative to Argmax (reference): different geometry (cuts vs margin among alternatives).
+
+\section{Lean formalization summary}
+Module \texttt{Research.Operators.MultiThreshold.Preservation}:
+\texttt{multi\_threshold\_preservation}, \texttt{multi\_threshold\_sharpness}.
+Domain: Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB}).
+
+\section{Certificate}
+\texttt{LEAN\_FULL} at
+\texttt{lean/certificates/multi-threshold/multi-threshold-count-preservation/}.
+
+\section{Limitations}
+\begin{itemize}
+\item Mathlib \(\mathbb{R}\) (\texttt{REAL\_MATHLIB}).
+\item Unordered pass-count; ordered bucket indices are a separate operator.
+\item No DP / privacy claims.
+\end{itemize}
+
+\section*{References}
+\begin{thebibliography}{9}
+\bibitem{repo}
+Repository: \texttt{implementation/src/operators/multi\_threshold/}.
+\end{thebibliography}
+
+\end{document}

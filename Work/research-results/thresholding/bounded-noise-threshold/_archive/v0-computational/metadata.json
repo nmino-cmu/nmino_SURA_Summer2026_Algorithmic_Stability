@@ -1,0 +1,37 @@
+{
+  "operator": "thresholding",
+  "title": "Bounded Almost-Sure Noise for Scalar Thresholding",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "9434fac09dfafdc2204a2765214805c59c9a66b2",
+  "branch": "feature/thresholding",
+  "crp_identifiers": {
+    "theorem_id": "bounded-noise-threshold",
+    "evaluation": "THRESHOLD_BOUNDED_NOISE_COMPUTATIONAL_V1",
+    "operator": "thresholding"
+  },
+  "proof_obligation_identifiers": [
+    "symbolic_attempt",
+    "discharged_via_THRESHOLD_BOUNDED_NOISE_COMPUTATIONAL_V1"
+  ],
+  "verification_result_identifiers": [
+    "AuditVerdict.PASS",
+    "COMPUTATIONAL_VERIFICATION_NOT_LEAN",
+    "BOUNDED_NOISE_NOT_FULL_SVT",
+    "SCALAR_FINITE_SCORES_ONLY",
+    "LAPLACE_CDF_IDENTITY_NOT_DP_PROOF",
+    "THRESHOLD_BOUNDED_NOISE_COMPUTATIONAL_V1"
+  ],
+  "audit_identifiers": {
+    "math": "math-eta0",
+    "implementation": "impl-lapcdf",
+    "verdicts": "PASS WITH MINOR (B0/M0) both"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0",
+  "schema_version": "ART-INT-00",
+  "verification_status": "PASS_COMPUTATIONAL_NOT_LEAN_BOUNDED_NOISE_NOT_SVT",
+  "paper_pdf_pages": 2
+}

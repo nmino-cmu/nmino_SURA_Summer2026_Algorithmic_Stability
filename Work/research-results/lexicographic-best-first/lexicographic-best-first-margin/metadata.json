@@ -1,0 +1,125 @@
+{
+  "operator": "lexicographic-best-first",
+  "title": "Lexicographic best-first Margin Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/lexicographic-best-first",
+  "crp_identifiers": {
+    "operator": "lexicographic-best-first",
+    "theorem_id": "lexicographic-best-first-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "922b78fde573ba81e59dde710705e2ee4a2417efd24b2b6396448215fee0bdf0"
+  ],
+  "lean_manifest_digest": "922b78fde573ba81e59dde710705e2ee4a2417efd24b2b6396448215fee0bdf0",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.LexicographicBestFirst.Margin",
+  "lean_certificate_dir": "lean/certificates/lexicographic-best-first/lexicographic-best-first-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "lexicographic-best-first",
+    "theorem": "lexicographic-best-first-margin",
+    "assumptions": [
+      "m≥2",
+      "unique maximizer",
+      "ℓ∞ ball"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Definitional reduction to Argmax.Margin",
+    "limitations": [
+      "Argmax reduction"
+    ],
+    "references": [
+      "research-results/lexicographic-best-first/lexicographic-best-first-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "lexicographic_best_first_margin_invariance",
+      "lexicographic_best_first_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "8f81823d8054f8d1bcde9d5cf8867605c6c80664c02439c59ee0cc321f7fc9e1",
+    "proof_digest": "446251341c50fa3d81b6a99176663fa754e2b562f118a9de0620bac475dcfa91",
+    "certificate_path": "lean/certificates/lexicographic-best-first/lexicographic-best-first-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "922b78fde573ba81e59dde710705e2ee4a2417efd24b2b6396448215fee0bdf0",
+      "claim_digest": "c8201c38cb84638edbc4ede6967901a88250cab0b325cd0cbe77199dfb7fb370",
+      "entry_module_id": "Research.Operators.LexicographicBestFirst.Margin",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "primitive_search",
+    "selected_object": "unique_maximizer_index",
+    "instability_mechanism": "margin_collapse",
+    "structural_stability_quantity": "argmax_margin_gamma",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "gamma > 2ε",
+    "unstable_region": "gamma ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_argmax_margin"
+    ],
+    "related_operators": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "assumptions": [
+      "Finite m≥2",
+      "Unique maximizer"
+    ],
+    "limitations": [
+      "Argmax reduction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "922b78fde573ba81e59dde710705e2ee4a2417efd24b2b6396448215fee0bdf0",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

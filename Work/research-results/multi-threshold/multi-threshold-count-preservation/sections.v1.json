@@ -1,0 +1,29 @@
+{
+  "fundamentality": "derived",
+  "title": "Multi-Threshold Pass-Count Preservation under Bounded Score Perturbations",
+  "abstract": "For a finite threshold list, the pass-count $C(x)=\\sum_i \\mathbf{1}\\{x\\ge T_i\\}$ is invariant under $|x'-x|\\le\\varepsilon$ whenever every cut is buffered ($x\\ge T_i+\\varepsilon$ or $x<T_i-\\varepsilon$). Lean \\texttt{LEAN\\_FULL}.",
+  "problem": "The multi-threshold operator returns the Nat pass-count $C(x;T_\\bullet)=|\\{i:x\\ge T_i\\}|$ over a finite list of cuts (equality passes).",
+  "stability": "Perturbation: $|x'-x|\\le\\varepsilon$. Hypothesis allCoordsStable: each $T_i$ satisfies $x\\ge T_i+\\varepsilon$ or $x<T_i-\\varepsilon$. Stability: $C(x';T_\\bullet)=C(x;T_\\bullet)$. Sharpness: if $x$ lies in $[T-\\varepsilon,T+\\varepsilon)$ for a single cut, some admissible $x'$ changes the count.",
+  "definitions": "\\begin{definition}[Pass bit / count]\n$\\mathrm{passBit}(x,T)=1$ if $x\\ge T$ else $0$; $C(x;[])=0$ and $C(x;T{::}\\mathrm{tail})=\\mathrm{passBit}(x,T)+C(x;\\mathrm{tail})$.\n\\end{definition}\n\\noindent\\textbf{Assumptions.} $\\varepsilon\\ge 0$, $|x'-x|\\le\\varepsilon$, and allCoordsStable.",
+  "theorem": "\\begin{theorem}[Count preservation]\\label{thm:inv}\nIf $|x'-x|\\le\\varepsilon$ and every $T\\in T_\\bullet$ is buffered as above, then $C(x';T_\\bullet)=C(x;T_\\bullet)$.\n\\end{theorem}\n\\begin{theorem}[Sharpness]\\label{thm:sharp}\nIf $T-\\varepsilon\\le x<T+\\varepsilon$, there exists $|x'-x|\\le\\varepsilon$ with $C(x';[T])\\neq C(x;[T])$.\n\\end{theorem}",
+  "intuition": "Each buffered cut is a scalar threshold bit; the count is the sum of those bits. If any cut sits in its unstable band, that bit can flip.",
+  "examples": "\\begin{example}\n$T=(1,3,5)$, $x=4$, $\\varepsilon=0.2$: passes $T=1,3$ so $C=2$; buffered cuts keep $C=2$. If $T=3$, $x=3.1$, $\\varepsilon=0.2$, then $x'=x-\\varepsilon$ can drop the pass bit.\n\\end{example}",
+  "proof": "\\paragraph{Preservation.}\nInduct on the threshold list. The empty list has count $0$. For $T{::}\\mathrm{tail}$, allCoordsStable gives a scalar buffer on $T$, so threshold preservation yields $\\mathrm{passBit}(x',T)=\\mathrm{passBit}(x,T)$. The inductive hypothesis equates the tail counts. Adding proves Theorem~\\ref{thm:inv}.\n\n\\paragraph{Sharpness.}\nAssume $T-\\varepsilon\\le x<T+\\varepsilon$. If $x\\ge T$, take $x'=x-\\varepsilon$ (bit drops). If $x<T$, take $x'=x+\\varepsilon$ (bit rises). This proves Theorem~\\ref{thm:sharp}.",
+  "formal": "\\begin{description}[style=nextline,leftmargin=1.1em,font=\\normalfont\\bfseries]\n\\item[Lean module] \\leanpath{Research.Operators.MultiThreshold.Preservation}\n\\item[Source file] \\leanpath{lean/Research/Operators/MultiThreshold/Preservation.lean}\n\\item[Theorems]\\leavevmode\\par\\vspace{0.15em}\\begin{itemize}[leftmargin=1.2em]\n  \\item \\leanpath{multi_threshold_preservation}\n  \\item \\leanpath{multi_threshold_sharpness}\n\\end{itemize}\n\\item[Note] Depends on \\texttt{Research.Operators.Threshold.Preservation} per cut.\n\\item[Certificate] \\leanpath{lean/certificates/multi-threshold/multi-threshold-count-preservation}\n\\item[Status] \\texttt{LEAN\\_FULL} on Mathlib $\\mathbb{R}$ (\\texttt{REAL\\_MATHLIB})\n\\end{description}",
+  "dependencies": "\\begin{itemize}\n\\item \\texttt{Threshold.Preservation} (each pass bit).\n\\item List induction on the threshold spine.\n\\item No ranking / argmax theorems required.\n\\end{itemize}",
+  "consequences": "Unordered pass-counts for multiple cuts; constraint conjunction/disjunction reuse buffered bits. Ordered bucket indices are a separate ranking/bucket operator.",
+  "paper_card": {
+    "difficulty": "elementary",
+    "applications": [
+      "thresholding",
+      "absolute-value-threshold",
+      "argmax"
+    ],
+    "dependencies": [
+      "Research.Operators.MultiThreshold.Preservation",
+      "Research.Operators.Threshold.Preservation"
+    ],
+    "reduces_to": "threshold-preservation",
+    "reduced_by": []
+  }
+}

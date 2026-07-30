@@ -1,0 +1,120 @@
+{
+  "operator": "constraint-threshold-conjunction",
+  "title": "Constraint-threshold conjunction: Real Stability",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/constraint-threshold-conjunction",
+  "crp_identifiers": {
+    "operator": "constraint-threshold-conjunction",
+    "theorem_id": "constraint-threshold-conjunction-conjunction-preservation"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "f480108ac3d8e05195f9b940ca4223e545e0371112dea76d4383fe23ce62c44d"
+  ],
+  "lean_manifest_digest": "f480108ac3d8e05195f9b940ca4223e545e0371112dea76d4383fe23ce62c44d",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.ConstraintThresholdConjunction.Preservation",
+  "lean_certificate_dir": "lean/certificates/constraint-threshold-conjunction/constraint-threshold-conjunction-conjunction-preservation",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "constraint-threshold-conjunction",
+    "theorem": "constraint-threshold-conjunction-conjunction-preservation",
+    "assumptions": [
+      "kind=conjunction"
+    ],
+    "perturbation_model": "abs ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Projection core (conjunction)",
+    "limitations": [
+      "conjunction"
+    ],
+    "references": [
+      "research-results/constraint-threshold-conjunction/constraint-threshold-conjunction-conjunction-preservation/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "constraint_threshold_conjunction_conjunction_preservation",
+      "constraint_threshold_conjunction_conjunction_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "2f8045471dea2d9b4b189b5db4c937ef7b20f4f212636192097c7ff8ddfa1082",
+    "proof_digest": "4755d57140a9be254b06fa40b0d6e27ab99688acf3441920a4639c42990f9d14",
+    "certificate_path": "lean/certificates/constraint-threshold-conjunction/constraint-threshold-conjunction-conjunction-preservation",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "f480108ac3d8e05195f9b940ca4223e545e0371112dea76d4383fe23ce62c44d",
+      "claim_digest": "dfcfea80a437da7b5dfb57dfeddff8fafdf7937995e1600b3f87385e85f83458",
+      "entry_module_id": "Research.Operators.ConstraintThresholdConjunction.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "projection",
+    "selected_object": "conjunction",
+    "instability_mechanism": "boundary_crossing",
+    "structural_stability_quantity": "conjunction",
+    "perturbation_class": "bounded_additive_abs",
+    "guarantee_kind": "deterministic",
+    "stable_region": "core-dependent",
+    "unstable_region": "near boundary",
+    "sharpness": true,
+    "compositional_properties": [
+      "projection_conjunction"
+    ],
+    "related_operators": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "assumptions": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ],
+    "limitations": [
+      "conjunction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "dependencies": [
+      "Research.Operators.ConstraintThresholdConjunction.Preservation",
+      "Threshold.Preservation"
+    ],
+    "reduces_to": "threshold-preservation",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "f480108ac3d8e05195f9b940ca4223e545e0371112dea76d4383fe23ce62c44d",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

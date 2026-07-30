@@ -1,0 +1,142 @@
+% operator-stability-v1 — publication template (writeup-aligned)
+% Slots filled by scripts/generate_operator_paper.py
+\documentclass[12pt]{article}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\Urlmuskip=0mu plus 1mu
+\urlstyle{tt}
+\emergencystretch=2em
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{1.2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Breakable monospace for Lean paths / identifiers (xurl \path)
+\newcommand{\leanpath}[1]{%
+  {\raggedright\urlstyle{tt}\path{#1}}}
+
+
+\definecolor{fundbox}{RGB}{245,245,248}
+\definecolor{fundrule}{RGB}{180,180,190}
+
+\title{k-th order statistic Index Preservation under Bounded Score Perturbations}
+\author{Research Architecture Runtime\\[0.25em]
+{\normalsize\texttt{operator/kth-order-statistic}}}
+\date{2026-07-29}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The kth order statistic operator selects a unique strict $k$-th order-statistic index. When every pairwise score gap exceeds $2\varepsilon$, that index is invariant under $\|\delta\|_\infty\le\varepsilon$. Lean: \texttt{LEAN\_FULL} (reduction of \texttt{OrderStat.KthMargin}).
+\end{abstract}
+
+\noindent
+\begin{center}
+\fcolorbox{fundrule}{fundbox}{%
+  \begin{minipage}{0.92\linewidth}
+  \centering
+  \textbf{This theorem is:} \texttt{Reduction}
+  \end{minipage}}
+\end{center}
+\vspace{0.6em}
+
+\section{Problem}
+{\raggedright\sloppy
+The \leanpath{kth-order-statistic} operator on scores $s\in\mathbb{R}^n$ ($n\ge 2$) returns the unique index $i$ that is the strict $k$-th smallest coordinate of $s$ (operator-specific choice of $k$). The selected object is this index under a unique strict-order presentation.
+\par}
+
+\section{Stability notion}
+Perturbations are additive $\delta$ with $\|\delta\|_\infty\le\varepsilon$. Stability: if $i$ is the unique strict $k$-th smallest and $\mathrm{AllGapsExceed}(s,2\varepsilon)$, then $i$ remains the unique strict $k$-th smallest of $s+\delta$. Sharpness: a rival within distance $2\varepsilon$ admits an admissible tying adversary.
+
+\section{Definitions}
+\begin{definition}[Strict $k$-th smallest]
+Index $i$ is strict $k$-th smallest if $\#\{j:s_j<s_i\}=k$ and $s_j=s_i\Rightarrow j=i$.
+\end{definition}
+\begin{definition}[All-gaps]
+$|s_p-s_q|>g$ for all $p\neq q$.
+\end{definition}
+\noindent\textbf{Assumptions.} $n\ge 2$, $\varepsilon\ge 0$, unique strict $k$-th index, and (for invariance) all pairwise gaps $>2\varepsilon$.
+
+\section{Theorem}
+\begin{theorem}[Invariance]\label{thm:inv}
+If $i$ is strict $k$-th smallest and $\mathrm{AllGapsExceed}(s,2\varepsilon)$, then for every $\|\delta\|_\infty\le\varepsilon$, $i$ remains strict $k$-th smallest for $s+\delta$.
+\end{theorem}
+\begin{theorem}[Sharpness]\label{thm:sharp}
+If some $j\neq i$ has $|s_i-s_j|\le 2\varepsilon$, an admissible midpoint $\delta$ destroys uniqueness.
+\end{theorem}
+
+\section{Intuition}
+An $\ell_\infty$ adversary moves any two scores by at most $2\varepsilon$ relative to each other. Gaps larger than $2\varepsilon$ cannot reverse or tie; gaps of size at most $2\varepsilon$ admit a midpoint collision.
+
+\section{Examples}
+\begin{example}
+Scores $(1,4,7)$, $k=1$, $\varepsilon=1$: gaps $3,6,3$ all exceed $2$, so the middle index is stable. For $\varepsilon=2$, the gap $3\le 4$ admits a midpoint tie between the first two coordinates.
+\end{example}
+
+\section{Proof}
+Let $s'=s+\delta$ with $\|\delta\|_\infty\le\varepsilon$.
+
+\paragraph{Pairwise orders.}
+If $s_p<s_q$ and $s_q-s_p>2\varepsilon$, then $s'_p-s'_q\le -(s_q-s_p)+2\varepsilon<0$, so $s'_p<s'_q$. The converse is symmetric. Hence $s_p<s_q\Leftrightarrow s'_p<s'_q$ whenever $|s_p-s_q|>2\varepsilon$; under all-gaps this holds for every distinct pair.
+
+\paragraph{Count.}
+Taking $q=i$ yields $\#\{j:s_j<s_i\}=\#\{j:s'_j<s'_i\}$. If the left side equals $k$, so does the right.
+
+\paragraph{Uniqueness.}
+If $s'_j=s'_i$ and $j\neq i$, all-gaps give $|s_j-s_i|>2\varepsilon$, hence $s'_j\neq s'_i$, contradiction. Thus $i$ remains the unique strict $k$-th index (Theorem~\ref{thm:inv}).
+
+\paragraph{Sharpness.}
+For $j\neq i$ with $|s_i-s_j|\le 2\varepsilon$, set $\delta_i=-(s_i-s_j)/2$, $\delta_j=(s_i-s_j)/2$, and $\delta_t=0$ otherwise. Then $\|\delta\|_\infty\le\varepsilon$ and $s'_i=s'_j$, so uniqueness fails (Theorem~\ref{thm:sharp}).
+
+\section{Formal statement}
+{\raggedright\sloppy
+\begin{description}[style=nextline,leftmargin=1.1em,font=\normalfont\bfseries]
+\item[Lean module] \leanpath{Research.Operators.KthOrderStatistic.Preservation}
+\item[Source file] \leanpath{lean/Research/Operators/KthOrderStatistic/Preservation.lean}
+\item[Theorems]\leavevmode\par\vspace{0.15em}\begin{itemize}[leftmargin=1.2em]
+  \item \leanpath{kth\_order\_statistic\_margin\_invariance}
+  \item \leanpath{kth\_order\_statistic\_margin\_sharpness}
+\end{itemize}
+\item[Note] Definitional reduction of OrderStat.KthMargin.
+\item[Certificate] \leanpath{lean/certificates/kth-order-statistic/kth-order-statistic-margin}
+\item[Status] \texttt{LEAN\_FULL} on Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB})
+\end{description}
+\par}
+
+\section{Proof dependencies}
+{\raggedright\sloppy
+\begin{itemize}
+\item Reduces to \leanpath{Research.Operators.OrderStat.KthMargin}.
+\item Uses the $\ell_\infty$ relative-gap bound $|\delta_p-\delta_q|\le 2\varepsilon$.
+\item Midpoint collision adversary.
+\item No other operator theorems required.
+\end{itemize}
+\par}
+
+\section{Consequences}
+{\raggedright\sloppy
+Operators reducing to the same $k$-th core include \leanpath{quantile}, \leanpath{median}, \leanpath{percentile}, \leanpath{kth-order-statistic}. The \leanpath{kth-order-statistic} theorem is the stability certificate for unique strict order-statistic selection under bounded score noise.
+\par}
+
+\end{document}

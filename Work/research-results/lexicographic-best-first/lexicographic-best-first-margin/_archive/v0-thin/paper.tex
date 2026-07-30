@@ -1,0 +1,26 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\newtheorem{theorem}{Theorem}
+\title{Lexicographic best-first Margin Preservation under Bounded Score Perturbations}
+\author{Research Architecture Runtime \\ \texttt{operator/lexicographic-best-first}}
+\date{2026-07-25}
+\begin{document}
+\maketitle
+\begin{abstract}
+Lexicographic best-first reduces to unique-maximizer Argmax margin stability: $\gamma>2\varepsilon$
+preserves the winner under $\|\delta\|_\infty\le\varepsilon$. Lean: \texttt{LEAN\_FULL}.
+\end{abstract}
+\section{Theorems}
+\begin{theorem}[Preservation]
+Definitional reduction to Argmax margin invariance.
+\end{theorem}
+\begin{theorem}[Sharpness]
+Definitional reduction to Argmax margin sharpness.
+\end{theorem}
+\section{Lean / certificate}
+\texttt{Research.Operators.LexicographicBestFirst.Margin}.
+\section{Limitations}
+Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB}); Argmax reduction.
+\end{document}

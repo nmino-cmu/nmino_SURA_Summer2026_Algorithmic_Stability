@@ -1,0 +1,133 @@
+{
+  "operator": "multi-threshold",
+  "title": "Multi-Threshold Pass-Count Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/multi-threshold",
+  "crp_identifiers": {
+    "operator": "multi-threshold",
+    "theorem_id": "multi-threshold-count-preservation"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "f8054dde819c75d3e238aa6cad658b8bd77c9ad1ca5f2a764bba5899c9a5c1fe"
+  ],
+  "lean_manifest_digest": "f8054dde819c75d3e238aa6cad658b8bd77c9ad1ca5f2a764bba5899c9a5c1fe",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.MultiThreshold.Preservation",
+  "lean_certificate_dir": "lean/certificates/multi-threshold/multi-threshold-count-preservation",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL certificate required before publication"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "multi-threshold",
+    "theorem": "multi-threshold-count-preservation",
+    "assumptions": [
+      "Finite scalar score x",
+      "Finite list of finite thresholds",
+      "Equality passes per coordinate: x ≥ T_i",
+      "Admissible neighbors |x' − x| ≤ ε with ε ≥ 0"
+    ],
+    "perturbation_model": "Bounded additive score perturbation |x' − x| ≤ ε",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Induct on the threshold list; each head bit is preserved by Threshold preservation under coordinatewise ε-stability; sharpness flips a singleton unstable cut by ±ε.",
+    "limitations": [
+      "Pass-count only; ordered bucket index is a separate operator",
+      "No DP/privacy claims"
+    ],
+    "references": [
+      "research-results/multi-threshold/multi-threshold-count-preservation/paper.tex",
+      "implementation/docs/operators/multi-threshold.md",
+      "lean/Research/Operators/MultiThreshold/Preservation.lean"
+    ],
+    "lean_theorem_names": [
+      "multi_threshold_preservation",
+      "multi_threshold_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "ae17f78a0650c20ca5bdbcee299f400f02e78e320f29bbc8926b1f56a715508f",
+    "proof_digest": "95f22d9dce330c745d156b17ae07e37b8278c697778147d3c61ecdeef80e90d0",
+    "certificate_path": "lean/certificates/multi-threshold/multi-threshold-count-preservation",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "f8054dde819c75d3e238aa6cad658b8bd77c9ad1ca5f2a764bba5899c9a5c1fe",
+      "claim_digest": "327ba148199573b5548bc7d004523895b0d86144d88200aaa75b5a0605d7c650",
+      "entry_module_id": "Research.Operators.MultiThreshold.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "scalar_selection",
+    "selected_object": "pass_count_over_threshold_list",
+    "instability_mechanism": "any_coordinate_in_half_open_unstable_band",
+    "structural_stability_quantity": "coordinatewise_buffers_to_each_cut",
+    "perturbation_class": "bounded_additive_score",
+    "guarantee_kind": "deterministic",
+    "stable_region": "for all i: x ≥ T_i+ε or x < T_i−ε",
+    "unstable_region": "exists i with x ∈ [T_i−ε, T_i+ε)",
+    "sharpness": true,
+    "compositional_properties": [
+      "coordinatewise_reduction_to_threshold_preservation",
+      "empty_list_trivially_stable_count_zero",
+      "singleton_recovers_threshold"
+    ],
+    "related_operators": [
+      "thresholding",
+      "absolute-value-threshold",
+      "argmax"
+    ],
+    "assumptions": [
+      "Finite scores and thresholds",
+      "Equality passes per cut",
+      "Bounded additive perturbations"
+    ],
+    "limitations": [
+      "Unordered count not ordered bucket",
+      "No privacy accounting"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "derived",
+    "difficulty": "elementary",
+    "applications": [
+      "thresholding",
+      "absolute-value-threshold",
+      "argmax"
+    ],
+    "dependencies": [
+      "Research.Operators.MultiThreshold.Preservation",
+      "Research.Operators.Threshold.Preservation"
+    ],
+    "reduces_to": "threshold-preservation",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "f8054dde819c75d3e238aa6cad658b8bd77c9ad1ca5f2a764bba5899c9a5c1fe",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

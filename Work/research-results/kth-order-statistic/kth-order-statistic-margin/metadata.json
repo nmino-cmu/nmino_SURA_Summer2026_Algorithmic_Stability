@@ -1,0 +1,127 @@
+{
+  "operator": "kth-order-statistic",
+  "title": "k-th order statistic Index Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/kth-order-statistic",
+  "crp_identifiers": {
+    "operator": "kth-order-statistic",
+    "theorem_id": "kth-order-statistic-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "6458ac70fc35b2ec43dc670d8aca553578aa913f77e424a0aaf0519f5666d9ec"
+  ],
+  "lean_manifest_digest": "6458ac70fc35b2ec43dc670d8aca553578aa913f77e424a0aaf0519f5666d9ec",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.KthOrderStatistic.Preservation",
+  "lean_certificate_dir": "lean/certificates/kth-order-statistic/kth-order-statistic-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "kth-order-statistic",
+    "theorem": "kth-order-statistic-margin",
+    "assumptions": [
+      "n≥2",
+      "unique strict kth",
+      "pairwise gaps"
+    ],
+    "perturbation_model": "Bounded additive ‖δ‖_∞≤ε",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "OrderStat.KthMargin reduction",
+    "limitations": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ],
+    "references": [
+      "research-results/kth-order-statistic/kth-order-statistic-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "kth_order_statistic_margin_invariance",
+      "kth_order_statistic_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "00f9d400d695d173e10da3899564b55daaae33c22221becf852c2f79dea31939",
+    "proof_digest": "9be37acbd5c7b6bd38b5c916f802b3c8e262c4fbb373064ce52365d436fa031c",
+    "certificate_path": "lean/certificates/kth-order-statistic/kth-order-statistic-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "6458ac70fc35b2ec43dc670d8aca553578aa913f77e424a0aaf0519f5666d9ec",
+      "claim_digest": "f9c7186d37bc45a83e8cf272948fdffcef195bfddd07828444465e101e00dd4a",
+      "entry_module_id": "Research.Operators.KthOrderStatistic.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "ordering",
+    "selected_object": "unique_strict_kth_index",
+    "instability_mechanism": "pairwise_gap_collapse",
+    "structural_stability_quantity": "min_pairwise_gap",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "all pairwise gaps > 2ε",
+    "unstable_region": "some pairwise gap ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_order_stat_kth_margin"
+    ],
+    "related_operators": [
+      "quantile",
+      "median",
+      "percentile",
+      "kth-order-statistic"
+    ],
+    "assumptions": [
+      "Finite n≥2"
+    ],
+    "limitations": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "quantile",
+      "median",
+      "percentile",
+      "kth-order-statistic"
+    ],
+    "dependencies": [
+      "Research.Operators.OrderStat.KthMargin",
+      "kth_margin_invariance",
+      "kth_margin_sharpness"
+    ],
+    "reduces_to": "order-stat-kth-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "6458ac70fc35b2ec43dc670d8aca553578aa913f77e424a0aaf0519f5666d9ec",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

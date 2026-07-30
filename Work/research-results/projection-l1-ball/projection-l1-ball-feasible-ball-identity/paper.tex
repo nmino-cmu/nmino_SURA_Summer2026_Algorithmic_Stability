@@ -1,0 +1,116 @@
+% operator-stability-v1 — publication template (writeup-aligned)
+% Slots filled by scripts/generate_operator_paper.py
+\documentclass[12pt]{article}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\Urlmuskip=0mu plus 1mu
+\urlstyle{tt}
+\emergencystretch=2em
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{1.2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Breakable monospace for Lean paths / identifiers (xurl \path)
+\newcommand{\leanpath}[1]{%
+  {\raggedright\urlstyle{tt}\path{#1}}}
+
+
+\definecolor{fundbox}{RGB}{245,245,248}
+\definecolor{fundrule}{RGB}{180,180,190}
+
+\title{Projection onto the l1 ball: Real Stability}
+\author{Research Architecture Runtime\\[0.25em]
+{\normalsize\texttt{operator/projection-l1-ball}}}
+\date{2026-07-29}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+If a projector fixes feasible points and the closed $\varepsilon$-ball about $x$ lies in the feasible set, then every $x'$ in the ball is fixed. This is an identity certificate, not full Euclidean projection nonexpansiveness. Lean \texttt{LEAN\_FULL}.
+\end{abstract}
+
+\noindent
+\begin{center}
+\fcolorbox{fundrule}{fundbox}{%
+  \begin{minipage}{0.92\linewidth}
+  \centering
+  \textbf{This theorem is:} \texttt{Reduction}
+  \end{minipage}}
+\end{center}
+\vspace{0.6em}
+
+\section{Problem}
+{\raggedright\sloppy
+\leanpath{projection-l1-ball} is treated via a feasibility indicator / projection that fixes InSet points.
+\par}
+
+\section{Stability notion}
+Interior feasible-ball identity under $|x'-x|\le\varepsilon$.
+
+\section{Definitions}
+Assumptions: $\mathrm{proj}(z)=z$ whenever $\mathrm{InSet}(z)$, and $|y-x|\le\varepsilon\Rightarrow\mathrm{InSet}(y)$.
+
+\section{Theorem}
+\begin{theorem}\label{thm:inv}
+Under those assumptions, every $|x'-x|\le\varepsilon$ satisfies $\mathrm{proj}(x')=x'$ and $\mathrm{proj}(x)=x$. Sharpness: if some ball point is infeasible, the ball-feasibility hypothesis fails.
+\end{theorem}
+
+\section{Intuition}
+Deep inside the feasible set, projection is the identity, so small moves stay fixed points.
+
+\section{Examples}
+\begin{example}
+If $\mathrm{InSet}=[-1,1]$, $x=0$, $\varepsilon=0.25$, every $x'$ in the ball is feasible and fixed by identity projection.
+\end{example}
+
+\section{Proof}
+Take $|x'-x|\le\varepsilon$. Feasibility of the ball gives $\mathrm{InSet}(x')$ and $\mathrm{InSet}(x)$. Fixing feasible points yields $\mathrm{proj}(x')=x'$ and $\mathrm{proj}(x)=x$ (Theorem~\ref{thm:inv}). Sharpness is the contrapositive of ball feasibility. \textbf{Limitation:} this does not prove general Euclidean projection nonexpansiveness.
+
+\section{Formal statement}
+{\raggedright\sloppy
+\begin{description}[style=nextline,leftmargin=1.1em,font=\normalfont\bfseries]
+\item[Lean module] \leanpath{Research.Operators.ProjectionL1Ball.Preservation}
+\item[Source file] \leanpath{lean/Research/Operators/ProjectionL1Ball/Preservation.lean}
+\item[Theorems]\leavevmode\par\vspace{0.15em}\begin{itemize}[leftmargin=1.2em]
+  \item \leanpath{projection\_l1\_ball\_feasible\_ball\_identity}
+  \item \leanpath{projection\_l1\_ball\_feasible\_ball\_sharpness}
+\end{itemize}
+\item[Note] Uses Projection.FeasibleId (not Euclidean nonexpansiveness).
+\item[Certificate] \leanpath{lean/certificates/projection-l1-ball/projection-l1-ball-feasible-ball-identity}
+\item[Status] \texttt{LEAN\_FULL} on Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB})
+\end{description}
+\par}
+
+\section{Proof dependencies}
+{\raggedright\sloppy
+\begin{itemize}\item \texttt{Projection.FeasibleId}.\item No Euclidean nonexpansiveness claim.\end{itemize}
+\par}
+
+\section{Consequences}
+{\raggedright\sloppy
+Honest limited certificate for simplex/$\ell_p$-ball style operators in this library. Related: projection-interval, coordinate-clipping.
+\par}
+
+\end{document}

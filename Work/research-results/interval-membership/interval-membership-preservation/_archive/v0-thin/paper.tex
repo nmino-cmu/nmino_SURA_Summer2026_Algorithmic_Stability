@@ -1,0 +1,32 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\newtheorem{theorem}{Theorem}
+\title{Interval-Membership Preservation under Bounded Score Perturbations}
+\author{Research Architecture Runtime \\ \texttt{operator/interval-membership}}
+\date{2026-07-25}
+\begin{document}
+\maketitle
+\begin{abstract}
+Closed interval indicator \(I(x)=\mathbf{1}\{L\le x\le U\}\) under
+\(\lvert x'-x\rvert\le\varepsilon\). Lean \texttt{LEAN\_FULL} on Mathlib
+\(\mathbb{R}\) (\texttt{REAL\_MATHLIB}).
+\end{abstract}
+\section{Theorems}
+\begin{theorem}[Preservation]
+If \(L\le U\) and \(\lvert x'-x\rvert\le\varepsilon\):
+(1) \(L+\varepsilon\le x\le U-\varepsilon\Rightarrow I(x')=1\);
+(2) \(x<L-\varepsilon\) or \(x>U+\varepsilon\Rightarrow I(x')=0\).
+\end{theorem}
+\begin{theorem}[Sharpness]
+If \(L\le x<L+\varepsilon\), then \(x'=x-\varepsilon\) yields \(I(x')=0\).
+\end{theorem}
+\section{Comparison}
+Conjunction of two threshold sides; extends Threshold/Multi-threshold geometry to a band.
+\section{Lean / certificate}
+\texttt{Research.Operators.IntervalMembership.Preservation};
+\texttt{lean/certificates/interval-membership/interval-membership-preservation/}.
+\section{Limitations}
+Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB}); axiom closure may include \texttt{Classical.choice} via \texttt{decide} on a conjunction.
+\end{document}

@@ -1,0 +1,125 @@
+{
+  "operator": "penalized-score-selection",
+  "title": "Penalized score selection Margin Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/penalized-score-selection",
+  "crp_identifiers": {
+    "operator": "penalized-score-selection",
+    "theorem_id": "penalized-score-selection-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "a1e02330875b653e953773948ad9e09e48ca1338fbc0227ec36fa83b22c2b457"
+  ],
+  "lean_manifest_digest": "a1e02330875b653e953773948ad9e09e48ca1338fbc0227ec36fa83b22c2b457",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.PenalizedScoreSelection.Margin",
+  "lean_certificate_dir": "lean/certificates/penalized-score-selection/penalized-score-selection-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "penalized-score-selection",
+    "theorem": "penalized-score-selection-margin",
+    "assumptions": [
+      "m≥2",
+      "unique maximizer",
+      "ℓ∞ ball"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Definitional reduction to Argmax.Margin",
+    "limitations": [
+      "Argmax reduction"
+    ],
+    "references": [
+      "research-results/penalized-score-selection/penalized-score-selection-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "penalized_score_selection_margin_invariance",
+      "penalized_score_selection_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "cc3e90f691d92b6207840f9948b2598904b15c8e62d3bc1a2ef60b3860624c90",
+    "proof_digest": "71c34e9d269d6ad71dafd6dfc6270ca5eb26eace3bbe1136ad30259c0d88d688",
+    "certificate_path": "lean/certificates/penalized-score-selection/penalized-score-selection-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "a1e02330875b653e953773948ad9e09e48ca1338fbc0227ec36fa83b22c2b457",
+      "claim_digest": "d24e3547c69d5b37e3b177b15cc0e5b36df4c26ddd3b548cfce8d6f47fe9acc2",
+      "entry_module_id": "Research.Operators.PenalizedScoreSelection.Margin",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "primitive_search",
+    "selected_object": "unique_maximizer_index",
+    "instability_mechanism": "margin_collapse",
+    "structural_stability_quantity": "argmax_margin_gamma",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "gamma > 2ε",
+    "unstable_region": "gamma ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_argmax_margin"
+    ],
+    "related_operators": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "assumptions": [
+      "Finite m≥2",
+      "Unique maximizer"
+    ],
+    "limitations": [
+      "Argmax reduction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "a1e02330875b653e953773948ad9e09e48ca1338fbc0227ec36fa83b22c2b457",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

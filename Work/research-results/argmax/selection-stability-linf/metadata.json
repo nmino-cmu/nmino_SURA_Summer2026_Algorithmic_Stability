@@ -1,0 +1,56 @@
+{
+  "operator": "argmax",
+  "title": "Phase B selection_stability packaging for argmax under ℓ∞ score ball",
+  "packaging": "PHASE_B_STABILIZATION",
+  "chain_segment": "selection_stability",
+  "mechanism_local_id": "qpsi-linf-score-ball",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-27",
+  "branch": "feature/phase-b-selection-stability-argmax",
+  "crp_identifiers": {
+    "operator": "argmax",
+    "theorem_id": "bounded-perturbation-margin",
+    "profile": "PHASE_B_STABILIZATION",
+    "chain_segment": "selection_stability",
+    "mechanism": "qpsi-linf-score-ball"
+  },
+  "math_authority": "research-results/argmax/bounded-perturbation-margin/",
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "d363f7aa3fc22d4accc08a62b1ce7256683a9f2e8b048de546afece0ad93e344"
+  ],
+  "lean_manifest_digest": "d363f7aa3fc22d4accc08a62b1ce7256683a9f2e8b048de546afece0ad93e344",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.Argmax.Margin",
+  "lean_certificate_dir": "lean/certificates/argmax/bounded-perturbation-margin",
+  "non_claims": [
+    "differential_privacy",
+    "post_hoc_inference",
+    "policy_validity"
+  ],
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "note": "Packaging hop only; mathematics and Lean certificate identical to bounded-perturbation-margin. Phase B e2e re-checks LEAN_FULL without replacing that certificate as publication authority.",
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "derived",
+    "difficulty": "elementary",
+    "applications": [],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "d363f7aa3fc22d4accc08a62b1ce7256683a9f2e8b048de546afece0ad93e344",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "operator": "interval-membership",
+  "title": "Interval-Membership Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/interval-membership",
+  "crp_identifiers": {
+    "operator": "interval-membership",
+    "theorem_id": "interval-membership-preservation"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "ec6cfd212254348f512668f3ce607d38dcdad2761e82e800b0f8ab3defaf84d2"
+  ],
+  "lean_manifest_digest": "ec6cfd212254348f512668f3ce607d38dcdad2761e82e800b0f8ab3defaf84d2",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.IntervalMembership.Preservation",
+  "lean_certificate_dir": "lean/certificates/interval-membership/interval-membership-preservation",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "interval-membership",
+    "theorem": "interval-membership-preservation",
+    "assumptions": [
+      "Finite x",
+      "L ≤ U",
+      "ε ≥ 0",
+      "closed interval"
+    ],
+    "perturbation_model": "Bounded additive |x'−x|≤ε",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Two-sided interval arithmetic; left-endpoint sharpness by −ε push.",
+    "limitations": [
+      "Classical.choice may appear via decide on ∧"
+    ],
+    "references": [
+      "research-results/interval-membership/interval-membership-preservation/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "interval_membership_preservation",
+      "interval_membership_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "647cd06592d8dfc16a34f39fec4070e8a397650faa22d31a13ab09d876e10d4a",
+    "proof_digest": "91dc8f9255acb3d9f3931812488e357450e29983c83d2a105d725343e1afa10e",
+    "certificate_path": "lean/certificates/interval-membership/interval-membership-preservation",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "ec6cfd212254348f512668f3ce607d38dcdad2761e82e800b0f8ab3defaf84d2",
+      "claim_digest": "689e2aadcc4526966ee332b9b02749521a843a594a925ecb394137eca585046b",
+      "entry_module_id": "Research.Operators.IntervalMembership.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "scalar_selection",
+    "selected_object": "closed_interval_indicator",
+    "instability_mechanism": "crossing_either_endpoint",
+    "structural_stability_quantity": "buffers_to_L_and_U",
+    "perturbation_class": "bounded_additive_score",
+    "guarantee_kind": "deterministic",
+    "stable_region": "L+ε≤x≤U−ε (pass); x<L−ε or x>U+ε (fail)",
+    "unstable_region": "ε-neighborhood of the boundary",
+    "sharpness": true,
+    "compositional_properties": [
+      "conjunction_of_two_threshold_sides"
+    ],
+    "related_operators": [
+      "thresholding",
+      "multi-threshold",
+      "absolute-value-threshold"
+    ],
+    "assumptions": [
+      "L≤U",
+      "Finite scores"
+    ],
+    "limitations": [
+      "Classical.choice via decide"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "primitive",
+    "difficulty": "elementary",
+    "applications": [
+      "thresholding",
+      "multi-threshold",
+      "absolute-value-threshold"
+    ],
+    "dependencies": [
+      "Research.Operators.IntervalMembership.Preservation"
+    ],
+    "reduces_to": null,
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "ec6cfd212254348f512668f3ce607d38dcdad2761e82e800b0f8ab3defaf84d2",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

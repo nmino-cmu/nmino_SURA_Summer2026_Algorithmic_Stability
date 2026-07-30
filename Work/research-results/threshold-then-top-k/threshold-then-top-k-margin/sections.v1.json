@@ -1,0 +1,29 @@
+{
+  "fundamentality": "reduction",
+  "title": "Threshold-then-top-k Ranking Preservation under Bounded Score Perturbations",
+  "abstract": "\\leanpath{threshold-then-top-k} is certified by pairwise ranking preservation when all gaps exceed $2\\varepsilon$. Lean \\texttt{LEAN\\_FULL} via \\texttt{OrderStat.Ranking}.",
+  "problem": "The \\leanpath{threshold-then-top-k} operator depends on the pairwise order of scores $s\\in\\mathbb{R}^n$. The certified object is the full pairwise ranking (and thereby any ranking-determined selection such as top-$k$ index sets).",
+  "stability": "Perturbations: $\\|\\delta\\|_\\infty\\le\\varepsilon$. Stability: if $\\mathrm{AllGapsExceed}(s,2\\varepsilon)$, then $s_i<s_j\\Leftrightarrow (s+\\delta)_i<(s+\\delta)_j$ for all $i,j$. Sharpness: a gap $\\le 2\\varepsilon$ admits a collision adversary.",
+  "definitions": "\\begin{definition}[All-gaps]\n$|s_p-s_q|>g$ for $p\\neq q$.\\end{definition}\n\\noindent\\textbf{Assumptions.} $n\\ge 2$, $\\varepsilon\\ge 0$, and (for invariance) all pairwise gaps $>2\\varepsilon$.",
+  "theorem": "\\begin{theorem}[Ranking invariance]\\label{thm:inv}\nIf $\\mathrm{AllGapsExceed}(s,2\\varepsilon)$, then for every $\\|\\delta\\|_\\infty\\le\\varepsilon$ and all $i,j$, $s_i<s_j\\Leftrightarrow s_i+\\delta_i<s_j+\\delta_j$.\n\\end{theorem}\n\\begin{theorem}[Sharpness]\\label{thm:sharp}\nIf some distinct pair has $|s_i-s_j|\\le 2\\varepsilon$, an admissible $\\delta$ forces a value collision.\n\\end{theorem}",
+  "intuition": "Relative $\\ell_\\infty$ moves cost at most $2\\varepsilon$. Gaps larger than $2\\varepsilon$ cannot reverse; smaller gaps can be closed by a midpoint push.",
+  "examples": "\\begin{example}\nScores $(0,3,8)$, $\\varepsilon=1$: all gaps $>2$, so the ranking is stable. If scores are $(0,1.5)$ and $\\varepsilon=1$, the gap $1.5\\le 2$ admits a midpoint tie.\n\\end{example}",
+  "proof": "Fix $\\|\\delta\\|_\\infty\\le\\varepsilon$. If $i=j$ both sides of the claimed equivalence are false for strict $<$. If $i\\neq j$ and $|s_i-s_j|>2\\varepsilon$, the estimate $(s_i+\\delta_i)-(s_j+\\delta_j)\\ge (s_i-s_j)-2\\varepsilon$ (and its swap) yields $s_i<s_j\\Leftrightarrow s_i+\\delta_i<s_j+\\delta_j$ (Theorem~\\ref{thm:inv}).\n\nFor sharpness, take $i\\neq j$ with $|s_i-s_j|\\le 2\\varepsilon$ and the midpoint $\\delta_i=-(s_i-s_j)/2$, $\\delta_j=(s_i-s_j)/2$ (elsewhere $0$). Then $\\|\\delta\\|_\\infty\\le\\varepsilon$ and $s_i+\\delta_i=s_j+\\delta_j$ (Theorem~\\ref{thm:sharp}).",
+  "formal": "\\begin{description}[style=nextline,leftmargin=1.1em,font=\\normalfont\\bfseries]\n\\item[Lean module] \\leanpath{Research.Operators.ThresholdThenTopK.Preservation}\n\\item[Source file] \\leanpath{lean/Research/Operators/ThresholdThenTopK/Preservation.lean}\n\\item[Theorems]\\leavevmode\\par\\vspace{0.15em}\\begin{itemize}[leftmargin=1.2em]\n  \\item \\leanpath{threshold_then_top_k_margin_invariance}\n  \\item \\leanpath{threshold_then_top_k_margin_sharpness}\n\\end{itemize}\n\\item[Note] Reduction of OrderStat.Ranking.\n\\item[Certificate] \\leanpath{lean/certificates/threshold-then-top-k/threshold-then-top-k-margin}\n\\item[Status] \\texttt{LEAN\\_FULL} on Mathlib $\\mathbb{R}$ (\\texttt{REAL\\_MATHLIB})\n\\end{description}",
+  "dependencies": "\\begin{itemize}\n\\item \\leanpath{Research.Operators.OrderStat.Ranking} / shared pairwise lemma from \\leanpath{KthMargin}.\n\\item Midpoint collision adversary.\n\\item No other operator theorems required.\n\\end{itemize}",
+  "consequences": "Ranking stability implies stability of any functional of the pairwise order used by \\leanpath{threshold-then-top-k}. Related operators: \\leanpath{top-k}, \\leanpath{sorting}, \\leanpath{rank}.",
+  "paper_card": {
+    "difficulty": "elementary",
+    "applications": [
+      "top-k",
+      "sorting",
+      "rank"
+    ],
+    "dependencies": [
+      "Research.Operators.OrderStat.Ranking",
+      "ranking_invariance"
+    ],
+    "reduces_to": "order-stat-ranking",
+    "reduced_by": []
+  }
+}

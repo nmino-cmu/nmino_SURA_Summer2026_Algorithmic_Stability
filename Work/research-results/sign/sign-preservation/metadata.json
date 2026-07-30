@@ -1,0 +1,125 @@
+{
+  "operator": "sign",
+  "title": "Sign Selection Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/sign",
+  "crp_identifiers": {
+    "operator": "sign",
+    "theorem_id": "sign-preservation"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "f74d70956bba3a7602d85d0ab0e4282eac605b0e44b128e4d397e726bde5a3dd"
+  ],
+  "lean_manifest_digest": "f74d70956bba3a7602d85d0ab0e4282eac605b0e44b128e4d397e726bde5a3dd",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.Sign.Preservation",
+  "lean_certificate_dir": "lean/certificates/sign/sign-preservation",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL certificate required before publication"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "sign",
+    "theorem": "sign-preservation",
+    "assumptions": [
+      "Finite scalar score x",
+      "sign(0)=0 with strict nonzero sides",
+      "ε ≥ 0"
+    ],
+    "perturbation_model": "Bounded additive score perturbation |x' − x| ≤ ε",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Interval arithmetic under |x'-x|≤ε; sharpness via ±ε pushes and ε at origin.",
+    "limitations": [
+      "No DP/privacy claims"
+    ],
+    "references": [
+      "research-results/sign/sign-preservation/paper.tex",
+      "lean/Research/Operators/Sign/Preservation.lean"
+    ],
+    "lean_theorem_names": [
+      "sign_preservation",
+      "sign_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "6c3789fa08dcd8f0d38729dcd69cd306af46fe054c598c703db63558816f71c5",
+    "proof_digest": "ce5f1ef196d47a09ea4ee31ba06be1589dcdc24e7e9e53de5fb46b762712e59f",
+    "certificate_path": "lean/certificates/sign/sign-preservation",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "f74d70956bba3a7602d85d0ab0e4282eac605b0e44b128e4d397e726bde5a3dd",
+      "claim_digest": "8b6dbd96a1b103e627bed491d01eebdf9091f1fd621d6aad2002b89600fefb8a",
+      "entry_module_id": "Research.Operators.Sign.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "scalar_selection",
+    "selected_object": "sign_trichotomy",
+    "instability_mechanism": "crossing_or_reaching_origin_under_bounded_noise",
+    "structural_stability_quantity": "absolute_value_vs_epsilon_with_strict_sides",
+    "perturbation_class": "bounded_additive_score",
+    "guarantee_kind": "deterministic",
+    "stable_region": "x>ε (plus), x<-ε (minus), or (ε=0 and x=0)",
+    "unstable_region": "|x|≤ε excluding the ε=0 origin-only stable point",
+    "sharpness": true,
+    "compositional_properties": [
+      "related_to_threshold_at_zero_with_ternary_labels"
+    ],
+    "related_operators": [
+      "thresholding",
+      "absolute-value-threshold",
+      "multi-threshold"
+    ],
+    "assumptions": [
+      "Finite scores",
+      "sign(0)=0"
+    ],
+    "limitations": [
+      "Origin fragile for ε>0"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "primitive",
+    "difficulty": "elementary",
+    "applications": [
+      "thresholding",
+      "absolute-value-threshold",
+      "multi-threshold"
+    ],
+    "dependencies": [
+      "Research.Operators.Sign.Preservation"
+    ],
+    "reduces_to": null,
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "f74d70956bba3a7602d85d0ab0e4282eac605b0e44b128e4d397e726bde5a3dd",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "operator": "thresholding",
+  "title": "Bounded Almost-Sure Noise for Scalar Thresholding",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "43baa42e2f12065e23e66ca1f2ced10499f82fd1",
+  "branch": "feature/lean-gated-operator-papers",
+  "crp_identifiers": {
+    "operator": "thresholding",
+    "theorem_id": "bounded-noise-threshold"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "41c8823cf9fa82630e20f9a2cbf0aba81c097f9006ede321839745dc6055cdda"
+  ],
+  "lean_manifest_digest": "41c8823cf9fa82630e20f9a2cbf0aba81c097f9006ede321839745dc6055cdda",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.Threshold.BoundedNoise",
+  "lean_certificate_dir": "lean/certificates/thresholding/bounded-noise-threshold",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL certificate required before publication"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "2.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "thresholding",
+    "theorem": "bounded-noise-threshold",
+    "assumptions": [
+      "Finite scalar score x and fixed threshold T",
+      "Pathwise noise bound |ξ| ≤ η (a.s. reading; measure theory deferred)",
+      "Equality-passes convention inherited from aboveThreshold"
+    ],
+    "perturbation_model": "Pathwise bounded additive noise |ξ| ≤ η with ε := η",
+    "theorem_role": "bounded_noise_companion",
+    "proof_strategy": "Reduce pathwise preservation to threshold_preservation on x+ξ; sharpness via explicit two-point noises ξ=±η on each half of the unstable band.",
+    "limitations": [
+      "Pathwise surrogate for a.s. bounded noise (PATHWISE_NOT_MEASURE_THEORETIC_AS)",
+      "Not full Sparse Vector / DP accounting (BOUNDED_NOISE_NOT_FULL_SVT)"
+    ],
+    "references": [
+      "research-results/thresholding/bounded-noise-threshold/paper.tex",
+      "implementation/docs/operators/thresholding.md",
+      "lean/Research/Operators/Threshold/BoundedNoise.lean"
+    ],
+    "lean_theorem_names": [
+      "bounded_noise_preservation",
+      "bounded_noise_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "c2fea9ece385184dcba58f4b5295f4595b8053e263245f978a6e2030c55fafec",
+    "proof_digest": "aaed91ede5f8271f57e98db6b0c55f517cb39c4568df84a6e3c10455dcf0b963",
+    "certificate_path": "lean/certificates/thresholding/bounded-noise-threshold",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "41c8823cf9fa82630e20f9a2cbf0aba81c097f9006ede321839745dc6055cdda",
+      "claim_digest": "bc1e7c88bc19ed35b058cd5c84f4286706e9e75bb94f7d1fa2a5c57c92d67eab",
+      "entry_module_id": "Research.Operators.Threshold.BoundedNoise",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "scalar_selection",
+    "selected_object": "binary_threshold_indicator_under_bounded_noise",
+    "instability_mechanism": "noise_can_cross_decision_boundary_inside_unstable_band",
+    "structural_stability_quantity": "distance_to_threshold_relative_to_noise_bound_eta",
+    "perturbation_class": "pathwise_bounded_additive_noise",
+    "guarantee_kind": "almost_sure",
+    "stable_region": "pass: x ≥ T+η; fail: x < T−η (pathwise |ξ|≤η)",
+    "unstable_region": "half-open band [T−η, T+η)",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_deterministic_preservation_with_epsilon_eq_eta",
+      "sharpness_existential_over_noise_laws_via_two_point_support"
+    ],
+    "related_operators": [
+      "argmax",
+      "multi-threshold"
+    ],
+    "assumptions": [
+      "Finite scalar scores",
+      "Pathwise |ξ| ≤ η",
+      "Equality passes"
+    ],
+    "limitations": [
+      "Not measure-theoretic a.s",
+      "Not full SVT/DP"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "primitive",
+    "difficulty": "elementary",
+    "applications": [
+      "thresholding"
+    ],
+    "dependencies": [
+      "Research.Operators.Threshold.Preservation",
+      "Threshold.BoundedNoise"
+    ],
+    "reduces_to": "threshold-preservation",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "41c8823cf9fa82630e20f9a2cbf0aba81c097f9006ede321839745dc6055cdda",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

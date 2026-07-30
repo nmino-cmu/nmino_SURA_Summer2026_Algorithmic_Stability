@@ -1,0 +1,28 @@
+{
+  "fundamentality": "primitive",
+  "title": "Threshold Output Preservation under Bounded Score Perturbations",
+  "abstract": "Scalar threshold $A_T(x)=\\mathbf{1}\\{x\\ge T\\}$ is invariant outside the $2\\varepsilon$ unstable band when $|x'-x|\\le\\varepsilon$. Lean \\texttt{LEAN\\_FULL}.",
+  "problem": "The operator returns the binary indicator $A_T(x)=1$ iff $x\\ge T$ (equality passes).",
+  "stability": "Perturbation: $|x'-x|\\le\\varepsilon$. Pass buffer $x\\ge T+\\varepsilon\\Rightarrow A_T(x')=1$; fail buffer $x<T-\\varepsilon\\Rightarrow A_T(x')=0$.",
+  "definitions": "\\begin{definition}\n$A_T(x)\\Leftrightarrow x\\ge T$.\\end{definition}\n\\noindent\\textbf{Assumptions.} $\\varepsilon\\ge 0$ and $|x'-x|\\le\\varepsilon$.",
+  "theorem": "\\begin{theorem}\\label{thm:inv}\nIf $|x'-x|\\le\\varepsilon$, then $x\\ge T+\\varepsilon\\Rightarrow x'\\ge T$ and $x<T-\\varepsilon\\Rightarrow x'<T$.\n\\end{theorem}",
+  "intuition": "Moving $x$ by at most $\\varepsilon$ cannot cross $T$ from outside the $\\varepsilon$-neighborhood.",
+  "examples": "\\begin{example}\n$T=3$, $x=5$, $\\varepsilon=0.2$: $x\\ge T+\\varepsilon$, so every $x'$ in the ball still passes.\n\\end{example}",
+  "proof": "From $|x'-x|\\le\\varepsilon$ one has $x'-\\varepsilon\\le x\\le x'+\\varepsilon$. If $x\\ge T+\\varepsilon$ then $x'\\ge x-\\varepsilon\\ge T$. If $x<T-\\varepsilon$ then $x'\\le x+\\varepsilon<T$ (Theorem~\\ref{thm:inv}).",
+  "formal": "\\begin{description}[style=nextline,leftmargin=1.1em,font=\\normalfont\\bfseries]\n\\item[Lean module] \\leanpath{Research.Operators.Threshold.Preservation}\n\\item[Source file] \\leanpath{lean/Research/Operators/Threshold/Preservation.lean}\n\\item[Theorems]\\leavevmode\\par\\vspace{0.15em}\\begin{itemize}[leftmargin=1.2em]\n  \\item \\leanpath{threshold_preservation}\n\\end{itemize}\n\\item[Certificate] \\leanpath{lean/certificates/thresholding/threshold-output-preservation}\n\\item[Status] \\texttt{LEAN\\_FULL} on Mathlib $\\mathbb{R}$ (\\texttt{REAL\\_MATHLIB})\n\\end{description}",
+  "dependencies": "\\begin{itemize}\\item Absolute-value ball arithmetic only.\\item No other operator theorems.\\end{itemize}",
+  "consequences": "Primitive scalar gate used by multi-threshold, abs-threshold, interval membership, and noisy threshold variants.",
+  "paper_card": {
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "multi-threshold",
+      "absolute-value-threshold"
+    ],
+    "dependencies": [
+      "Research.Operators.Threshold.Preservation"
+    ],
+    "reduces_to": null,
+    "reduced_by": []
+  }
+}

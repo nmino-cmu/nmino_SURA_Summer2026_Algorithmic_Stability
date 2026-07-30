@@ -1,0 +1,118 @@
+% operator-stability-v1 — publication template (writeup-aligned)
+% Slots filled by scripts/generate_operator_paper.py
+\documentclass[12pt]{article}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\Urlmuskip=0mu plus 1mu
+\urlstyle{tt}
+\emergencystretch=2em
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{1.2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Breakable monospace for Lean paths / identifiers (xurl \path)
+\newcommand{\leanpath}[1]{%
+  {\raggedright\urlstyle{tt}\path{#1}}}
+
+
+\definecolor{fundbox}{RGB}{245,245,248}
+\definecolor{fundrule}{RGB}{180,180,190}
+
+\title{Bounded Almost-Sure Noise for Scalar Thresholding}
+\author{Research Architecture Runtime\\[0.25em]
+{\normalsize\texttt{operator/thresholding}}}
+\date{2026-07-29}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Pathwise threshold preservation under almost-sure $|\xi|\le\eta$ reduces to the deterministic buffer theorem with $\varepsilon:=\eta$. Lean \texttt{LEAN\_FULL}.
+\end{abstract}
+
+\noindent
+\begin{center}
+\fcolorbox{fundrule}{fundbox}{%
+  \begin{minipage}{0.92\linewidth}
+  \centering
+  \textbf{This theorem is:} \texttt{Primitive}
+  \end{minipage}}
+\end{center}
+\vspace{0.6em}
+
+\section{Problem}
+{\raggedright\sloppy
+The noisy threshold $\widetilde A_T(x)=\mathbf{1}\{x+\xi\ge T\}$ with $|\xi|\le\eta$ a.s. The selected object is the binary pass/fail bit.
+\par}
+
+\section{Stability notion}
+Noise is query-side and bounded. Outside $[T-\eta,T+\eta)$ the output is a.s.\ constant; inside the band it need not be.
+
+\section{Definitions}
+Pass convention: $x\ge T$ passes. Pathwise: apply deterministic threshold preservation with $\varepsilon=\eta$.
+
+\section{Theorem}
+\begin{theorem}\label{thm:inv}
+If $|\xi|\le\eta$ a.s., then $x\ge T+\eta\Rightarrow\widetilde A_T=1$ a.s.\ and $x<T-\eta\Rightarrow\widetilde A_T=0$ a.s. On the open band with $\eta>0$, two-point noise shows the bit need not be a.s.\ constant.
+\end{theorem}
+
+\section{Intuition}
+Bounded noise cannot cross a buffer of width $\eta$ on either side of $T$.
+
+\section{Examples}
+\begin{example}
+$T=3$, $x=5$, $\eta=0.2$: $x\ge T+\eta$, so the bit stays $1$ a.s.
+\end{example}
+
+\section{Proof}
+On almost every outcome, $|\xi(\omega)|\le\eta$. Apply deterministic threshold preservation to $(x,T,\varepsilon,x')=(x,T,\eta,x+\xi(\omega))$: if $x\ge T+\eta$ then $x+\xi\ge T$; if $x<T-\eta$ then $x+\xi<T$. For the band claim, the two-point law on $\{\pm\eta\}$ realizes both sides of the cut (Theorem~\ref{thm:inv}). This is a pathwise surrogate of a.s.\ bounded noise, not a differential-privacy accounting proof.
+
+\section{Formal statement}
+{\raggedright\sloppy
+\begin{description}[style=nextline,leftmargin=1.1em,font=\normalfont\bfseries]
+\item[Lean module] \leanpath{Research.Operators.Threshold.BoundedNoise}
+\item[Source file] \leanpath{lean/Research/Operators/Threshold/BoundedNoise.lean}
+\item[Theorems]\leavevmode\par\vspace{0.15em}\begin{itemize}[leftmargin=1.2em]
+  \item \leanpath{bounded\_noise\_preservation}
+  \item \leanpath{bounded\_noise\_sharpness}
+\end{itemize}
+\item[Certificate] \leanpath{lean/certificates/thresholding/bounded-noise-threshold}
+\item[Status] \texttt{LEAN\_FULL} on Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB})
+\end{description}
+\par}
+
+\section{Proof dependencies}
+{\raggedright\sloppy
+\begin{itemize}
+\item Deterministic \texttt{Threshold.Preservation}.
+\item Pathwise reduction; no DP claim.
+\end{itemize}
+\par}
+
+\section{Consequences}
+{\raggedright\sloppy
+Use for a.s.\ bounded query noise on scalar thresholds; not Sparse Vector.
+\par}
+
+\end{document}

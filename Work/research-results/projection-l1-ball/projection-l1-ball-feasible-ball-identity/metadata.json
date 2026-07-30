@@ -1,0 +1,119 @@
+{
+  "operator": "projection-l1-ball",
+  "title": "Projection onto the l1 ball: Real Stability",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/projection-l1-ball",
+  "crp_identifiers": {
+    "operator": "projection-l1-ball",
+    "theorem_id": "projection-l1-ball-feasible-ball-identity"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "b43292167c9378bdbe41dd3c8d7447fe9db2971deba069049c059defc16126df"
+  ],
+  "lean_manifest_digest": "b43292167c9378bdbe41dd3c8d7447fe9db2971deba069049c059defc16126df",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.ProjectionL1Ball.Preservation",
+  "lean_certificate_dir": "lean/certificates/projection-l1-ball/projection-l1-ball-feasible-ball-identity",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "projection-l1-ball",
+    "theorem": "projection-l1-ball-feasible-ball-identity",
+    "assumptions": [
+      "kind=feasible"
+    ],
+    "perturbation_model": "abs ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Projection core (feasible)",
+    "limitations": [
+      "feasible"
+    ],
+    "references": [
+      "research-results/projection-l1-ball/projection-l1-ball-feasible-ball-identity/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "projection_l1_ball_feasible_ball_identity",
+      "projection_l1_ball_feasible_ball_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "96ef0b21877d6c55785744ea9d15b8ca12d3357bad90f285c579daffdf8753b1",
+    "proof_digest": "17b5eabc6ed3109717b9c335ab8df24efddedd8b905fdb9299995a6d87814747",
+    "certificate_path": "lean/certificates/projection-l1-ball/projection-l1-ball-feasible-ball-identity",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "b43292167c9378bdbe41dd3c8d7447fe9db2971deba069049c059defc16126df",
+      "claim_digest": "5699ed17d2ed87c6696129d1b1923df08482cbd9f097596a46a3a0dd3a6f9700",
+      "entry_module_id": "Research.Operators.ProjectionL1Ball.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "projection",
+    "selected_object": "feasible",
+    "instability_mechanism": "boundary_crossing",
+    "structural_stability_quantity": "feasible",
+    "perturbation_class": "bounded_additive_abs",
+    "guarantee_kind": "deterministic",
+    "stable_region": "core-dependent",
+    "unstable_region": "near boundary",
+    "sharpness": true,
+    "compositional_properties": [
+      "projection_feasible"
+    ],
+    "related_operators": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "assumptions": [
+      "Feasible-ball / indicator identity on ℝ; not full Euclidean projection nonexpansiveness"
+    ],
+    "limitations": [
+      "feasible"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "dependencies": [
+      "Research.Operators.Projection.FeasibleId"
+    ],
+    "reduces_to": "projection-feasible-id",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "b43292167c9378bdbe41dd3c8d7447fe9db2971deba069049c059defc16126df",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "fundamentality": "primitive",
+  "title": "Bounded Almost-Sure Noise for Scalar Thresholding",
+  "abstract": "Pathwise threshold preservation under almost-sure $|\\xi|\\le\\eta$ reduces to the deterministic buffer theorem with $\\varepsilon:=\\eta$. Lean \\texttt{LEAN\\_FULL}.",
+  "problem": "The noisy threshold $\\widetilde A_T(x)=\\mathbf{1}\\{x+\\xi\\ge T\\}$ with $|\\xi|\\le\\eta$ a.s. The selected object is the binary pass/fail bit.",
+  "stability": "Noise is query-side and bounded. Outside $[T-\\eta,T+\\eta)$ the output is a.s.\\ constant; inside the band it need not be.",
+  "definitions": "Pass convention: $x\\ge T$ passes. Pathwise: apply deterministic threshold preservation with $\\varepsilon=\\eta$.",
+  "theorem": "\\begin{theorem}\\label{thm:inv}\nIf $|\\xi|\\le\\eta$ a.s., then $x\\ge T+\\eta\\Rightarrow\\widetilde A_T=1$ a.s.\\ and $x<T-\\eta\\Rightarrow\\widetilde A_T=0$ a.s. On the open band with $\\eta>0$, two-point noise shows the bit need not be a.s.\\ constant.\n\\end{theorem}",
+  "intuition": "Bounded noise cannot cross a buffer of width $\\eta$ on either side of $T$.",
+  "examples": "\\begin{example}\n$T=3$, $x=5$, $\\eta=0.2$: $x\\ge T+\\eta$, so the bit stays $1$ a.s.\n\\end{example}",
+  "proof": "On almost every outcome, $|\\xi(\\omega)|\\le\\eta$. Apply deterministic threshold preservation to $(x,T,\\varepsilon,x')=(x,T,\\eta,x+\\xi(\\omega))$: if $x\\ge T+\\eta$ then $x+\\xi\\ge T$; if $x<T-\\eta$ then $x+\\xi<T$. For the band claim, the two-point law on $\\{\\pm\\eta\\}$ realizes both sides of the cut (Theorem~\\ref{thm:inv}). This is a pathwise surrogate of a.s.\\ bounded noise, not a differential-privacy accounting proof.",
+  "formal": "\\begin{description}[style=nextline,leftmargin=1.1em,font=\\normalfont\\bfseries]\n\\item[Lean module] \\leanpath{Research.Operators.Threshold.BoundedNoise}\n\\item[Source file] \\leanpath{lean/Research/Operators/Threshold/BoundedNoise.lean}\n\\item[Theorems]\\leavevmode\\par\\vspace{0.15em}\\begin{itemize}[leftmargin=1.2em]\n  \\item \\leanpath{bounded_noise_preservation}\n  \\item \\leanpath{bounded_noise_sharpness}\n\\end{itemize}\n\\item[Certificate] \\leanpath{lean/certificates/thresholding/bounded-noise-threshold}\n\\item[Status] \\texttt{LEAN\\_FULL} on Mathlib $\\mathbb{R}$ (\\texttt{REAL\\_MATHLIB})\n\\end{description}",
+  "dependencies": "\\begin{itemize}\n\\item Deterministic \\texttt{Threshold.Preservation}.\n\\item Pathwise reduction; no DP claim.\n\\end{itemize}",
+  "consequences": "Use for a.s.\\ bounded query noise on scalar thresholds; not Sparse Vector.",
+  "paper_card": {
+    "difficulty": "elementary",
+    "applications": [
+      "thresholding"
+    ],
+    "dependencies": [
+      "Research.Operators.Threshold.Preservation",
+      "Threshold.BoundedNoise"
+    ],
+    "reduces_to": "threshold-preservation",
+    "reduced_by": []
+  }
+}

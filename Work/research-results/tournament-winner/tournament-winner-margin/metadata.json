@@ -1,0 +1,125 @@
+{
+  "operator": "tournament-winner",
+  "title": "Tournament winner Margin Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/tournament-winner",
+  "crp_identifiers": {
+    "operator": "tournament-winner",
+    "theorem_id": "tournament-winner-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "f60b6e71d4a44b1657e023c4f6bb35139166702d7860c2c36222cf5033f72061"
+  ],
+  "lean_manifest_digest": "f60b6e71d4a44b1657e023c4f6bb35139166702d7860c2c36222cf5033f72061",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.TournamentWinner.Margin",
+  "lean_certificate_dir": "lean/certificates/tournament-winner/tournament-winner-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "tournament-winner",
+    "theorem": "tournament-winner-margin",
+    "assumptions": [
+      "m≥2",
+      "unique maximizer",
+      "ℓ∞ ball"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Definitional reduction to Argmax.Margin",
+    "limitations": [
+      "Argmax reduction"
+    ],
+    "references": [
+      "research-results/tournament-winner/tournament-winner-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "tournament_winner_margin_invariance",
+      "tournament_winner_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "719a3b06208257387fdb0a5225c9703c1f3ca1333c57a2a12d7122591e5b5276",
+    "proof_digest": "33e641bb4562ba9c9142a1490690b1273357f7609e334b652cdeaaff5a30d9ef",
+    "certificate_path": "lean/certificates/tournament-winner/tournament-winner-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "f60b6e71d4a44b1657e023c4f6bb35139166702d7860c2c36222cf5033f72061",
+      "claim_digest": "0c7b27a254270b8d9ded9663f3a6520697266813f3a44b249996bda3ead2f7b0",
+      "entry_module_id": "Research.Operators.TournamentWinner.Margin",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "primitive_search",
+    "selected_object": "unique_maximizer_index",
+    "instability_mechanism": "margin_collapse",
+    "structural_stability_quantity": "argmax_margin_gamma",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "gamma > 2ε",
+    "unstable_region": "gamma ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_argmax_margin"
+    ],
+    "related_operators": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "assumptions": [
+      "Finite m≥2",
+      "Unique maximizer"
+    ],
+    "limitations": [
+      "Argmax reduction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "f60b6e71d4a44b1657e023c4f6bb35139166702d7860c2c36222cf5033f72061",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

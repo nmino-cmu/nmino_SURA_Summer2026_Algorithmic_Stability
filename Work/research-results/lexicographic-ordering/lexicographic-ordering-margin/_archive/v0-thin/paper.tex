@@ -1,0 +1,25 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\newtheorem{theorem}{Theorem}
+\title{Lexicographic ordering Ranking Preservation under Bounded Score Perturbations}
+\author{Research Architecture Runtime \\ \texttt{operator/lexicographic-ordering}}
+\date{2026-07-25}
+\begin{document}
+\maketitle
+\begin{abstract}
+Lexicographic ordering is certified via pairwise ranking preservation when all gaps exceed $2\varepsilon$. Lean: \texttt{LEAN\_FULL}.
+\end{abstract}
+\section{Theorems}
+\begin{theorem}[Preservation]
+All pairwise gaps $>2\varepsilon$ preserve pairwise order under $\|\delta\|_\infty\le\varepsilon$.
+\end{theorem}
+\begin{theorem}[Sharpness]
+A pairwise gap $\le 2\varepsilon$ admits a collision adversary.
+\end{theorem}
+\section{Lean / certificate}
+\texttt{Research.Operators.LexicographicOrdering.Preservation}.
+\section{Limitations}
+Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB}).
+\end{document}

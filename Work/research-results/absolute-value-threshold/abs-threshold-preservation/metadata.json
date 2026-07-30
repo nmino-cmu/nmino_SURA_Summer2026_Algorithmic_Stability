@@ -1,0 +1,126 @@
+{
+  "operator": "absolute-value-threshold",
+  "title": "Absolute-Value Threshold Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/absolute-value-threshold",
+  "crp_identifiers": {
+    "operator": "absolute-value-threshold",
+    "theorem_id": "abs-threshold-preservation"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "4e08e1fe9524dad2af62c1abb9f1ff2e27088607ef413054873850eff95a12a9"
+  ],
+  "lean_manifest_digest": "4e08e1fe9524dad2af62c1abb9f1ff2e27088607ef413054873850eff95a12a9",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.AbsThreshold.Preservation",
+  "lean_certificate_dir": "lean/certificates/absolute-value-threshold/abs-threshold-preservation",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "absolute-value-threshold",
+    "theorem": "abs-threshold-preservation",
+    "assumptions": [
+      "Finite x",
+      "T ≥ 0",
+      "ε ≥ 0",
+      "|x| ≥ T passes"
+    ],
+    "perturbation_model": "Bounded additive |x'−x|≤ε",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "natAbs Lipschitz (| |x'|-|x| | ≤ |x'-x|); sharpness push-down on nonnegative ray.",
+    "limitations": [
+      "Sharpness on nonnegative ray with ε≤x"
+    ],
+    "references": [
+      "research-results/absolute-value-threshold/abs-threshold-preservation/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "abs_threshold_preservation",
+      "abs_threshold_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "b3b8f8a98339775ca42f2591488cdc7db12d5cd9ef3dd40a5d1de0b53d82ad2a",
+    "proof_digest": "d4a8a5d22601d12cae495c9414bceedb99d083708d5c9d63ac323c96e719eacf",
+    "certificate_path": "lean/certificates/absolute-value-threshold/abs-threshold-preservation",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "4e08e1fe9524dad2af62c1abb9f1ff2e27088607ef413054873850eff95a12a9",
+      "claim_digest": "6883133b974709d752c2f679d800dc5a216b612acc6f10efcfe62949cac64cc3",
+      "entry_module_id": "Research.Operators.AbsThreshold.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "scalar_selection",
+    "selected_object": "abs_threshold_indicator",
+    "instability_mechanism": "radial_distance_to_threshold_T",
+    "structural_stability_quantity": "abs_x_buffer_vs_epsilon",
+    "perturbation_class": "bounded_additive_score",
+    "guarantee_kind": "deterministic",
+    "stable_region": "|x|≥T+ε (pass); |x|+ε<T (fail)",
+    "unstable_region": "complement of the two buffers",
+    "sharpness": true,
+    "compositional_properties": [
+      "radial_lift_of_threshold",
+      "related_to_sign_at_origin"
+    ],
+    "related_operators": [
+      "thresholding",
+      "sign",
+      "multi-threshold"
+    ],
+    "assumptions": [
+      "T≥0",
+      "Finite scores"
+    ],
+    "limitations": [
+      "Sharpness ray-restricted"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "primitive",
+    "difficulty": "elementary",
+    "applications": [
+      "thresholding",
+      "sign",
+      "multi-threshold"
+    ],
+    "dependencies": [
+      "Research.Operators.AbsThreshold.Preservation"
+    ],
+    "reduces_to": null,
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "4e08e1fe9524dad2af62c1abb9f1ff2e27088607ef413054873850eff95a12a9",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

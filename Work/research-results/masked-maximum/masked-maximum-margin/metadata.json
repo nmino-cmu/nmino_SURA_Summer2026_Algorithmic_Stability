@@ -1,0 +1,125 @@
+{
+  "operator": "masked-maximum",
+  "title": "Masked maximum Margin Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/masked-maximum",
+  "crp_identifiers": {
+    "operator": "masked-maximum",
+    "theorem_id": "masked-maximum-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "ac90b1ac802f1e75c50fe3b9a831ed1298c1e9a5494a323b7b82bd94c3a396fd"
+  ],
+  "lean_manifest_digest": "ac90b1ac802f1e75c50fe3b9a831ed1298c1e9a5494a323b7b82bd94c3a396fd",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.MaskedMaximum.Margin",
+  "lean_certificate_dir": "lean/certificates/masked-maximum/masked-maximum-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "masked-maximum",
+    "theorem": "masked-maximum-margin",
+    "assumptions": [
+      "m≥2",
+      "unique maximizer",
+      "ℓ∞ ball"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Definitional reduction to Argmax.Margin",
+    "limitations": [
+      "Argmax reduction"
+    ],
+    "references": [
+      "research-results/masked-maximum/masked-maximum-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "masked_maximum_margin_invariance",
+      "masked_maximum_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "2f7a5513b29f4e9b33b7e2d165ada545b762f4608c4321732e01e357168b2310",
+    "proof_digest": "f7db07ae674c4e86ed0b080f42264aa6e0b61bb7648a7f945331f48d86c9dec6",
+    "certificate_path": "lean/certificates/masked-maximum/masked-maximum-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "ac90b1ac802f1e75c50fe3b9a831ed1298c1e9a5494a323b7b82bd94c3a396fd",
+      "claim_digest": "4554b230aef51fe17390094111c8c17e994cf0a59b8403bceba8c5249fcdf25f",
+      "entry_module_id": "Research.Operators.MaskedMaximum.Margin",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "primitive_search",
+    "selected_object": "unique_maximizer_index",
+    "instability_mechanism": "margin_collapse",
+    "structural_stability_quantity": "argmax_margin_gamma",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "gamma > 2ε",
+    "unstable_region": "gamma ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_argmax_margin"
+    ],
+    "related_operators": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "assumptions": [
+      "Finite m≥2",
+      "Unique maximizer"
+    ],
+    "limitations": [
+      "Argmax reduction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "ac90b1ac802f1e75c50fe3b9a831ed1298c1e9a5494a323b7b82bd94c3a396fd",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

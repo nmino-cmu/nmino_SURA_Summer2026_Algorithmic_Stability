@@ -1,0 +1,29 @@
+{
+  "fundamentality": "reduction",
+  "title": "Priority queue maximum Margin Preservation under Bounded Score Perturbations",
+  "abstract": "\\leanpath{priority-queue-maximum} selects a unique maximizer. Margin $\\gamma(s)>2\\varepsilon$ is necessary and sufficient for unique-max invariance under $\\|\\delta\\|_\\infty\\le\\varepsilon$. Lean \\texttt{LEAN\\_FULL} (reduction to \\texttt{Argmax.Margin}).",
+  "problem": "The \\leanpath{priority-queue-maximum} operator returns the unique maximizer index $i^\\star$ of scores $s\\in\\mathbb{R}^m$ ($m\\ge 2$), up to the operator's definitional presentation (heap top, tournament winner, masked max, etc.).",
+  "stability": "Perturbations: $\\|\\delta\\|_\\infty\\le\\varepsilon$. Let $\\gamma(s)=s_{i^\\star}-\\max_{j\\neq i^\\star}s_j$. Stability: $\\gamma(s)>2\\varepsilon$ implies $i^\\star$ remains the unique maximizer of $s+\\delta$. Sharpness: $\\gamma(s)\\le 2\\varepsilon$ admits an adversary destroying unique maximality.",
+  "definitions": "\\begin{definition}[Unique maximizer]\n$i^\\star$ uniquely maximizes $s$ if $s_j\\le s_{i^\\star}$ for all $j$ and $s_j=s_{i^\\star}\\Rightarrow j=i^\\star$.\n\\end{definition}\n\\begin{definition}[Margin]\n$\\gamma(s)=s_{i^\\star}-\\max_{j\\neq i^\\star}s_j$.\\end{definition}",
+  "theorem": "\\begin{theorem}[Margin invariance]\\label{thm:inv}\nIf $i^\\star$ uniquely maximizes $s$ and $s_{i^\\star}-s_j>2\\varepsilon$ for all $j\\neq i^\\star$, then for every $\\|\\delta\\|_\\infty\\le\\varepsilon$, $i^\\star$ uniquely maximizes $s+\\delta$.\n\\end{theorem}\n\\begin{theorem}[Sharpness]\\label{thm:sharp}\nIf some $j\\neq i^\\star$ has $s_{i^\\star}-s_j\\le 2\\varepsilon$, an admissible $\\delta$ destroys unique maximality.\n\\end{theorem}",
+  "intuition": "Depressing the winner by $\\varepsilon$ and elevating a rival by $\\varepsilon$ consumes $2\\varepsilon$ of margin. Strict margin above $2\\varepsilon$ leaves the winner unique; otherwise a two-point adversary forces a tie or loss.",
+  "examples": "\\begin{example}\nScores $(7,5,4)$, $i^\\star=0$, $\\gamma=2$. For $\\varepsilon=0.8$, $2\\varepsilon=1.6<2$, so the winner is stable. For $\\varepsilon=1$, $2\\varepsilon=2\\ge\\gamma$; $\\delta=(-1,+1,0)$ yields a tie between the first two scores.\n\\end{example}",
+  "proof": "Let $s'=s+\\delta$ with $\\|\\delta\\|_\\infty\\le\\varepsilon$. For $j\\neq i^\\star$,\n\\[\ns'_{i^\\star}-s'_j\n=(s_{i^\\star}-s_j)+(\\delta_{i^\\star}-\\delta_j)\n\\ge (s_{i^\\star}-s_j)-2\\varepsilon\n>0,\n\\]\nusing $s_{i^\\star}-s_j>2\\varepsilon$. Thus $s'_j<s'_{i^\\star}$ for all $j\\neq i^\\star$, so $i^\\star$ uniquely maximizes $s'$ (Theorem~\\ref{thm:inv}).\n\nFor sharpness, pick $j$ with $s_{i^\\star}-s_j\\le 2\\varepsilon$, set $\\delta_{i^\\star}=-\\varepsilon$, $\\delta_j=+\\varepsilon$, and $0$ elsewhere. Then $\\|\\delta\\|_\\infty\\le\\varepsilon$ and $s'_{i^\\star}-s'_j=\\gamma_{ij}-2\\varepsilon\\le 0$, so unique maximality fails (Theorem~\\ref{thm:sharp}).",
+  "formal": "\\begin{description}[style=nextline,leftmargin=1.1em,font=\\normalfont\\bfseries]\n\\item[Lean module] \\leanpath{Research.Operators.PriorityQueueMaximum.Margin}\n\\item[Source file] \\leanpath{lean/Research/Operators/PriorityQueueMaximum/Margin.lean}\n\\item[Theorems]\\leavevmode\\par\\vspace{0.15em}\\begin{itemize}[leftmargin=1.2em]\n  \\item \\leanpath{priority_queue_maximum_margin_invariance}\n  \\item \\leanpath{priority_queue_maximum_margin_sharpness}\n\\end{itemize}\n\\item[Note] Definitional reduction of Argmax.Margin.\n\\item[Certificate] \\leanpath{lean/certificates/priority-queue-maximum/priority-queue-maximum-margin}\n\\item[Status] \\texttt{LEAN\\_FULL} on Mathlib $\\mathbb{R}$ (\\texttt{REAL\\_MATHLIB})\n\\end{description}",
+  "dependencies": "\\begin{itemize}\n\\item \\leanpath{Research.Operators.Argmax.Margin} (\\leanpath{margin_invariance}, \\leanpath{margin_sharpness}).\n\\item $\\ell_\\infty$ gap shrinkage by at most $2\\varepsilon$.\n\\item No other operator theorems required.\n\\end{itemize}",
+  "consequences": "Any unique-max presentation of \\leanpath{priority-queue-maximum} inherits Argmax margin stability. Related: \\leanpath{argmax}, \\leanpath{tournament-winner}, \\leanpath{greedy-maximum-selection}.",
+  "paper_card": {
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": []
+  }
+}

@@ -1,0 +1,180 @@
+% operator-stability-v1 — publication template (writeup-aligned)
+% Slots filled by scripts/generate_operator_paper.py
+\documentclass[12pt]{article}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\Urlmuskip=0mu plus 1mu
+\urlstyle{tt}
+\emergencystretch=2em
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{1.2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.4em,itemsep=0.25em,topsep=0.35em}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Breakable monospace for Lean paths / identifiers (xurl \path)
+\newcommand{\leanpath}[1]{%
+  {\raggedright\urlstyle{tt}\path{#1}}}
+
+
+\definecolor{fundbox}{RGB}{245,245,248}
+\definecolor{fundrule}{RGB}{180,180,190}
+
+\title{Median Index Preservation under Bounded Score Perturbations}
+\author{Research Architecture Runtime\\[0.25em]
+{\normalsize\texttt{operator/median}}}
+\date{2026-07-29}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The median index is the unique strict $k$-th order statistic for the conventional median rank $k$. When every pairwise score gap exceeds $2\varepsilon$, that index is invariant under every additive perturbation with $\|\delta\|_\infty\le\varepsilon$. The claim is Lean-certified ($\texttt{LEAN\_FULL}$) as a definitional reduction of the $k$-th order-statistic margin theorem.
+\end{abstract}
+
+\noindent
+\begin{center}
+\fcolorbox{fundrule}{fundbox}{%
+  \begin{minipage}{0.92\linewidth}
+  \centering
+  \textbf{This theorem is:} \texttt{Reduction}
+  \end{minipage}}
+\end{center}
+\vspace{0.6em}
+
+\section{Problem}
+{\raggedright\sloppy
+The median operator on a finite score vector $s\in\mathbb{R}^n$ ($n\ge 2$) returns the unique index $i^\star$ that is the strict $k$-th smallest coordinate of $s$, where $k$ is the conventional median rank (so that exactly $k$ scores are strictly smaller than $s_{i^\star}$, and no other index shares the value $s_{i^\star}$). The selected object is this index (equivalently, the unique median position under a strict-order presentation), not a set-valued median band.
+\par}
+
+\section{Stability notion}
+Admissible perturbations are additive score noise $\delta\in\mathbb{R}^n$ in the closed $\ell_\infty$ ball $\|\delta\|_\infty\le\varepsilon$ for a fixed $\varepsilon\ge 0$. Stability means: if $i^\star$ is the unique strict $k$-th smallest index of $s$ and every pairwise gap of $s$ exceeds $2\varepsilon$, then $i^\star$ remains the unique strict $k$-th smallest index of $s+\delta$ for every such $\delta$. Sharpness: if some rival index lies within distance $2\varepsilon$ of $s_{i^\star}$, an admissible $\delta$ destroys uniqueness of the strict $k$-th position.
+
+\section{Definitions}
+\begin{definition}[Strict $k$-th smallest]
+Fix $n\ge 2$, $s:\{0,\dots,n-1\}\to\mathbb{R}$, and $k<n$. An index $i$ is the \emph{strict $k$-th smallest} if $\#\{j:s_j<s_i\}=k$ and $s_j=s_i$ forces $j=i$.
+\end{definition}
+
+\begin{definition}[All-gaps margin]
+Scores satisfy $\mathrm{AllGapsExceed}(s,g)$ if $|s_p-s_q|>g$ whenever $p\neq q$.
+\end{definition}
+
+\begin{definition}[$\ell_\infty$ ball]
+$\|\delta\|_\infty\le\varepsilon$ means $|\delta_t|\le\varepsilon$ for every coordinate $t$.
+\end{definition}
+
+\noindent\textbf{Assumptions.} $n\ge 2$, $\varepsilon\ge 0$, a unique strict $k$-th smallest index exists, and (for invariance) $\mathrm{AllGapsExceed}(s,2\varepsilon)$.
+
+\section{Theorem}
+\begin{theorem}[Median / $k$-th margin invariance]\label{thm:inv}
+Let $n\ge 2$, $\varepsilon\ge 0$, and let $i$ be the strict $k$-th smallest index of $s$. If $\mathrm{AllGapsExceed}(s,2\varepsilon)$, then for every $\delta$ with $\|\delta\|_\infty\le\varepsilon$, the same index $i$ is the strict $k$-th smallest index of $s+\delta$.
+\end{theorem}
+
+\begin{theorem}[Sharpness]\label{thm:sharp}
+Under the same standing hypotheses on $(n,s,k,i)$ and $\varepsilon\ge 0$, if there exists $j\neq i$ with $|s_i-s_j|\le 2\varepsilon$, then there exists $\delta$ with $\|\delta\|_\infty\le\varepsilon$ such that $i$ is \emph{not} the strict $k$-th smallest index of $s+\delta$.
+\end{theorem}
+
+\section{Intuition}
+An $\ell_\infty$ adversary can decrease one coordinate by at most $\varepsilon$ and increase another by at most $\varepsilon$, consuming at most $2\varepsilon$ of any pairwise gap. If every gap is strictly larger than $2\varepsilon$, no pairwise order can reverse and no tie can form, so the count of scores below $s_i$ and the uniqueness of $s_i$ are preserved. If some gap is at most $2\varepsilon$, a midpoint collision forces a tie and uniqueness fails.
+
+\section{Examples}
+\begin{example}
+Take $n=3$ scores $(s_0,s_1,s_2)=(1,4,7)$ and median rank $k=1$ (unique middle value at index $1$). Pairwise gaps are $3$, $6$, and $3$, so $\mathrm{AllGapsExceed}(s,2\varepsilon)$ holds whenever $2\varepsilon<3$, e.g.\ $\varepsilon=1$. For any $\|\delta\|_\infty\le 1$, the middle index remains $1$: the perturbed values stay strictly ordered. If instead $\varepsilon=2$ so that $2\varepsilon=4$ meets the gap $|4-1|=3\le 4$, the midpoint adversary between indices $0$ and $1$ produces a tie and destroys uniqueness of the strict first order statistic.
+\end{example}
+
+\section{Proof}
+Write $s'=s+\delta$ and assume $\|\delta\|_\infty\le\varepsilon$.
+
+\paragraph{Pairwise order preservation.}
+Fix distinct indices $p,q$ with $|s_p-s_q|>2\varepsilon$. Without loss of generality suppose $s_p<s_q$, so $s_q-s_p>2\varepsilon$. Then
+\[
+s'_p-s'_q
+=
+(s_p-s_q)+(\delta_p-\delta_q)
+\le
+-(s_q-s_p)+2\varepsilon
+<
+0,
+\]
+because $|\delta_p-\delta_q|\le 2\varepsilon$. Hence $s'_p<s'_q$. The symmetric argument gives the converse direction: $s'_p<s'_q$ forces $s_p<s_q$. Thus
+\[
+s_p<s_q\qquad\Longleftrightarrow\qquad s'_p<s'_q.
+\]
+
+\paragraph{Count preservation.}
+Applying the pairwise equivalence at $q=i$ yields $s_j<s_i\Leftrightarrow s'_j<s'_i$ for every $j$. Therefore
+\[
+\#\{j:s_j<s_i\}
+=
+\#\{j:s'_j<s'_i\}.
+\]
+If $i$ is strict $k$-th smallest for $s$, the left-hand side equals $k$, so the right-hand side equals $k$.
+
+\paragraph{Uniqueness preservation.}
+Suppose $s'_j=s'_i$. If $j\neq i$, then $|s_j-s_i|>2\varepsilon$ by the all-gaps hypothesis, and the same $\ell_\infty$ estimate used above yields $s'_j\neq s'_i$, a contradiction. Hence $j=i$.
+
+Combining the two paragraphs shows $i$ remains the strict $k$-th smallest index of $s'$, which is Theorem~\ref{thm:inv}. (Median specialization: take the conventional median rank $k$; the argument never uses any property of $k$ beyond $k<n$.)
+
+\paragraph{Sharpness.}
+Let $j\neq i$ satisfy $|s_i-s_j|\le 2\varepsilon$. Define the midpoint collision
+\[
+\delta_t
+=
+\begin{cases}
+-(s_i-s_j)/2 & t=i,\\
+(s_i-s_j)/2 & t=j,\\
+0 & \text{otherwise.}
+\end{cases}
+\]
+Then $|\delta_t|\le\varepsilon$ for all $t$ (since $|s_i-s_j|/2\le\varepsilon$), and $s'_i=s'_j$. Uniqueness of a strict $k$-th value at $i$ therefore fails, proving Theorem~\ref{thm:sharp}.
+
+\section{Formal statement}
+{\raggedright\sloppy
+\begin{description}[style=nextline,leftmargin=1.1em,font=\normalfont\bfseries]
+\item[Lean module] \leanpath{Research.Operators.Median.Preservation}
+\item[Source file] \leanpath{lean/Research/Operators/Median/Preservation.lean}
+\item[Theorems]\leavevmode\par\vspace{0.15em}\begin{itemize}[leftmargin=1.2em]
+  \item \leanpath{median\_margin\_invariance}
+  \item \leanpath{median\_margin\_sharpness}
+\end{itemize}
+\item[Note] Definitional reduction of OrderStat.KthMargin.
+\item[Certificate] \leanpath{lean/certificates/median/median-margin}
+\item[Status] \texttt{LEAN\_FULL} on Mathlib $\mathbb{R}$ (\texttt{REAL\_MATHLIB})
+\end{description}
+\par}
+
+\section{Proof dependencies}
+{\raggedright\sloppy
+\begin{itemize}
+\item Reduces to \leanpath{Research.Operators.OrderStat.KthMargin} (\leanpath{kth\_margin\_invariance}, \leanpath{kth\_margin\_sharpness}).
+\item Uses the $\ell_\infty$ gap estimate $|(\delta_p-\delta_q)|\le 2\varepsilon$ (triangle inequality for absolute values).
+\item Uses the definitions of strict $k$-th smallest, all-gaps margin, and midpoint collision adversary from that core.
+\item No other operator theorems are required.
+\end{itemize}
+\par}
+
+\section{Consequences}
+{\raggedright\sloppy
+Median is the canonical specialization of unique strict order-statistic selection. The same margin theorem governs \texttt{quantile}, \texttt{percentile}, and \leanpath{kth-order-statistic} (all reduce to the same $k$-th core). Ranking and top-$k$ operators use the related pairwise ranking core rather than this count-based $k$-th statement; together they form the order-statistic layer of the primitive library. Any pipeline that selects a median index under bounded score noise may invoke Theorem~\ref{thm:inv} as the stability certificate.
+\par}
+
+\end{document}

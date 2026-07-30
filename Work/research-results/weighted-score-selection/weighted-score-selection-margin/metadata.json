@@ -1,0 +1,125 @@
+{
+  "operator": "weighted-score-selection",
+  "title": "Weighted score selection Margin Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/weighted-score-selection",
+  "crp_identifiers": {
+    "operator": "weighted-score-selection",
+    "theorem_id": "weighted-score-selection-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "54b48ad8afa01970b4d2f6a6c2f623ac97ed2b4f4a8479e37cbe296099ed610b"
+  ],
+  "lean_manifest_digest": "54b48ad8afa01970b4d2f6a6c2f623ac97ed2b4f4a8479e37cbe296099ed610b",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.WeightedScoreSelection.Margin",
+  "lean_certificate_dir": "lean/certificates/weighted-score-selection/weighted-score-selection-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "weighted-score-selection",
+    "theorem": "weighted-score-selection-margin",
+    "assumptions": [
+      "m≥2",
+      "unique maximizer",
+      "ℓ∞ ball"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "Definitional reduction to Argmax.Margin",
+    "limitations": [
+      "Argmax reduction"
+    ],
+    "references": [
+      "research-results/weighted-score-selection/weighted-score-selection-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "weighted_score_selection_margin_invariance",
+      "weighted_score_selection_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "9a1a66762ace827f5d8df1edc6f5afb0064df2f100f03d758100c90de9ee6e78",
+    "proof_digest": "a62780e051ada56cd8a7b94cc2bf674d169357582efddac7f5b17b42b19c9a84",
+    "certificate_path": "lean/certificates/weighted-score-selection/weighted-score-selection-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "54b48ad8afa01970b4d2f6a6c2f623ac97ed2b4f4a8479e37cbe296099ed610b",
+      "claim_digest": "6087d92fa6d17c8bd71390de22e04659de8a3d23f5861da2e9cad9aec3197030",
+      "entry_module_id": "Research.Operators.WeightedScoreSelection.Margin",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "primitive_search",
+    "selected_object": "unique_maximizer_index",
+    "instability_mechanism": "margin_collapse",
+    "structural_stability_quantity": "argmax_margin_gamma",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "gamma > 2ε",
+    "unstable_region": "gamma ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_argmax_margin"
+    ],
+    "related_operators": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "assumptions": [
+      "Finite m≥2",
+      "Unique maximizer"
+    ],
+    "limitations": [
+      "Argmax reduction"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "argmax",
+      "tournament-winner",
+      "greedy-maximum-selection"
+    ],
+    "dependencies": [
+      "Research.Operators.Argmax.Margin",
+      "margin_invariance"
+    ],
+    "reduces_to": "argmax-margin",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "54b48ad8afa01970b4d2f6a6c2f623ac97ed2b4f4a8479e37cbe296099ed610b",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}

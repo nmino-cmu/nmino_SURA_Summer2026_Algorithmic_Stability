@@ -1,0 +1,215 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Bounded Perturbation Invariance for Deterministic Argmax}
+\author{Research Architecture Runtime \\ \texttt{feature/argmax}}
+\date{2026-07-25}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study the finite deterministic argmax operator
+\(\operatorname*{arg\,max}_{i\in[m]} s_i\) under additive score perturbations
+bounded in the \(\ell_\infty\) norm.
+When a unique maximizer \(i^\star\) exists with margin
+\(\gamma(s)=s_{i^\star}-\max_{j\neq i^\star}s_j\), we prove that
+\(\gamma(s)>2\varepsilon\) is necessary and sufficient for \(i^\star\) to remain
+the unique maximizer under every perturbation \(\delta\) with
+\(\|\delta\|_\infty\le\varepsilon\).
+Verification in the repository is \textbf{computational}
+(\texttt{ARGMAX\_MARGIN\_COMPUTATIONAL\_V1}), not a Lean/ITP formalization.
+\end{abstract}
+
+\section{Introduction}
+Selection operators such as argmax are unstable near ties:
+infinitesimal score noise can change the reported index.
+A quantitative margin condition restores invariance under bounded noise.
+This note records the classical \(\ell_\infty\) margin theorem as the first
+operator-specific result exercised end-to-end through the Discovery and
+Verification architectures in this repository.
+
+\section{Problem formulation}
+Fix \(m\ge 2\) and scores \(s\in\mathbb{R}^m\).
+Write \([m]=\{1,\dots,m\}\).
+The (set-valued) argmax is
+\[
+\operatorname*{Argmax}(s)=\bigl\{i\in[m]: s_i=\max_{j\in[m]} s_j\bigr\}.
+\]
+We write \(i^\star=\operatorname*{arg\,max}_i s_i\) when
+\(\lvert\operatorname*{Argmax}(s)\rvert=1\).
+
+\paragraph{Perturbation model.}
+For \(\varepsilon\ge 0\), admissible perturbations satisfy
+\(\|\delta\|_\infty=\max_i\lvert\delta_i\rvert\le\varepsilon\).
+The perturbed scores are \(s+\delta\).
+
+\section{Notation and definitions}
+\begin{definition}[Margin]
+If \(i^\star\) is the unique maximizer of \(s\), the margin is
+\[
+\gamma(s)=s_{i^\star}-\max_{j\neq i^\star}s_j.
+\]
+Otherwise \(\gamma(s)\) is undefined.
+\end{definition}
+
+\section{Mathematical assumptions}
+\begin{enumerate}
+\item \(m\ge 2\) and \(s\in\mathbb{R}^m\).
+\item A unique maximizer \(i^\star\) exists, so \(\gamma(s)>0\).
+\item Perturbations obey \(\|\delta\|_\infty\le\varepsilon\) with \(\varepsilon\ge 0\).
+\end{enumerate}
+We do not treat data-dependent scores \(s_i(D)\), other \(\ell_p\) balls, or
+set-valued selection rules beyond recording that ties exclude the hypothesis.
+
+\section{Main theorem}
+\begin{theorem}[Bounded perturbation invariance]\label{thm:main}
+Under the assumptions above, if \(\gamma(s)>2\varepsilon\), then for every
+admissible \(\delta\), \(i^\star\) is the unique maximizer of \(s+\delta\).
+\end{theorem}
+
+\begin{theorem}[Sharpness]\label{thm:sharp}
+Under the same assumptions, if \(\gamma(s)\le 2\varepsilon\), then there exists
+an admissible \(\delta\) such that \(i^\star\) is not the unique maximizer of
+\(s+\delta\).
+\end{theorem}
+
+\section{Supporting lemmas}
+\begin{lemma}[Worst-case gap]\label{lem:gap}
+For any admissible \(\delta\) and any \(j\neq i^\star\),
+\[
+(s+\delta)_{i^\star}-(s+\delta)_j
+\ge s_{i^\star}-s_j-2\varepsilon
+\ge \gamma(s)-2\varepsilon.
+\]
+\end{lemma}
+
+\begin{proof}
+\((s+\delta)_{i^\star}\ge s_{i^\star}-\varepsilon\) and
+\((s+\delta)_j\le s_j+\varepsilon\).
+Subtracting yields the first inequality; the second uses the definition of
+\(\gamma\).
+\end{proof}
+
+\section{Proofs}
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Lemma~\ref{lem:gap} and \(\gamma(s)>2\varepsilon\) imply
+\((s+\delta)_{i^\star}>(s+\delta)_j\) for all \(j\neq i^\star\).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:sharp}]
+Let \(j^\star\in\operatorname*{Argmax}_{j\neq i^\star}s_j\).
+Set \(\delta_{i^\star}=-\varepsilon\), \(\delta_{j^\star}=+\varepsilon\), and
+\(\delta_k=0\) otherwise.
+Then \(\|\delta\|_\infty\le\varepsilon\) and
+\[
+(s+\delta)_{i^\star}-(s+\delta)_{j^\star}=\gamma(s)-2\varepsilon\le 0,
+\]
+so \(i^\star\) is not a unique maximizer.
+\end{proof}
+
+\section{Discussion}
+\subsection{Intuition}
+The margin is a buffer against adversarial noise that simultaneously depresses
+the winner and elevates a runner-up. Each direction can consume at most
+\(\varepsilon\), hence the factor two.
+
+\subsection{Geometric explanation}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.1]
+\draw[->] (0,0) -- (5.2,0) node[right] {\(s\)};
+\draw[thick] (0,1.2) -- (1.6,1.2) node[above left] {\(s_{j^\star}\)};
+\draw[thick] (0,3.0) -- (3.2,3.0) node[above left] {\(s_{i^\star}\)};
+\draw[<->] (3.4,1.2) -- (3.4,3.0) node[midway,right] {\(\gamma\)};
+\draw[dashed] (0,3.0-0.7) -- (4.5,3.0-0.7);
+\draw[dashed] (0,1.2+0.7) -- (4.5,1.2+0.7);
+\node at (4.7,2.65) {\small \(-\varepsilon\)};
+\node at (4.7,1.75) {\small \(+\varepsilon\)};
+\node[align=center,font=\small] at (2.2,-0.7)
+{Invariance requires \(\gamma>2\varepsilon\)};
+\end{tikzpicture}
+\caption{Margin buffer versus \(\ell_\infty\) adversarial moves.}
+\label{fig:margin}
+\end{figure}
+
+\subsection{Why the theorem matters}
+It gives an exact, checkable certificate that a reported argmax is stable to
+bounded score noise---useful for post-hoc selection and audit of ranking
+pipelines.
+
+\subsection{Where assumptions are used}
+Uniqueness supplies \(\gamma\); \(\ell_\infty\) yields the additive \(2\varepsilon\)
+shrinkage; finiteness of \(m\) is used only to ensure maxima exist.
+Indices in the paper are \([m]=\{1,\dots,m\}\); the reference implementation
+uses \(0..m-1\) with the obvious shift.
+
+\subsection{Examples}
+Take \(s=(3,1,0.5)\) so \(\gamma=2\). For \(\varepsilon=0.9\), invariance holds.
+For \(\varepsilon=1\), \(\delta=(-1,+1,0)\) yields \(s+\delta=(2,2,0.5)\) (tie).
+
+\subsection{Counterexamples and boundary cases}
+At \(\gamma=2\varepsilon\) the adversary forces a tie: uniqueness fails though
+\(i^\star\) may remain \emph{a} maximizer.
+Ties in \(s\) exclude the theorem hypothesis entirely.
+
+\section{Interpretation}
+The condition \(\gamma>2\varepsilon\) is both a proof target and an operational
+test: compute the empirical margin and compare to the noise budget.
+
+\section{Utility implications}
+Stabilization mechanisms (score smoothing, hysteresis, top-\(k\) reporting) can
+be justified when the measured margin is too small relative to \(\varepsilon\).
+
+\section{Limitations}
+\begin{itemize}
+\item Verification in-repo is computational certification, not Lean/ITP.
+\item Finite score vectors; abstract \(s\), not \(s_i(D)\).
+\item \(\ell_\infty\) only; other norms change constants.
+\item Floating-point evaluation can blur exact equality \(\gamma=2\varepsilon\).
+\end{itemize}
+
+\section{Open questions}
+Extensions to ties (set-valued argmax), \(\ell_p\) balls, and data-dependent
+scores \(s_i(D)\); composition with top-\(k\) and thresholding.
+
+\section{Connections to existing framework}
+Artifacts are minted as typed Discovery IR, packaged as a sealed CRP, and
+discharged by System~B via \texttt{operators.argmax.verify} with evaluation
+method \texttt{ARGMAX\_MARGIN\_COMPUTATIONAL\_V1}.
+
+\section{Verifier summary}
+End-to-end workflow reports audit verdict PASS with no unresolved obligations
+when the sealed claim statement exactly matches the canonical theorem text and
+formal fields. Feedback limitations include
+\texttt{COMPUTATIONAL\_VERIFICATION\_NOT\_LEAN}.
+
+\section{Appendix}
+Canonical statement (repository string):
+\begin{quote}\small
+Let \(m\ge 2\), \(s\in\mathbb{R}^m\) with unique maximizer
+\(i^\star=\operatorname*{arg\,max}_i s_i\) and margin
+\(\gamma(s)=s_{i^\star}-\max_{j\neq i^\star}s_j>0\).
+Let \(\varepsilon\ge 0\) and \(\delta\in\mathbb{R}^m\) with \(\|\delta\|_\infty\le\varepsilon\).
+If \(\gamma(s)>2\varepsilon\), then \(i^\star\) is the unique maximizer of \(s+\delta\).
+\end{quote}
+
+\section*{References}
+\begin{thebibliography}{9}
+\bibitem{repo}
+Repository implementation:
+\texttt{implementation/src/operators/argmax/}
+and \texttt{implementation/docs/operators/argmax.md}.
+\end{thebibliography}
+
+\end{document}

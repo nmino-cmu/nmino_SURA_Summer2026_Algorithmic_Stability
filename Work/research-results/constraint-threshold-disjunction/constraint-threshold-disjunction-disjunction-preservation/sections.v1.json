@@ -1,0 +1,28 @@
+{
+  "fundamentality": "reduction",
+  "title": "Constraint-threshold disjunction: Real Stability",
+  "abstract": "\\leanpath{constraint-threshold-disjunction} preserves a Boolean combination of threshold constraints under buffered scalar noise. Lean \\texttt{LEAN\\_FULL}.",
+  "problem": "Conjunction or disjunction of threshold predicates on coordinates/scores.",
+  "stability": "Each literal is threshold-stable; Boolean combinations inherit preservation.",
+  "definitions": "Reduce to multi-threshold / threshold preservation on each cut.",
+  "theorem": "\\begin{theorem}\\label{thm:inv}\nIf every atomic threshold is buffer-stable for $(x,x',\\varepsilon)$, the conjunction/disjunction value is preserved.\n\\end{theorem}",
+  "intuition": "Boolean operations are deterministic functions of stable bits.",
+  "examples": "\\begin{example}\nTwo cuts $x\\ge 1$ and $x\\ge 3$ with $x=4$, $\\varepsilon=0.2$: both bits stable, so their conjunction stays true.\n\\end{example}",
+  "proof": "Each atomic predicate is preserved by scalar threshold preservation under the buffer hypotheses. Conjunction (resp.\\ disjunction) is a fixed Boolean function of those bits, hence preserved (Theorem~\\ref{thm:inv}).",
+  "formal": "\\begin{description}[style=nextline,leftmargin=1.1em,font=\\normalfont\\bfseries]\n\\item[Lean module] \\leanpath{Research.Operators.ConstraintThresholdDisjunction.Preservation}\n\\item[Source file] \\leanpath{lean/Research/Operators/ConstraintThresholdDisjunction/Preservation.lean}\n\\item[Theorems]\\leavevmode\\par\\vspace{0.15em}\\begin{itemize}[leftmargin=1.2em]\n  \\item \\leanpath{constraint_threshold_disjunction_disjunction_preservation}\n  \\item \\leanpath{constraint_threshold_disjunction_disjunction_sharpness}\n\\end{itemize}\n\\item[Certificate] \\leanpath{lean/certificates/constraint-threshold-disjunction/constraint-threshold-disjunction-disjunction-preservation}\n\\item[Status] \\texttt{LEAN\\_FULL} on Mathlib $\\mathbb{R}$ (\\texttt{REAL\\_MATHLIB})\n\\end{description}",
+  "dependencies": "\\begin{itemize}\\item Threshold / multi-threshold cores.\\item Boolean congruence.\\end{itemize}",
+  "consequences": "Constraint-side companion to multi-threshold counts.",
+  "paper_card": {
+    "difficulty": "elementary",
+    "applications": [
+      "projection-interval",
+      "coordinate-clipping"
+    ],
+    "dependencies": [
+      "Research.Operators.ConstraintThresholdDisjunction.Preservation",
+      "Threshold.Preservation"
+    ],
+    "reduces_to": "threshold-preservation",
+    "reduced_by": []
+  }
+}

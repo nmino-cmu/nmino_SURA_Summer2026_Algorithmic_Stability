@@ -1,0 +1,123 @@
+{
+  "operator": "stable-sorting",
+  "title": "Stable sorting Ranking Preservation under Bounded Score Perturbations",
+  "authors": [
+    "Research Architecture Runtime"
+  ],
+  "date_generated": "2026-07-25",
+  "git_commit": "pending",
+  "branch": "operator/stable-sorting",
+  "crp_identifiers": {
+    "operator": "stable-sorting",
+    "theorem_id": "stable-sorting-margin"
+  },
+  "proof_obligation_identifiers": [
+    "lean_kernel_checked"
+  ],
+  "verification_result_identifiers": [
+    "LEAN_FULL",
+    "365584b6cbbe6e2308b92b7d0064d07006abe4aaad3b8f7afd4ab168ca36084e"
+  ],
+  "lean_manifest_digest": "365584b6cbbe6e2308b92b7d0064d07006abe4aaad3b8f7afd4ab168ca36084e",
+  "derived_lean_status": "LEAN_FULL",
+  "lean_entry_module": "Research.Operators.StableSorting.Preservation",
+  "lean_certificate_dir": "lean/certificates/stable-sorting/stable-sorting-margin",
+  "audit_identifiers": {
+    "note": "Lean LEAN_FULL"
+  },
+  "repository_version": "0.1.0",
+  "theorem_version": "1.0.0-lean",
+  "schema_version": "ART-INT-00",
+  "verification_status": "LEAN_FULL",
+  "library_schema_version": "primitive-library-1.0",
+  "authored": {
+    "operator": "stable-sorting",
+    "theorem": "stable-sorting-margin",
+    "assumptions": [
+      "n≥2",
+      "pairwise gaps"
+    ],
+    "perturbation_model": "ℓ∞ ball",
+    "theorem_role": "primary_stability",
+    "proof_strategy": "OrderStat.Ranking reduction",
+    "limitations": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ],
+    "references": [
+      "research-results/stable-sorting/stable-sorting-margin/paper.tex"
+    ],
+    "lean_theorem_names": [
+      "stable_sorting_margin_invariance",
+      "stable_sorting_margin_sharpness"
+    ]
+  },
+  "derived": {
+    "lean_status": "LEAN_FULL",
+    "statement_digest": "d8a0eb779834bb85113be813d01d74d5ed1fcb7704791db42a4741755786361a",
+    "proof_digest": "f2ef9d9f2a78890acd3f96e38360f854fbadee25340ee477e2c609cc63fa09b7",
+    "certificate_path": "lean/certificates/stable-sorting/stable-sorting-margin",
+    "placeholder_count": 0,
+    "axiom_summary": {
+      "imported_axiom_closure_sorted": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "custom_axiom_ids_sorted": [],
+      "axiom_closure_captured": true
+    },
+    "provenance": {
+      "lean_manifest_digest": "365584b6cbbe6e2308b92b7d0064d07006abe4aaad3b8f7afd4ab168ca36084e",
+      "claim_digest": "bd7bb9d2bc243910356c419182145d95b9c9c07fe4c716b256d628aa9c3cfc79",
+      "entry_module_id": "Research.Operators.StableSorting.Preservation",
+      "store_kind": "ART10b_SURROGATE_V1"
+    },
+    "verification_timestamp": "2026-07-25"
+  },
+  "library": {
+    "primitive_type": "ordering",
+    "selected_object": "pairwise_ranking",
+    "instability_mechanism": "pairwise_gap_collapse",
+    "structural_stability_quantity": "min_pairwise_gap",
+    "perturbation_class": "bounded_additive_linf",
+    "guarantee_kind": "deterministic",
+    "stable_region": "all pairwise gaps > 2ε",
+    "unstable_region": "some pairwise gap ≤ 2ε",
+    "sharpness": true,
+    "compositional_properties": [
+      "reduces_to_order_stat_ranking"
+    ],
+    "related_operators": [
+      "top-k",
+      "sorting",
+      "rank"
+    ],
+    "assumptions": [
+      "Finite n≥2"
+    ],
+    "limitations": [
+      "Certificate limitations apply (see lean_manifest / formal verification report)"
+    ]
+  },
+  "paper_card": {
+    "layout": "operator-stability-v1",
+    "fundamentality": "reduction",
+    "difficulty": "elementary",
+    "applications": [
+      "top-k",
+      "sorting",
+      "rank"
+    ],
+    "dependencies": [
+      "Research.Operators.OrderStat.Ranking",
+      "ranking_invariance"
+    ],
+    "reduces_to": "order-stat-ranking",
+    "reduced_by": [],
+    "verified": {
+      "lean_status": "LEAN_FULL",
+      "manifest_digest": "365584b6cbbe6e2308b92b7d0064d07006abe4aaad3b8f7afd4ab168ca36084e",
+      "domain": "REAL_MATHLIB"
+    }
+  }
+}
