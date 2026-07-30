@@ -1,4 +1,3 @@
-# === permanent ===
 **/.lake/
 **/.venv/
 **/__pycache__/
@@ -11,5 +10,5 @@
 *.synctex.gz
 *.out
 *.toc
-# harness runtime outputs (often iCloud-evicted stubs that hang git)
+# harness runtime outputs (iCloud stubs hang git add)
 Work/architecture_verifier/**/live_runs/
